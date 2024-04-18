@@ -1,0 +1,81 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "TilesetWater.tsj",
+    "expandedProjectPaths": [
+        "tilesets",
+        "."
+    ],
+    "fileStates": {
+        "TilesetFloor.tsj": {
+            "scaleInDock": 1.9032,
+            "scaleInEditor": 5.1
+        },
+        "TilesetHouse.tsj": {
+            "scaleInDock": 1.4981,
+            "scaleInEditor": 2.65
+        },
+        "TilesetNature.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 2.65
+        },
+        "TilesetWater.tsj": {
+            "scaleInDock": 3.2588,
+            "scaleInEditor": 2.65
+        },
+        "game_map.json": {
+            "scale": 1.4815,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 100.23624704691191,
+                "y": 144.1106986162673
+            }
+        },
+        "tilesets/TilesetField.tsj": {
+            "scaleInDock": 2.414,
+            "scaleInEditor": 2.65
+        },
+        "tilesets/TilesetNature.tsj": {
+            "scaleInDock": 1.4638,
+            "scaleInEditor": 1
+        },
+        "tilesets/TilesetWater.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "All Files (*)",
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "game_map.json",
+        "tilesets/TilesetField.tsj",
+        "TilesetNature.tsj",
+        "TilesetFloor.tsj",
+        "TilesetHouse.tsj",
+        "TilesetWater.tsj"
+    ],
+    "project": "untitled.tiled-project",
+    "recentFiles": [
+        "game_map.json",
+        "tilesets/TilesetField.tsj",
+        "TilesetNature.tsj",
+        "TilesetFloor.tsj",
+        "TilesetHouse.tsj",
+        "TilesetWater.tsj",
+        "tilesets/TilesetWater.tsj",
+        "tilesets/TilesetNature.tsj"
+    ],
+    "resizeMap.removeObjects": true,
+    "tileset.lastUsedFormat": "json",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}

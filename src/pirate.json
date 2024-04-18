@@ -1,0 +1,32 @@
+{ "compressionlevel":-1,
+ "height":1,
+ "infinite":false,
+ "layers":[
+        {
+         "data":[13, 14, 15, 16, 17],
+         "height":1,
+         "id":1,
+         "name":"Tile Layer 1",
+         "opacity":1,
+         "type":"tilelayer",
+         "visible":true,
+         "width":5,
+         "x":0,
+         "y":0
+        }],
+ "nextlayerid":2,
+ "nextobjectid":1,
+ "orientation":"orthogonal",
+ "renderorder":"right-down",
+ "tiledversion":"1.10.2",
+ "tileheight":40,
+ "tilesets":[
+        {
+         "firstgid":1,
+         "source":"pirate.tsj"
+        }],
+ "tilewidth":64,
+ "type":"map",
+ "version":"1.10",
+ "width":5
+}

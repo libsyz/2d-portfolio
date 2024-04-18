@@ -1,0 +1,14 @@
+{ "columns":5,
+ "image":"..\/..\/..\/..\/Downloads\/NinjaAdventure\/Backgrounds\/Tilesets\/TilesetField.png",
+ "imageheight":240,
+ "imagewidth":80,
+ "margin":0,
+ "name":"TilesetField",
+ "spacing":0,
+ "tilecount":75,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.10"
+}
