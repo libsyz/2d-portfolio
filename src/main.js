@@ -95,6 +95,7 @@ k.scene('intro', () => {
             k.go('main')
         } else {
             k.debug.log('should open CV');
+            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })
 
