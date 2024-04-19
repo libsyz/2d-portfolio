@@ -7,8 +7,8 @@ Find ways to get the core mechanics done, then think through the flow of the gam
 Before
 ------
 
-[] Why the fuck is my scene throwing an undefined error
-[] Why the fuck I can't get version control to work properly this is embarrasing
+[X] Why the fuck is my scene throwing an undefined error - AAAHAHAHAHHA ITS A FUCKING EXTENSION AAAAH
+[X] Why the fuck I can't get version control to work properly this is embarrasing
 [] Need subfolders on src, it's starting to get messy
 
 Mechanics
@@ -25,7 +25,7 @@ Mechanics
 
 [X] Pushing Items 
 
-[ ] Intro Scene
+[X] Intro Scene
 
 [] Figure out Puzzles to solve from here 
 

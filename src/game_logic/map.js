@@ -1,8 +1,8 @@
 import { k } from './kaboomCtx.js';
 
 // load the sprite
-const mapSprite = k.loadSprite('game_map', './src/game_map.png');
-const mapData = await (await fetch("./src/game_map.json")).json();
+const mapSprite = k.loadSprite('game_map', './src/assets/game_map.png');
+const mapData = await (await fetch("./src/mapdata/game_map.json")).json();
 
 // instatiate the map
 export const createMap = () => {

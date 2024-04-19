@@ -18,7 +18,7 @@ export const showDialogue = (faceTag, message) => {
 
     dialogueBox.add([
         k.text(
-            'Go through the gate to find the missing pieces of Miguels CV', { 
+            message, { 
             size: 12, width: 256
         }),
         k.pos(56, 12),

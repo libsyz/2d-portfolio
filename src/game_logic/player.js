@@ -1,6 +1,6 @@
 import { k } from './kaboomCtx';
 
-const pirate = k.loadSprite('pirate', './src/pirate.png', {
+const pirate = k.loadSprite('pirate', './src/assets/pirate.png', {
     sliceX: 5,
     sliceY: 1,
     anims: {
