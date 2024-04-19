@@ -12,16 +12,16 @@ export const createMap = () => {
     // add boundaries 
     for (const layer of layers) {
         if (layer.name === "bounds") {
-            // for (const boundary of layer.objects) {
-            //         map.add([
-            //             k.area({
-            //             shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
-            //             }),
-            //             k.body({ isStatic: true }),
-            //             k.pos(boundary.x, boundary.y),
-            //             'boundary',
-            //         ]);
-            // }
+            for (const boundary of layer.objects) {
+                    map.add([
+                        k.area({
+                        shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
+                        }),
+                        k.body({ isStatic: true }),
+                        k.pos(boundary.x, boundary.y),
+                        'boundary',
+                    ]);
+            }
         }
 
         if (layer.name === 'teleport') {

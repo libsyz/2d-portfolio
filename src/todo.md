@@ -4,7 +4,15 @@ TODO
 
 Find ways to get the core mechanics done, then think through the flow of the game
 
-[ ]
+Before
+------
+
+[] Why the fuck is my scene throwing an undefined error
+[] Why the fuck I can't get version control to work properly this is embarrasing
+[] Need subfolders on src, it's starting to get messy
+
+Mechanics
+---------
 
 [x] Scene transition on collision
     [x] Make a different scene
@@ -16,6 +24,8 @@ Find ways to get the core mechanics done, then think through the flow of the gam
     [ ] Add Speaking Bubble when player is close
 
 [X] Pushing Items 
+
+[ ] Intro Scene
 
 [] Figure out Puzzles to solve from here 
 
