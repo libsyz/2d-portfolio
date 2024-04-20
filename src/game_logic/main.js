@@ -13,7 +13,8 @@ import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 k.loadSprite('dialogue_box_simple', './src/assets/dialogue_box_simple.png');
 k.loadSprite('shuriken', './src/assets/shuriken.png');
 k.loadSprite('intro_background', './src/assets/intro_background.png');
-k.loadSprite('interview_room', './src/assets/interview_room.png')
+k.loadSprite('interview_room', './src/assets/interview_room.png');
+k.loadSprite('scroll', './src/assets/scroll.png');
 
 k.scene("main", async () => {
     const map = createMap();
@@ -189,6 +190,28 @@ k.scene('skills_quest', () => {
         k.wait(0.4, () => {
             player.opacity = 1;
         })
+    })
+
+    k.onCollide('player', 'scroll', (player, scroll) => {
+        scroll.destroy();
+    })
+
+
+    k.onDestroy('baddie_green_demon', (baddie) => {
+        // render a parchment if all baddies are dead
+        const baddieCount = k.get('baddie_green_demon').length;
+
+
+        if (baddieCount === 0) { 
+            k.add([
+                k.sprite('scroll'),
+                k.pos(baddie.pos),
+                k.scale(2),
+                k.area(),
+                k.body(),
+                'scroll'
+            ])
+        }
     })
     
 
