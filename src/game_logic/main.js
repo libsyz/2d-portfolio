@@ -4,6 +4,7 @@ import { createMap } from "./map.js";
 import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue } from "./utils.js";
+import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 
 
 
@@ -29,11 +30,11 @@ k.scene("main", async () => {
     const oldMan = createOldMan();
 
     player.onCollide('gate', () => {
-        k.debug.log('going through gate');
+        k.go('skills_quest');
     });
 
     k.onCollide('player', 'old_man_idle', () => {
-        showDialogue('old_man_face', 'Hello How are you Doing little fella?');
+        showDialogue('old_man_face', 'go through the pearly gates to find your skills');
     })
 
     k.onCollideEnd('player', 'old_man_idle', () => {
@@ -150,5 +151,11 @@ k.scene('opening', () => {
 })
 
 
+k.scene('skills_quest', () => { 
+    k.setBackground(201, 197, 197);
+    createPlayer();
+    createBaddieGreenDemon();
 
-k.go('opening');
+})
+
+k.go('skills_quest');
