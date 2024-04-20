@@ -154,7 +154,11 @@ k.scene('opening', () => {
 k.scene('skills_quest', () => { 
     k.setBackground(201, 197, 197);
     createPlayer();
-    createBaddieGreenDemon();
+    
+    for (let i = 0; i < 3; i++) {
+        createBaddieGreenDemon();    
+    }
+    
 
 })
 

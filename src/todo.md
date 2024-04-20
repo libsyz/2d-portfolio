@@ -28,6 +28,25 @@ Mechanics
 [X] Intro Scene
 
 [] Figure out Puzzles to solve from here 
+  [] 1. Education - Enter the house and look for a diploma
+
+
+  [] 2. Experience - Kill all the baddies in a room
+    [X] Go to a room
+    [X] easy - Go to a different scene when moving out of the map
+    [] middle - transition the scene
+    [] hard - camera moves to next map area
+    [X] Set up baddies and make them patrol
+    [ ] When baddies collide with player
+        [ ] player gets pushed away in the opposite direction it was hit
+        [ ] player blinks
+        [ ] player loses health
+    [] Give player ability to throw shurikens or attack
+    [] baddies disappear on shuriken impact
+    [] when all baddies disappear, last one throws an item
+    [] item unlocks Skills
+
+  [] 3. Skills - Proof your knowledge in front of some sort of oracle  
 
 [] Using Weapons
 
