@@ -161,7 +161,13 @@ k.scene('skills_quest', () => {
 
     k.onCollide('arrow', 'baddie_green_demon', (arrow, baddie) => {
         arrow.destroy();
-        baddie.destroy();
+        baddie.color = k.color(255, 255, 255);
+        baddie.scale = 2.5;
+        k.wait(0.2, () => {
+            baddie.destroy();
+
+        })
+        
     }) 
 
 
