@@ -163,6 +163,27 @@ k.scene('skills_quest', () => {
         arrow.destroy();
         baddie.destroy();
     }) 
+
+
+    k.onCollide('player', 'baddie_green_demon', (player, baddie) => {
+        k.shake(2);
+        // player blinks as it takes damage
+        k.wait(0.1, () => {
+                player.opacity = 0;
+        })
+
+        k.wait(0.2, () => {
+            player.opacity = 1;
+        })
+
+        k.wait(0.3, () => {
+                player.opacity = 0;
+        })
+
+        k.wait(0.4, () => {
+            player.opacity = 1;
+        })
+    })
     
 
 })
