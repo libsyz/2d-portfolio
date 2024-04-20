@@ -7,7 +7,7 @@ const mapData = await (await fetch("./src/mapdata/game_map.json")).json();
 // instatiate the map
 export const createMap = () => {
     const layers = mapData.layers;
-    const map = k.add([k.sprite("game_map"), k.pos(0), k.scale(1)]);
+    const map = k.add([k.sprite("game_map"), k.pos(0), k.scale(2)]);
 
     // add boundaries 
     for (const layer of layers) {

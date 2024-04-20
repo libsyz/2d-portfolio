@@ -91,7 +91,7 @@ k.scene('intro', () => {
 
     k.onKeyPress('space', () => {
         if(startGame.isSelected) {
-            k.go('main')
+            k.go('opening');
         } else {
             k.debug.log('should open CV');
             window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
@@ -217,4 +217,4 @@ k.scene('skills_quest', () => {
 
 })
 
-k.go('skills_quest');
+k.go('intro');

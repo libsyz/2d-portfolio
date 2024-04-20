@@ -80,7 +80,6 @@ export const createPlayer = () => {
     })
 
     k.onKeyPress("space", () => {
-        k.debug.log('throw a shuriken baby');
         spawnArrow(player.pos, player.direction);
         // get the direction of the player
         // use that to instantiate a shuriken
