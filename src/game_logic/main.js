@@ -158,6 +158,11 @@ k.scene('skills_quest', () => {
     for (let i = 0; i < 3; i++) {
         createBaddieGreenDemon();    
     }
+
+    k.onCollide('arrow', 'baddie_green_demon', (arrow, baddie) => {
+        arrow.destroy();
+        baddie.destroy();
+    }) 
     
 
 })

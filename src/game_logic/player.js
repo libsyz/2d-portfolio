@@ -111,7 +111,7 @@ export const createPlayer = () => {
 			k.move(posDirection, ARROW_SPEED),
 			k.offscreen({ destroy: true }),
 			// strings here means a tag
-			"bullet",
+			"arrow",
 		])
 	}
 
