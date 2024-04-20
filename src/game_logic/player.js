@@ -9,6 +9,8 @@ const pirate = k.loadSprite('pirate', './src/assets/pirate.png', {
     }
 })
 
+const arrow = k.loadSprite('arrow', './src/assets/arrow.png');
+
 export const createPlayer = () => {
     const playerScale = 1.0;
     const playerAreaScale = {scale: k.vec2(0.3, 0.6)};
@@ -17,7 +19,7 @@ export const createPlayer = () => {
 
     const player = k.add([
         k.sprite('pirate'), 
-        { anim: 'idle'},
+        { anim: 'idle', direction: k.RIGHT},
         k.pos(300, 184), 
         //scale constrains bounds to the right place :-)
         k.area(playerAreaScale),
@@ -31,6 +33,7 @@ export const createPlayer = () => {
         player.move(playerBaseSpeed, 0);
         if (player.curAnim() !== "run") {
             player.flipX = false;
+            player.direction = k.RIGHT;
             player.play("run")
         }
     })
@@ -39,6 +42,7 @@ export const createPlayer = () => {
         player.move(-playerBaseSpeed, 0);
         if (player.curAnim() !== "run") {
             player.flipX = true;
+            player.direction = k.LEFT;
             player.play("run");
         }
     })
@@ -46,6 +50,7 @@ export const createPlayer = () => {
     k.onKeyDown('down', () => {
         player.move(0, playerBaseSpeed);
         if (player.curAnim() !== "run") {
+            player.direction = k.DOWN;
             player.play("run");
         }
     })
@@ -53,6 +58,7 @@ export const createPlayer = () => {
     k.onKeyDown('up', () => {
         player.move(0, -playerBaseSpeed);
         if (player.curAnim() !== "run") {
+            player.direction = k.UP;
             player.play("run");
         }
     })
@@ -74,10 +80,41 @@ export const createPlayer = () => {
     })
 
     k.onKeyPress("space", () => {
-        if (player.isGrounded()) {
-            player.jump(playerJumpForce)
-        }
+        k.debug.log('throw a shuriken baby');
+        spawnArrow(player.pos, player.direction);
+        // get the direction of the player
+        // use that to instantiate a shuriken
+        // and send it flying 
     })
+
+    const spawnArrow = (playerPos, posDirection) => {
+        const ARROW_SPEED = 300;
+        let rotation = 0;
+
+        if (posDirection === k.RIGHT) {
+            rotation = 0;
+        } else if (posDirection === k.LEFT ) { 
+            rotation = 180;
+        } else if (posDirection === k.UP) {
+            rotation = 270
+        } else {
+            rotation = 90
+        }
+		k.add([
+			k.sprite('arrow'),
+			k.area(),
+			k.pos(playerPos),
+			k.anchor("center"),
+            k.rotate(rotation),
+			k.color(127, 127, 255),
+			k.scale(1.5),
+			k.move(posDirection, ARROW_SPEED),
+			k.offscreen({ destroy: true }),
+			// strings here means a tag
+			"bullet",
+		])
+	}
+
 
     // player.onUpdate(() => {
     //     console.log(player.pos.x);
