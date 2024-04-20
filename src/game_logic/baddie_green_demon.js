@@ -40,18 +40,22 @@ export const createBaddieGreenDemon = () => {
 
 // We spawn the thing
     let baddieCounter = 0;
-    // every two seconds 
+    let xVel = -20 + Math.random() * 40
+    let yVel = -20 + Math.random() * 40
+    // every two seconds, patrols on random direction
     k.onUpdate("baddie_green_demon", (baddie) => {
+
         if (baddieCounter < seconds(2)) {
             baddieCounter += 1 
         } else { 
-            baddieCounter = 0
+            baddieCounter = 0;
+            xVel = -20 + Math.random() * 40;
+            yVel = -20 + Math.random() * 40;
         }
 
         if (baddieCounter < 60 ) {
-            baddieGreenDemon.move(50, 0)
+            baddieGreenDemon.move(xVel, yVel)
         }
-        
 
 	})
 
