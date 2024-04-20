@@ -1,5 +1,5 @@
 import { k } from './kaboomCtx';
-
+import { seconds } from './utils';
 
 const oldMan = k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
     sliceX: 4,
@@ -11,11 +11,15 @@ const oldMan = k.loadSprite('baddie_green_demon', './src/assets/baddie_green_dem
 
 export const createBaddieGreenDemon = () => {
     const scale = 1.5;
+    
 
-    const player = k.add([
+    const baddieGreenDemon = k.add([
         k.sprite('baddie_green_demon'), 
         k.pos(240, 180),
-        {anim: 'idle'},
+        {
+         anim: 'idle',
+         state: 'idle'
+        },
         k.area({scale: 1.5}),
         k.anchor('center'),
         k.scale(2),
@@ -23,4 +27,33 @@ export const createBaddieGreenDemon = () => {
         'baddie_green_demon'
 //scale constrains bounds to the right place :-) 
     ]);
+
+    const patrol = () => {
+        k.debug.log(baddieGreenDemon.pos.x);
+        baddieGreenDemon.move(200,0)
+    }
+
+    const chill = () => {
+        // no op
+        return 
+    }
+
+// We spawn the thing
+    let baddieCounter = 0;
+    // every two seconds 
+    k.onUpdate("baddie_green_demon", (baddie) => {
+        if (baddieCounter < seconds(2)) {
+            baddieCounter += 1 
+        } else { 
+            baddieCounter = 0
+        }
+
+        if (baddieCounter < 60 ) {
+            baddieGreenDemon.move(50, 0)
+        }
+        
+
+	})
+
+
 }

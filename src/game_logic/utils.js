@@ -1,5 +1,12 @@
 import { k } from './kaboomCtx.js'
 
+
+const FRAMERATE = 60;
+
+export const seconds = (secs) => {
+    return FRAMERATE * secs
+}
+
 export const showDialogue = (faceTag, message) => {
 
     // add the dialogue box
