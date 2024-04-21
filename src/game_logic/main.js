@@ -16,6 +16,8 @@ k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('interview_room', './src/assets/interview_room.png');
 k.loadSprite('scroll', './src/assets/scroll.png');
 
+
+
 k.scene("main", async () => {
     const map = createMap();
 
@@ -29,6 +31,10 @@ k.scene("main", async () => {
     
     const player = createPlayer();
     const oldMan = createOldMan();
+
+    player.onUpdate(() => {
+        k.camPos(player.worldPos());
+    })
 
     player.onCollide('gate', () => {
         k.go('skills_quest');
