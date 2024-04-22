@@ -223,4 +223,56 @@ k.scene('skills_quest', () => {
 
 })
 
-k.go('intro');
+
+k.scene('map_camera_test', () => {
+    k.camScale(2);
+
+    // Easy
+    // Make the camera follow the player
+    const map = k.add([
+        k.rect(1120 * 3, 600 * 3),
+        k.color(41, 41, 41),
+        k.z(0),
+        k.anchor('center'),
+        k.pos(k.center())
+    ])
+
+
+    const bounds = k.add([
+        k.rect(1120, 600),
+        k.color(125, 125, 125),
+        k.z(1),
+        k.anchor('center'),
+        k.pos(k.center())
+    ])
+
+    const player = createPlayer();
+    player.moveTo(k.center());
+    player.z = 2
+
+    k.camPos(k.center());
+    
+
+    player.onUpdate(() => {
+        k.debug.log(player.pos.y)
+        if (player.pos.x > 520 && 920 > player.pos.x &&  
+            player.pos.y > 264 && 486 > player.pos.y ) { 
+            k.camPos(player.worldPos())
+        }
+
+    })
+
+
+    
+
+    // Med
+    // Make the camera follow the player, but stop following when approaching screen limit
+
+
+    // Hard
+    // Transition the from one point to another after the player has crossed a line
+
+
+})
+
+k.go('map_camera_test');

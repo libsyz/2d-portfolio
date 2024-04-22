@@ -34,11 +34,11 @@
             }
         },
         "intro_map.json": {
-            "scale": 0.7301,
+            "scale": 0.6095,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 100.67114093959734,
-                "y": 261.6079989042597
+                "x": 299.4257588187038,
+                "y": 154.22477440525023
             }
         },
         "tilesets/TilesetField.tsj": {
