@@ -238,26 +238,69 @@ k.scene('map_camera_test', () => {
     ])
 
 
-    const bounds = k.add([
-        k.rect(1120, 600),
+    const freeMovement = k.add([
+        k.rect(200, 200),
         k.color(125, 125, 125),
-        k.z(1),
+        k.z(2),
         k.anchor('center'),
         k.pos(k.center())
     ])
 
+    const bounds = k.add([
+        k.rect(400, 400),
+        k.color(198, 182, 226),
+        k.z(1),
+        k.anchor('center'),
+        k.pos(k.center()),
+    ])
+
     const player = createPlayer();
     player.moveTo(k.center());
-    player.z = 2
+    player.z = 3
 
-    k.camPos(k.center());
     
+    // if only I could figure this out dynamically based on screen size hahaha
 
+    let camBounds = { left: 620, right: 820, up: 277, down: 477}
+    
     player.onUpdate(() => {
-        k.debug.log(player.pos.y)
-        if (player.pos.x > 520 && 920 > player.pos.x &&  
-            player.pos.y > 264 && 486 > player.pos.y ) { 
+        const camCoords = k.camPos();
+        
+        // if player is inside the bounds, camera moves both x and y
+        
+        // if player is inside the x bounds but outside y bounds, move only x
+        // if player is inside the y bounds but outside the x bounds, move only y
+
+        if (player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
+            player.pos.y > camBounds.up && camBounds.down > player.pos.y ) 
+        { 
             k.camPos(player.worldPos())
+        } 
+        else if (
+            player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
+            player.pos.y < camBounds.up
+        )
+        {
+            k.camPos( player.pos.x , camBounds.up )
+
+        } else if ( 
+            player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
+            player.pos.y > camBounds.down
+        ) 
+        {
+            k.camPos( player.pos.x , camBounds.down )
+        } else if (
+            player.pos.y > camBounds.up && camBounds.down > player.pos.y &&
+            player.pos.x > camBounds.right
+        ) {
+            k.camPos( camBounds.right, player.pos.y )
+        } else if (
+            player.pos.y > camBounds.up && camBounds.down > player.pos.y &&
+            player.pos.x < camBounds.left
+        ) {
+            k.camPos( camBounds.left, player.pos.y )
+        } else {
+            return
         }
 
     })
