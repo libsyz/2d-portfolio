@@ -262,10 +262,12 @@ k.scene('camera_follow_test', () => {
 
     
     // if only I could figure this out dynamically based on screen size hahaha
+    // this only works on Mac 13 inch screen. super weak
 
     let camBounds = { left: 620, right: 820, up: 277, down: 477}
     
     player.onUpdate(() => {
+        k.debug.log(k.camPos());
         const camCoords = k.camPos();
         
         // if player is inside the bounds, camera moves both x and y
@@ -320,45 +322,47 @@ k.scene('camera_follow_test', () => {
 
 })
 
+
 // test Scene with Camera logic that switches to another scene when the character moves out 
 
-k.scene('camera_walkout_test', () => { 
-    const firstScene = k.add([
-        k.rect(1120, 600),
-        k.color(41, 41, 41)
-    ])
+// k.scene('camera_walkout_test', () => { 
+//     const firstScene = k.add([
+//         k.rect(1120, 600),
+//         k.color(41, 41, 41)
+//     ])
 
-    const centerPiece = k.add([
-        k.rect(30, 30),
-        k.color(0, 0, 0),
-        k.z(2),
-        k.anchor('center'),
-        k.pos(1120 / 2 , 600 / 2)
-    ])
+//     const centerPiece = k.add([
+//         k.rect(30, 30),
+//         k.color(0, 0, 0),
+//         k.z(2),
+//         k.anchor('center'),
+//         k.pos(1120 / 2 , 600 / 2)
+//     ])
 
-    const secondScene = k.add([
-        k.rect(1120, 600),
-        k.color(120, 120, 120),
-        k.pos(firstScene.renderArea().pos.x, firstScene.renderArea().pos.x + 600),
-        k.z(2)
-    ])
+//     const secondScene = k.add([
+//         k.rect(1120, 600),
+//         k.color(120, 120, 120),
+//         k.pos(firstScene.renderArea().pos.x, firstScene.renderArea().pos.x + 600),
+//         k.z(2)
+//     ])
 
-    const player = createPlayer();
-    player.moveTo(k.vec2(1120/2, 600))
-    player.z = 3
-
-
-    centerPiece.onUpdate(() => {
-        k.camPos(centerPiece.worldPos())
-    })
-
-    player.onUpdate( () => {
-        k.debug.log(player.pos.y);
-        if ( player.pos.y > 600 ) {
-            centerPiece.moveTo(1120/2, 600 * 2 * 0.75, 1000)
-        } 
-    })
-})
+//     const player = createPlayer();
+//     player.moveTo(k.vec2(1120/2, 600))
+//     player.z = 3
 
 
-k.go('camera_walkout_test');
+//     centerPiece.onUpdate(() => {
+//         k.camPos(centerPiece.worldPos())
+//     })
+
+//     player.onUpdate( () => {
+//         k.debug.log(player.pos.y);
+//         if ( player.pos.y > 600 ) {
+//             centerPiece.moveTo(1120/2, 600 * 2 * 0.75, 1000)
+//         } 
+//     })
+// })
+
+
+k.go('camera_follow_test');
+
