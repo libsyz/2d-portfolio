@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "TilesetWater.tsj",
+    "activeFile": "tilesets/TilesetField.tsj",
     "expandedProjectPaths": [
         "tilesets",
         "."
@@ -56,13 +56,13 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src",
     "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "map.height": 30,
+    "map.height": 44,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
+    "map.width": 70,
     "openFiles": [
-        "game_map.json",
         "tilesets/TilesetField.tsj",
         "TilesetNature.tsj",
         "TilesetFloor.tsj",
@@ -71,16 +71,16 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "game_map.json",
-        "tilesets/TilesetField.tsj",
-        "TilesetNature.tsj",
-        "TilesetFloor.tsj",
-        "TilesetHouse.tsj",
         "TilesetWater.tsj",
+        "TilesetHouse.tsj",
+        "TilesetFloor.tsj",
+        "TilesetNature.tsj",
+        "tilesets/TilesetField.tsj",
+        "game_map.json",
         "tilesets/TilesetWater.tsj",
         "tilesets/TilesetNature.tsj"
     ],
-    "resizeMap.removeObjects": true,
+    "resizeMap.removeObjects": false,
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {
         "height": 16,
