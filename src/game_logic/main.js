@@ -6,7 +6,7 @@ import { createInterviewer } from "./interviewer.js";
 import { showDialogue } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 
-
+k.setBackground(k.color(255, 255, 255));
 
 // import sprites
 
