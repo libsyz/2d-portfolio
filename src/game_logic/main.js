@@ -44,7 +44,19 @@ k.scene("main", async () => {
     k.onCollideEnd('player', 'mailbox', () => {
         k.destroy(k.get('dialog')[0]);
     })
+
+    k.onCollide('player', 'house_door', () => {
+        k.go('house')
+    })
 });
+
+k.scene('house', () => { 
+    k.add([
+        k.rect(800, 600),
+        k.pos(0, 0),
+        k.color(255, 255, 255)
+    ])
+})
 
 //# Intro Stage
 

@@ -49,6 +49,14 @@
                 "y": 19.32310575008782
             }
         },
+        "player.tmj": {
+            "scale": 2.293359375,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 51.23488332481689,
+                "y": 53.63311190597855
+            }
+        },
         "tilesets/TilesetField.tsj": {
             "scaleInDock": 2.414,
             "scaleInEditor": 2.65
