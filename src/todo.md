@@ -9,7 +9,7 @@ Before
 
 [X] Why the fuck is my scene throwing an undefined error - AAAHAHAHAHHA ITS A FUCKING EXTENSION AAAAH
 [X] Why the fuck I can't get version control to work properly this is embarrasing
-[] Need subfolders on src, it's starting to get messy
+[X] Need subfolders on src, it's starting to get messy
 
 Mechanics
 ---------
@@ -32,7 +32,7 @@ Mechanics
   [] 1. Education - Enter the house and look for a diploma
     
 
-  [] 2. Experience - Kill all the baddies in a room
+  [X] 2. Experience - Kill all the baddies in a room
     [X] Go to a room
     [X] easy - Go to a different scene when moving out of the map
     [] middle - transition the scene
@@ -46,12 +46,10 @@ Mechanics
     [X] Give player ability to throw shurikens or attack
     [X] baddies disappear on shuriken impact
     [x] when all baddies disappear, last one throws an item
-    [] item unlocks Skills
+    [ ] item unlocks Skills
 
-  [] 3. Skills - Proof your knowledge in front of some sort of oracle  
 
-[] Using Weapons
-
-[] Throwing Projectiles
-
-[] Setting Up Baddies
+[X] Fix Screen Size
+[ ] Process Interaction Layer
+[ ] Add Main Ninja Character
+  [ ] Add Walking Animations

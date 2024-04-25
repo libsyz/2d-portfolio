@@ -5,7 +5,7 @@ import { k } from './kaboomCtx';
 
 const interviewerFace = k.loadSprite('interviewer_face', './src/assets/interviewer_face.png');
 
-const oldMan = k.loadSprite('interviewer', './src/assets/interviewer_idle.png', {
+const interviewer = k.loadSprite('interviewer', './src/assets/interviewer_idle.png', {
     sliceX: 4,
     sliceY: 1,
     anims: {

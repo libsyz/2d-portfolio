@@ -12,10 +12,10 @@ const pirate = k.loadSprite('pirate', './src/assets/pirate.png', {
 const arrow = k.loadSprite('arrow', './src/assets/arrow.png');
 
 export const createPlayer = () => {
-    const playerScale = 1.0;
+    const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.6)};
     const playerJumpForce = 750;
-    const playerBaseSpeed = 140;
+    const playerBaseSpeed = 340;
 
     const player = k.add([
         k.sprite('pirate'), 
@@ -87,7 +87,7 @@ export const createPlayer = () => {
     })
 
     const spawnArrow = (playerPos, posDirection) => {
-        const ARROW_SPEED = 300;
+        const ARROW_SPEED = 800;
         let rotation = 0;
 
         if (posDirection === k.RIGHT) {
@@ -106,7 +106,7 @@ export const createPlayer = () => {
 			k.anchor("center"),
             k.rotate(rotation),
 			k.color(127, 127, 255),
-			k.scale(1.5),
+			k.scale(4),
 			k.move(posDirection, ARROW_SPEED),
 			k.offscreen({ destroy: true }),
 			// strings here means a tag

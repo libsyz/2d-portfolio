@@ -12,8 +12,8 @@ export const showDialogue = (faceTag, message) => {
     // add the dialogue box
     const dialogueBox = k.add([
         k.sprite('dialogue_box_simple'),
-        k.pos(8, 400),
-        k.scale(1.5),
+        k.pos(8, 464),
+        k.scale(4),
         'dialog'
     ]);
 

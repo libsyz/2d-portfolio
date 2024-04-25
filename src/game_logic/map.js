@@ -1,13 +1,15 @@
 import { k } from './kaboomCtx.js';
+import { createInteraction } from './interaction.js'
 
 // load the sprite
-const mapSprite = k.loadSprite('game_map', './src/assets/game_map.png');
-const mapData = await (await fetch("./src/mapdata/game_map.json")).json();
-
+const mapSprite = k.loadSprite('map', './src/assets/map.png');
+const mapData = await (await fetch("./src/mapdata/map.json")).json();
 // instatiate the map
 export const createMap = () => {
     const layers = mapData.layers;
-    const map = k.add([k.sprite("game_map"), k.pos(0), k.scale(2)]);
+    const map = k.add([k.sprite("map"), 
+        k.pos(0), 
+        k.scale(4)]);
 
     // add boundaries 
     for (const layer of layers) {
@@ -24,17 +26,27 @@ export const createMap = () => {
             }
         }
 
-        if (layer.name === 'teleport') {
-            for (const gate of layer.objects) { 
+        if (layer.name === 'scene') {
+            for (const scene of layer.objects) { 
                 map.add([
                     k.area({
-                        shape: new k.Rect(k.vec2(0), gate.width, gate.height)
+                        shape: new k.Rect(k.vec2(0), scene.width, scene.height)
                     }),
-                    k.body({isStatic: true}),
-                    k.pos(gate.x, gate.y),
-                    gate.name
+                    k.pos(scene.x, scene.y),
+                    scene.name
                 ])
             }
         }
+
+        if (layer.name === 'interaction') {
+            debugger
+            for ( const obj of layer.objects ) {
+                // I would have to create the interactable based on the name 
+                // look for 
+                createInteraction(map, obj);
+            }
+            
+        }
+
     }
 }

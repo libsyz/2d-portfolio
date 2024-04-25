@@ -19,7 +19,7 @@ export const createOldMan = () => {
         {anim: 'idle'},
         k.area({scale: 1.5}),
         k.anchor('center'),
-        k.scale(1),
+        k.scale(4),
         k.body({isStatic: true}),
         'old_man_idle'
 //scale constrains bounds to the right place :-) 
