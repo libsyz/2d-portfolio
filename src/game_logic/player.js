@@ -8,6 +8,10 @@ const pirate = k.loadSprite('player', './src/assets/player.png', {
         'idle-up': 4,
         'idle-left': 8,
         'idle-right': 12,
+        'attack-down': 16,
+        'attack-up': 17,
+        'attack-left': 18,
+        'attack-right': 19,
         'down': {from: 0, to: 3, loop: true, speed: 8 },
         'up': {from: 4, to: 7, loop: true, speed: 8 },
         'left': {from: 8, to: 11, loop: true, speed: 8},
@@ -85,28 +89,56 @@ export const createPlayer = () => {
 
     k.onKeyPress("space", () => {
         spawnArrow(player.pos, player.direction);
+
+        if (player.direction === k.DOWN) {
+            player.play('attack-down');
+        } else if ( player.direction === k.UP ) {
+            player.play('attack-up')
+        } else if ( player.direction === k.RIGHT) {
+            player.play('attack-right')
+        } else if ( player.direction === k.LEFT ) {
+            player.play('attack-left')
+        }
         // get the direction of the player
         // use that to instantiate a shuriken
         // and send it flying 
     })
 
+    k.onKeyRelease('space', () => {
+        if (player.direction === k.DOWN) {
+            player.play('idle-down');
+        } else if ( player.direction === k.UP ) {
+            player.play('idle-up')
+        } else if ( player.direction === k.RIGHT) {
+            player.play('idle-right')
+        } else if ( player.direction === k.LEFT ) {
+            player.play('idle-left')
+        }
+    })
+
     const spawnArrow = (playerPos, posDirection) => {
         const ARROW_SPEED = 800;
         let rotation = 0;
+        let xOffset = 0;
+        let yOffset = 0;
 
         if (posDirection === k.RIGHT) {
             rotation = 0;
+            xOffset = 32;
         } else if (posDirection === k.LEFT ) { 
             rotation = 180;
+            xOffset = -32
         } else if (posDirection === k.UP) {
             rotation = 270
+            yOffset = -32
         } else {
             rotation = 90
+            yOffset = 32
         }
 		k.add([
 			k.sprite('arrow'),
 			k.area(),
-			k.pos(playerPos),
+			k.pos( player.pos.x + xOffset , player.pos.y + yOffset ),
 			k.anchor("center"),
             k.rotate(rotation),
 			k.color(127, 127, 255),
