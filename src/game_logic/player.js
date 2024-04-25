@@ -29,7 +29,7 @@ export const createPlayer = () => {
 
     const player = k.add([
         k.sprite('player'), 
-        { anim: 'idle-down', direction: k.DOWN},
+        { direction: k.DOWN },
         k.pos(20, 20), 
         //scale constrains bounds to the right place :-)
         k.area(playerAreaScale),
@@ -39,9 +39,12 @@ export const createPlayer = () => {
         'player'
     ]);
 
+    // init player in idle state
+    player.play('idle-down')
+
     k.onKeyDown('right', () => {
         player.move(playerBaseSpeed, 0);
-        if (player.curAnim() !== "right") {
+        if (player.curAnim().includes('idle')) {
             player.direction = k.RIGHT;
             player.play("right")
         }
@@ -49,7 +52,7 @@ export const createPlayer = () => {
 
     k.onKeyDown('left', () => {
         player.move(-playerBaseSpeed, 0);
-        if (player.curAnim() !== "left") {
+        if (player.curAnim().includes('idle')) {
             player.direction = k.LEFT;
             player.play("left");
         }
@@ -57,7 +60,8 @@ export const createPlayer = () => {
 
     k.onKeyDown('down', () => {
         player.move(0, playerBaseSpeed);
-        if (player.curAnim() !== "down") {
+
+        if (player.curAnim().includes('idle')) {
             player.direction = k.DOWN;
             player.play("down");
         }
@@ -65,7 +69,7 @@ export const createPlayer = () => {
 
     k.onKeyDown('up', () => {
         player.move(0, -playerBaseSpeed);
-        if (player.curAnim() !== "up") {
+        if (player.curAnim().includes('idle')) {
             player.direction = k.UP;
             player.play("up");
         }
