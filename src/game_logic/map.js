@@ -39,7 +39,7 @@ export const createMap = () => {
         }
 
         if (layer.name === 'interaction') {
-            debugger
+
             for ( const obj of layer.objects ) {
                 // I would have to create the interactable based on the name 
                 // look for 

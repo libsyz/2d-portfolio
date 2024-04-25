@@ -1,11 +1,17 @@
 import { k } from './kaboomCtx';
 
-const pirate = k.loadSprite('pirate', './src/assets/pirate.png', {
-    sliceX: 5,
-    sliceY: 1,
+const pirate = k.loadSprite('player', './src/assets/player.png', {
+    sliceX: 4,
+    sliceY: 5,
     anims: {
-        'idle': 0,
-        'run': {from: 0, to: 4, loop: true, speed: 8 }
+        'idle-down': 0,
+        'idle-up': 4,
+        'idle-left': 8,
+        'idle-right': 12,
+        'down': {from: 0, to: 3, loop: true, speed: 8 },
+        'up': {from: 4, to: 7, loop: true, speed: 8 },
+        'left': {from: 8, to: 11, loop: true, speed: 8},
+        'right': {from: 12, to: 15, loop: true, speed: 8}
     }
 })
 
@@ -18,9 +24,9 @@ export const createPlayer = () => {
     const playerBaseSpeed = 340;
 
     const player = k.add([
-        k.sprite('pirate'), 
-        { anim: 'idle', direction: k.RIGHT},
-        k.pos(300, 184), 
+        k.sprite('player'), 
+        { anim: 'idle-down', direction: k.DOWN},
+        k.pos(20, 20), 
         //scale constrains bounds to the right place :-)
         k.area(playerAreaScale),
         k.anchor('center'),
@@ -31,52 +37,50 @@ export const createPlayer = () => {
 
     k.onKeyDown('right', () => {
         player.move(playerBaseSpeed, 0);
-        if (player.curAnim() !== "run") {
-            player.flipX = false;
+        if (player.curAnim() !== "right") {
             player.direction = k.RIGHT;
-            player.play("run")
+            player.play("right")
         }
     })
 
     k.onKeyDown('left', () => {
         player.move(-playerBaseSpeed, 0);
-        if (player.curAnim() !== "run") {
-            player.flipX = true;
+        if (player.curAnim() !== "left") {
             player.direction = k.LEFT;
-            player.play("run");
+            player.play("left");
         }
     })
 
     k.onKeyDown('down', () => {
         player.move(0, playerBaseSpeed);
-        if (player.curAnim() !== "run") {
+        if (player.curAnim() !== "down") {
             player.direction = k.DOWN;
-            player.play("run");
+            player.play("down");
         }
     })
 
     k.onKeyDown('up', () => {
         player.move(0, -playerBaseSpeed);
-        if (player.curAnim() !== "run") {
+        if (player.curAnim() !== "up") {
             player.direction = k.UP;
-            player.play("run");
+            player.play("up");
         }
     })
 
     k.onKeyRelease('right', () => {
-        player.play('idle');
+        player.play('idle-right');
     })
 
     k.onKeyRelease('left', () => {
-        player.play('idle');
+        player.play('idle-left');
     })
 
     k.onKeyRelease('up', () => {
-        player.play('idle');
+        player.play('idle-up');
     })
 
     k.onKeyRelease('down', () => {
-        player.play('idle');
+        player.play('idle-down');
     })
 
     k.onKeyPress("space", () => {

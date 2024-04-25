@@ -41,6 +41,14 @@
                 "y": 154.22477440525023
             }
         },
+        "mapdata/map.json": {
+            "scale": 1.7078,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": -84.0262325799274,
+                "y": 19.32310575008782
+            }
+        },
         "tilesets/TilesetField.tsj": {
             "scaleInDock": 2.414,
             "scaleInEditor": 2.65
@@ -55,13 +63,13 @@
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "map.height": 44,
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenNinja",
+    "map.height": 5,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 70,
+    "map.width": 8,
     "openFiles": [
         "tilesets/TilesetField.tsj",
         "TilesetNature.tsj",
