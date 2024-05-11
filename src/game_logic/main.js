@@ -1,6 +1,7 @@
 import { k } from "./kaboomCtx.js";
 import { createPlayer } from "./player.js";
 import { createMap } from "./map.js";
+import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue } from "./utils.js";
@@ -51,11 +52,14 @@ k.scene("main", async () => {
 });
 
 k.scene('house', () => { 
-    k.add([
-        k.rect(800, 600),
-        k.pos(0, 0),
-        k.color(255, 255, 255)
-    ])
+   const houseMap = createHouseMap();
+   const player = createPlayer();
+   player.moveTo(k.vec2(1000, 2450));
+
+    player.onUpdate( () =>  {
+        k.camPos(player.worldPos());
+    })
+    
 })
 
 //# Intro Stage

@@ -3,26 +3,27 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilesets/TilesetField.tsj",
+    "activeFile": "room_builder.tsj",
     "expandedProjectPaths": [
-        "tilesets",
-        "."
+        ".",
+        "tilesets"
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "TilesetFloor.tsj": {
-            "scaleInDock": 1.9032,
+            "scaleInDock": 1,
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
-            "scaleInDock": 1.4981,
+            "scaleInDock": 2.2586,
             "scaleInEditor": 2.65
         },
         "TilesetNature.tsj": {
-            "scaleInDock": 1,
+            "scaleInDock": 2.4298,
             "scaleInEditor": 2.65
         },
         "TilesetWater.tsj": {
-            "scaleInDock": 3.2588,
+            "scaleInDock": 1,
             "scaleInEditor": 2.65
         },
         "game_map.json": {
@@ -42,23 +43,48 @@
             }
         },
         "mapdata/map.json": {
-            "scale": 1.7078,
+            "expandedObjectLayers": [
+                6,
+                5,
+                7
+            ],
+            "scale": 0.7564,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": -84.0262325799274,
-                "y": 19.32310575008782
+                "x": 212.18931782125864,
+                "y": 208.88418826017983
+            }
+        },
+        "miguel_house.tmj": {
+            "scale": 2.1611,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 150.3863773078525,
+                "y": 482.16186201471476
             }
         },
         "player.tmj": {
             "scale": 2.293359375,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 51.23488332481689,
-                "y": 53.63311190597855
+                "x": 70.42071197411002,
+                "y": 51.888945665133704
             }
         },
+        "player.tsj": {
+            "scaleInDock": 4.5416,
+            "scaleInEditor": 2.9781
+        },
+        "room_builder.tsj": {
+            "scaleInDock": 1.7326,
+            "scaleInEditor": 1.8168
+        },
+        "tileset_interior_floor.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
         "tilesets/TilesetField.tsj": {
-            "scaleInDock": 2.414,
+            "scaleInDock": 1,
             "scaleInEditor": 2.65
         },
         "tilesets/TilesetNature.tsj": {
@@ -68,33 +94,39 @@
         "tilesets/TilesetWater.tsj": {
             "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilesets/interiors.tsj": {
+            "scaleInDock": 1.7013,
+            "scaleInEditor": 3.13
         }
     },
-    "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenNinja",
-    "map.height": 5,
+    "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
+    "last.imagePath": "/Users/migueljimenez/Downloads/moderninteriors-win/1_Interiors/16x16/Theme_Sorter",
+    "map.height": 40,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 8,
+    "map.width": 40,
     "openFiles": [
-        "tilesets/TilesetField.tsj",
-        "TilesetNature.tsj",
-        "TilesetFloor.tsj",
-        "TilesetHouse.tsj",
-        "TilesetWater.tsj"
+        "miguel_house.tmj",
+        "room_builder.tsj",
+        "tilesets/interiors.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "tilesets/interiors.tsj",
+        "room_builder.tsj",
+        "miguel_house.tmj",
+        "tilesets/TilesetField.tsj",
+        "tileset_interior_floor.tsj",
+        "TilesetNature.tsj",
         "TilesetWater.tsj",
         "TilesetHouse.tsj",
         "TilesetFloor.tsj",
-        "TilesetNature.tsj",
-        "tilesets/TilesetField.tsj",
-        "game_map.json",
-        "tilesets/TilesetWater.tsj",
-        "tilesets/TilesetNature.tsj"
+        "player.tmj",
+        "player.tsj",
+        "mapdata/map.json"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFormat": "json",

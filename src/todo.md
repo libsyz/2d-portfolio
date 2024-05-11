@@ -50,6 +50,6 @@ Mechanics
 
 
 [X] Fix Screen Size
-[ ] Process Interaction Layer
-[ ] Add Main Ninja Character
-  [ ] Add Walking Animations
+[X] Process Interaction Layer
+[X] Add Main Ninja Character
+  [X] Add Walking Animations

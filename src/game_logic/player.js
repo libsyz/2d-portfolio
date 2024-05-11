@@ -24,7 +24,6 @@ const arrow = k.loadSprite('arrow', './src/assets/arrow.png');
 export const createPlayer = () => {
     const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.6)};
-    const playerJumpForce = 750;
     const playerBaseSpeed = 340;
 
     const player = k.add([
