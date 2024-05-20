@@ -91,21 +91,23 @@ export const createPlayer = () => {
     })
 
     k.onKeyPress("space", () => {
+ 
         spawnArrow(player.pos, player.direction);
-
-        if (player.direction === k.DOWN) {
-            player.play('attack-down');
-        } else if ( player.direction === k.UP ) {
-            player.play('attack-up')
-        } else if ( player.direction === k.RIGHT) {
-            player.play('attack-right')
-        } else if ( player.direction === k.LEFT ) {
-            player.play('attack-left')
-        }
+            if (player.direction === k.DOWN) {
+                player.play('attack-down');
+            } else if ( player.direction === k.UP ) {
+                player.play('attack-up')
+            } else if ( player.direction === k.RIGHT) {
+                player.play('attack-right')
+            } else if ( player.direction === k.LEFT ) {
+                player.play('attack-left')
+            }
+    }) 
+        
         // get the direction of the player
         // use that to instantiate a shuriken
         // and send it flying 
-    })
+    
 
     k.onKeyRelease('space', () => {
         if (player.direction === k.DOWN) {

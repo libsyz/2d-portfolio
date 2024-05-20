@@ -34,8 +34,9 @@ export const showDialogue = (faceTag, message) => {
 }
 
 
+export const showDialogueHouse = (faceTag, messages) => {
+    let currentMessageIdx = 0 
 
-export const showDialogueHouse = (faceTag, message) => {
     const {x, y} = k.camPos();
     const dialogueBox = k.add([
         k.sprite('dialogue_box_simple'),
@@ -50,14 +51,27 @@ export const showDialogueHouse = (faceTag, message) => {
         k.scale(1)
     ])
 
-    dialogueBox.add([
+    let currentMessage = dialogueBox.add([
         k.text(
-            message, { 
+            messages[currentMessageIdx], { 
             size: 12, width: 256
         }),
         k.pos(56, 12),
         k.color(0,0,0)
     ])
+
+    k.onKeyPress('space', () => {
+        currentMessage.destroy();
+        currentMessageIdx++;
+        currentMessage = dialogueBox.add([
+            k.text(
+                messages[currentMessageIdx], { 
+                size: 12, width: 256
+            }),
+            k.pos(56, 12),
+            k.color(0,0,0)
+        ])
+    })
 }
 
 
