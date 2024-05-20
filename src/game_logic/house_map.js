@@ -27,16 +27,15 @@ export const createHouseMap = () => {
         }
 
 
-        // NO INTERACTIONS SET IN THE MAP YET
-        // if (layer.name === 'interaction') {
+        if (layer.name === 'interaction') {
 
-        //     for ( const obj of layer.objects ) {
-        //         // I would have to create the interactable based on the name 
-        //         // look for 
-        //         createInteraction(map, obj);
-        //     }
+            for ( const obj of layer.objects ) {
+                // I would have to create the interactable based on the name 
+                // look for 
+                createInteraction(houseMap, obj);
+            }
             
-        // }
+        }
 
     }
 }

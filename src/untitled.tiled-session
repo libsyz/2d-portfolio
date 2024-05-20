@@ -3,13 +3,21 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "room_builder.tsj",
+    "activeFile": "tilesets/room_builder.tsj",
     "expandedProjectPaths": [
-        ".",
-        "tilesets"
+        "tilesets",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "2_LivingRoom_16x16.tsj": {
+            "scaleInDock": 1.527,
+            "scaleInEditor": 1
+        },
+        "4_Bedroom_16x16.tsj": {
+            "scaleInDock": 1.5105,
+            "scaleInEditor": 1
+        },
         "TilesetFloor.tsj": {
             "scaleInDock": 1,
             "scaleInEditor": 5.1
@@ -56,11 +64,14 @@
             }
         },
         "miguel_house.tmj": {
-            "scale": 2.1611,
-            "selectedLayer": 1,
+            "expandedGroupLayers": [
+                19
+            ],
+            "scale": 1.3059,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 150.3863773078525,
-                "y": 482.16186201471476
+                "x": 467.110804808944,
+                "y": 464.04778313806565
             }
         },
         "player.tmj": {
@@ -98,6 +109,10 @@
         "tilesets/interiors.tsj": {
             "scaleInDock": 1.7013,
             "scaleInEditor": 3.13
+        },
+        "tilesets/room_builder.tsj": {
+            "scaleInDock": 1.3232,
+            "scaleInEditor": 2.4657
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
@@ -110,23 +125,24 @@
     "map.width": 40,
     "openFiles": [
         "miguel_house.tmj",
-        "room_builder.tsj",
-        "tilesets/interiors.tsj"
+        "tilesets/room_builder.tsj",
+        "2_LivingRoom_16x16.tsj",
+        "4_Bedroom_16x16.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "miguel_house.tmj",
+        "4_Bedroom_16x16.tsj",
+        "2_LivingRoom_16x16.tsj",
+        "tilesets/room_builder.tsj",
         "tilesets/interiors.tsj",
         "room_builder.tsj",
-        "miguel_house.tmj",
         "tilesets/TilesetField.tsj",
         "tileset_interior_floor.tsj",
         "TilesetNature.tsj",
         "TilesetWater.tsj",
         "TilesetHouse.tsj",
-        "TilesetFloor.tsj",
-        "player.tmj",
-        "player.tsj",
-        "mapdata/map.json"
+        "TilesetFloor.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFormat": "json",

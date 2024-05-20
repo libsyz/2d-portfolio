@@ -4,7 +4,7 @@ import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
-import { showDialogue } from "./utils.js";
+import { showDialogue, showDialogueHouse } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 
 k.setBackground(k.color(255, 255, 255));
@@ -54,12 +54,26 @@ k.scene("main", async () => {
 k.scene('house', () => { 
    const houseMap = createHouseMap();
    const player = createPlayer();
-   player.moveTo(k.vec2(1000, 2450));
+
+//  door position   player.moveTo(k.vec2(1000, 2450));
+    player.moveTo(k.vec2(1371, 1103));
 
     player.onUpdate( () =>  {
         k.camPos(player.worldPos());
     })
-    
+
+
+    k.onCollide('player', 'psychology_diploma', () => {
+        showDialogueHouse('player_face', 'This is my psychology degree')
+    })
+
+    k.onCollideEnd('player', 'psychology_diploma', () => { 
+        k.destroy(k.get('dialog')[0]);
+    })
+
+    k.onUpdate('player', () => { 
+        k.debug.log(k.camPos())
+    })
 })
 
 //# Intro Stage
@@ -374,5 +388,5 @@ k.scene('house', () => {
 // })
 
 
-k.go('main');
+k.go('house');
 

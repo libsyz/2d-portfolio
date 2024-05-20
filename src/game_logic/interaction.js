@@ -24,6 +24,16 @@ export const createInteraction = (map, obj) => {
                 k.pos(obj.x, obj.y),
                 obj.name
             ])
+        },
+        psychology_diploma: () => {
+            map.add([
+                k.area({
+                    shape: new k.Rect(k.vec2(0), obj.width, obj.height)
+                }),
+                k.body({isStatic: true}),
+                k.pos(obj.x, obj.y),
+                obj.name
+            ])
         }
 
         
