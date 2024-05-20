@@ -64,9 +64,14 @@ k.scene('house', () => {
 
 
     k.onCollide('player', 'psychology_diploma', () => {
-        showDialogueHouse('player_face', ['This is my psychology degree', 
-                                          'I learned so much about humans here, but also thinking machines',
-                                          'Everyone says my work has nothing to do with psychology, but I think it does!'])
+        showDialogueHouse(
+            'player_face', 
+            [
+                'This is my psychology degree', 
+                'I learned so much about humans here, but also thinking machines',
+                'Everyone says my work has nothing to do with psychology, but I think it does!'
+            ]
+        )
     })
     
 
