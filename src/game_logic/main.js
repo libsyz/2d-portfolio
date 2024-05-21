@@ -80,7 +80,7 @@ k.scene('house', () => {
     })
 
     k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
-        k.onKeyDown('space', () => { 
+        k.onKeyRelease('space', () => { 
             treasureChest.play('open');
             // spawn the scroll at the center of the chest
             const edScroll = k.add([
@@ -88,7 +88,8 @@ k.scene('house', () => {
                 k.pos(treasureChest.worldPos()),
                 k.scale(3),
                 k.anchor('center'),
-                k.z(999)
+                k.z(999),
+                'education_scroll'
             ]);
 
             k.tween(
@@ -102,12 +103,16 @@ k.scene('house', () => {
                 'player_face', 
                 [
                     'I found my education scroll!', 'I suddenly know kung fu!']);
-
             // move it up a bit
             // show a dialogue mentioning what it is 
             // destroy the dialogue
             // destroy the scroll
         })
+    })
+
+    k.onCollideEnd('education_treasure_chest', 'player', () => {
+        k.destroy(k.get('dialog')[0]);
+        k.destroy(k.get('education_scroll')[0]);
     })
 })
 
