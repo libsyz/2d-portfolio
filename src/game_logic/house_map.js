@@ -4,6 +4,17 @@ import { createInteraction } from './interaction.js'
 // load the sprite
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
 const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
+
+k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
+    sliceX: 2, 
+    sliceY: 1,
+    anims: {
+        'closed': 0,
+        'open': 1
+    }
+});
+
+
 // instatiate the map
 export const createHouseMap = () => {
     const layers = mapData.layers;
@@ -38,4 +49,23 @@ export const createHouseMap = () => {
         }
 
     }
+
+    // add interactables with animations
+    const skillsChest = houseMap.add([
+        k.sprite('treasure_chest'),
+        k.pos(k.vec2(447, 270)), // absolutely magic number
+        k.area(),
+        k.body({isStatic: true}),
+        'skills_treasure_chest'
+    ])
+
+
+    skillsChest.onCollide('player', () => {
+        k.onKeyDown('space', () => { 
+            skillsChest.play('open')
+        })
+    })
+
+
+
 }
