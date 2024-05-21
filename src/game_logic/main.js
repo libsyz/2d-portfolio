@@ -79,8 +79,35 @@ k.scene('house', () => {
         k.destroy(k.get('dialog')[0]);
     })
 
-    k.onUpdate('player', () => { 
-        k.debug.log(k.camPos())
+    k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
+        k.onKeyDown('space', () => { 
+            treasureChest.play('open');
+            // spawn the scroll at the center of the chest
+            const edScroll = k.add([
+                k.sprite('education_scroll'),
+                k.pos(treasureChest.worldPos()),
+                k.scale(3),
+                k.anchor('center'),
+                k.z(999)
+            ]);
+
+            k.tween(
+                edScroll.pos, 
+                k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
+                1,
+                (posVal) => { edScroll.pos = posVal }   
+            )
+
+            showDialogueHouse(
+                'player_face', 
+                [
+                    'I found my education scroll!', 'I suddenly know kung fu!']);
+
+            // move it up a bit
+            // show a dialogue mentioning what it is 
+            // destroy the dialogue
+            // destroy the scroll
+        })
     })
 })
 

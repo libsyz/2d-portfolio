@@ -38,7 +38,7 @@ k.body({isStatic: true}),
         return 
     }
 
-// We spawn the thing
+// We spawn the baddie
     let baddieCounter = 0;
     let xVel = -20 + Math.random() * 40
     let yVel = -20 + Math.random() * 40

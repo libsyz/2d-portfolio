@@ -14,6 +14,8 @@ k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
     }
 });
 
+k.loadSprite('education_scroll', '../src/assets/scroll_plant.png')
+
 
 // instatiate the map
 export const createHouseMap = () => {
@@ -55,16 +57,10 @@ export const createHouseMap = () => {
         k.sprite('treasure_chest'),
         k.pos(k.vec2(447, 270)), // absolutely magic number
         k.area(),
+        k.anchor('center'),
         k.body({isStatic: true}),
-        'skills_treasure_chest'
+        'education_treasure_chest'
     ])
-
-
-    skillsChest.onCollide('player', () => {
-        k.onKeyDown('space', () => { 
-            skillsChest.play('open')
-        })
-    })
 
 
 
