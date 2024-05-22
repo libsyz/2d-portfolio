@@ -52,6 +52,11 @@ k.scene("main", async () => {
 });
 
 k.scene('house', () => { 
+   const sceneState = { 
+    treasureChest: 'closed',
+    edScroll: 'closed',
+   }
+
    const houseMap = createHouseMap();
    const player = createPlayer();
 
@@ -76,43 +81,56 @@ k.scene('house', () => {
     
 
     k.onCollideEnd('player', 'psychology_diploma', () => { 
-        k.destroy(k.get('dialog')[0]);
+        k.get('dialog').forEach(el => k.destroy(el));
     })
 
-    k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
-        k.onKeyRelease('space', () => { 
-            treasureChest.play('open');
-            // spawn the scroll at the center of the chest
-            const edScroll = k.add([
-                k.sprite('education_scroll'),
-                k.pos(treasureChest.worldPos()),
-                k.scale(3),
-                k.anchor('center'),
-                k.z(999),
-                'education_scroll'
-            ]);
+    let treasureCollision = k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
+        let openChestAction = k.onKeyRelease('space', () => { 
+        treasureChest.play('open');
+        // spawn the scroll at the center of the chest
+        const edScroll = k.add([
+            k.sprite('education_scroll'),
+            k.pos(treasureChest.worldPos()),
+            k.scale(3),
+            k.anchor('center'),
+            k.z(999),
+            'education_scroll',
+        ]);
 
-            k.tween(
-                edScroll.pos, 
-                k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
-                1,
-                (posVal) => { edScroll.pos = posVal }   
-            )
+        
 
-            showDialogueHouse(
-                'player_face', 
-                [
-                    'I found my education scroll!', 'I suddenly know kung fu!']);
-            // move it up a bit
-            // show a dialogue mentioning what it is 
-            // destroy the dialogue
-            // destroy the scroll
+        k.tween(
+            edScroll.pos, 
+            k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
+            1,
+            (posVal) => { edScroll.pos = posVal }   
+        )
+
+        openChestAction.cancel();
+
+        showDialogueHouse(
+            'player_face', 
+            [
+                'I found my education scroll!', 'I suddenly know kung fu!']);
+        // move it up a bit
+        // show a dialogue mentioning what it is 
+        // destroy the dialogue
+        // destroy the scroll
+        sceneState.treasureChest = 'complete'
+        
         })
     })
 
     k.onCollideEnd('education_treasure_chest', 'player', () => {
-        k.destroy(k.get('dialog')[0]);
-        k.destroy(k.get('education_scroll')[0]);
+        if (sceneState.treasureChest === 'complete' && 
+            sceneState.edScroll === 'closed') { 
+            k.get('dialog').forEach(el => k.destroy(el));
+            k.get('education_scroll').forEach(el => k.destroy(el));
+            sceneState.edScroll = 'complete';
+            treasureCollision.cancel();
+        }
+
+        
     })
 })
 

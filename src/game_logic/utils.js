@@ -61,16 +61,20 @@ export const showDialogueHouse = (faceTag, messages) => {
     ])
 
     k.onKeyPress('space', () => {
-        currentMessage.destroy();
-        currentMessageIdx++;
-        currentMessage = dialogueBox.add([
-            k.text(
-                messages[currentMessageIdx], { 
-                size: 12, width: 256
-            }),
-            k.pos(56, 12),
-            k.color(0,0,0)
-        ])
+        if (currentMessageIdx + 1 < messages.length ) {
+            currentMessage.destroy();
+            currentMessageIdx++;
+                currentMessage = dialogueBox.add([
+                    k.text(
+                        messages[currentMessageIdx], { 
+                        size: 12, width: 256
+                    }),
+                    k.pos(56, 12),
+                    k.color(0,0,0)
+                ])
+        } else {
+            dialogueBox.destroy();
+        }
     })
 }
 
