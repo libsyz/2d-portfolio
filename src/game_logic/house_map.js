@@ -1,10 +1,14 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
 
-// load the sprite
+// load the map
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
 const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
 
+
+
+// load interactables
+// treasure ches
 k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
     sliceX: 2, 
     sliceY: 1,
@@ -14,7 +18,22 @@ k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
     }
 });
 
-k.loadSprite('education_scroll', '../src/assets/scroll_plant.png')
+// education scroll
+k.loadSprite('education_scroll', '../src/assets/scroll_plant.png');
+
+
+// christin
+k.loadSprite('christin', '../src/assets/woman.png', {
+    sliceX: 4,
+    sliceY: 2,
+    anims: {
+        'idle': 1,
+        'idle-left': 3, 
+        'idle-right': 4,
+        'vibe': {from: 5, to: 8, speed: 2}
+    }
+});
+
 
 
 // instatiate the map
@@ -60,6 +79,16 @@ export const createHouseMap = () => {
         k.anchor('center'),
         k.body({isStatic: true}),
         'education_treasure_chest'
+    ])
+
+    const christin = houseMap.add([
+        k.sprite('christin'),
+        k.pos(k.vec2(447, 1000)), // absolutely magic number
+        k.area(),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'christin',
+        k.z(999)
     ])
 
 

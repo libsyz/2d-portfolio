@@ -67,11 +67,14 @@
             "expandedGroupLayers": [
                 19
             ],
-            "scale": 1.3059,
-            "selectedLayer": 5,
+            "expandedObjectLayers": [
+                20
+            ],
+            "scale": 2.9784,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 467.110804808944,
-                "y": 464.04778313806565
+                "x": 284.716626376578,
+                "y": 409.61590115498257
             }
         },
         "player.tmj": {
@@ -116,7 +119,8 @@
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
-    "last.imagePath": "/Users/migueljimenez/Downloads/moderninteriors-win/1_Interiors/16x16/Theme_Sorter",
+    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Woman",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Woman",
     "map.height": 40,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
@@ -145,6 +149,7 @@
         "TilesetFloor.tsj"
     ],
     "resizeMap.removeObjects": false,
+    "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {
         "height": 16,
