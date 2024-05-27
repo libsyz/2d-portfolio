@@ -61,7 +61,7 @@ k.scene('house', () => {
    const player = createPlayer();
 
 //  door position   player.moveTo(k.vec2(1000, 2450));
-    player.moveTo(k.vec2(1371, 1103));
+    player.moveTo(k.vec2(1317, 1623));
 
     player.onUpdate( () =>  {
         k.camPos(player.worldPos());
@@ -78,7 +78,7 @@ k.scene('house', () => {
             ]
         )
     })
-    
+
 
     k.onCollideEnd('player', 'psychology_diploma', () => { 
         k.get('dialog').forEach(el => k.destroy(el));
@@ -97,8 +97,7 @@ k.scene('house', () => {
             'education_scroll',
         ]);
 
-        
-
+    
         k.tween(
             edScroll.pos, 
             k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
@@ -131,6 +130,15 @@ k.scene('house', () => {
         }
 
         
+    })
+
+
+    k.onCollide('player', 'christin', () => {
+            showDialogueHouse('christin_face', ['Are you looking for your experience scroll?', 'It has to be either on the living room or in your room'])
+    })
+
+    k.onCollideEnd('player', 'christin', () => { 
+        k.get('dialog').forEach(el => k.destroy(el));
     })
 })
 

@@ -29,7 +29,6 @@ k.body({isStatic: true}),
     ]);
 
     const patrol = () => {
-        k.debug.log(baddieGreenDemon.pos.x);
         baddieGreenDemon.move(200,0)
     }
 

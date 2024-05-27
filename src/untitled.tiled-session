@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilesets/room_builder.tsj",
+    "activeFile": "untitled.tmj",
     "expandedProjectPaths": [
         "tilesets",
         "."
@@ -12,11 +12,11 @@
     "fileStates": {
         "2_LivingRoom_16x16.tsj": {
             "scaleInDock": 1.527,
-            "scaleInEditor": 1
+            "scaleInEditor": 2.46
         },
         "4_Bedroom_16x16.tsj": {
             "scaleInDock": 1.5105,
-            "scaleInEditor": 1
+            "scaleInEditor": 2.46
         },
         "TilesetFloor.tsj": {
             "scaleInDock": 1,
@@ -33,6 +33,14 @@
         "TilesetWater.tsj": {
             "scaleInDock": 1,
             "scaleInEditor": 2.65
+        },
+        "assets/22_Museum.tsj": {
+            "scaleInDock": 2.9171,
+            "scaleInEditor": 2.46
+        },
+        "child.tsj": {
+            "scaleInDock": 6.544,
+            "scaleInEditor": 1
         },
         "game_map.json": {
             "scale": 0.7605,
@@ -73,8 +81,8 @@
             "scale": 2.9784,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 284.716626376578,
-                "y": 409.61590115498257
+                "x": 288.7456352403975,
+                "y": 489.5245769540693
             }
         },
         "player.tmj": {
@@ -115,12 +123,24 @@
         },
         "tilesets/room_builder.tsj": {
             "scaleInDock": 1.3232,
-            "scaleInEditor": 2.4657
+            "scaleInEditor": 2.46
+        },
+        "untitled.tmj": {
+            "scale": 3.2114,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -15.258142866039734,
+                "y": 32.69602042722799
+            }
+        },
+        "woman.tsj": {
+            "scaleInDock": 2.2041,
+            "scaleInEditor": 2.673
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
-    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Woman",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Woman",
+    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Child",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Child",
     "map.height": 40,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
@@ -131,22 +151,26 @@
         "miguel_house.tmj",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
-        "4_Bedroom_16x16.tsj"
+        "4_Bedroom_16x16.tsj",
+        "assets/22_Museum.tsj",
+        "untitled.tmj",
+        "woman.tsj",
+        "child.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
         "miguel_house.tmj",
-        "4_Bedroom_16x16.tsj",
-        "2_LivingRoom_16x16.tsj",
         "tilesets/room_builder.tsj",
+        "2_LivingRoom_16x16.tsj",
+        "4_Bedroom_16x16.tsj",
+        "assets/22_Museum.tsj",
+        "child.tsj",
+        "woman.tsj",
+        "untitled.tmj",
         "tilesets/interiors.tsj",
         "room_builder.tsj",
         "tilesets/TilesetField.tsj",
-        "tileset_interior_floor.tsj",
-        "TilesetNature.tsj",
-        "TilesetWater.tsj",
-        "TilesetHouse.tsj",
-        "TilesetFloor.tsj"
+        "tileset_interior_floor.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
