@@ -140,6 +140,45 @@ k.scene('house', () => {
     k.onCollideEnd('player', 'christin', () => { 
         k.get('dialog').forEach(el => k.destroy(el));
     })
+
+    k.onCollide('player', 'book_shelf', () => { 
+        showDialogueHouse('player_face', 
+            ['These are some of my favorite books', 
+             'There are loads of stuff about psychology, product management, systems thinking...',
+             'Virtual readers are cool, but there is something about paper I still love',
+             'You can check a full list of books here'])
+    })
+
+    k.onCollideEnd('player', 'book_shelf', () => {
+        k.get('dialog').forEach(el => k.destroy(el));
+    })
+
+    k.onCollide('player', 'globe', () => { 
+        showDialogueHouse('player_face', 
+            ['This globe has pins with the places we have been to', 
+             'I have worked in 30+ countries, and lived in Europe, Asia and Latin America',
+             'Travelling is really a cure for ignorance',
+             'Cant wait for the next adventure!'])
+    })
+
+    k.onCollideEnd('player', 'globe', () => {
+        k.get('dialog').forEach(el => k.destroy(el));
+    })
+
+    k.onCollide('player', 'painting', () => { 
+        showDialogueHouse('player_face', 
+            ['A beautiful picture of Tarifa, Cadiz', 
+             'You can see Africa through the sea',
+             'My dads family comes from here'])
+    })
+
+    k.onCollideEnd('player', 'globe', () => {
+        k.get('dialog').forEach(el => k.destroy(el));
+    })
+
+    k.onCollide('player', 'exit', () => {
+        k.go('main');
+    })
 })
 
 //# Intro Stage
