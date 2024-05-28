@@ -58,6 +58,20 @@
                 "y": 154.22477440525023
             }
         },
+        "mapdata/house_map.tmj": {
+            "expandedGroupLayers": [
+                19
+            ],
+            "expandedObjectLayers": [
+                20
+            ],
+            "scale": 5.8024,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 207.8450296429064,
+                "y": 307.97600992692685
+            }
+        },
         "mapdata/map.json": {
             "expandedObjectLayers": [
                 6,
@@ -81,8 +95,8 @@
             "scale": 2.9784,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 288.7456352403975,
-                "y": 489.5245769540693
+                "x": 319.97045393499866,
+                "y": 318.2917002417405
             }
         },
         "player.tmj": {
