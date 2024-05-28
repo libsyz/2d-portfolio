@@ -60,8 +60,9 @@ k.scene('house', () => {
    const houseMap = createHouseMap();
    const player = createPlayer();
 
-//  door position   player.moveTo(k.vec2(1000, 2450));
-    player.moveTo(k.vec2(1317, 1623));
+
+    player.moveTo(k.vec2(1000, 2450));
+    // player.moveTo(k.get('player_spawn')[0].pos());  
 
     player.onUpdate( () =>  {
         k.camPos(player.worldPos());
@@ -179,6 +180,7 @@ k.scene('house', () => {
     k.onCollide('player', 'exit', () => {
         k.go('main');
     })
+
 })
 
 //# Intro Stage

@@ -1,6 +1,7 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js';
 import { seconds } from './utils.js';
+import { createSpawnPoint } from './spawn_point.js';
 
 // load the map
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
@@ -77,14 +78,19 @@ export const createHouseMap = () => {
 
 
         if (layer.name === 'interaction') {
-
             for ( const obj of layer.objects ) {
-                // I would have to create the interactable based on the name 
-                // look for 
                 createInteraction(houseMap, obj);
             }
-            
         }
+
+        if (layer.name === 'spawn') {
+            debugger
+            for ( const obj of layer.objects ) {
+                createSpawnPoint(houseMap, obj);
+            }
+        }
+
+
 
     }
 
