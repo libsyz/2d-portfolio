@@ -54,6 +54,8 @@ k.loadSprite('elias', '../src/assets/child.png', {
     }
 });
 
+k.loadSprite('elias_face', '../src/assets/elias_face.png');
+
 // instatiate the map
 export const createHouseMap = () => {
     const layers = mapData.layers;

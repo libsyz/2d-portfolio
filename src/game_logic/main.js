@@ -142,6 +142,14 @@ k.scene('house', () => {
         k.get('dialog').forEach(el => k.destroy(el));
     })
 
+    k.onCollide('player', 'elias', () => {
+        showDialogueHouse('elias_face', ['Papi Papi I cant wait to go down to the beach!'])
+}) 
+
+    k.onCollideEnd('player', 'elias', () => { 
+        k.get('dialog').forEach(el => k.destroy(el));
+    })
+
     k.onCollide('player', 'book_shelf', () => { 
         showDialogueHouse('player_face', 
             ['These are some of my favorite books', 
