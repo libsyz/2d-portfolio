@@ -59,6 +59,7 @@ k.scene('house', () => {
 
    const houseMap = createHouseMap();
    const player = createPlayer();
+   player.canAttack = false;
 
 
     player.moveTo(k.vec2(1000, 2450));

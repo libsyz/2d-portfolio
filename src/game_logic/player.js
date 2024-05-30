@@ -35,6 +35,7 @@ export const createPlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body(),
+        { canAttack: true },
         'player'
     ]);
 
@@ -91,6 +92,9 @@ export const createPlayer = () => {
     })
 
     k.onKeyPress("space", () => {
+        if (player.canAttack === false) { 
+            return
+        }
  
         spawnArrow(player.pos, player.direction);
             if (player.direction === k.DOWN) {
