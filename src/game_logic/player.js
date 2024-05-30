@@ -92,11 +92,11 @@ export const createPlayer = () => {
     })
 
     k.onKeyPress("space", () => {
-        if (player.canAttack === false) { 
-            return
+        if (player.canAttack === true) { 
+            spawnArrow(player.pos, player.direction);    
         }
  
-        spawnArrow(player.pos, player.direction);
+        
             if (player.direction === k.DOWN) {
                 player.play('attack-down');
             } else if ( player.direction === k.UP ) {
