@@ -123,6 +123,8 @@ k.scene('house', () => {
         // destroy the scroll
         sceneState.treasureChest = 'complete'
         
+        // what a terrible line of code
+        k.get('ui')[0].children[0].getScroll();
         })
     })
 

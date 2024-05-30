@@ -14,7 +14,13 @@ export const createUI = () => {
         k.sprite('greenScrollUI'),
         k.pos(18, 18),
         k.scale(2.25),
-        k.opacity(0.3)
+        k.opacity(0.3), 
+        { 
+            getScroll() {
+                this.opacity = 1;
+            }
+        },
+        'skill_scroll_UI'
     ])
 
     return hud;
