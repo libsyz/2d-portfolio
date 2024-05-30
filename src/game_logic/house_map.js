@@ -86,7 +86,6 @@ export const createHouseMap = () => {
         }
 
         if (layer.name === 'spawn') {
-            debugger
             for ( const obj of layer.objects ) {
                 createSpawnPoint(houseMap, obj);
             }

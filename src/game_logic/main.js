@@ -6,6 +6,7 @@ import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue, showDialogueHouse } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
+import { createUI } from "./ui.js";
 
 k.setBackground(k.color(255, 255, 255));
 
@@ -57,7 +58,10 @@ k.scene('house', () => {
     edScroll: 'closed',
    }
 
+
    const houseMap = createHouseMap();
+   const ui = createUI();
+
    const player = createPlayer();
    player.canAttack = false;
 
