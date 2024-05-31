@@ -62,7 +62,7 @@ k.scene("main", async () => {
 k.scene('house', () => { 
 
 
-   const houseMap = createHouseMap();
+   const houseMap = createHouseMap(gameState);
    const ui = createUI(gameState);
    
    // ui needs to read from the gamestate and update if necessary

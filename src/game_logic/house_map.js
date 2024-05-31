@@ -57,7 +57,7 @@ k.loadSprite('elias', '../src/assets/child.png', {
 k.loadSprite('elias_face', '../src/assets/elias_face.png');
 
 // instatiate the map
-export const createHouseMap = () => {
+export const createHouseMap = (gameState) => {
     const layers = mapData.layers;
     const houseMap = k.add([k.sprite("house_map"), 
         k.pos(0), 
@@ -95,15 +95,31 @@ export const createHouseMap = () => {
 
     }
 
+    const educationChestBehavior = (game) => {
+        return { 
+            setup() {
+                if (gameState.scrolls.includes('education')) {
+                    this.play('open');
+                }
+            }
+        }
+    }
+
     // add interactables with animations
-    const skillsChest = houseMap.add([
+    const educationChest = houseMap.add([
         k.sprite('treasure_chest'),
         k.pos(k.vec2(447, 270)), // absolutely magic number
         k.area(),
         k.anchor('center'),
         k.body({isStatic: true}),
+        educationChestBehavior(gameState),
         'education_treasure_chest'
     ])
+
+    educationChest.setup();
+
+
+
 
     // Add Christin
 
