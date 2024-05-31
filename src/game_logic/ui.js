@@ -8,9 +8,9 @@ k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
 
 // Lets see if I can add a scroll
 
-export const createUI = () => { 
+export const createUI = (gameState) => { 
     const hud = k.add([k.fixed(), 'ui']);
-    hud.add([
+    const educationScroll = hud.add([
         k.sprite('greenScrollUI'),
         k.pos(18, 18),
         k.scale(2.25),
@@ -22,6 +22,12 @@ export const createUI = () => {
         },
         'skill_scroll_UI'
     ])
+
+
+    // update scrolls
+    if (gameState.scrolls.includes('education')) {
+        educationScroll.getScroll();
+    }
 
     return hud;
 }

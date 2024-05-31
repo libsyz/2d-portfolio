@@ -7,6 +7,7 @@ import { createInterviewer } from "./interviewer.js";
 import { showDialogue, showDialogueHouse } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
+import { createGameState } from "./game_state.js";
 
 k.setBackground(k.color(255, 255, 255));
 
@@ -18,6 +19,12 @@ k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('interview_room', './src/assets/interview_room.png');
 k.loadSprite('scroll', './src/assets/scroll.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
+
+// load gamestate, available to all the scenes
+
+const gameState = createGameState();
+
+// load scenes
 
 k.scene("main", async () => {
     const map = createMap();
@@ -53,14 +60,12 @@ k.scene("main", async () => {
 });
 
 k.scene('house', () => { 
-   const sceneState = { 
-    treasureChest: 'closed',
-    edScroll: 'closed',
-   }
 
 
    const houseMap = createHouseMap();
-   const ui = createUI();
+   const ui = createUI(gameState);
+   
+   // ui needs to read from the gamestate and update if necessary
 
    const player = createPlayer();
    player.canAttack = false;
@@ -121,19 +126,19 @@ k.scene('house', () => {
         // show a dialogue mentioning what it is 
         // destroy the dialogue
         // destroy the scroll
-        sceneState.treasureChest = 'complete'
+        gameState.updateScrolls('education');
         
         // what a terrible line of code
         k.get('ui')[0].children[0].getScroll();
         })
+
+        gameState.checkFinished();
     })
 
     k.onCollideEnd('education_treasure_chest', 'player', () => {
-        if (sceneState.treasureChest === 'complete' && 
-            sceneState.edScroll === 'closed') { 
+        if (gameState.scrolls.includes('education') === true) { 
             k.get('dialog').forEach(el => k.destroy(el));
             k.get('education_scroll').forEach(el => k.destroy(el));
-            sceneState.edScroll = 'complete';
             treasureCollision.cancel();
         }
 
