@@ -26,11 +26,12 @@ const gameState = createGameState();
 
 // load scenes
 
-k.scene("main", async () => {
+k.scene("main", async (playerSpawnPoint) => {
     const map = createMap();
     
+
     const player = createPlayer();
-    player.moveTo(k.vec2(0, 0), 100)
+    player.moveTo(playerSpawnPoint)
     const oldMan = createOldMan();
 
 
@@ -198,7 +199,7 @@ k.scene('house', () => {
     })
 
     k.onCollide('player', 'exit', () => {
-        k.go('main');
+        k.go('main', k.vec2(354, 352));
     })
 
 })
@@ -515,5 +516,5 @@ k.scene('house', () => {
 // })
 
 
-k.go('house');
+k.go('main', k.vec2(50,460));
 
