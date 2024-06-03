@@ -27,8 +27,9 @@ const gameState = createGameState();
 // load scenes
 
 k.scene("main", async (playerSpawnPoint) => {
-    const map = createMap();
     
+    const map = createMap();
+    const ui = createUI(gameState);
 
     const player = createPlayer();
     player.moveTo(playerSpawnPoint)
