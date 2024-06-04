@@ -16,7 +16,6 @@ k.setBackground(k.color(255, 255, 255));
 k.loadSprite('dialogue_box_simple', './src/assets/dialogue_box_simple.png');
 k.loadSprite('shuriken', './src/assets/shuriken.png');
 k.loadSprite('intro_background', './src/assets/intro_background.png');
-k.loadSprite('interview_room', './src/assets/interview_room.png');
 k.loadSprite('scroll', './src/assets/scroll.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
 
@@ -516,6 +515,10 @@ k.scene('house', () => {
 //     })
 // })
 
+
+k.scene('office', () => { 
+
+})
 
 k.go('main', k.vec2(50,460));
 
