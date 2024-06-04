@@ -85,6 +85,22 @@
                 "y": 208.88418826017983
             }
         },
+        "mapdata/map.tmj": {
+            "scale": 1.5185,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 146.19690484030292,
+                "y": 167.92887718142904
+            }
+        },
+        "mapdata/office_map.tmj": {
+            "scale": 2.1423,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": -46.67880315548709,
+                "y": 114.82985576249825
+            }
+        },
         "miguel_house.tmj": {
             "expandedGroupLayers": [
                 19
@@ -92,11 +108,11 @@
             "expandedObjectLayers": [
                 20
             ],
-            "scale": 1.6546,
+            "scale": 1.3278,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 251.42028284781819,
-                "y": 463.5561465006648
+                "x": 272.6314203946377,
+                "y": 405.1815032384395
             }
         },
         "player.tmj": {
@@ -153,14 +169,14 @@
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
-    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Child",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Child",
-    "map.height": 40,
+    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped",
+    "last.imagePath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped/1_Room_Builder_Office",
+    "map.height": 11,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 40,
+    "map.width": 20,
     "openFiles": [
         "miguel_house.tmj",
         "tilesets/room_builder.tsj",
