@@ -1,5 +1,6 @@
 import { k } from "./kaboomCtx.js";
 import { createPlayer } from "./player.js";
+import { createOfficeMap } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
@@ -517,8 +518,10 @@ k.scene('house', () => {
 
 
 k.scene('office', () => { 
-
+    const officeMap = createOfficeMap();
 })
 
-k.go('main', k.vec2(50,460));
+k.go('office');
+
+// k.go('main', k.vec2(50,460));
 
