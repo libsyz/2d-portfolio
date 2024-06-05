@@ -7,7 +7,7 @@ import { createSpawnPoint } from './spawn_point.js';
 
 // player + player face ( do that later )
 
-// receptionist + receptionist face 
+// receptionist
 
 k.loadSprite('receptionist', './src/assets/receptionist.png', {
     sliceX: 4, 
@@ -21,8 +21,19 @@ k.loadSprite('receptionist', './src/assets/receptionist.png', {
 });
 
 
+// shogun boss 
 
-// shogun boss + shogun face
+k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
+    sliceX: 4, 
+    sliceY: 1,
+    anims: {
+        'down': 0,
+        'up': 1,
+        'right': 2,
+        'left': 3
+    }
+});
+
 
 
 // worker one ( does nothing )
@@ -61,6 +72,19 @@ export const createOfficeMap = () => {
         k.body({isStatic: true}),
         'receptionist'
     ])
+
+
+    const shogun_boss = officeMap.add([
+        k.sprite('shogun_boss'),
+        k.pos(spawnPoints['shogun_boss']), // absolutely magic number
+        k.area(),
+        k.scale(1.20),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'shogun_boss'
+    ])
+
+    shogun_boss.play('right');
     
 }
 
