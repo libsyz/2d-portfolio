@@ -23,14 +23,10 @@ export const createBaddieGreenDemon = () => {
         k.area({scale: 1.5}),
         k.anchor('center'),
         k.scale(2),
-k.body({isStatic: true}),
+        k.body({isStatic: true}),
         'baddie_green_demon'
 //scale constrains bounds to the right place :-) 
     ]);
-
-    const patrol = () => {
-        baddieGreenDemon.move(200,0)
-    }
 
     const chill = () => {
         // no op

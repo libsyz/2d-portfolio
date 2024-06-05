@@ -94,11 +94,11 @@
             }
         },
         "mapdata/office_map.tmj": {
-            "scale": 2.1423,
-            "selectedLayer": 1,
+            "scale": 2.6527,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": -46.67880315548709,
-                "y": 114.82985576249825
+                "x": 124.40155313454217,
+                "y": 88.21201040449355
             }
         },
         "miguel_house.tmj": {
@@ -189,6 +189,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/office_map.tmj",
         "miguel_house.tmj",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -199,8 +200,7 @@
         "untitled.tmj",
         "tilesets/interiors.tsj",
         "room_builder.tsj",
-        "tilesets/TilesetField.tsj",
-        "tileset_interior_floor.tsj"
+        "tilesets/TilesetField.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
