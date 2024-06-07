@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"office_map.json"
+        }
+    },
  "height":11,
  "infinite":false,
  "layers":[
@@ -126,7 +134,7 @@
                  "visible":true,
                  "width":0,
                  "x":56.6973777462792,
-                 "y":46.0666194188519
+                 "y":50.07
                 }, 
                 {
                  "height":0,
@@ -163,14 +171,25 @@
                 }, 
                 {
                  "height":0,
-                 "id":8,
+                 "id":9,
                  "name":"player",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":10.0131422492021,
-                 "y":94.4990299768446
+                 "x":11.2647850303523,
+                 "y":93.8732085862695
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":183.365667438513,
+                 "y":-97.6281369297203
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -178,8 +197,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":7,
- "nextobjectid":9,
+ "nextlayerid":8,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

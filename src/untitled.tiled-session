@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "untitled.tmj",
+    "activeFile": "mapdata/office_map.tmj",
     "expandedProjectPaths": [
         "tilesets",
         "."
@@ -35,12 +35,12 @@
             "scaleInEditor": 2.65
         },
         "assets/22_Museum.tsj": {
-            "scaleInDock": 2.9171,
+            "scaleInDock": 2.7037,
             "scaleInEditor": 2.46
         },
         "child.tsj": {
             "scaleInDock": 6.544,
-            "scaleInEditor": 1
+            "scaleInEditor": 2.46
         },
         "game_map.json": {
             "scale": 0.7605,
@@ -57,6 +57,10 @@
                 "x": 299.4257588187038,
                 "y": 154.22477440525023
             }
+        },
+        "mapdata/Room_Builder_Office_16x16.tsj": {
+            "scaleInDock": 2.3257,
+            "scaleInEditor": 1
         },
         "mapdata/house_map.tmj": {
             "expandedGroupLayers": [
@@ -89,16 +93,20 @@
             "scale": 1.5185,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 146.19690484030292,
-                "y": 165.294698715838
+                "x": 160.0263417846559,
+                "y": 88.24497859729996
             }
         },
+        "mapdata/office.tsj": {
+            "scaleInDock": 1.4564,
+            "scaleInEditor": 2.46
+        },
         "mapdata/office_map.tmj": {
-            "scale": 1.9754,
+            "scale": 1.5979,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 150.34929634504405,
-                "y": 35.4358610914245
+                "x": 174.60416797046122,
+                "y": 20.02628449840418
             }
         },
         "miguel_house.tmj": {
@@ -111,8 +119,8 @@
             "scale": 1.3278,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 270.3720439825275,
-                "y": 402.92212682632925
+                "x": 319.3251995782497,
+                "y": 316.3126976954361
             }
         },
         "player.tmj": {
@@ -152,20 +160,20 @@
             "scaleInEditor": 3.13
         },
         "tilesets/room_builder.tsj": {
-            "scaleInDock": 1.3232,
+            "scaleInDock": 2.5682,
             "scaleInEditor": 2.46
         },
         "untitled.tmj": {
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -16.19231487824625,
-                "y": 31.76184841502149
+                "x": 16.19231487824625,
+                "y": 32.07323908575698
             }
         },
         "woman.tsj": {
             "scaleInDock": 2.2041,
-            "scaleInEditor": 2.673
+            "scaleInEditor": 2.46
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
@@ -185,22 +193,26 @@
         "assets/22_Museum.tsj",
         "untitled.tmj",
         "woman.tsj",
-        "child.tsj"
+        "child.tsj",
+        "mapdata/map.tmj",
+        "mapdata/office.tsj",
+        "mapdata/Room_Builder_Office_16x16.tsj",
+        "mapdata/office_map.tmj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/office_map.tmj",
         "miguel_house.tmj",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
         "4_Bedroom_16x16.tsj",
         "assets/22_Museum.tsj",
-        "child.tsj",
-        "woman.tsj",
         "untitled.tmj",
-        "tilesets/interiors.tsj",
-        "room_builder.tsj",
-        "tilesets/TilesetField.tsj"
+        "woman.tsj",
+        "child.tsj",
+        "mapdata/map.tmj",
+        "mapdata/office.tsj",
+        "mapdata/Room_Builder_Office_16x16.tsj",
+        "mapdata/office_map.tmj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",

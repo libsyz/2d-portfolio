@@ -35,8 +35,18 @@ k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
 });
 
 
-
 // worker one ( does nothing )
+
+k.loadSprite('worker_one', './src/assets/worker_one.png', {
+    sliceX: 4, 
+    sliceY: 1,
+    anims: {
+        'down': 0,
+        'up': 1,
+        'right': 2,
+        'left': 3
+    }
+});
 
 // worker two ( tweens - goes to grab coffee )
 
@@ -62,7 +72,7 @@ export const createOfficeMap = () => {
     }
 
 
-    // load the characters 
+    // Add the characters 
 
     const receptionist = officeMap.add([
         k.sprite('receptionist'),
@@ -74,9 +84,9 @@ export const createOfficeMap = () => {
     ])
 
 
-    const shogun_boss = officeMap.add([
+    const shogunBoss = officeMap.add([
         k.sprite('shogun_boss'),
-        k.pos(spawnPoints['shogun_boss']), // absolutely magic number
+        k.pos(spawnPoints['shogun_boss']), 
         k.area(),
         k.scale(1.20),
         k.anchor('center'),
@@ -84,8 +94,20 @@ export const createOfficeMap = () => {
         'shogun_boss'
     ])
 
-    shogun_boss.play('right');
+    shogunBoss.play('right');
     
+    const workerOne = officeMap.add([
+        k.sprite('worker_one'),
+        k.pos(spawnPoints['worker_one']), 
+        k.area(),
+        k.scale(1.20),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'worker_one'
+    ])
+
+    workerOne.play('up');
+
 }
 
 
