@@ -1,0 +1,14 @@
+{ "columns":4,
+ "image":"..\/..\/..\/Downloads\/NinjaAdventure\/Actor\/Characters\/RedNinja2\/SeparateAnim\/Walk.png",
+ "imageheight":64,
+ "imagewidth":64,
+ "margin":0,
+ "name":"worker_two",
+ "spacing":0,
+ "tilecount":16,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.10"
+}

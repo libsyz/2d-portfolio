@@ -93,8 +93,8 @@
             "scale": 1.5185,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 160.0263417846559,
-                "y": 88.24497859729996
+                "x": 146.19690484030292,
+                "y": 164.63615409944023
             }
         },
         "mapdata/office.tsj": {
@@ -102,11 +102,14 @@
             "scaleInEditor": 2.46
         },
         "mapdata/office_map.tmj": {
-            "scale": 1.5979,
+            "expandedObjectLayers": [
+                6
+            ],
+            "scale": 3.1816,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 174.60416797046122,
-                "y": 20.02628449840418
+                "x": 119.12245411113905,
+                "y": 94.60648730198643
             }
         },
         "miguel_house.tmj": {
@@ -167,8 +170,8 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 16.19231487824625,
-                "y": 32.07323908575698
+                "x": 37.678271158996075,
+                "y": 36.43270847605406
             }
         },
         "woman.tsj": {
@@ -178,7 +181,7 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped",
-    "last.imagePath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped/1_Room_Builder_Office",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/RedNinja2/SeparateAnim",
     "map.height": 11,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",

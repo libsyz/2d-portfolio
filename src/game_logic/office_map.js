@@ -20,7 +20,6 @@ k.loadSprite('receptionist', './src/assets/receptionist.png', {
     }
 });
 
-
 // shogun boss 
 
 k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
@@ -33,7 +32,6 @@ k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
         'left': 3
     }
 });
-
 
 // worker one ( does nothing )
 
@@ -49,6 +47,22 @@ k.loadSprite('worker_one', './src/assets/worker_one.png', {
 });
 
 // worker two ( tweens - goes to grab coffee )
+
+k.loadSprite('worker_two', './src/assets/worker_two.png', {
+    sliceX: 4, 
+    sliceY: 4,
+    anims: {
+        'down': 0,
+        'up': 4,
+        'left': 9,
+        'right': 13,
+        'walk-down': {from: 0, to: 3, loop: true, speed: 6 },
+        'walk-up': {from: 4, to: 7, loop: true, speed: 6 },
+        'walk-left': {from: 8, to: 11, loop: true, speed: 6},
+        'walk-right': {from: 12, to: 15, loop: true, speed: 6} 
+    }
+});
+
 
 // load the map
 const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
@@ -107,6 +121,18 @@ export const createOfficeMap = () => {
     ])
 
     workerOne.play('up');
+
+    const workerTwo = officeMap.add([
+        k.sprite('worker_two'),
+        k.pos(spawnPoints['worker_two']), 
+        k.area(),
+        k.scale(1.20),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'worker_two'
+    ])
+
+    workerTwo.play('up');
 
 }
 
