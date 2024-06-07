@@ -5,7 +5,8 @@ import { createSpawnPoint } from './spawn_point.js';
 
 // load the character assets 
 
-// player + player face ( do that later )
+// player + player face 
+// player here has less behavior than in the rest of the game
 
 // receptionist
 
@@ -63,6 +64,16 @@ k.loadSprite('worker_two', './src/assets/worker_two.png', {
     }
 });
 
+
+// cat ( does nothing )
+
+k.loadSprite('cat', './src/assets/cat.png', {
+    sliceX: 12, 
+    sliceY: 1,
+    anims: {
+        'idle': {from: 0, to: 11, loop: true, speed: 3 }
+    }
+})
 
 // load the map
 const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
@@ -133,6 +144,19 @@ export const createOfficeMap = () => {
     ])
 
     workerTwo.play('up');
+
+    const cat = officeMap.add([
+        k.sprite('cat'),
+        k.pos(spawnPoints['cat']), 
+        k.area(),
+        k.scale(0.60),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'cat'
+    ])
+
+
+    cat.play('idle');
 
 }
 

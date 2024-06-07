@@ -174,14 +174,14 @@
                 }, 
                 {
                  "height":0,
-                 "id":12,
-                 "name":"",
+                 "id":13,
+                 "name":"cat",
                  "rotation":0,
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":183.365667438513,
-                 "y":-97.6281369297203
+                 "x":275.27,
+                 "y":46.89
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -190,7 +190,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":13,
+ "nextobjectid":15,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
