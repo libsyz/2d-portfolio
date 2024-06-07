@@ -1,6 +1,6 @@
 import { k } from "./kaboomCtx.js";
-import { createPlayer } from "./player.js";
-import { createOfficeMap } from "./office_map.js";
+import { createPlayer, createOfficePlayer } from "./player.js";
+import { createOfficeMap, playerWaypoints, spawnPoints } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
@@ -517,9 +517,21 @@ k.scene('house', () => {
 // })
 
 
-k.scene('office', () => { 
-    const officeMap = createOfficeMap();
+k.scene('office', async () => { 
+    const officeMap = await createOfficeMap();
+    const player = await createOfficePlayer(playerWaypoints);
+
+    player.onStateEnter('first', () => {
+        k.debug.log('entering first state');
+        k.wait(1, () => player.enterState('second'))
+    })
+
+    player.onStateEnter('second', () => {
+        k.debug.log('finishing state')
+    })
+
 })
+
 
 k.go('office');
 

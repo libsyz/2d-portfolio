@@ -170,3 +170,25 @@ export const createPlayer = () => {
     return player;
 }
 
+export const createOfficePlayer = () => {
+    const playerScale = 4;
+    const playerAreaScale = {scale: k.vec2(0.3, 0.3)};
+    const playerBaseSpeed = 340;
+
+    const player = k.add([
+        k.sprite('player'), 
+        k.pos(0, 0), 
+        //scale constrains bounds to the right place :-)
+        k.area(playerAreaScale),
+        k.anchor('center'),
+        k.scale(playerScale),
+        k.body(),
+        k.state('first', ['second', 'third', 'fourth']),
+        'player'
+    ]);
+
+    // init player in idle state
+    player.play('idle-down')
+
+    return player;
+}

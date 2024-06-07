@@ -100,8 +100,8 @@ k.loadSprite('cat', './src/assets/cat.png', {
 const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
 const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
 
-const spawnPoints = {};
-const playerWaypoints = {};
+export const spawnPoints = {};
+export const playerWaypoints = {};
 
 export const createOfficeMap = async () => {
     const layers = mapData.layers;
@@ -184,28 +184,16 @@ export const createOfficeMap = async () => {
 
     cat.play('idle');
 
-    const player = officeMap.add([
-        k.sprite('player'),
-        k.pos(spawnPoints['player']), 
-        k.area(),
-        k.anchor('center'),
-        k.timer(),
-        'player'
-    ])
-
-    await player.play('right');
-    await player.tween(player.pos, playerWaypoints['first'], 1, newPos => player.pos = newPos, k.easings.linear)
-    await player.play('idle-down');
-    await showDialogueHouse('player-face', 
-        ['so nervous for my interview today', 
-         'hoping everything goes well!'
-        ])
-    
-    await player.play('up');
-    await player.tween(player.pos, playerWaypoints['second'], 1, newPos => player.pos = newPos, k.easings.linear)
-    await player.play('idle-up');
+    // const player = officeMap.add([
+    //     k.sprite('player'),
+    //     k.pos(spawnPoints['player']), 
+    //     k.area(),
+    //     k.anchor('center'),
+    //     k.timer(),
+    //     'player'
+    // ])
 
 
-
+    return officeMap
 
 }
