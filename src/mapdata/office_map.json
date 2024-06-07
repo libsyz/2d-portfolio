@@ -169,7 +169,7 @@
                  "type":"",
                  "visible":true,
                  "width":0,
-                 "x":11.2647850303523,
+                 "x":-10.74,
                  "y":93.8732085862695
                 }, 
                 {
@@ -188,9 +188,64 @@
          "visible":true,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":8,
+         "name":"player_waypoints",
+         "objects":[
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"first",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":55.8492071407201,
+                 "y":93.87
+                }, 
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"second",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":55.8492071407201,
+                 "y":77.7899670888601
+                }, 
+                {
+                 "height":0,
+                 "id":17,
+                 "name":"third",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":119.6768724444,
+                 "y":71.3074698314551
+                }, 
+                {
+                 "height":0,
+                 "id":18,
+                 "name":"fourth",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":191.981649546225,
+                 "y":63.78
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":8,
- "nextobjectid":15,
+ "nextlayerid":9,
+ "nextobjectid":19,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

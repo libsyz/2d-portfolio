@@ -2,11 +2,32 @@ import { k } from './kaboomCtx.js';
 // import { createInteraction } from './interaction.js';
 // import { seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
+import { showDialogue, showDialogueHouse } from './utils.js';
 
-// load the character assets 
+// load the character sprites 
 
-// player + player face 
-// player here has less behavior than in the rest of the game
+// player
+
+k.loadSprite('player-face', './src/assets/player_face.png')
+
+k.loadSprite('player', './src/assets/player.png', {
+    sliceX: 4,
+    sliceY: 5,
+    anims: {
+        'idle-down': 0,
+        'idle-up': 4,
+        'idle-left': 8,
+        'idle-right': 12,
+        'attack-down': 16,
+        'attack-up': 17,
+        'attack-left': 18,
+        'attack-right': 19,
+        'down': {from: 0, to: 3, loop: true, speed: 8 },
+        'up': {from: 4, to: 7, loop: true, speed: 8 },
+        'left': {from: 8, to: 11, loop: true, speed: 8},
+        'right': {from: 12, to: 15, loop: true, speed: 8}
+    }
+})
 
 // receptionist
 
@@ -80,8 +101,9 @@ const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
 const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
 
 const spawnPoints = {};
+const playerWaypoints = {};
 
-export const createOfficeMap = () => {
+export const createOfficeMap = async () => {
     const layers = mapData.layers;
     const officeMap = k.add([k.sprite("office_map"), 
         k.pos(0), 
@@ -94,8 +116,13 @@ export const createOfficeMap = () => {
                 spawnPoints[obj.name] = k.vec2(obj.x, obj.y)
             }
         }
-    }
 
+        if (layer.name === 'player_waypoints') {
+            for ( const obj of layer.objects ) {
+                playerWaypoints[obj.name] = k.vec2(obj.x, obj.y)
+            }
+        }
+    }
 
     // Add the characters 
 
@@ -155,13 +182,30 @@ export const createOfficeMap = () => {
         'cat'
     ])
 
-
     cat.play('idle');
 
+    const player = officeMap.add([
+        k.sprite('player'),
+        k.pos(spawnPoints['player']), 
+        k.area(),
+        k.anchor('center'),
+        k.timer(),
+        'player'
+    ])
+
+    await player.play('right');
+    await player.tween(player.pos, playerWaypoints['first'], 1, newPos => player.pos = newPos, k.easings.linear)
+    await player.play('idle-down');
+    await showDialogueHouse('player-face', 
+        ['so nervous for my interview today', 
+         'hoping everything goes well!'
+        ])
+    
+    await player.play('up');
+    await player.tween(player.pos, playerWaypoints['second'], 1, newPos => player.pos = newPos, k.easings.linear)
+    await player.play('idle-up');
+
+
+
+
 }
-
-
-
-
-
-console.log(spawnPoints);
