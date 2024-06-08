@@ -1,6 +1,6 @@
 import { k } from "./kaboomCtx.js";
 import { createPlayer, createOfficePlayer } from "./player.js";
-import { createOfficeMap, playerWaypoints, spawnPoints } from "./office_map.js";
+import { createOfficeMap } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
@@ -519,15 +519,53 @@ k.scene('house', () => {
 
 k.scene('office', async () => { 
     const officeMap = await createOfficeMap();
-    const player = await createOfficePlayer(playerWaypoints);
+    const player = await createOfficePlayer();
+
+    player.moveTo(officeMap.get('player_spawn')[0].worldPos());
+
+    player.onStateEnter('spawn', () => {
+        k.debug.log('spawning player');
+        player.play('right');
+        k.tween(player.pos, officeMap.get('first')[0].worldPos(), 1, newPos => player.pos = newPos, k.easings.linear )
+        k.wait(1, () => player.enterState('first'))
+    })
 
     player.onStateEnter('first', () => {
-        k.debug.log('entering first state');
-        k.wait(1, () => player.enterState('second'))
+        player.play('idle-down');
+        let dialogBox = showDialogueHouse('player-face', 
+        [
+          'so nervous for my interview today', 
+          'hope everything goes well!'
+        ])
+
+        dialogBox.onStateEnter('end', () => player.enterState('second'))
     })
 
     player.onStateEnter('second', () => {
-        k.debug.log('finishing state')
+        player.play('up');
+        k.tween(player.pos, officeMap.get('second')[0].worldPos(), 1, newPos => player.pos = newPos, k.easings.linear )
+        k.wait(1, () => player.enterState('third'));
+    })
+
+    player.onStateEnter('third', () => {
+        player.play('idle-up');
+        let dialogBox = showDialogueHouse('receptionist-face', 
+            [
+             'Welcome to NinjaCorp! You must be Miguel',
+             'Mr Shogun is ready for your interview'
+            ])
+        
+        dialogBox.onStateEnter('end', () => player.enterState('fourth'))
+    })
+
+    player.onStateEnter('fourth', () => {
+        player.play('right');
+        k.tween(player.pos, officeMap.get('fourth')[0].worldPos(), 2, newPos => player.pos = newPos, k.easings.linear )
+        k.wait(2, () => player.enterState('fifth'))
+    })
+
+    player.onStateEnter('fifth', () => {
+        player.play('idle-right');
     })
 
 })

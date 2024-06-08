@@ -42,6 +42,8 @@ k.loadSprite('receptionist', './src/assets/receptionist.png', {
     }
 });
 
+k.loadSprite('receptionist-face', './src/assets/receptionist_face.png' )
+
 // shogun boss 
 
 k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
@@ -101,7 +103,6 @@ const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
 const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
 
 export const spawnPoints = {};
-export const playerWaypoints = {};
 
 export const createOfficeMap = async () => {
     const layers = mapData.layers;
@@ -119,7 +120,10 @@ export const createOfficeMap = async () => {
 
         if (layer.name === 'player_waypoints') {
             for ( const obj of layer.objects ) {
-                playerWaypoints[obj.name] = k.vec2(obj.x, obj.y)
+                officeMap.add([
+                    k.pos(obj.x, obj.y),
+                    obj.name
+                ])
             }
         }
     }

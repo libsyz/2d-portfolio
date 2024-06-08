@@ -183,7 +183,7 @@ export const createOfficePlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body(),
-        k.state('first', ['second', 'third', 'fourth']),
+        k.state('spawn', ['first', 'second', 'third', 'fourth', 'fifth']),
         'player'
     ]);
 

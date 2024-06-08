@@ -42,6 +42,7 @@ export const showDialogueHouse = (faceTag, messages) => {
         k.sprite('dialogue_box_simple'),
         k.pos(x - 632, y + 116),
         k.scale(4),
+        k.state('start', ['end']),
         'dialog'
     ]);
 
@@ -60,7 +61,7 @@ export const showDialogueHouse = (faceTag, messages) => {
         k.color(0,0,0)
     ])
 
-    k.onKeyPress('space', () => {
+    dialogueBox.onKeyPress('space', () => {
         if (currentMessageIdx + 1 < messages.length ) {
             currentMessage.destroy();
             currentMessageIdx++;
@@ -73,9 +74,13 @@ export const showDialogueHouse = (faceTag, messages) => {
                     k.color(0,0,0)
                 ])
         } else {
+            k.debug.log('hello world');
+            dialogueBox.enterState('end');
             dialogueBox.destroy();
         }
     })
+
+    return dialogueBox;
 }
 
 
