@@ -534,8 +534,8 @@ k.scene('office', async () => {
         player.play('idle-down');
         let dialogBox = showDialogueHouse('player-face', 
         [
-          'so nervous for my interview today', 
-          'hope everything goes well!'
+          'So nervous for my interview today', 
+          'Hope everything goes well!'
         ])
 
         dialogBox.onStateEnter('end', () => player.enterState('second'))
@@ -566,6 +566,20 @@ k.scene('office', async () => {
 
     player.onStateEnter('fifth', () => {
         player.play('idle-right');
+        
+        let dialogBox = showDialogueHouse('shogun_boss-face', 
+            [
+             'Mr Miguel! Lets get started with your interview',
+             'We will go over your scrolls of education, skills and experience',
+             'you did not bring them?? what a joke!',
+             'Go back to your village and dont come back until you have them!'
+             
+            ])
+
+        dialogBox.onStateEnter('end', () => {
+            k.wait(1, () => k.go('main'));
+        })
+
     })
 
 })

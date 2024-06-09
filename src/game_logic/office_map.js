@@ -46,6 +46,8 @@ k.loadSprite('receptionist-face', './src/assets/receptionist_face.png' )
 
 // shogun boss 
 
+k.loadSprite('shogun_boss-face', './src/assets/shogun_boss_face.png' )
+
 k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
     sliceX: 4, 
     sliceY: 1,
