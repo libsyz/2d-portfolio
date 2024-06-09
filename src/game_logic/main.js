@@ -32,7 +32,8 @@ k.scene("main", async (playerSpawnPoint) => {
     const ui = createUI(gameState);
 
     const player = createPlayer();
-    player.moveTo(playerSpawnPoint)
+    debugger
+    player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
     const oldMan = createOldMan();
 
 
@@ -577,7 +578,7 @@ k.scene('office', async () => {
             ])
 
         dialogBox.onStateEnter('end', () => {
-            k.wait(1, () => k.go('main'));
+            k.wait(1, () => k.go('main', 'player_spawn'));
         })
 
     })

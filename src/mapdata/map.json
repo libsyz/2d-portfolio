@@ -74,7 +74,7 @@
          "name":"bounds",
          "objects":[
                 {
-                 "height":80,
+                 "height":112,
                  "id":3,
                  "name":"",
                  "rotation":0,
@@ -140,7 +140,7 @@
                  "y":0
                 }, 
                 {
-                 "height":32,
+                 "height":16,
                  "id":10,
                  "name":"",
                  "rotation":0,
@@ -148,33 +148,11 @@
                  "visible":true,
                  "width":32,
                  "x":288,
-                 "y":64
-                }, 
-                {
-                 "height":16,
-                 "id":16,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":224,
-                 "x":0,
-                 "y":160
-                }, 
-                {
-                 "height":16,
-                 "id":17,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":288,
-                 "y":160
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -204,21 +182,10 @@
                  "width":16,
                  "x":48,
                  "y":64
-                }, 
-                {
-                 "height":16,
-                 "id":18,
-                 "name":"house_door",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":16,
-                 "x":80,
-                 "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -228,7 +195,7 @@
          "name":"scene",
          "objects":[
                 {
-                 "height":176,
+                 "height":224,
                  "id":11,
                  "name":"scene_1",
                  "rotation":0,
@@ -237,6 +204,39 @@
                  "width":320,
                  "x":0,
                  "y":0
+                }, 
+                {
+                 "height":0,
+                 "id":15,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":-64,
+                 "y":-48
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"spawn_points",
+         "objects":[
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"player_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":87.5725122713074,
+                 "y":119.924141008478
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -244,8 +244,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":19,
+ "nextlayerid":10,
+ "nextobjectid":17,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

@@ -90,16 +90,28 @@
             }
         },
         "mapdata/map.tmj": {
-            "scale": 1.5185,
-            "selectedLayer": 0,
+            "scale": 1.7928,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 146.19690484030292,
-                "y": 164.63615409944023
+                "x": 87.57251227130746,
+                "y": 119.92414100847836
             }
         },
         "mapdata/office.tsj": {
             "scaleInDock": 1.4564,
             "scaleInEditor": 2.46
+        },
+        "mapdata/office_map.json": {
+            "expandedObjectLayers": [
+                8,
+                6
+            ],
+            "scale": 2.0054,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 18.45018450184503,
+                "y": 64.82497257405008
+            }
         },
         "mapdata/office_map.tmj": {
             "expandedObjectLayers": [
@@ -122,8 +134,8 @@
             "scale": 1.3278,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 319.3251995782497,
-                "y": 316.3126976954361
+                "x": 270.3720439825275,
+                "y": 402.92212682632925
             }
         },
         "player.tmj": {
@@ -170,8 +182,8 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 37.678271158996075,
-                "y": 36.43270847605406
+                "x": 37.36688048826057,
+                "y": 36.121317805318554
             }
         },
         "woman.tsj": {
