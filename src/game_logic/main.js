@@ -5,7 +5,7 @@ import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
-import { showDialogue, showDialogueHouse } from "./utils.js";
+import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
@@ -30,6 +30,7 @@ k.scene("main", async (playerSpawnPoint) => {
     
     const map = createMap();
     const ui = createUI(gameState);
+    fadeInScene();
 
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
@@ -70,15 +71,7 @@ k.scene('house', async (playerSpawnPoint) => {
    
    // ui needs to read from the gamestate and update if necessary
 
-   const rectangleFade = k.add([
-        k.rect(10000, 10000),
-        k.pos(0, 0),
-        k.color(0, 0, 0),
-        k.z(999),
-        k.opacity(1)
-    ])
-
-    k.tween( 1, 0, 0.5, (v) => rectangleFade.opacity = v, k.easings.linear);
+   fadeInScene();
 
    const player = createPlayer();
    player.canAttack = false;

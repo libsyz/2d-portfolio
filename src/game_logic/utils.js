@@ -84,3 +84,18 @@ export const showDialogueHouse = (faceTag, messages) => {
 }
 
 
+export const fadeInScene = () => { 
+    const rectangleFade = k.add([
+        k.rect(10000, 10000),
+        k.pos(0, 0),
+        k.color(0, 0, 0),
+        k.z(999),
+        k.opacity(1)
+    ])
+
+    k.tween( 1, 0, 0.4, (v) => rectangleFade.opacity = v, k.easings.linear);
+
+    k.wait(0.4, () => {
+        rectangleFade.destroy();
+    })
+}
