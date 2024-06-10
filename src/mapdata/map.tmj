@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"map.json"
+        }
+    },
  "height":11,
  "infinite":false,
  "layers":[
@@ -158,17 +166,6 @@
         }, 
         {
          "draworder":"topdown",
-         "id":8,
-         "name":"Object Layer 4",
-         "objects":[],
-         "opacity":1,
-         "type":"objectgroup",
-         "visible":true,
-         "x":0,
-         "y":0
-        }, 
-        {
-         "draworder":"topdown",
          "id":6,
          "name":"interaction",
          "objects":[
@@ -204,26 +201,59 @@
                  "width":320,
                  "x":0,
                  "y":0
-                }, 
-                {
-                 "height":0,
-                 "id":15,
-                 "name":"",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":0,
-                 "x":-64,
-                 "y":-48
                 }],
          "opacity":1,
          "type":"objectgroup",
          "visible":false,
          "x":0,
          "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"spawn_points",
+         "objects":[
+                {
+                 "height":0,
+                 "id":16,
+                 "name":"player_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":87.5725122713074,
+                 "y":119.924141008478
+                }, 
+                {
+                 "height":16,
+                 "id":18,
+                 "name":"house_door",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":64
+                }, 
+                {
+                 "height":0,
+                 "id":19,
+                 "name":"house_exit_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":87.9980212336847,
+                 "y":83.4316374291259
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
+         "x":0,
+         "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":16,
+ "nextlayerid":12,
+ "nextobjectid":20,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

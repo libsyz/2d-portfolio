@@ -3,10 +3,10 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/office_map.tmj",
+    "activeFile": "mapdata/map.tmj",
     "expandedProjectPaths": [
-        "tilesets",
-        "."
+        ".",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -62,6 +62,21 @@
             "scaleInDock": 2.3257,
             "scaleInEditor": 1
         },
+        "mapdata/house_map.json": {
+            "expandedGroupLayers": [
+                19
+            ],
+            "expandedObjectLayers": [
+                20,
+                21
+            ],
+            "scale": 1.4344,
+            "selectedLayer": 7,
+            "viewCenter": {
+                "x": 269.1020635805912,
+                "y": 400.8644729503626
+            }
+        },
         "mapdata/house_map.tmj": {
             "expandedGroupLayers": [
                 19
@@ -91,6 +106,8 @@
         },
         "mapdata/map.tmj": {
             "expandedObjectLayers": [
+                7,
+                6,
                 9
             ],
             "scale": 3.2147,
@@ -185,13 +202,17 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 37.36688048826057,
-                "y": 36.121317805318554
+                "x": 37.055489817525064,
+                "y": 35.80992713458305
             }
         },
         "woman.tsj": {
             "scaleInDock": 2.2041,
             "scaleInEditor": 2.46
+        },
+        "worker_two.tsj": {
+            "scaleInDock": 2.9399,
+            "scaleInEditor": 1
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
@@ -204,7 +225,7 @@
     "map.tileWidth": 16,
     "map.width": 20,
     "openFiles": [
-        "miguel_house.tmj",
+        "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
         "4_Bedroom_16x16.tsj",
@@ -215,11 +236,12 @@
         "mapdata/map.tmj",
         "mapdata/office.tsj",
         "mapdata/Room_Builder_Office_16x16.tsj",
-        "mapdata/office_map.tmj"
+        "mapdata/office_map.json",
+        "worker_two.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "miguel_house.tmj",
+        "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
         "4_Bedroom_16x16.tsj",
@@ -227,10 +249,10 @@
         "untitled.tmj",
         "woman.tsj",
         "child.tsj",
-        "mapdata/map.tmj",
-        "mapdata/office.tsj",
+        "worker_two.tsj",
+        "mapdata/office_map.json",
         "mapdata/Room_Builder_Office_16x16.tsj",
-        "mapdata/office_map.tmj"
+        "mapdata/office.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",

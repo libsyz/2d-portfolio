@@ -3,17 +3,17 @@
  "infinite":false,
  "layers":[
         {
-         "data":[29, 33,
-            30, 34,
-            31, 35,
-            32, 36],
+         "data":[37, 41, 45, 49,
+            38, 42, 46, 50,
+            39, 43, 47, 51,
+            40, 44, 48, 52],
          "height":4,
          "id":1,
          "name":"Tile Layer 1",
          "opacity":1,
          "type":"tilelayer",
          "visible":true,
-         "width":2,
+         "width":4,
          "x":0,
          "y":0
         }],
@@ -31,9 +31,13 @@
         {
          "firstgid":29,
          "source":"child.tsj"
+        }, 
+        {
+         "firstgid":37,
+         "source":"worker_two.tsj"
         }],
  "tilewidth":16,
  "type":"map",
  "version":"1.10",
- "width":2
+ "width":4
 }
