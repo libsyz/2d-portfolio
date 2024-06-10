@@ -70,6 +70,16 @@ k.scene('house', async (playerSpawnPoint) => {
    
    // ui needs to read from the gamestate and update if necessary
 
+   const rectangleFade = k.add([
+        k.rect(10000, 10000),
+        k.pos(0, 0),
+        k.color(0, 0, 0),
+        k.z(999),
+        k.opacity(1)
+    ])
+
+    k.tween( 1, 0, 0.5, (v) => rectangleFade.opacity = v, k.easings.linear);
+
    const player = createPlayer();
    player.canAttack = false;
    player.moveTo(houseMap.get(playerSpawnPoint)[0].worldPos())
