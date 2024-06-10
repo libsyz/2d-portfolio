@@ -1,7 +1,16 @@
 
 
 export const createGameState = () => {
-    return { 
+    return {
+        tutorial: {
+            done: false,
+            isComplete() {
+                return this.done
+            }, 
+            complete() {
+                this.done = true
+            }
+        }, 
         scrolls: [],
         updateScrolls(scroll) {
             this.scrolls.push(scroll);
