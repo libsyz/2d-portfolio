@@ -50,7 +50,7 @@ export const createMap = () => {
 
         if (layer.name === 'spawn_points') {
             for ( const obj of layer.objects ) {
-                debugger
+
                 map.add([
                     k.pos(obj.x, obj.y),
                     k.area({

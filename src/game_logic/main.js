@@ -58,11 +58,11 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'house_door', () => {
-        k.go('house');
+        k.go('house', 'player_spawn');
     })
 });
 
-k.scene('house', () => { 
+k.scene('house', async (playerSpawnPoint) => { 
 
 
    const houseMap = createHouseMap(gameState);
@@ -72,10 +72,7 @@ k.scene('house', () => {
 
    const player = createPlayer();
    player.canAttack = false;
-
-
-    player.moveTo(k.vec2(1000, 2450));
-    // player.moveTo(k.get('player_spawn')[0].pos());  
+   player.moveTo(houseMap.get(playerSpawnPoint)[0].worldPos())
 
     player.onUpdate( () =>  {
         k.camPos(player.worldPos());

@@ -85,7 +85,7 @@ export const createHouseMap = (gameState) => {
             }
         }
 
-        if (layer.name === 'spawn') {
+        if (layer.name === 'spawn_points') {
             for ( const obj of layer.objects ) {
                 createSpawnPoint(houseMap, obj);
             }
@@ -191,5 +191,7 @@ export const createHouseMap = (gameState) => {
     elias.onUpdate(() => {
         elias.patrol();
     })
+
+    return houseMap;
 
 }

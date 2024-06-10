@@ -90,11 +90,14 @@
             }
         },
         "mapdata/map.tmj": {
-            "scale": 1.7928,
-            "selectedLayer": 7,
+            "expandedObjectLayers": [
+                9
+            ],
+            "scale": 3.2147,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 87.57251227130746,
-                "y": 119.92414100847836
+                "x": 88.03309795626343,
+                "y": 72.16847606308521
             }
         },
         "mapdata/office.tsj": {
@@ -109,8 +112,8 @@
             "scale": 2.0054,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 18.45018450184503,
-                "y": 64.82497257405008
+                "x": 67.81689438516008,
+                "y": 78.2886207240451
             }
         },
         "mapdata/office_map.tmj": {
