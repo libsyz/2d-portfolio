@@ -53,6 +53,9 @@ export const createMap = () => {
                 debugger
                 map.add([
                     k.pos(obj.x, obj.y),
+                    k.area({
+                        shape: new k.Rect(k.vec2(0), obj.width, obj.height)
+                    }),
                     obj.name
                 ])
             }

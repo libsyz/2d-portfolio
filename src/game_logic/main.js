@@ -32,8 +32,8 @@ k.scene("main", async (playerSpawnPoint) => {
     const ui = createUI(gameState);
 
     const player = createPlayer();
-    debugger
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
+    
     const oldMan = createOldMan();
 
 
@@ -58,7 +58,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'house_door', () => {
-        k.go('house')
+        k.go('house');
     })
 });
 
@@ -201,7 +201,7 @@ k.scene('house', () => {
     })
 
     k.onCollide('player', 'exit', () => {
-        k.go('main', k.vec2(354, 352));
+        k.go('main', 'house_exit_spawn');
     })
 
 })
@@ -586,7 +586,7 @@ k.scene('office', async () => {
 })
 
 
-k.go('office');
+k.go('main', 'player_spawn');
 
 // k.go('main', k.vec2(50,460));
 
