@@ -99,3 +99,25 @@ export const fadeInScene = () => {
         rectangleFade.destroy();
     })
 }
+
+
+export const charDialogue = () => {
+    return { 
+        dialogShow() {
+            this.dialogBubble = this.add([
+                k.sprite('dialogue_info'),
+                k.pos(2, -12),
+                k.scale(0.75)
+                ])
+
+            this.dialogBubble.play('show');
+            },
+        dialogHide() {
+            this.dialogBubble.destroy();
+        } 
+    }
+}
+
+
+
+

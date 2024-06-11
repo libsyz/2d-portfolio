@@ -1,6 +1,7 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
-import { createOldMan } from './old_man.js';
+import { charDialogue } from './utils.js';
+
 
 // load the sprite
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
@@ -80,17 +81,20 @@ export const createMap = () => {
 
     }
 
-
+    
 
     const oldMan = map.add([
         k.sprite('old_man_idle'), 
         k.pos(map.get('old_man_spawn')[0].pos),
         {anim: 'idle'},
-        k.area({scale: 1.5}),
+        k.area(),
         k.scale(1),
         k.body({isStatic: true}),
-        'old_man_idle'
+        'old_man_idle',
+        charDialogue()
     ]);
+
+
 
 
     return map;

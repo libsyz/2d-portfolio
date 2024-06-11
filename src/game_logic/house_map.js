@@ -1,6 +1,6 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js';
-import { seconds } from './utils.js';
+import { charDialogue, seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
 
 // load the map
@@ -127,9 +127,10 @@ export const createHouseMap = (gameState) => {
         k.sprite('christin'),
         k.pos(k.vec2(391, 493)), // absolutely magic number
         k.area(),
-        k.anchor('center'),
+        k.scale(1),
         k.body({isStatic: true}),
-        'christin'
+        'christin',
+        charDialogue()
     ])
 
     setInterval( () => {
@@ -169,9 +170,9 @@ export const createHouseMap = (gameState) => {
         k.pos(k.vec2(360, 421)), // absolutely magic number
         k.area(),
         k.scale(0.70),
-        k.anchor('center'),
         k.body({isStatic: true}),
         leftRightPatrol(),
+        charDialogue(),
         'elias',
         { 
             patrolState: 'idle',

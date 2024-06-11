@@ -11,9 +11,16 @@ import { createGameState } from "./game_state.js";
 
 k.setBackground(k.color(255, 255, 255));
 
-// import sprites
+// import sprites that need to be loaded before anything else
 
 k.loadSprite('dialogue_box_simple', './src/assets/dialogue_box_simple.png');
+k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
+    sliceX: 4, 
+    sliceY: 1,
+    anims: {
+        'show': {from: 0, to: 3, loop: true, speed: 5}
+    }
+})
 k.loadSprite('shuriken', './src/assets/shuriken.png');
 k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('scroll', './src/assets/scroll.png');
@@ -38,11 +45,13 @@ k.scene("main", async (playerSpawnPoint) => {
         k.go('skills_quest');
     });
 
-    k.onCollide('player', 'old_man_idle', () => {
+    k.onCollide('player', 'old_man_idle', (_, oldMan) => {
+        oldMan.dialogShow();
         showDialogue('old_man_face', 'go through the pearly gates to find your skills');
     })
 
-    k.onCollideEnd('player', 'old_man_idle', () => {
+    k.onCollideEnd('player', 'old_man_idle', (_, oldMan) => {
+        oldMan.dialogHide();
         k.destroy(k.get('dialog')[0]);
     })
 
@@ -145,19 +154,23 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
 
-    k.onCollide('player', 'christin', () => {
+    k.onCollide('player', 'christin', (_, christin) => {
+            christin.dialogShow();
             showDialogueHouse('christin_face', ['Are you looking for your experience scroll?', 'It has to be either on the living room or in your room'])
     })
 
-    k.onCollideEnd('player', 'christin', () => { 
+    k.onCollideEnd('player', 'christin', (_, christin) => { 
+        christin.dialogHide();
         k.get('dialog').forEach(el => k.destroy(el));
     })
 
-    k.onCollide('player', 'elias', () => {
+    k.onCollide('player', 'elias', (_, elias) => {
+        elias.dialogShow();
         showDialogueHouse('elias_face', ['Papi Papi I cant wait to go down to the beach!'])
 }) 
 
-    k.onCollideEnd('player', 'elias', () => { 
+    k.onCollideEnd('player', 'elias', (_, elias) => { 
+        elias.dialogHide();
         k.get('dialog').forEach(el => k.destroy(el));
     })
 
