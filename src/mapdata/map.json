@@ -237,6 +237,17 @@
                  "width":0,
                  "x":87.9980212336847,
                  "y":83.4316374291259
+                }, 
+                {
+                 "height":16,
+                 "id":22,
+                 "name":"old_man_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":16,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -245,7 +256,7 @@
          "y":0
         }],
  "nextlayerid":12,
- "nextobjectid":20,
+ "nextobjectid":23,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

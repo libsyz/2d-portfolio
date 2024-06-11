@@ -3,7 +3,6 @@ import { createPlayer, createOfficePlayer } from "./player.js";
 import { createOfficeMap } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
-import { createOldMan } from "./old_man.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
@@ -34,9 +33,6 @@ k.scene("main", async (playerSpawnPoint) => {
 
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
-    
-    const oldMan = createOldMan();
-
 
     player.onCollide('gate', () => {
         k.go('skills_quest');

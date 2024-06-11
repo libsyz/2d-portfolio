@@ -1,9 +1,26 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
+import { createOldMan } from './old_man.js';
 
 // load the sprite
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
 const mapData = await (await fetch("./src/mapdata/map.json")).json();
+
+// load the character sprites
+
+k.loadSprite('old_man_face', './src/assets/old_man_face.png');
+
+k.loadSprite('old_man_idle', './src/assets/old_man_idle.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+        'idle': 0
+    }
+})
+
+
+
+
 // instatiate the map
 export const createMap = () => {
     const layers = mapData.layers;
@@ -62,6 +79,19 @@ export const createMap = () => {
         }
 
     }
+
+
+
+    const oldMan = map.add([
+        k.sprite('old_man_idle'), 
+        k.pos(map.get('old_man_spawn')[0].pos),
+        {anim: 'idle'},
+        k.area({scale: 1.5}),
+        k.scale(1),
+        k.body({isStatic: true}),
+        'old_man_idle'
+    ]);
+
 
     return map;
 }
