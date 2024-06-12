@@ -106,18 +106,19 @@ export const charDialogue = () => {
         dialogShow() {
             this.dialogBubble = this.add([
                 k.sprite('dialogue_info'),
-                k.pos(2, -12),
-                k.scale(0.75)
+                k.pos(2, -10),
+                k.scale(0.75),
+                k.opacity(1)
                 ])
 
             this.dialogBubble.play('show');
+            k.tween( this.dialogBubble.pos, k.vec2(this.dialogBubble.pos.x, this.dialogBubble.pos.y - 4), 0.5, (newPos) => this.dialogBubble.pos = newPos, k.easings.easeOutBack );
+
             },
         dialogHide() {
             this.dialogBubble.destroy();
         } 
     }
 }
-
-
 
 
