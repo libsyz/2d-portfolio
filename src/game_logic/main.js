@@ -41,10 +41,10 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
-    player.onUpdate(() => {
-        // Set the viewport center to player.pos
-        k.camPos(player.worldPos())
-    })
+    const activeScene = k.get('active_scene')[0]
+
+    k.camPos(activeScene.worldPos())
+
 
     k.onCollide('player', 'old_man_idle', (_, oldMan) => {
         oldMan.dialogShow();

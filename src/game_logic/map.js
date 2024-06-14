@@ -51,6 +51,7 @@ export const createMap = () => {
                         shape: new k.Rect(k.vec2(0), scene.width, scene.height)
                     }),
                     k.pos(scene.x, scene.y),
+                    k.anchor('center'),
                     scene.name
                 ])
             }
