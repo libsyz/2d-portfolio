@@ -5,8 +5,8 @@
     },
     "activeFile": "mapdata/map.tmj",
     "expandedProjectPaths": [
-        ".",
-        "tilesets"
+        "tilesets",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -19,7 +19,7 @@
             "scaleInEditor": 2.46
         },
         "TilesetFloor.tsj": {
-            "scaleInDock": 1,
+            "scaleInDock": 1.6092,
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
@@ -50,6 +50,14 @@
                 "y": 182.77449046679817
             }
         },
+        "game_map.tmx": {
+            "scale": 1.2376,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 226.64835164835165,
+                "y": 239.17259211376856
+            }
+        },
         "intro_map.json": {
             "scale": 0.6095,
             "selectedLayer": 0,
@@ -73,7 +81,7 @@
             "scale": 1.4344,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 319.99442275515895,
+                "x": 319.6458449525935,
                 "y": 316.50864472950366
             }
         },
@@ -110,11 +118,11 @@
                 7,
                 9
             ],
-            "scale": 3.2147,
-            "selectedLayer": 6,
+            "scale": 1.8415,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 159.89050300183533,
-                "y": 88.03309795626342
+                "x": 153.40754819440673,
+                "y": 245.99511267988055
             }
         },
         "mapdata/office.tsj": {
@@ -129,8 +137,8 @@
             "scale": 2.0054,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 159.5691632592002,
-                "y": 88.26169342774509
+                "x": 68.31554802034509,
+                "y": 78.7872743592301
             }
         },
         "mapdata/office_map.tmj": {
@@ -178,9 +186,17 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilesets/TilesetDesert.tsj": {
+            "scaleInDock": 2.8716,
+            "scaleInEditor": 2.2356
+        },
         "tilesets/TilesetField.tsj": {
             "scaleInDock": 1,
             "scaleInEditor": 2.65
+        },
+        "tilesets/TilesetFloor.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/TilesetNature.tsj": {
             "scaleInDock": 1.4638,
@@ -202,8 +218,8 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 32.07323908575701,
-                "y": 32.07323908575698
+                "x": 32.22893442112475,
+                "y": 32.073239085756995
             }
         },
         "woman.tsj": {
@@ -217,7 +233,7 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/RedNinja2/SeparateAnim",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets",
     "map.height": 11,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
@@ -234,10 +250,8 @@
         "woman.tsj",
         "child.tsj",
         "mapdata/map.tmj",
-        "mapdata/office.tsj",
-        "mapdata/Room_Builder_Office_16x16.tsj",
-        "mapdata/office_map.json",
-        "worker_two.tsj"
+        "tilesets/TilesetFloor.tsj",
+        "tilesets/TilesetDesert.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
@@ -249,10 +263,10 @@
         "untitled.tmj",
         "woman.tsj",
         "child.tsj",
-        "worker_two.tsj",
-        "mapdata/office_map.json",
-        "mapdata/Room_Builder_Office_16x16.tsj",
-        "mapdata/office.tsj"
+        "tilesets/TilesetDesert.tsj",
+        "tilesets/TilesetFloor.tsj",
+        "mapdata/map.tmj",
+        "game_map.tmx"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
