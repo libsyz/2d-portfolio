@@ -41,9 +41,16 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
-    const activeScene = k.get('active_scene')[0]
+    const activeScene = map.get('active_scene')[0]
 
-    k.camPos(activeScene.worldPos())
+    k.camPos(activeScene.worldPos());
+
+    k.onCollide('player', 'scene_two', (_, sceneTwo) => {
+        k.debug.log('touch-touch');
+        k.camPos(sceneTwo.pos);
+    } )
+
+
 
 
     k.onCollide('player', 'old_man_idle', (_, oldMan) => {

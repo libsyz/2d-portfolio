@@ -48,10 +48,9 @@ export const createMap = () => {
             for (const scene of layer.objects) { 
                 map.add([
                     k.area({
-                        shape: new k.Rect(k.vec2(0), scene.width, scene.height)
+                        shape: new k.Rect(k.vec2(scene.x, scene.y), scene.width, scene.height)
                     }),
                     k.pos(scene.x, scene.y),
-                    k.anchor('center'),
                     scene.name
                 ])
             }
