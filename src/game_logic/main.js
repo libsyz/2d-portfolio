@@ -41,25 +41,39 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
-    const sceneOne = map.get('scene_1')[0]
+    const center = k.get('center')[0]
 
-    k.camPos(sceneOne.worldPos());
+    player.onUpdate(() => {
+        k.camPos(center.worldPos());
+    })
 
     // player.onUpdate(()=> {
     //     k.camPos(player.worldPos());
     // })
     k.debug.log(k.camPos())
     const sceneTwo = map.get('scene_2')[0]
+    
 
+    // k.onCollide('player', 'scene_1', (player, scene) => {
+    //     k.debug.log('colliding');
+    //     activeScene.moveTo(k.vec2(activeScene.worldPos().x, scene.worldPos().y), 1000 )
+    // })
 
-    k.onCollide('player', 'scene_2', () => {
-        k.debug.log( sceneTwo.worldPos() );
-        k.camPos(sceneTwo.worldPos());
-    } )
+    k.onCollide('player', 'scene_2', (player, scene) => {
+        k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
+            center.pos = newVal, k.easings.linear;
+        })
+    })
 
     k.onCollide('player', 'scene_1', (player, scene) => {
-        k.camPos(scene.worldPos());
-    } )
+        // center.moveTo(scene.worldPos().x, scene.worldPos().y )
+
+        k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
+            center.pos = newVal, k.easings.linear;
+        })
+    })
+
+
 
 
 

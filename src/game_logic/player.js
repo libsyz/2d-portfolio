@@ -159,14 +159,6 @@ export const createPlayer = () => {
 		])
 	}
 
-
-    // player.onUpdate(() => {
-    //     console.log(player.pos.x);
-    //     if (player.pos.x > 100) {
-    //      k.camPos(player.pos);
-    //     }
-    // })
-
     return player;
 }
 

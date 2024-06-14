@@ -82,7 +82,16 @@ export const createMap = () => {
 
     }
 
-    
+    const center = k.add([
+        k.rect(20,20),
+        k.outline(2),
+        k.pos(0,0 ),
+        k.anchor('center'),
+        k.opacity(0),
+        'center'
+    ])
+
+    center.moveTo(map.get('scene_1')[0].worldPos());
 
     const oldMan = map.add([
         k.sprite('old_man_idle'), 
