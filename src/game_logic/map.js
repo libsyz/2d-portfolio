@@ -49,7 +49,8 @@ export const createMap = () => {
                 map.add([
                     k.rect(scene.width, scene.height),
                     k.area(),
-                    k.pos(scene.x, scene.y),
+                    k.pos(scene.x + 162, scene.y + 86),
+                    k.anchor('center'),
                     scene.name,
                     k.opacity(0)
                 ])

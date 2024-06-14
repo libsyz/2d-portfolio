@@ -41,20 +41,24 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
-    const activeScene = map.get('active_scene')[0]
+    const sceneOne = map.get('scene_1')[0]
+
+    k.camPos(sceneOne.worldPos());
+
+    // player.onUpdate(()=> {
+    //     k.camPos(player.worldPos());
+    // })
+    k.debug.log(k.camPos())
+    const sceneTwo = map.get('scene_2')[0]
 
 
-    // k.camPos(k.vec2(activeScene.pos.x + 580  , activeScene.pos.y + 400  ));
+    k.onCollide('player', 'scene_2', () => {
+        k.debug.log( sceneTwo.worldPos() );
+        k.camPos(sceneTwo.worldPos());
+    } )
 
-    player.onUpdate(()=> {
-        k.camPos(player.worldPos());
-    })
-
-    sceneTwo = map.get('scene_2')[0]
-
-    sceneTwo.onCollide('player', () => {
-        k.debug.log('touch-touch');
-        k.camPos(sceneTwo.pos);
+    k.onCollide('player', 'scene_1', (player, scene) => {
+        k.camPos(scene.worldPos());
     } )
 
 
