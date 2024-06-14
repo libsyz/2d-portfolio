@@ -35,7 +35,7 @@ export const createMap = () => {
             for (const boundary of layer.objects) {
                     map.add([
                         k.area({
-                        shape: new k.Rect(k.vec2(0), boundary.width, boundary.height),
+                        shape: new k.Rect(k.vec2(0,0), boundary.width, boundary.height),
                         }),
                         k.body({ isStatic: true }),
                         k.pos(boundary.x, boundary.y),
@@ -47,11 +47,11 @@ export const createMap = () => {
         if (layer.name === 'scene') {
             for (const scene of layer.objects) { 
                 map.add([
-                    k.area({
-                        shape: new k.Rect(k.vec2(scene.x, scene.y), scene.width, scene.height)
-                    }),
+                    k.rect(scene.width, scene.height),
+                    k.area(),
                     k.pos(scene.x, scene.y),
-                    scene.name
+                    scene.name,
+                    k.opacity(0)
                 ])
             }
         }

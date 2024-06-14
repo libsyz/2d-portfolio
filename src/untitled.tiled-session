@@ -101,15 +101,15 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                6,
-                5,
-                7
+                9,
+                7,
+                6
             ],
-            "scale": 0.7564,
+            "scale": 1.7471,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 212.18931782125864,
-                "y": 208.88418826017983
+                "x": 200.61816724858335,
+                "y": 199.7596016255509
             }
         },
         "mapdata/map.tmj": {
@@ -255,6 +255,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/map.json",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -265,8 +266,7 @@
         "child.tsj",
         "tilesets/TilesetDesert.tsj",
         "tilesets/TilesetFloor.tsj",
-        "mapdata/map.tmj",
-        "game_map.tmx"
+        "mapdata/map.tmj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
