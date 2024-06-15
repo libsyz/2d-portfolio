@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/map.tmj",
+    "activeFile": "mapdata/map.json",
     "expandedProjectPaths": [
         "tilesets",
         "."
@@ -108,8 +108,8 @@
             "scale": 1.7471,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 200.61816724858335,
-                "y": 199.7596016255509
+                "x": 5.437582279205543,
+                "y": 1.1447541640432632
             }
         },
         "mapdata/map.tmj": {
@@ -249,13 +249,12 @@
         "untitled.tmj",
         "woman.tsj",
         "child.tsj",
-        "mapdata/map.tmj",
+        "mapdata/map.json",
         "tilesets/TilesetFloor.tsj",
         "tilesets/TilesetDesert.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/map.json",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -266,6 +265,7 @@
         "child.tsj",
         "tilesets/TilesetDesert.tsj",
         "tilesets/TilesetFloor.tsj",
+        "mapdata/map.json",
         "mapdata/map.tmj"
     ],
     "resizeMap.removeObjects": false,
