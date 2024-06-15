@@ -19,7 +19,7 @@
             "scaleInEditor": 2.46
         },
         "TilesetFloor.tsj": {
-            "scaleInDock": 1.6092,
+            "scaleInDock": 2.6249,
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
@@ -75,13 +75,13 @@
                 19
             ],
             "expandedObjectLayers": [
-                20,
-                21
+                21,
+                20
             ],
             "scale": 1.4344,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 319.6458449525935,
+                "x": 319.64584495259345,
                 "y": 316.50864472950366
             }
         },
@@ -101,15 +101,15 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                9,
+                6,
                 7,
-                6
+                9
             ],
-            "scale": 1.7471,
-            "selectedLayer": 5,
+            "scale": 1.5272,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 5.437582279205543,
-                "y": 1.1447541640432632
+                "x": 138.4887375589314,
+                "y": 261.91723415400736
             }
         },
         "mapdata/map.tmj": {
@@ -118,11 +118,11 @@
                 7,
                 9
             ],
-            "scale": 1.8415,
-            "selectedLayer": 5,
+            "scale": 1.5226,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 153.40754819440673,
-                "y": 245.99511267988055
+                "x": 142.8477604098253,
+                "y": 170.76054117956124
             }
         },
         "mapdata/office.tsj": {
@@ -219,7 +219,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 32.22893442112475,
-                "y": 32.073239085756995
+                "y": 32.07323908575698
             }
         },
         "woman.tsj": {
@@ -255,6 +255,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/map.tmj",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -265,8 +266,7 @@
         "child.tsj",
         "tilesets/TilesetDesert.tsj",
         "tilesets/TilesetFloor.tsj",
-        "mapdata/map.json",
-        "mapdata/map.tmj"
+        "mapdata/map.json"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
