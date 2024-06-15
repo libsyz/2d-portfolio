@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"map.json"
-        }
-    },
  "height":22,
  "infinite":false,
  "layers":[
@@ -303,6 +295,72 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
+         "visible":false,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":12,
+         "name":"water_ripples",
+         "objects":[
+                {
+                 "height":16,
+                 "id":41,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":0,
+                 "y":336
+                }, 
+                {
+                 "height":16,
+                 "id":42,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":64,
+                 "y":320
+                }, 
+                {
+                 "height":16,
+                 "id":43,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":112,
+                 "y":336
+                }, 
+                {
+                 "height":16,
+                 "id":44,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":208,
+                 "y":320
+                }, 
+                {
+                 "height":16,
+                 "id":45,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":256,
+                 "y":336
+                }],
+         "opacity":1,
+         "type":"objectgroup",
          "visible":true,
          "x":0,
          "y":0
@@ -318,7 +376,7 @@
                  "name":"mailbox",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":48,
                  "y":64
@@ -340,7 +398,7 @@
                  "name":"scene_2",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":320,
                  "x":0,
                  "y":176
@@ -351,7 +409,7 @@
                  "name":"scene_1",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":320,
                  "x":0,
                  "y":0
@@ -362,7 +420,7 @@
                  "name":"active_scene",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":320,
                  "x":0,
                  "y":0
@@ -384,7 +442,7 @@
                  "name":"player_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":0,
                  "x":87.5725122713074,
                  "y":119.924141008478
@@ -395,7 +453,7 @@
                  "name":"house_door",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":80,
                  "y":64
@@ -406,7 +464,7 @@
                  "name":"house_exit_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":0,
                  "x":87.9980212336847,
                  "y":83.4316374291259
@@ -417,7 +475,7 @@
                  "name":"old_man_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":16,
                  "y":80
@@ -428,19 +486,19 @@
                  "name":"temple_door",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":80,
                  "y":240
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
- "nextlayerid":12,
- "nextobjectid":40,
+ "nextlayerid":13,
+ "nextobjectid":46,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

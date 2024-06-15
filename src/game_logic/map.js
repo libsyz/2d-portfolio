@@ -3,14 +3,25 @@ import { createInteraction } from './interaction.js'
 import { charDialogue } from './utils.js';
 
 
-// load the sprite
+// load the map sprite
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
 const mapData = await (await fetch("./src/mapdata/map.json")).json();
+
+
+// load the animation sprites 
+
+const waterRipple = k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: { 
+        'ripple': { from: 0, to: 3, loop: true, speed: 3 } 
+    }
+});
+
 
 // load the character sprites
 
 k.loadSprite('old_man_face', './src/assets/old_man_face.png');
-
 k.loadSprite('old_man_idle', './src/assets/old_man_idle.png', {
     sliceX: 4,
     sliceY: 1,
@@ -79,6 +90,20 @@ export const createMap = () => {
                 ])
             }
         }
+
+        if (layer.name === 'water_ripples') {
+            for ( const obj of layer.objects ) {
+                let waterRipple = map.add([
+                    k.pos(obj.x, obj.y),
+                    k.sprite('water_ripple'),
+                    k.z(999),
+                    'water_ripple'
+                ])
+
+                waterRipple.play('ripple');
+            }
+        }
+
 
     }
 

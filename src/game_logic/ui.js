@@ -21,7 +21,7 @@ export const createUI = (gameState) => {
         ])
         
         tutorialContainer.add([
-            k.pos(50, 0),
+            k.pos(180, 15),
             k.scale(4),
             k.sprite('tutorial')
         ])
