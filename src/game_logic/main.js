@@ -75,9 +75,6 @@ k.scene("main", async (playerSpawnPoint) => {
 
 
 
-
-
-
     k.onCollide('player', 'old_man_idle', (_, oldMan) => {
         oldMan.dialogShow();
         showDialogue('old_man_face', 'go through the pearly gates to find your skills');
@@ -98,6 +95,10 @@ k.scene("main", async (playerSpawnPoint) => {
 
     k.onCollide('player', 'house_door', () => {
         k.go('house', 'player_spawn');
+    })
+
+    k.onCollide('player', 'temple_door', () => {
+        k.debug.log('touching');
     })
 });
 
