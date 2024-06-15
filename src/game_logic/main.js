@@ -99,6 +99,7 @@ k.scene("main", async (playerSpawnPoint) => {
 
     k.onCollide('player', 'temple_door', () => {
         k.debug.log('touching');
+        k.go('temple')
     })
 });
 
@@ -249,6 +250,13 @@ k.scene('house', async (playerSpawnPoint) => {
 
 })
 
+
+k.scene('temple', async (playerSpawnPoint) => { 
+    k.add([
+        k.rect(1000, 1000),
+        k.color(150, 150,150)
+    ])
+})
 //# Intro Stage
 
 // k.scene('intro', () => {
@@ -630,6 +638,7 @@ k.scene('office', async () => {
 
 
 k.go('main', 'player_spawn');
+
 
 // k.go('main', k.vec2(50,460));
 
