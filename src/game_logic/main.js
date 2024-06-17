@@ -3,6 +3,7 @@ import { createPlayer, createOfficePlayer } from "./player.js";
 import { createOfficeMap } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
+import { createTempleMap } from "./temple_map.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
@@ -72,9 +73,7 @@ k.scene("main", async (playerSpawnPoint) => {
             center.pos = newVal, k.easings.linear;
         })
     })
-
-
-
+    
     k.onCollide('player', 'old_man_idle', (_, oldMan) => {
         oldMan.dialogShow();
         showDialogue('old_man_face', 'go through the pearly gates to find your skills');
@@ -99,7 +98,7 @@ k.scene("main", async (playerSpawnPoint) => {
 
     k.onCollide('player', 'temple_door', () => {
         k.debug.log('touching');
-        k.go('temple')
+        k.go('temple');
     })
 });
 
@@ -252,10 +251,13 @@ k.scene('house', async (playerSpawnPoint) => {
 
 
 k.scene('temple', async (playerSpawnPoint) => { 
-    k.add([
-        k.rect(1000, 1000),
-        k.color(150, 150,150)
-    ])
+    const templeMap = createTempleMap();
+    const ui = createUI(gameState);
+ 
+    fadeInScene();
+ 
+    const player = createPlayer();
+    player.canAttack = false;
 })
 //# Intro Stage
 

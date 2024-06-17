@@ -3,10 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/map.json",
+    "activeFile": "mapdata/temple.tmj",
     "expandedProjectPaths": [
+        ".",
         "tilesets",
-        "."
+        "mapdata"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -23,11 +24,11 @@
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
-            "scaleInDock": 2.2586,
+            "scaleInDock": 1.4435,
             "scaleInEditor": 2.65
         },
         "TilesetNature.tsj": {
-            "scaleInDock": 2.4298,
+            "scaleInDock": 1.5314,
             "scaleInEditor": 2.65
         },
         "TilesetWater.tsj": {
@@ -70,6 +71,10 @@
             "scaleInDock": 2.3257,
             "scaleInEditor": 1
         },
+        "mapdata/TilesetWater.tsj": {
+            "scaleInDock": 2.0886,
+            "scaleInEditor": 2.46
+        },
         "mapdata/house_map.json": {
             "expandedGroupLayers": [
                 19
@@ -81,8 +86,8 @@
             "scale": 0.8501,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 391.7186213386661,
-                "y": 296.43571344547706
+                "x": 319.37419127161513,
+                "y": 314.66886248676633
             }
         },
         "mapdata/house_map.tmj": {
@@ -103,13 +108,14 @@
             "expandedObjectLayers": [
                 6,
                 7,
+                12,
                 9
             ],
-            "scale": 1.0042,
-            "selectedLayer": 3,
+            "scale": 2.1535,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 88.6277633937463,
-                "y": 238.99621589324835
+                "x": 165.77664267471553,
+                "y": 152.31019270954258
             }
         },
         "mapdata/map.tmj": {
@@ -152,6 +158,14 @@
                 "y": 94.60648730198643
             }
         },
+        "mapdata/temple.tmj": {
+            "scale": 2.1933,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 193.3160078420645,
+                "y": 61.095153421784545
+            }
+        },
         "miguel_house.tmj": {
             "expandedGroupLayers": [
                 19
@@ -188,15 +202,15 @@
         },
         "tilesets/TilesetDesert.tsj": {
             "scaleInDock": 2.8716,
-            "scaleInEditor": 2.2356
+            "scaleInEditor": 2.46
         },
         "tilesets/TilesetField.tsj": {
             "scaleInDock": 1,
             "scaleInEditor": 2.65
         },
         "tilesets/TilesetFloor.tsj": {
-            "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInDock": 2.7352,
+            "scaleInEditor": 2.46
         },
         "tilesets/TilesetNature.tsj": {
             "scaleInDock": 1.4638,
@@ -218,8 +232,8 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 32.22893442112475,
-                "y": 32.07323908575698
+                "x": 32.3846297564925,
+                "y": 32.07323908575701
             }
         },
         "woman.tsj": {
@@ -232,8 +246,8 @@
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
-    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/Modern_Office_Revamped",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets",
+    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
     "map.height": 11,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
@@ -251,11 +265,12 @@
         "child.tsj",
         "mapdata/map.json",
         "tilesets/TilesetFloor.tsj",
-        "tilesets/TilesetDesert.tsj"
+        "tilesets/TilesetDesert.tsj",
+        "mapdata/TilesetWater.tsj",
+        "mapdata/temple.tmj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/map.tmj",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -264,9 +279,10 @@
         "untitled.tmj",
         "woman.tsj",
         "child.tsj",
-        "tilesets/TilesetDesert.tsj",
+        "mapdata/map.json",
         "tilesets/TilesetFloor.tsj",
-        "mapdata/map.json"
+        "tilesets/TilesetDesert.tsj",
+        "mapdata/TilesetWater.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",

@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"map.json"
+        }
+    },
  "height":22,
  "infinite":false,
  "layers":[
@@ -498,7 +506,7 @@
          "y":0
         }],
  "nextlayerid":13,
- "nextobjectid":46,
+ "nextobjectid":47,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
