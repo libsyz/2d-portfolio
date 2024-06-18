@@ -132,7 +132,6 @@ k.scene('house', async (playerSpawnPoint) => {
         )
     })
 
-
     k.onCollideEnd('player', 'psychology_diploma', () => { 
         k.get('dialog').forEach(el => k.destroy(el));
     })
@@ -627,7 +626,6 @@ k.scene('office', async () => {
              'We will go over your scrolls of education, skills and experience',
              'you did not bring them?? what a joke!',
              'Go back to your village and dont come back until you have them!'
-             
             ])
 
         dialogBox.onStateEnter('end', () => {
@@ -638,9 +636,6 @@ k.scene('office', async () => {
 
 })
 
-
 k.go('main', 'player_spawn');
 
-
 // k.go('main', k.vec2(50,460));
-

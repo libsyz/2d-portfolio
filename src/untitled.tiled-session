@@ -5,8 +5,8 @@
     },
     "activeFile": "mapdata/temple.tmj",
     "expandedProjectPaths": [
-        ".",
         "tilesets",
+        ".",
         "mapdata"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -71,6 +71,14 @@
             "scaleInDock": 2.3257,
             "scaleInEditor": 1
         },
+        "mapdata/TilesetInterior.tsj": {
+            "scaleInDock": 4.0343,
+            "scaleInEditor": 1
+        },
+        "mapdata/TilesetInteriorFloor.tsj": {
+            "scaleInDock": 2.6893,
+            "scaleInEditor": 1
+        },
         "mapdata/TilesetWater.tsj": {
             "scaleInDock": 2.0886,
             "scaleInEditor": 2.46
@@ -106,16 +114,16 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                6,
-                7,
+                9,
                 12,
-                9
+                6,
+                7
             ],
             "scale": 2.1535,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 165.77664267471553,
-                "y": 152.31019270954258
+                "x": 159.9721383793824,
+                "y": 175.76039006268863
             }
         },
         "mapdata/map.tmj": {
@@ -159,11 +167,11 @@
             }
         },
         "mapdata/temple.tmj": {
-            "scale": 2.1933,
-            "selectedLayer": 0,
+            "scale": 3.9244,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 193.3160078420645,
-                "y": 61.095153421784545
+                "x": 156.96667006421367,
+                "y": 54.27581286311285
             }
         },
         "miguel_house.tmj": {
@@ -201,7 +209,7 @@
             "scaleInEditor": 1
         },
         "tilesets/TilesetDesert.tsj": {
-            "scaleInDock": 2.8716,
+            "scaleInDock": 1.8188,
             "scaleInEditor": 2.46
         },
         "tilesets/TilesetField.tsj": {
@@ -225,15 +233,15 @@
             "scaleInEditor": 3.13
         },
         "tilesets/room_builder.tsj": {
-            "scaleInDock": 2.5682,
+            "scaleInDock": 1.9545,
             "scaleInEditor": 2.46
         },
         "untitled.tmj": {
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 32.3846297564925,
-                "y": 32.07323908575701
+                "x": 32.22893442112475,
+                "y": 32.22893442112475
             }
         },
         "woman.tsj": {
@@ -267,7 +275,9 @@
         "tilesets/TilesetFloor.tsj",
         "tilesets/TilesetDesert.tsj",
         "mapdata/TilesetWater.tsj",
-        "mapdata/temple.tmj"
+        "mapdata/temple.tmj",
+        "mapdata/TilesetInteriorFloor.tsj",
+        "mapdata/TilesetInterior.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
