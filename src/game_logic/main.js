@@ -98,7 +98,7 @@ k.scene("main", async (playerSpawnPoint) => {
 
     k.onCollide('player', 'temple_door', () => {
         k.debug.log('touching');
-        k.go('temple');
+        k.go('temple', 'player_spawn');
     })
 });
 
@@ -250,13 +250,16 @@ k.scene('house', async (playerSpawnPoint) => {
 
 
 k.scene('temple', async (playerSpawnPoint) => { 
-    const templeMap = createTempleMap();
+    const templeMap = await createTempleMap();
     const ui = createUI(gameState);
+
+    const player = createPlayer();
+    player.canAttack = false;
+
+    player.moveTo(templeMap.get(playerSpawnPoint)[0].worldPos())
  
     fadeInScene();
  
-    const player = createPlayer();
-    player.canAttack = false;
 })
 //# Intro Stage
 

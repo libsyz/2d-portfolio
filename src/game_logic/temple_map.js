@@ -28,25 +28,10 @@ k.loadSprite('player', './src/assets/player.png', {
     }
 })
 
-// receptionist
-
-k.loadSprite('receptionist', './src/assets/receptionist.png', {
-    sliceX: 4, 
-    sliceY: 1,
-    anims: {
-        'down': 0,
-        'up': 1,
-        'right': 2,
-        'left': 3
-    }
-});
-
 
 // load the map
 k.loadSprite('temple_map', './src/assets/temple_map.png');
 const mapData = await (await fetch("./src/mapdata/temple_map.json")).json();
-
-export const spawnPoints = {};
 
 export const createTempleMap = async () => {
     const layers = mapData.layers;
@@ -54,15 +39,35 @@ export const createTempleMap = async () => {
         k.pos(0), 
         k.scale(4)]); // magic freaking number that probably use for things to be sized properly
 
+
     // add spawn points 
     for (const layer of layers) {
         if (layer.name === 'spawn_points') {
             for ( const obj of layer.objects ) {
-                spawnPoints[obj.name] = k.vec2(obj.x, obj.y)
+                templeMap.add([
+                    k.pos(obj.x, obj.y),
+                    k.area({
+                        shape: new k.Rect(k.vec2(0), obj.width, obj.height)
+                    }),
+                    obj.name
+                ])
+            }
+        }
+
+        if (layer.name === "bounds") {
+            for (const boundary of layer.objects) {
+                templeMap.add([
+                    k.area({
+                    shape: new k.Rect(k.vec2(0,0), boundary.width, boundary.height),
+                    }),
+                    k.body({ isStatic: true }),
+                    k.pos(boundary.x, boundary.y),
+                    'boundary',
+                ]);
             }
         }
     }
 
-    return officeMap
+    return templeMap
 
 }

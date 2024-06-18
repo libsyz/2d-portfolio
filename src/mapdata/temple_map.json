@@ -105,6 +105,17 @@
                  "width":1,
                  "x":160,
                  "y":167
+                }, 
+                {
+                 "height":0,
+                 "id":12,
+                 "name":"spirit_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -212,7 +223,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":12,
+ "nextobjectid":13,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
