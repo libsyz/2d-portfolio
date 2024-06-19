@@ -259,6 +259,12 @@ k.scene('temple', async (playerSpawnPoint) => {
     player.moveTo(templeMap.get(playerSpawnPoint)[0].worldPos())
  
     fadeInScene();
+
+
+    player.onCollide('dialogue_start', () => {
+        player.canMove = false;
+        k.debug.log('touching');
+    })
  
 })
 //# Intro Stage

@@ -66,6 +66,18 @@ export const createTempleMap = async () => {
                 ]);
             }
         }
+
+        if (layer.name === 'scene_control') {
+            for ( const obj of layer.objects ) {
+                templeMap.add([
+                    k.pos(obj.x, obj.y),
+                    k.rect(obj.width, obj.height),
+                    k.opacity(0),
+                    k.area(),
+                    obj.name
+                ])
+            }
+        }
     }
 
     return templeMap

@@ -119,7 +119,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -129,19 +129,19 @@
          "name":"scene_control",
          "objects":[
                 {
-                 "height":0,
+                 "height":8,
                  "id":3,
                  "name":"dialogue_start",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
-                 "x":160,
-                 "y":112
+                 "width":8,
+                 "x":156,
+                 "y":108
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -218,7 +218,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],

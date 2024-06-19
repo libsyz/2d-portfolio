@@ -35,7 +35,7 @@ export const createPlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body(),
-        { canAttack: true },
+        { canAttack: true, canMove: false },
         'player'
     ]);
 
