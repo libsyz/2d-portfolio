@@ -6,8 +6,8 @@
     "activeFile": "mapdata/temple.tmj",
     "expandedProjectPaths": [
         "tilesets",
-        ".",
-        "mapdata"
+        "mapdata",
+        "."
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -72,7 +72,7 @@
             "scaleInEditor": 1
         },
         "mapdata/TilesetInterior.tsj": {
-            "scaleInDock": 4.0343,
+            "scaleInDock": 3.7535,
             "scaleInEditor": 1
         },
         "mapdata/TilesetInteriorFloor.tsj": {
@@ -167,11 +167,11 @@
             }
         },
         "mapdata/temple.tmj": {
-            "scale": 3.9244,
-            "selectedLayer": 3,
+            "scale": 5.8038,
+            "selectedLayer": 5,
             "viewCenter": {
-                "x": 156.96667006421367,
-                "y": 54.27581286311285
+                "x": 167.8210827388952,
+                "y": 125.43505978841449
             }
         },
         "miguel_house.tmj": {

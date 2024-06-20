@@ -262,8 +262,13 @@ k.scene('temple', async (playerSpawnPoint) => {
 
 
     player.onCollide('dialogue_start', () => {
-        player.canMove = false;
-        k.debug.log('touching');
+        player.enterState('dialogue');
+
+        k.wait(2, () => {
+            player.enterState('attack')
+        })
+
+        
     })
  
 })
