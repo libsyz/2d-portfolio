@@ -263,19 +263,21 @@ k.scene('temple', async (playerSpawnPoint) => {
     player.onCollide('dialogue_start', async () => {
         player.enterState('dialogue');
 
-        const spirit = templeMap.add([
+        const spirit = await templeMap.add([
             k.sprite('spirit'),
             k.scale(0.8),
             k.anchor('center'),
-            k.pos(121, 48),
+            k.pos(160, 80),
             'spirit'
         ])
 
-        spirit.play('idle');
+        // await spirit.moveTo(templeMap.get('spirit_spawn')[0].worldPos());
+
+        await spirit.play('idle');
 
 
 
-        k.wait(2, () => {
+        await k.wait(2, () => {
             player.enterState('attack')
         })
 
