@@ -1,0 +1,14 @@
+{ "columns":15,
+ "image":"..\/..\/..\/..\/Downloads\/NinjaAdventure\/Actor\/Boss\/GiantSpirit\/Idle.png",
+ "imageheight":50,
+ "imagewidth":250,
+ "margin":0,
+ "name":"test_spirit",
+ "spacing":0,
+ "tilecount":45,
+ "tiledversion":"1.10.2",
+ "tileheight":16,
+ "tilewidth":16,
+ "type":"tileset",
+ "version":"1.10"
+}

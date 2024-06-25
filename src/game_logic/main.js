@@ -260,9 +260,20 @@ k.scene('temple', async (playerSpawnPoint) => {
  
     fadeInScene();
 
-
-    player.onCollide('dialogue_start', () => {
+    player.onCollide('dialogue_start', async () => {
         player.enterState('dialogue');
+
+        const spirit = templeMap.add([
+            k.sprite('spirit'),
+            k.scale(0.8),
+            k.anchor('center'),
+            k.pos(121, 48),
+            'spirit'
+        ])
+
+        spirit.play('idle');
+
+
 
         k.wait(2, () => {
             player.enterState('attack')

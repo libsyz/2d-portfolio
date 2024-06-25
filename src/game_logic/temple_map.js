@@ -5,28 +5,36 @@ import { createSpawnPoint } from './spawn_point.js';
 
 // load the character sprites 
 
-// player
+// spirit
 
-k.loadSprite('player-face', './src/assets/player_face.png')
+k.loadSprite('spirit-face', './src/assets/spirit_face.png');
 
-k.loadSprite('player', './src/assets/player.png', {
-    sliceX: 4,
-    sliceY: 5,
+k.loadSprite('spirit',  './src/assets/spirit.png', {
+    sliceX: 5,
+    sliceY: 1,
     anims: {
-        'idle-down': 0,
-        'idle-up': 4,
-        'idle-left': 8,
-        'idle-right': 12,
-        'attack-down': 16,
-        'attack-up': 17,
-        'attack-left': 18,
-        'attack-right': 19,
-        'down': {from: 0, to: 3, loop: true, speed: 8 },
-        'up': {from: 4, to: 7, loop: true, speed: 8 },
-        'left': {from: 8, to: 11, loop: true, speed: 8},
-        'right': {from: 12, to: 15, loop: true, speed: 8}
+        'idle': { from: 0, to: 4, loop: true, speed: 10 } 
     }
-})
+});
+
+// k.loadSprite('player', './src/assets/player.png', {
+//     sliceX: 4,
+//     sliceY: 5,
+//     anims: {
+//         'idle-down': 0,
+//         'idle-up': 4,
+//         'idle-left': 8,
+//         'idle-right': 12,
+//         'attack-down': 16,
+//         'attack-up': 17,
+//         'attack-left': 18,
+//         'attack-right': 19,
+//         'down': {from: 0, to: 3, loop: true, speed: 8 },
+//         'up': {from: 4, to: 7, loop: true, speed: 8 },
+//         'left': {from: 8, to: 11, loop: true, speed: 8},
+//         'right': {from: 12, to: 15, loop: true, speed: 8}
+//     }
+// })
 
 
 // load the map
@@ -79,6 +87,7 @@ export const createTempleMap = async () => {
             }
         }
     }
+
 
     return templeMap
 

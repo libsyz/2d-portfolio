@@ -88,8 +88,8 @@
                 19
             ],
             "expandedObjectLayers": [
-                21,
-                20
+                20,
+                21
             ],
             "scale": 0.8501,
             "selectedLayer": 7,
@@ -116,8 +116,8 @@
             "expandedObjectLayers": [
                 9,
                 12,
-                6,
-                7
+                7,
+                6
             ],
             "scale": 2.1535,
             "selectedLayer": 4,
@@ -167,11 +167,14 @@
             }
         },
         "mapdata/temple.tmj": {
-            "scale": 5.8038,
-            "selectedLayer": 5,
+            "expandedObjectLayers": [
+                7
+            ],
+            "scale": 1.318,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 167.8210827388952,
-                "y": 125.43505978841449
+                "x": 172.98937784522002,
+                "y": 80.4248861911988
             }
         },
         "miguel_house.tmj": {
@@ -255,7 +258,7 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Boss/GiantSpirit",
     "map.height": 11,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
