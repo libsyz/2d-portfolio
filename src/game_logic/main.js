@@ -267,7 +267,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             k.sprite('spirit'),
             k.scale(0.8),
             k.anchor('center'),
-            k.pos(160, 80),
+            k.pos(160, 60),
             k.fadeIn(1),
             k.opacity(1),
             'spirit'
