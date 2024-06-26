@@ -268,17 +268,21 @@ k.scene('temple', async (playerSpawnPoint) => {
             k.scale(0.8),
             k.anchor('center'),
             k.pos(160, 80),
+            k.fadeIn(1),
+            k.opacity(1),
             'spirit'
         ])
 
-        // await spirit.moveTo(templeMap.get('spirit_spawn')[0].worldPos());
 
+        // await spirit.moveTo(templeMap.get('spirit_spawn')[0].worldPos());
         await spirit.play('idle');
 
 
-
         await k.wait(2, () => {
-            player.enterState('attack')
+            showDialogueHouse('spirit-face', 
+                ['Do you seek the scroll of skills?',
+                  'Then answer my questions correctly!'
+                ])
         })
 
         
