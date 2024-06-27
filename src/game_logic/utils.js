@@ -38,6 +38,7 @@ export const showDialogueHouse = (faceTag, messages) => {
     let currentMessageIdx = 0 
 
     const {x, y} = k.camPos();
+
     const dialogueBox = k.add([
         k.sprite('dialogue_box_simple'),
         k.pos(x - 632, y + 116),
@@ -100,6 +101,7 @@ export const fadeInScene = () => {
     })
 }
 
+// kaboom component to show dialogue bubble on top of character head 
 
 export const charDialogue = () => {
     return { 
@@ -129,6 +131,8 @@ export const userSelect = () => {
     // Where the user can select topics 
     // and a choice is returned 
 
+    const {x, y} = k.camPos();
+
     const selectBox = k.add([
         k.sprite('dialogue_box_simple'),
         k.pos(x - 632, y + 116),
@@ -137,9 +141,38 @@ export const userSelect = () => {
         'select'
     ]);
 
-    let options = ['Product Management', 'Operations', 'Technology']
+    let yOffset = 15;
+    let idx = 0;
 
-    
+    const optionsArray = ['Product', 'AI', 'Whatever'];
+
+    for (const option of optionsArray) { 
+         selectBox.add([
+            k.text(option, { size: 12 }),
+            k.pos(20, yOffset),
+            k.color(0,0,0), 
+            { active: idx == 0 ? true : false, position: idx },
+            'option'
+        ])
+        yOffset += 10;
+        idx += 1;
+
+    }
+
+    k.get('select')[0].children.forEach((el) => {
+        if (el.active === true) {
+            el.color = new k.Color(0, 0, 255);
+        }
+    })
+
+    selectBox.onKeyRelease('down', () => {
+        k.debug.log('todo - select an option down');
+    })
+
+    selectBox.onKeyRelease('up', () => {
+        k.debug.log('todo - select an option up');
+    })
+
 
 }
 

@@ -1,5 +1,6 @@
 import { k } from "./kaboomCtx.js";
 import { showDialogueHouse } from "./utils";
+import { userSelect } from "./utils";
 
 
 export const createSkillsCutscene = () => { 
@@ -9,7 +10,7 @@ export const createSkillsCutscene = () => {
             this.player = player;
             this.spawnSpirit(map);
             let spiritDialogue = this.spiritDialogue(); 
-            spiritDialogue.onStateEnter('end', () => this.getTopics())
+            spiritDialogue.onStateEnter('end', () => this.getTopics() )
         },
         spiritDialogue() {
             return showDialogueHouse('spirit-face', 
@@ -33,8 +34,7 @@ export const createSkillsCutscene = () => {
             spirit.play('idle');
         },
         getTopics() {
-            k.debug.log('show UI!');
-            this.player.enterState('explore');
+            userSelect();
         }
 
             
