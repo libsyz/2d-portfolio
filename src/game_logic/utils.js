@@ -122,3 +122,25 @@ export const charDialogue = () => {
 }
 
 
+export const userSelect = () => {
+    // TODO
+    // implement a dialog box
+    // With Arrows
+    // Where the user can select topics 
+    // and a choice is returned 
+
+    const selectBox = k.add([
+        k.sprite('dialogue_box_simple'),
+        k.pos(x - 632, y + 116),
+        k.scale(4),
+        k.state('start', ['end']),
+        'select'
+    ]);
+
+    let options = ['Product Management', 'Operations', 'Technology']
+
+    
+
+}
+
+

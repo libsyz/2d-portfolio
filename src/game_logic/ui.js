@@ -34,8 +34,6 @@ export const createUI = (gameState) => {
 
     }
 
-
-
     const educationScroll = hud.add([
         k.sprite('greenScrollUI'),
         k.pos(18, 18),

@@ -154,6 +154,8 @@ export const createPlayer = () => {
 
     player.onStateEnter('explore', () => {
         player.clearAttackEvents();
+        player.setPlayerMovementEvents();
+        
     })
 
     player.onStateEnter('dialogue', () => {

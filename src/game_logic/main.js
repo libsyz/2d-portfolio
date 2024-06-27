@@ -9,6 +9,7 @@ import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
+import { createSkillsCutscene } from "./skills_cutscene.js"
 
 k.setBackground(k.color(255, 255, 255));
 
@@ -260,33 +261,12 @@ k.scene('temple', async (playerSpawnPoint) => {
  
     fadeInScene();
 
+    const cutScene = createSkillsCutscene();
+
     player.onCollide('dialogue_start', async () => {
         player.enterState('dialogue');
-
-        const spirit = await templeMap.add([
-            k.sprite('spirit'),
-            k.scale(0.8),
-            k.anchor('center'),
-            k.pos(160, 60),
-            k.fadeIn(1),
-            k.opacity(1),
-            'spirit'
-        ])
-
-
-        // await spirit.moveTo(templeMap.get('spirit_spawn')[0].worldPos());
-        await spirit.play('idle');
-
-
-        await k.wait(2, () => {
-            showDialogueHouse('spirit-face', 
-                ['Do you seek the scroll of skills?',
-                  'Then answer my questions correctly!'
-                ])
-        })
-
-        
-    })
+        cutScene.init(templeMap, player);
+     })
  
 })
 //# Intro Stage
