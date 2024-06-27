@@ -138,6 +138,7 @@ export const userSelect = () => {
         k.pos(x - 632, y + 116),
         k.scale(4),
         k.state('start', ['end']),
+        { activeOption: 0 },
         'select'
     ]);
 
@@ -151,27 +152,66 @@ export const userSelect = () => {
             k.text(option, { size: 12 }),
             k.pos(20, yOffset),
             k.color(0,0,0), 
-            { active: idx == 0 ? true : false, position: idx },
+            { 
+                active: idx == 0 ? true : false, 
+                position: idx, 
+                contents: option 
+            },
             'option'
         ])
         yOffset += 10;
         idx += 1;
-
     }
 
-    k.get('select')[0].children.forEach((el) => {
-        if (el.active === true) {
+    selectBox.children.forEach((el) => {
+        if ( el.position == selectBox.activeOption ) {
+            el.active.true;
             el.color = new k.Color(0, 0, 255);
         }
     })
 
     selectBox.onKeyRelease('down', () => {
-        k.debug.log('todo - select an option down');
+        if ( selectBox.activeOption == 2 ) { 
+            return 
+        }
+
+        selectBox.activeOption += 1
+
+        selectBox.children.forEach((el) => {
+            if ( el.position == selectBox.activeOption ) {
+                el.active = true;
+                el.color = new k.Color(0, 0, 255);
+            } else { 
+                el.active = false 
+                el.color = new k.Color(0, 0, 0 )
+            }
+        })
     })
 
     selectBox.onKeyRelease('up', () => {
-        k.debug.log('todo - select an option up');
+        if ( selectBox.activeOption == 0 ) {
+            return 
+        }
+
+        selectBox.activeOption -= 1
+
+        selectBox.children.forEach((el) => {
+            if ( el.position == selectBox.activeOption ) {
+                el.active.true;
+                el.color = new k.Color(0, 0, 255);
+            } else {
+                el.active = false;
+                el.color = new k.Color(0, 0, 0);
+            }
+        })
+
+    selectBox.onKeyRelease('enter', () => {
+        selectBox.enterState('end');
+        selectBox.destroy();
     })
+
+    return selectBox;
+})
 
 
 }

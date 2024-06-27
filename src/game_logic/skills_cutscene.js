@@ -9,7 +9,8 @@ export const createSkillsCutscene = () => {
         init(map, player) {
             this.player = player;
             this.spawnSpirit(map);
-            let spiritDialogue = this.spiritDialogue(); 
+            let spiritDialogue = this.spiritDialogue();
+
             spiritDialogue.onStateEnter('end', () => this.getTopics() )
         },
         spiritDialogue() {
