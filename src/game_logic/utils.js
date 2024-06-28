@@ -138,7 +138,12 @@ export const userSelect = () => {
         k.pos(x - 632, y + 116),
         k.scale(4),
         k.state('start', ['end']),
-        { activeOption: 0 },
+        { 
+            activeOption: 0,
+            getActiveContents() {
+                 return ( this.children.find((el) => el.active === true) ).contents
+            }
+         },
         'select'
     ]);
 
@@ -208,6 +213,9 @@ export const userSelect = () => {
     selectBox.onKeyRelease('enter', () => {
         selectBox.enterState('end');
         selectBox.destroy();
+        // TODO 
+        // This is a bad idea
+        // How can I pass the data from the selectbox to the scene? 
     })
 
     return selectBox;

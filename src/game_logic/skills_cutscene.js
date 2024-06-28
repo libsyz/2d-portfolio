@@ -6,12 +6,19 @@ import { userSelect } from "./utils";
 export const createSkillsCutscene = () => { 
 
     return {
+        sceneState: {
+            topicSelection: null,
+        },
         init(map, player) {
             this.player = player;
             this.spawnSpirit(map);
             let spiritDialogue = this.spiritDialogue();
+            let topicsBox; 
+            spiritDialogue.onStateEnter('end', () => topicsBox = this.getTopics() );
+            topicsBox.onStateEnter('end', () => { 
+                k.debug.log(this.sceneState.topicSelection)
+            })
 
-            spiritDialogue.onStateEnter('end', () => this.getTopics() )
         },
         spiritDialogue() {
             return showDialogueHouse('spirit-face', 
@@ -35,7 +42,14 @@ export const createSkillsCutscene = () => {
             spirit.play('idle');
         },
         getTopics() {
-            userSelect();
+           const selectBox = userSelect();
+
+           selectBox.onStateEnter('end', () => {
+            this.sceneState.topicSelection = selectBox.getActiveContents();
+           })
+
+           return selectBox;
+
         }
 
             
