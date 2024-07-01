@@ -9,14 +9,14 @@ export const createSkillsCutscene = () => {
         sceneState: {
             topicSelection: null,
         },
-        init(map, player) {
+        async init(map, player) {
             this.player = player;
             this.spawnSpirit(map);
             let spiritDialogue = this.spiritDialogue();
             let topicsBox; 
-            spiritDialogue.onStateEnter('end', () => topicsBox = this.getTopics() );
-            topicsBox.onStateEnter('end', () => { 
-                k.debug.log(this.sceneState.topicSelection)
+            await spiritDialogue.onStateEnter('end', () => topicsBox = this.getTopics() );
+            await topicsBox.onStateEnter('end', () => { 
+                k.debug.log('this.sceneState.topicSelection')
             })
 
         },
@@ -41,10 +41,10 @@ export const createSkillsCutscene = () => {
 
             spirit.play('idle');
         },
-        getTopics() {
-           const selectBox = userSelect();
+        async getTopics() {
+           const selectBox = await userSelect();
 
-           selectBox.onStateEnter('end', () => {
+           await selectBox.onStateEnter('end', () => {
             this.sceneState.topicSelection = selectBox.getActiveContents();
            })
 

@@ -647,6 +647,6 @@ k.scene('office', async () => {
 
 })
 
-k.go('main', 'player_spawn');
+k.go('temple', 'player_spawn');
 
 // k.go('main', k.vec2(50,460));

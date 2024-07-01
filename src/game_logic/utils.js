@@ -213,9 +213,6 @@ export const userSelect = () => {
     selectBox.onKeyRelease('enter', () => {
         selectBox.enterState('end');
         selectBox.destroy();
-        // TODO 
-        // This is a bad idea
-        // How can I pass the data from the selectbox to the scene? 
     })
 
     return selectBox;
