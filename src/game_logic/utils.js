@@ -34,6 +34,7 @@ export const showDialogue = (faceTag, message) => {
 }
 
 
+// TODO: This is just a shitty function call name, I need to rename this 
 export const showDialogueHouse = (faceTag, messages) => {
     let currentMessageIdx = 0 
 

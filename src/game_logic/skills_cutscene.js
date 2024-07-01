@@ -9,24 +9,24 @@ export const createSkillsCutscene = () => {
         sceneState: {
             topicSelection: null,
         },
+        sceneCounter: 0,
         async init(map, player) {
             this.player = player;
             this.spawnSpirit(map);
-            let spiritDialogue = this.spiritDialogue();
-            let topicsBox; 
-            await spiritDialogue.onStateEnter('end', () => topicsBox = this.getTopics() );
-            await topicsBox.onStateEnter('end', () => { 
-                k.debug.log('this.sceneState.topicSelection')
-            })
+            this.setup();
+            this.next();
+            // this approach does not make sense, all the callbacks are going to run 
 
         },
         spiritDialogue() {
-            return showDialogueHouse('spirit-face', 
+            let dialogue = showDialogueHouse('spirit-face', 
                 [
                     'Hello seeker', 
                     'Answer my questions correctly to get your skills scrolls',
                     'Choose your topic wisely'
                 ]);
+
+            dialogue.onStateEnter('end', (this) => { this.next() } )
         },
          async spawnSpirit(map) {
             const spirit = await map.add([
@@ -50,7 +50,14 @@ export const createSkillsCutscene = () => {
 
            return selectBox;
 
-        }
+        },
+        setup() {
+            this.parts = [ this.spiritDialogue, this.getTopics ]
+        },
+        next() {
+            this.parts[this.sceneCounter]();
+            this.sceneCounter++
+        },
 
             
 
