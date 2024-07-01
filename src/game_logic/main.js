@@ -261,7 +261,7 @@ k.scene('temple', async (playerSpawnPoint) => {
  
     fadeInScene();
 
-    const cutScene = createSkillsCutscene();
+    const cutScene = await createSkillsCutscene();
 
     player.onCollide('dialogue_start', async () => {
         player.enterState('dialogue');

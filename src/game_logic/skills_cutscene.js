@@ -15,8 +15,6 @@ export const createSkillsCutscene = () => {
             this.spawnSpirit(map);
             this.setup();
             this.next();
-            // this approach does not make sense, all the callbacks are going to run 
-
         },
         spiritDialogue() {
             let dialogue = showDialogueHouse('spirit-face', 
@@ -26,7 +24,7 @@ export const createSkillsCutscene = () => {
                     'Choose your topic wisely'
                 ]);
 
-            dialogue.onStateEnter('end', (this) => { this.next() } )
+            dialogue.onStateEnter('end', () => this.next() );
         },
          async spawnSpirit(map) {
             const spirit = await map.add([
@@ -52,15 +50,16 @@ export const createSkillsCutscene = () => {
 
         },
         setup() {
-            this.parts = [ this.spiritDialogue, this.getTopics ]
+            // context is bound so I reference the object, not the array
+            this.parts = [ this.spiritDialogue.bind(this), this.getTopics.bind(this) ]
         },
-        next() {
+        next: function() {
             this.parts[this.sceneCounter]();
             this.sceneCounter++
-        },
+        }
 
             
 
 
-        }
     }
+}
