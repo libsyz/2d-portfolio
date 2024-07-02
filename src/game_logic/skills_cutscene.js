@@ -44,14 +44,38 @@ export const createSkillsCutscene = () => {
 
            await selectBox.onStateEnter('end', () => {
             this.sceneState.topicSelection = selectBox.getActiveContents();
+            this.next();
            })
 
            return selectBox;
 
         },
+        spiritQuestions() {
+            k.debug.log(this.sceneState.topicSelection);
+
+            const questions = {
+                product: [
+                    'What is cost of delay?',
+                    'What does ICE stand for?',
+                    'Do you need to be technical to be a good PM?',
+                ]
+            }
+
+            const getRandomNumber = () => {
+                return Math.floor(Math.random() * 2);
+            }
+
+            showDialogueHouse('spirit-face', 
+                ['hahaha', questions['product'][getRandomNumber()]]
+            )
+        },
         setup() {
             // context is bound so I reference the object, not the array
-            this.parts = [ this.spiritDialogue.bind(this), this.getTopics.bind(this) ]
+            this.parts = [ 
+                this.spiritDialogue.bind(this), 
+                this.getTopics.bind(this),
+                this.spiritQuestions.bind(this)
+            ]
         },
         next: function() {
             this.parts[this.sceneCounter]();

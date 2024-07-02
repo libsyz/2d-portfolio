@@ -211,14 +211,15 @@ export const userSelect = () => {
             }
         })
 
+    
+    })
+
     selectBox.onKeyRelease('enter', () => {
         selectBox.enterState('end');
         selectBox.destroy();
     })
 
     return selectBox;
-})
-
 
 }
 
