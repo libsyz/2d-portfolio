@@ -42,8 +42,8 @@ export const createSkillsCutscene = () => {
         async getTopics() {
            const selectBox = await userSelect();
 
-           await selectBox.onStateEnter('end', () => {
-            this.sceneState.topicSelection = selectBox.getActiveContents();
+        selectBox.onStateEnter('end', async () => {
+            this.sceneState.topicSelection = await selectBox.getActiveContents();
             this.next();
            })
 

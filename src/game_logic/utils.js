@@ -159,7 +159,7 @@ export const userSelect = () => {
             k.pos(20, yOffset),
             k.color(0,0,0), 
             { 
-                active: idx == 0 ? true : false, 
+                active: idx === 0 ? true : false, 
                 position: idx, 
                 contents: option 
             },
@@ -170,8 +170,7 @@ export const userSelect = () => {
     }
 
     selectBox.children.forEach((el) => {
-        if ( el.position == selectBox.activeOption ) {
-            el.active.true;
+        if ( el.position === selectBox.activeOption ) {
             el.color = new k.Color(0, 0, 255);
         }
     })
@@ -184,7 +183,7 @@ export const userSelect = () => {
         selectBox.activeOption += 1
 
         selectBox.children.forEach((el) => {
-            if ( el.position == selectBox.activeOption ) {
+            if ( el.position === selectBox.activeOption ) {
                 el.active = true;
                 el.color = new k.Color(0, 0, 255);
             } else { 
