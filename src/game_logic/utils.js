@@ -125,7 +125,7 @@ export const charDialogue = () => {
 }
 
 
-export const userSelect = () => {
+export const userSelect = (optionsArray) => {
     // TODO
     // implement a dialog box
     // With Arrows
@@ -150,8 +150,6 @@ export const userSelect = () => {
 
     let yOffset = 15;
     let idx = 0;
-
-    const optionsArray = ['Product', 'AI', 'Whatever'];
 
     for (const option of optionsArray) { 
          selectBox.add([

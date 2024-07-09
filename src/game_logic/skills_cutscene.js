@@ -6,8 +6,11 @@ import { userSelect } from "./utils";
 export const createSkillsCutscene = () => { 
 
     return {
+        topics: ['product', 'ai', 'psychology'],
         sceneState: {
             topicSelection: null,
+            questionSelection: null, 
+            answerSelection: null
         },
         sceneCounter: 0,
         async init(map, player) {
@@ -40,7 +43,7 @@ export const createSkillsCutscene = () => {
             spirit.play('idle');
         },
         async getTopics() {
-           const selectBox = await userSelect();
+           const selectBox = await userSelect(this.topics);
 
         selectBox.onStateEnter('end', async () => {
             this.sceneState.topicSelection = await selectBox.getActiveContents();
@@ -51,26 +54,36 @@ export const createSkillsCutscene = () => {
 
         },
         spiritQuestions() {
-            k.debug.log(this.sceneState.topicSelection);
+            const topic = this.sceneState.topicSelection;
 
             const questions = {
                 product: [
                     'What is cost of delay?',
                     'What does ICE stand for?',
                     'Do you need to be technical to be a good PM?',
+                ],
+                ai: [
+                    'What does RAG mean?', 
+                    'What is more expensive, inference or training?',
+                    'Can a LLM perform a task?'
+                ],
+                psychology: [
+                    'Whats the dugi buru effect?', 
+                    'What percentage of our brain do we usually use?',
+                    'Who is the father of experimental psychology?'
                 ]
             }
 
             const getRandomNumber = () => {
-                return Math.floor(Math.random() * 2);
+                return Math.floor(Math.random() * 3);
             }
 
             showDialogueHouse('spirit-face', 
-                ['hahaha', questions['product'][getRandomNumber()]]
+                ['hahaha', questions[topic][getRandomNumber()]]
             )
         },
         setup() {
-            // context is bound so I reference the object, not the array
+            // using bind to reference original context, not array
             this.parts = [ 
                 this.spiritDialogue.bind(this), 
                 this.getTopics.bind(this),
