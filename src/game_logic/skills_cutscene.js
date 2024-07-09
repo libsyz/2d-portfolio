@@ -46,10 +46,10 @@ export const createSkillsCutscene = () => {
         async getTopics() {
            const topics = skillsCutsceneDialogueData.map(el => el.topic);
 
-           const selectBox = userSelect(['hello', 'world']);
+           const selectBox = userSelect(topics);
 
             selectBox.onStateEnter('end', async () => {
-                this.sceneState.topicSelection = await selectBox.getActiveContents();
+                this.sceneState.topicSelection = await selectBox.getActiveAnswerNumber();
                 this.next();
             })
 
@@ -57,16 +57,15 @@ export const createSkillsCutscene = () => {
 
         },
         spiritQuestions() {
-            const topic = this.sceneState.topicSelection;
+            const topicPos = this.sceneState.topicSelection;
 
             
-
             const getRandomNumber = () => {
                 return Math.floor(Math.random() * 3);
             }
 
             const dialogue = showDialogueHouse('spirit-face', 
-                ['hahaha', this.dialogueData[0]['questions'].map(el => el.question )]
+                ['hahaha', this.dialogueData[topicPos]['questions'].map(el => el.question )]
             )
 
             dialogue.onStateEnter('end', () => {

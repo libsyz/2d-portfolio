@@ -141,8 +141,8 @@ export const userSelect = (optionsArray) => {
         k.state('start', ['end']),
         { 
             activeOption: 0,
-            getActiveContents() {
-                 return ( this.children.find((el) => el.active === true) ).contents
+            getActiveAnswerNumber() {
+                 return ( this.children.find((el) => el.active === true) ).position
             }
          },
         'select'
