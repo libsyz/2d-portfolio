@@ -1,4 +1,5 @@
 import { k } from "./kaboomCtx.js";
+import { skillsCutsceneDialogueData } from "./skills_cutscene_dialogue.js";
 import { showDialogueHouse } from "./utils";
 import { userSelect } from "./utils";
 
@@ -6,7 +7,7 @@ import { userSelect } from "./utils";
 export const createSkillsCutscene = () => { 
 
     return {
-        topics: ['product', 'ai', 'psychology'],
+        dialogueData: skillsCutsceneDialogueData,
         sceneState: {
             topicSelection: null,
             questionSelection: null, 
@@ -43,12 +44,14 @@ export const createSkillsCutscene = () => {
             spirit.play('idle');
         },
         async getTopics() {
-           const selectBox = await userSelect(this.topics);
+           const topics = skillsCutsceneDialogueData.map(el => el.topic);
 
-        selectBox.onStateEnter('end', async () => {
-            this.sceneState.topicSelection = await selectBox.getActiveContents();
-            this.next();
-           })
+           const selectBox = userSelect(['hello', 'world']);
+
+            selectBox.onStateEnter('end', async () => {
+                this.sceneState.topicSelection = await selectBox.getActiveContents();
+                this.next();
+            })
 
            return selectBox;
 
@@ -56,38 +59,30 @@ export const createSkillsCutscene = () => {
         spiritQuestions() {
             const topic = this.sceneState.topicSelection;
 
-            const questions = {
-                product: [
-                    'What is cost of delay?',
-                    'What does ICE stand for?',
-                    'Do you need to be technical to be a good PM?',
-                ],
-                ai: [
-                    'What does RAG mean?', 
-                    'What is more expensive, inference or training?',
-                    'Can a LLM perform a task?'
-                ],
-                psychology: [
-                    'Whats the dugi buru effect?', 
-                    'What percentage of our brain do we usually use?',
-                    'Who is the father of experimental psychology?'
-                ]
-            }
+            
 
             const getRandomNumber = () => {
                 return Math.floor(Math.random() * 3);
             }
 
-            showDialogueHouse('spirit-face', 
-                ['hahaha', questions[topic][getRandomNumber()]]
+            const dialogue = showDialogueHouse('spirit-face', 
+                ['hahaha', this.dialogueData[0]['questions'].map(el => el.question )]
             )
+
+            dialogue.onStateEnter('end', () => {
+                this.next();
+            })
+        },
+        getAnswers() {
+            k.debug.log('should show the relevant answers in a dialogue')
         },
         setup() {
             // using bind to reference original context, not array
             this.parts = [ 
                 this.spiritDialogue.bind(this), 
                 this.getTopics.bind(this),
-                this.spiritQuestions.bind(this)
+                this.spiritQuestions.bind(this),
+                this.getAnswers.bind(this)
             ]
         },
         next: function() {

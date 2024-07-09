@@ -211,7 +211,7 @@ export const userSelect = (optionsArray) => {
     
     })
 
-    selectBox.onKeyRelease('enter', () => {
+    selectBox.onKeyDown('enter', () => {
         selectBox.enterState('end');
         selectBox.destroy();
     })
