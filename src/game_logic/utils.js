@@ -200,7 +200,7 @@ export const userSelect = (optionsArray) => {
 
         selectBox.children.forEach((el) => {
             if ( el.position == selectBox.activeOption ) {
-                el.active.true;
+                el.active = true;
                 el.color = new k.Color(0, 0, 255);
             } else {
                 el.active = false;

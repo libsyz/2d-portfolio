@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/temple.tmj",
+    "activeFile": "mapdata/untitled.tmj",
     "expandedProjectPaths": [
+        ".",
         "tilesets",
-        "mapdata",
-        "."
+        "mapdata"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -168,13 +168,26 @@
         },
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
+                9,
                 7
             ],
-            "scale": 1.318,
+            "scale": 3.4738,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 172.98937784522002,
-                "y": 80.4248861911988
+                "x": 160.34314007714892,
+                "y": 126.08670620070238
+            }
+        },
+        "mapdata/test_spirit.tsj": {
+            "scaleInDock": 1,
+            "scaleInEditor": 3.3413
+        },
+        "mapdata/untitled.tmj": {
+            "scale": 2.5828124999999997,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 159.90320629159106,
+                "y": 87.88868723532971
             }
         },
         "miguel_house.tmj": {
@@ -280,7 +293,9 @@
         "mapdata/TilesetWater.tsj",
         "mapdata/temple.tmj",
         "mapdata/TilesetInteriorFloor.tsj",
-        "mapdata/TilesetInterior.tsj"
+        "mapdata/TilesetInterior.tsj",
+        "mapdata/untitled.tmj",
+        "mapdata/test_spirit.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
