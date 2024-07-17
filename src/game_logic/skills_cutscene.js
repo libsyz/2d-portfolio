@@ -61,11 +61,16 @@ export const createSkillsCutscene = () => {
 
             
             const getRandomNumber = () => {
-                return Math.floor(Math.random() * 3);
+                return Math.floor(Math.random() * 2);
+            }
+
+            const question = () => {
+                let qs = this.dialogueData[topicPos]['questions'].map(el => el.question );
+                return qs[getRandomNumber()];
             }
 
             const dialogue = showDialogueHouse('spirit-face', 
-                ['hahaha', this.dialogueData[topicPos]['questions'].map(el => el.question )]
+                ['hahaha', question()]
             )
 
             dialogue.onStateEnter('end', () => {

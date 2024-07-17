@@ -56,7 +56,30 @@ export const skillsCutsceneDialogueData =
                         isCorrect: false
                     }
                 ]
-            }
+            },
+            { 
+                id: 1,
+                question: "What does AARRR stand for?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Acquisition, Activation, Retention, Referral, Revenue",
+                        isCorrect: true
+                    },
+                    {
+                        id: 1,
+                        content: "Awareness, Activation, Recognition, Retargeting, Revenue",
+                        isCorrect: false
+                    },
+                    {
+                        id: 2, 
+                        content: "I prefer GROG matey",
+                        isCorrect: false
+                    }
+                ]
+            },
+
         ]
     },
     {
