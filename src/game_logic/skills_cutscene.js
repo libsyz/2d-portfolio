@@ -59,18 +59,15 @@ export const createSkillsCutscene = () => {
         spiritQuestions() {
             const topicPos = this.sceneState.topicSelection;
 
+            this.sceneState.questionSelection = Math.floor(Math.random() * 3);
             
-            const getRandomNumber = () => {
-                return Math.floor(Math.random() * 2);
-            }
-
             const question = () => {
                 let qs = this.dialogueData[topicPos]['questions'].map(el => el.question );
-                return qs[getRandomNumber()];
+                return qs[this.sceneState.questionSelection];
             }
 
             const dialogue = showDialogueHouse('spirit-face', 
-                ['hahaha', question()]
+                ['Let\'s see if you can answer this...', question()]
             )
 
             dialogue.onStateEnter('end', () => {
@@ -78,7 +75,16 @@ export const createSkillsCutscene = () => {
             })
         },
         getAnswers() {
-            k.debug.log('should show the relevant answers in a dialogue')
+            // hardcoded
+            const answers = skillsCutsceneDialogueData[0]['questions'][0]['playerAnswers'].map(el => el.content);
+
+            const selectBox = userSelect(answers);
+ 
+             selectBox.onStateEnter('end', async () => {
+                 k.debug.log('answer chosen, need to validate');
+             })
+ 
+            return selectBox;
         },
         setup() {
             // using bind to reference original context, not array
