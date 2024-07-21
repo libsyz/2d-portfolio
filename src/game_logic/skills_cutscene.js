@@ -75,7 +75,6 @@ export const createSkillsCutscene = () => {
             })
         },
         getAnswers() {
-            // TODO - hardcoded, need to make dynamic
             const topicIndex = this.sceneState.topicSelection;
             const questionIndex = this.sceneState.questionSelection;
             const answers = skillsCutsceneDialogueData[topicIndex]['questions'][questionIndex]['playerAnswers'].map(el => el.content);
@@ -83,13 +82,33 @@ export const createSkillsCutscene = () => {
             const selectBox = userSelect(answers);
  
              selectBox.onStateEnter('end', async () => {
-                 k.debug.log('answer chosen, need to validate');
+                this.sceneState.answerSelection = selectBox.getActiveAnswerNumber();
+                this.next()
              })
  
             return selectBox;
         },
         spiritEvaluate() {
+
+            
             // based on the question that has been chosen
+
+            const evaluation = this.dialogueData[this.sceneState.topicSelection]['questions'][this.sceneState.questionSelection]['playerAnswers'][this.sceneState.answerSelection]
+
+            if (evaluation.isCorrect ) {
+                const dialogue = showDialogueHouse('spirit-face', 
+                    ['You answer correctly!', 'You are worthy of the skills scroll']
+                )
+            } else { 
+                const dialogue = showDialogueHouse('spirit-face', 
+                    [
+                     'You answer is incorrect!', 
+                     'But I will give you the skills scroll anyway',
+                     'Finding a job is already hard enough'
+                    ]
+                )
+            }
+
             // check if its true or not
             // if true
             //      - Congratulate the user
@@ -97,6 +116,7 @@ export const createSkillsCutscene = () => {
             //      - Tell the user they were wrong
 
             // Proceed to show the scroll of skills 
+
         }
         ,
         setup() {
