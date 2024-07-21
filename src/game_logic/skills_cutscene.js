@@ -90,17 +90,16 @@ export const createSkillsCutscene = () => {
         },
         spiritEvaluate() {
 
-            
-            // based on the question that has been chosen
-
+            // This is so ugly
             const evaluation = this.dialogueData[this.sceneState.topicSelection]['questions'][this.sceneState.questionSelection]['playerAnswers'][this.sceneState.answerSelection]
-
+            let dialogue;
+            
             if (evaluation.isCorrect ) {
-                const dialogue = showDialogueHouse('spirit-face', 
-                    ['You answer correctly!', 'You are worthy of the skills scroll']
+                dialogue = showDialogueHouse('spirit-face', 
+                    ['You answer is correct!', 'You are worthy of the skills scroll']
                 )
             } else { 
-                const dialogue = showDialogueHouse('spirit-face', 
+                dialogue = showDialogueHouse('spirit-face', 
                     [
                      'You answer is incorrect!', 
                      'But I will give you the skills scroll anyway',
@@ -108,6 +107,9 @@ export const createSkillsCutscene = () => {
                     ]
                 )
             }
+
+
+            dialogue.onStateEnter('end', () => this.player.enterState('attack'));
 
             // check if its true or not
             // if true
