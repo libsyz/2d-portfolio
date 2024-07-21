@@ -75,8 +75,10 @@ export const createSkillsCutscene = () => {
             })
         },
         getAnswers() {
-            // hardcoded
-            const answers = skillsCutsceneDialogueData[0]['questions'][0]['playerAnswers'].map(el => el.content);
+            // TODO - hardcoded, need to make dynamic
+            const topicIndex = this.sceneState.topicSelection;
+            const questionIndex = this.sceneState.questionSelection;
+            const answers = skillsCutsceneDialogueData[topicIndex]['questions'][questionIndex]['playerAnswers'].map(el => el.content);
 
             const selectBox = userSelect(answers);
  
@@ -86,13 +88,25 @@ export const createSkillsCutscene = () => {
  
             return selectBox;
         },
+        spiritEvaluate() {
+            // based on the question that has been chosen
+            // check if its true or not
+            // if true
+            //      - Congratulate the user
+            // if false 
+            //      - Tell the user they were wrong
+
+            // Proceed to show the scroll of skills 
+        }
+        ,
         setup() {
             // using bind to reference original context, not array
             this.parts = [ 
                 this.spiritDialogue.bind(this), 
                 this.getTopics.bind(this),
                 this.spiritQuestions.bind(this),
-                this.getAnswers.bind(this)
+                this.getAnswers.bind(this),
+                this.spiritEvaluate.bind(this)
             ]
         },
         next: function() {

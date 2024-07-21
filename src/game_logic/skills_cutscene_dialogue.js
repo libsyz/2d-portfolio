@@ -79,6 +79,28 @@ export const skillsCutsceneDialogueData =
                     }
                 ]
             },
+            { 
+                id: 2,
+                question: "What are dark patterns in product design?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Layering tech debt to get revenue short term",
+                        isCorrect: false
+                    },
+                    {
+                        id: 1,
+                        content: "Using tricks to take advantage of users",
+                        isCorrect: true
+                    },
+                    {
+                        id: 2, 
+                        content: "Building all features with dark mode",
+                        isCorrect: false
+                    }
+                ]
+            },
 
         ]
     },
@@ -104,6 +126,50 @@ export const skillsCutsceneDialogueData =
                         id: 2, 
                         content: "Retrieval Augmented Generation",
                         isCorrect: true
+                    }
+                ]
+            },
+            { 
+                id: 1,
+                question: "Which of the following is most expensive process?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Data pre-processing",
+                        isCorrect: false
+                    },
+                    {
+                        id: 1,
+                        content: "Model Training",
+                        isCorrect: false
+                    },
+                    {
+                        id: 2, 
+                        content: "Model Inference",
+                        isCorrect: true
+                    }
+                ]
+            },
+            { 
+                id: 2,
+                question: "What learning strategy do LLMs mostly use?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Unsupervised",
+                        isCorrect: true
+                    },
+                    {
+                        id: 1,
+                        content: "Supervised",
+                        isCorrect: false
+                    },
+                    {
+                        id: 2, 
+                        content: "Both",
+                        isCorrect: false
                     }
                 ]
             }
@@ -133,7 +199,52 @@ export const skillsCutsceneDialogueData =
                         isCorrect: true
                     }
                 ]
-            }
+            },
+            { 
+                id: 2,
+                question: "Can you use coaching to treat anxiety disorders?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Lol of course",
+                        isCorrect: false
+                    },
+                    {
+                        id: 1,
+                        content: "Lol nope are you crazy",
+                        isCorrect: true
+                    },
+                    {
+                        id: 2, 
+                        content: "Depends on how much anxiety",
+                        isCorrect: false
+                    }
+                ]
+            },
+            { 
+                id: 3,
+                question: "How much of their brain potential do most people use?" ,
+                playerAnswers: 
+                [
+                    { 
+                        id: 0,
+                        content: "Roughly 10% of their potential",
+                        isCorrect: false
+                    },
+                    {
+                        id: 1,
+                        content: "100%, the brain is expensive",
+                        isCorrect: true
+                    },
+                    {
+                        id: 2, 
+                        content: "~10% during the day, ~70% at night",
+                        isCorrect: false
+                    }
+                ]
+            },
+
         ]
     }
 ]
