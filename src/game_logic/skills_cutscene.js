@@ -4,6 +4,8 @@ import { showDialogueHouse } from "./utils";
 import { userSelect } from "./utils";
 
 
+
+
 export const createSkillsCutscene = () => { 
 
     return {
@@ -16,7 +18,8 @@ export const createSkillsCutscene = () => {
         sceneCounter: 0,
         async init(map, player) {
             this.player = player;
-            this.spawnSpirit(map);
+            this.map = map;
+            this.spawnSpirit();
             this.setup();
             this.next();
         },
@@ -30,8 +33,8 @@ export const createSkillsCutscene = () => {
 
             dialogue.onStateEnter('end', () => this.next() );
         },
-         async spawnSpirit(map) {
-            const spirit = await map.add([
+         async spawnSpirit() {
+            this.spirit = await this.map.add([
                 k.sprite('spirit'),
                 k.scale(0.8),
                 k.anchor('center'),
@@ -41,7 +44,7 @@ export const createSkillsCutscene = () => {
                 'spirit'
             ])
 
-            spirit.play('idle');
+            this.spirit.play('idle');
         },
         async getTopics() {
            const topics = skillsCutsceneDialogueData.map(el => el.topic);
@@ -89,8 +92,7 @@ export const createSkillsCutscene = () => {
             return selectBox;
         },
         spiritEvaluate() {
-
-            // This is so ugly
+            // TODO: This is so ugly
             const evaluation = this.dialogueData[this.sceneState.topicSelection]['questions'][this.sceneState.questionSelection]['playerAnswers'][this.sceneState.answerSelection]
             let dialogue;
             
@@ -109,7 +111,7 @@ export const createSkillsCutscene = () => {
             }
 
 
-            dialogue.onStateEnter('end', () => this.player.enterState('attack'));
+            dialogue.onStateEnter('end', () => this.next());
 
             // check if its true or not
             // if true
@@ -119,8 +121,26 @@ export const createSkillsCutscene = () => {
 
             // Proceed to show the scroll of skills 
 
-        }
-        ,
+        },
+        spawnSkillsScroll() {
+            // ghost needs to fade away
+            // skills scroll needs to come in 
+            this.map.add([
+                k.sprite('skills_scroll'),
+                k.scale(1),
+                k.area(),
+                k.anchor('center'),
+                k.pos(140, 110),
+                k.fadeIn(1),
+                k.opacity(1),
+                'skills_scroll'
+            ])
+
+            k.wait(0.5, () => {
+                this.player.enterState('explore');
+                this.spirit.destroy(); // would be cool to have the ghost disappear nicely
+            })
+        },
         setup() {
             // using bind to reference original context, not array
             this.parts = [ 
@@ -128,7 +148,8 @@ export const createSkillsCutscene = () => {
                 this.getTopics.bind(this),
                 this.spiritQuestions.bind(this),
                 this.getAnswers.bind(this),
-                this.spiritEvaluate.bind(this)
+                this.spiritEvaluate.bind(this),
+                this.spawnSkillsScroll.bind(this)
             ]
         },
         next: function() {

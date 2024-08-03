@@ -6,7 +6,6 @@ import { createSpawnPoint } from './spawn_point.js';
 // load the character sprites 
 
 // spirit
-
 k.loadSprite('spirit-face', './src/assets/spirit_face.png');
 
 k.loadSprite('spirit',  './src/assets/spirit.png', {
@@ -36,6 +35,10 @@ k.loadSprite('spirit',  './src/assets/spirit.png', {
 //     }
 // })
 
+
+// load interactables 
+
+k.loadSprite('skills_scroll', '../src/assets/scroll_fire.png');
 
 // load the map
 k.loadSprite('temple_map', './src/assets/temple_map.png');

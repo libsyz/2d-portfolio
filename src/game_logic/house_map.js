@@ -108,7 +108,7 @@ export const createHouseMap = (gameState) => {
     // add interactables with animations
     const educationChest = houseMap.add([
         k.sprite('treasure_chest'),
-        k.pos(k.vec2(447, 270)), // absolutely magic number
+        k.pos(k.vec2(447, 270)), // absolutely magic number - TODO: Add Spawn Point 
         k.area(),
         k.anchor('center'),
         k.body({isStatic: true}),
@@ -167,7 +167,7 @@ export const createHouseMap = (gameState) => {
 
     const elias = houseMap.add([
         k.sprite('elias'),
-        k.pos(k.vec2(360, 421)), // absolutely magic number
+        k.pos(k.vec2(360, 421)), // absolutely magic number - TODO add spawn point
         k.area(),
         k.scale(0.70),
         k.body({isStatic: true}),
@@ -187,10 +187,10 @@ export const createHouseMap = (gameState) => {
     // move elias left
     // stop, be idle
 
-    setInterval(() => elias.tick(), 2000);
+    setInterval(() => elias.tick(), 2000); // TODO - there has to be a better way than a setinterval
 
     elias.onUpdate(() => {
-        elias.patrol();
+        elias.patrol(); // TODO - Could I move this to the elias object itself? 
     })
 
     return houseMap;

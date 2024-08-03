@@ -170,7 +170,7 @@ k.scene('house', async (playerSpawnPoint) => {
         // destroy the scroll
         gameState.updateScrolls('education');
         
-        // what a terrible line of code
+        // TODO - what a terrible line of code
         k.get('ui')[0].children[0].getScroll();
         })
 
@@ -263,10 +263,19 @@ k.scene('temple', async (playerSpawnPoint) => {
 
     const cutScene = await createSkillsCutscene();
 
+
+
     player.onCollide('dialogue_start', async () => {
         player.enterState('dialogue');
         cutScene.init(templeMap, player);
      })
+
+    player.onCollide('skills_scroll', () => {
+        showDialogueHouse('player_face', [
+            'I found my skills scroll', 
+            'I suddenly know jiu jitsu!'
+        ])
+    })
  
 })
 //# Intro Stage
@@ -648,5 +657,3 @@ k.scene('office', async () => {
 })
 
 k.go('temple', 'player_spawn');
-
-// k.go('main', k.vec2(50,460));
