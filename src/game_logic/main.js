@@ -104,8 +104,6 @@ k.scene("main", async (playerSpawnPoint) => {
 });
 
 k.scene('house', async (playerSpawnPoint) => { 
-
-
    const houseMap = createHouseMap(gameState);
    const ui = createUI(gameState);
    
@@ -138,7 +136,7 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     let treasureCollision = k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
-        let openChestAction = k.onKeyRelease('space', () => { 
+        let openChestEvent = k.onKeyRelease('space', () => { 
         treasureChest.play('open');
         // spawn the scroll at the center of the chest
         const edScroll = k.add([
@@ -158,12 +156,15 @@ k.scene('house', async (playerSpawnPoint) => {
             (posVal) => { edScroll.pos = posVal }   
         )
 
-        openChestAction.cancel();
+        openChestEvent.cancel();
 
         showDialogueHouse(
             'player_face', 
             [
-                'I found my education scroll!', 'I suddenly know kung fu!']);
+                'I found my education scroll!', 
+                'I suddenly know kung fu!'
+            ]
+        );
         // move it up a bit
         // show a dialogue mentioning what it is 
         // destroy the dialogue
@@ -171,7 +172,8 @@ k.scene('house', async (playerSpawnPoint) => {
         gameState.updateScrolls('education');
         
         // TODO - what a terrible line of code
-        k.get('ui')[0].children[0].getScroll();
+        ui.updateScrolls('education');
+        //  k.get('ui')[0].children[0].getScroll();
         })
 
         gameState.checkFinished();

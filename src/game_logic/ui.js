@@ -5,6 +5,7 @@ import { k } from './kaboomCtx';
 
 // sprites 
 k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
+k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
 k.loadSprite('tutorial', './src/assets/tutorial.png');
 
 // Lets see if I can add a scroll
@@ -44,7 +45,20 @@ export const createUI = (gameState) => {
                 this.opacity = 1;
             }
         },
-        'skill_scroll_UI'
+        'education_scroll_ui'
+    ])
+
+    const skillsScroll = hud.add([
+        k.sprite('redScrollUI'),
+        k.pos(68, 18),
+        k.scale(2.25),
+        k.opacity(0.3), 
+        { 
+            getScroll() {
+                this.opacity = 1;
+            }
+        },
+        'skills_scroll_ui'
     ])
 
 
