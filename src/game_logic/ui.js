@@ -9,8 +9,9 @@ k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
 k.loadSprite('tutorial', './src/assets/tutorial.png');
 
 
-const tutorial = (gameState) => {
+const tutorialComponent = (gameState) => {
     let tutorialContainer;
+    let removeTutorialEvent;
 
     return {
         initTutorial() {
@@ -32,9 +33,10 @@ const tutorial = (gameState) => {
                 k.sprite('tutorial')
             ])
     
-            tutorialContainer.onKeyDown('space', this.removeTutorial);
+            removeTutorialEvent = tutorialContainer.onKeyDown('space', this.removeTutorial);
         },
         removeTutorial() {
+            removeTutorialEvent.cancel();
             k.tween(tutorialContainer.pos, k.vec2(tutorialContainer.pos.x, tutorialContainer.pos.y + 200 ), 0.25 ,
             (newPos) =>  tutorialContainer.pos = newPos )
             gameState.tutorial.complete(); 
@@ -42,47 +44,55 @@ const tutorial = (gameState) => {
     }
 }
 
+const scrollsComponent = (gameState) => {
+    let educationScroll;
+
+    return { 
+        initScrolls() {
+            this.invokeEducationScroll()
+        },
+        invokeEducationScroll() {
+            educationScroll = this.add([
+                k.sprite('greenScrollUI'),
+                k.pos(18, 18),
+                k.scale(2.25),
+                gameState.scrolls.includes('education') ? k.opacity(1) : k.opacity(0.3),
+                'education_scroll_ui'
+            ])
+        },
+        getEducationScroll() {
+            gameState.scrolls.push('education');
+            educationScroll.opacity = 1;
+        }
+
+    }
+}
+
 export const createUI = (gameState) => { 
     const hud = k.add([
          k.fixed(),  
          k.z(999),
-         tutorial(gameState),
+         tutorialComponent(gameState),
+         scrollsComponent(gameState),
          'ui'
     ]);
 
-    const educationScroll = hud.add([
-        k.sprite('greenScrollUI'),
-        k.pos(18, 18),
-        k.scale(2.25),
-        k.opacity(0.3), 
-        { 
-            getScroll() {
-                this.opacity = 1;
-            }
-        },
-        'education_scroll_ui'
-    ])
 
-    const skillsScroll = hud.add([
-        k.sprite('redScrollUI'),
-        k.pos(68, 18),
-        k.scale(2.25),
-        k.opacity(0.3), 
-        { 
-            getScroll() {
-                this.opacity = 1;
-            }
-        },
-        'skills_scroll_ui'
-    ])
-
-
-    // update scrolls
-    if (gameState.scrolls.includes('education')) {
-        educationScroll.getScroll();
-    }
+    // const skillsScroll = hud.add([
+    //     k.sprite('redScrollUI'),
+    //     k.pos(68, 18),
+    //     k.scale(2.25),
+    //     k.opacity(0.3), 
+    //     { 
+    //         getScroll() {
+    //             this.opacity = 1;
+    //         }
+    //     },
+    //     'skills_scroll_ui'
+    // ])
 
     hud.initTutorial();
+    hud.initScrolls();
     return hud;
 }
 

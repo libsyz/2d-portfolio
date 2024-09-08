@@ -169,10 +169,9 @@ k.scene('house', async (playerSpawnPoint) => {
         // show a dialogue mentioning what it is 
         // destroy the dialogue
         // destroy the scroll
-        gameState.updateScrolls('education');
         
         // TODO - what a terrible line of code
-        ui.updateScrolls('education');
+        ui.getEducationScroll();
         //  k.get('ui')[0].children[0].getScroll();
         })
 
