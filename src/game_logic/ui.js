@@ -11,8 +11,9 @@ k.loadSprite('tutorial', './src/assets/tutorial.png');
 
 const tutorial = (gameState) => {
     let tutorialContainer;
+
     return {
-        init() {
+        initTutorial() {
             if (!gameState.tutorial.isComplete()) {
                 this.addTutorial();
             }
@@ -81,7 +82,7 @@ export const createUI = (gameState) => {
         educationScroll.getScroll();
     }
 
-    hud.init();
+    hud.initTutorial();
     return hud;
 }
 
