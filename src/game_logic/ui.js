@@ -8,32 +8,46 @@ k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
 k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
 k.loadSprite('tutorial', './src/assets/tutorial.png');
 
-// Lets see if I can add a scroll
 
-export const createUI = (gameState) => { 
-    const hud = k.add([k.fixed(),  k.z(999),'ui' ]);
+const tutorial = (gameState) => {
+    let tutorialContainer;
+    return {
+        init() {
+            if (!gameState.tutorial.isComplete()) {
+                this.addTutorial();
+            }
+        },
+        addTutorial(gameState) {
+            tutorialContainer = this.add([
+                k.rect(1300, 210),
+                k.pos(0, 520),
+                k.color(0,0,0),
+                k.opacity(0.5)
+            ])
 
-    if (gameState.tutorial.isComplete() === false) {
-        const tutorialContainer = hud.add([
-            k.rect(1300, 210),
-            k.pos(0, 520),
-            k.color(0,0,0),
-            k.opacity(0.5)
-        ])
-        
-        tutorialContainer.add([
-            k.pos(180, 15),
-            k.scale(4),
-            k.sprite('tutorial')
-        ])
-
-        tutorialContainer.onKeyDown('space', () => {
+            tutorialContainer.add([
+                k.pos(180, 15),
+                k.scale(4),
+                k.sprite('tutorial')
+            ])
+    
+            tutorialContainer.onKeyDown('space', this.removeTutorial);
+        },
+        removeTutorial() {
             k.tween(tutorialContainer.pos, k.vec2(tutorialContainer.pos.x, tutorialContainer.pos.y + 200 ), 0.25 ,
             (newPos) =>  tutorialContainer.pos = newPos )
             gameState.tutorial.complete(); 
-        })
-
+        }
     }
+}
+
+export const createUI = (gameState) => { 
+    const hud = k.add([
+         k.fixed(),  
+         k.z(999),
+         tutorial(gameState),
+         'ui'
+    ]);
 
     const educationScroll = hud.add([
         k.sprite('greenScrollUI'),
@@ -67,6 +81,16 @@ export const createUI = (gameState) => {
         educationScroll.getScroll();
     }
 
+    hud.init();
     return hud;
 }
+
+
+// what code would I love to have for my UI
+
+// createUI(gamestate) => invokes the UI, passes the gamestate
+
+// UI.refresh()
+// -> applies the right opacity to all the scrolls based on the gamestate
+
 
