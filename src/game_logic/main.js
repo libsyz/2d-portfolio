@@ -275,7 +275,8 @@ k.scene('temple', async (playerSpawnPoint) => {
         showDialogueHouse('player_face', [
             'I found my skills scroll', 
             'I suddenly know jiu jitsu!'
-        ])
+        ]);
+        ui.getScroll('skills');
     })
  
 })

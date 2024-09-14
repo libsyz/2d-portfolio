@@ -47,12 +47,16 @@ const scrollsComponent = (gameState) => {
         {
             spriteName: 'greenScrollUI',
             keyword: 'education',
-            objectName: 'education_scroll_ui'
+            objectName: 'education_scroll_ui',
+            xPos: 18,
+            yPos: 18,
         },
         {
             spriteName: 'redScrollUI',
             keyword: 'skills',
-            objectName: 'skills_scroll_ui'
+            objectName: 'skills_scroll_ui',
+            xPos: 56,
+            yPos: 18,
         }
     ]
 
@@ -64,11 +68,11 @@ const scrollsComponent = (gameState) => {
         },
         render(scroll) {
             scroll.gameObject = this.add([
-                k.sprite('greenScrollUI'),
-                k.pos(18, 18),
+                k.sprite(scroll.spriteName),
+                k.pos(scroll.xPos, scroll.yPos),
                 k.scale(2.25),
-                gameState.scrolls.includes('education') ? k.opacity(1) : k.opacity(0.3),
-                'education_scroll_ui'
+                gameState.scrolls.includes(scroll.keyword) ? k.opacity(1) : k.opacity(0.3),
+                scroll.objectName
             ])
         },
         getScroll(scrollKeyword) {
