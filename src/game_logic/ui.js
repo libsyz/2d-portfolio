@@ -1,8 +1,6 @@
 
 import { k } from './kaboomCtx';
 
-
-
 // sprites 
 k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
 k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
@@ -45,14 +43,27 @@ const tutorialComponent = (gameState) => {
 }
 
 const scrollsComponent = (gameState) => {
-    let educationScroll;
+    let scrolls = [
+        {
+            spriteName: 'greenScrollUI',
+            keyword: 'education',
+            objectName: 'education_scroll_ui'
+        },
+        {
+            spriteName: 'redScrollUI',
+            keyword: 'skills',
+            objectName: 'skills_scroll_ui'
+        }
+    ]
 
     return { 
         initScrolls() {
-            this.invokeEducationScroll()
+            scrolls.forEach((scroll) => {
+                this.render(scroll);
+            })
         },
-        invokeEducationScroll() {
-            educationScroll = this.add([
+        render(scroll) {
+            scroll.gameObject = this.add([
                 k.sprite('greenScrollUI'),
                 k.pos(18, 18),
                 k.scale(2.25),
@@ -60,9 +71,11 @@ const scrollsComponent = (gameState) => {
                 'education_scroll_ui'
             ])
         },
-        getEducationScroll() {
-            gameState.scrolls.push('education');
-            educationScroll.opacity = 1;
+        getScroll(scrollKeyword) {
+            gameState.scrolls.push(scrollKeyword);
+            debugger
+            let foundScroll = scrolls.find((scroll) => scroll.keyword === scrollKeyword)
+            foundScroll.gameObject.opacity = 1;
         }
 
     }
@@ -76,20 +89,6 @@ export const createUI = (gameState) => {
          scrollsComponent(gameState),
          'ui'
     ]);
-
-
-    // const skillsScroll = hud.add([
-    //     k.sprite('redScrollUI'),
-    //     k.pos(68, 18),
-    //     k.scale(2.25),
-    //     k.opacity(0.3), 
-    //     { 
-    //         getScroll() {
-    //             this.opacity = 1;
-    //         }
-    //     },
-    //     'skills_scroll_ui'
-    // ])
 
     hud.initTutorial();
     hud.initScrolls();

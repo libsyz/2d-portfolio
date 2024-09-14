@@ -171,7 +171,7 @@ k.scene('house', async (playerSpawnPoint) => {
         // destroy the scroll
         
         // TODO - what a terrible line of code
-        ui.getEducationScroll();
+        ui.getScroll('education');
         //  k.get('ui')[0].children[0].getScroll();
         })
 
