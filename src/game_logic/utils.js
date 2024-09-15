@@ -76,7 +76,6 @@ export const showDialogueHouse = (faceTag, messages) => {
                     k.color(0,0,0)
                 ])
         } else {
-            k.debug.log('hello world');
             dialogueBox.enterState('end');
             dialogueBox.destroy();
         }

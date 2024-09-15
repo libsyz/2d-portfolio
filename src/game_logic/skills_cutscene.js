@@ -110,7 +110,6 @@ export const createSkillsCutscene = () => {
                 )
             }
 
-
             dialogue.onStateEnter('end', () => this.next());
 
             // check if its true or not
@@ -138,7 +137,7 @@ export const createSkillsCutscene = () => {
 
             k.wait(0.5, () => {
                 this.player.enterState('explore');
-                this.spirit.destroy(); // would be cool to have the ghost disappear nicely
+                this.spirit.destroy(); // would be cool to have the ghost disappear on fadeout
             })
         },
         setup() {

@@ -272,12 +272,18 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
-        showDialogueHouse('player_face', [
+        let map = templeMap; // can I find the thing now? 
+        let dialog = showDialogueHouse('player_face', [
             'I found my skills scroll', 
             'I suddenly know jiu jitsu!'
         ]);
         ui.getScroll('skills');
+
+        dialog.onStateEnter('end', () => {
+            k.get()[0].get('skills_scroll')[0].destroy()
+        });
     })
+
  
 })
 //# Intro Stage
@@ -658,4 +664,4 @@ k.scene('office', async () => {
 
 })
 
-k.go('main', 'player_spawn');
+k.go('temple', 'player_spawn');
