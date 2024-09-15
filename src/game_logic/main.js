@@ -259,20 +259,22 @@ k.scene('temple', async (playerSpawnPoint) => {
     player.canAttack = false;
 
     player.moveTo(templeMap.get(playerSpawnPoint)[0].worldPos())
- 
+    
     fadeInScene();
 
     const cutScene = await createSkillsCutscene();
 
 
-
     player.onCollide('dialogue_start', async () => {
-        player.enterState('dialogue');
-        cutScene.init(templeMap, player);
+        if (gameState.scrolls.includes('skills') === false ) {
+            player.enterState('dialogue');
+            cutScene.init(templeMap, player);
+        } else {
+            return
+        }
      })
 
     player.onCollide('skills_scroll', () => {
-        let map = templeMap; // can I find the thing now? 
         let dialog = showDialogueHouse('player_face', [
             'I found my skills scroll', 
             'I suddenly know jiu jitsu!'
@@ -280,6 +282,10 @@ k.scene('temple', async (playerSpawnPoint) => {
         ui.getScroll('skills');
 
         dialog.onStateEnter('end', () => {
+            // hating this line of code but I need to keep moving forward
+            // somehow I can't find the map, so I'm assuming the map 
+            // is the first element that can be found, and then I am 
+            // finding the scroll 
             k.get()[0].get('skills_scroll')[0].destroy()
         });
     })
