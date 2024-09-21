@@ -251,7 +251,7 @@ k.scene('temple', async (playerSpawnPoint) => {
     
     fadeInScene();
 
-    const cutScene = await createSkillsCutscene();
+    const cutScene = await createSkillsCutscene(gameState);
 
 
     player.onCollide('dialogue_start', async () => {
@@ -264,7 +264,9 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
-        let dialog = showDialogueHouse('player_face', [
+        let dialog = showDialogueHouse(
+            gameState,
+            'player_face', [
             'I found my skills scroll', 
             'I suddenly know jiu jitsu!'
         ]);

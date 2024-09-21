@@ -2,6 +2,7 @@
 
 export const createGameState = () => {
     return {
+        isDialogueBusy: false,
         tutorial: {
             done: false,
             isComplete() {

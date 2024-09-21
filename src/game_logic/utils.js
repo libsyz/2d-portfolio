@@ -35,7 +35,8 @@ export const showDialogue = (faceTag, message) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueHouse = (faceTag, messages) => {
+export const showDialogueHouse = (gameState, faceTag, messages) => {
+
     let currentMessageIdx = 0 
 
     const {x, y} = k.camPos();
@@ -64,6 +65,10 @@ export const showDialogueHouse = (faceTag, messages) => {
     ])
 
     dialogueBox.onKeyRelease('space', () => {
+        if ( gameState.isDialogueBusy === true ) { 
+            return
+        }
+
         if (currentMessageIdx + 1 < messages.length ) {
             currentMessage.destroy();
             currentMessageIdx++;
@@ -78,6 +83,7 @@ export const showDialogueHouse = (faceTag, messages) => {
         } else {
             dialogueBox.enterState('end');
             dialogueBox.destroy();
+            
         }
     })
 
@@ -124,7 +130,7 @@ export const charDialogue = () => {
 }
 
 
-export const userSelect = (optionsArray) => {
+export const userSelect = (gameState, optionsArray) => {
 
     const {x, y} = k.camPos();
 
@@ -205,7 +211,11 @@ export const userSelect = (optionsArray) => {
     
     })
 
-    selectBox.onKeyPress('space', () => {
+    selectBox.onKeyRelease('space', () => {
+        if ( gameState.isDialogueBusy === true ) {
+            return
+        }
+
         selectBox.enterState('end');
         selectBox.destroy();
     })
