@@ -63,7 +63,7 @@ export const showDialogueHouse = (faceTag, messages) => {
         k.color(0,0,0)
     ])
 
-    dialogueBox.onKeyPress('space', () => {
+    dialogueBox.onKeyRelease('space', () => {
         if (currentMessageIdx + 1 < messages.length ) {
             currentMessage.destroy();
             currentMessageIdx++;
@@ -125,11 +125,6 @@ export const charDialogue = () => {
 
 
 export const userSelect = (optionsArray) => {
-    // TODO
-    // implement a dialog box
-    // With Arrows
-    // Where the user can select topics 
-    // and a choice is returned 
 
     const {x, y} = k.camPos();
 
@@ -210,7 +205,7 @@ export const userSelect = (optionsArray) => {
     
     })
 
-    selectBox.onKeyDown('enter', () => {
+    selectBox.onKeyPress('space', () => {
         selectBox.enterState('end');
         selectBox.destroy();
     })
