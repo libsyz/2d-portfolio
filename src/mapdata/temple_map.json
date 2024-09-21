@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"json",
+         "target":"temple_map.json"
+        }
+    },
  "height":11,
  "infinite":false,
  "layers":[
@@ -126,7 +134,7 @@
         {
          "draworder":"topdown",
          "id":9,
-         "name":"scene_control",
+         "name":"interaction",
          "objects":[
                 {
                  "height":8,
@@ -137,11 +145,22 @@
                  "visible":true,
                  "width":8,
                  "x":156,
-                 "y":100
+                 "y":108
+                }, 
+                {
+                 "height":2,
+                 "id":13,
+                 "name":"exit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":32,
+                 "x":144,
+                 "y":173
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -223,7 +242,7 @@
          "y":0
         }],
  "nextlayerid":11,
- "nextobjectid":13,
+ "nextobjectid":14,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

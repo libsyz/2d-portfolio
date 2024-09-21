@@ -92,10 +92,10 @@
                 21
             ],
             "scale": 0.8501,
-            "selectedLayer": 7,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 319.37419127161513,
-                "y": 314.66886248676633
+                "x": 319.9623573697212,
+                "y": 315.2570285848724
             }
         },
         "mapdata/house_map.tmj": {
@@ -114,16 +114,16 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                9,
-                12,
                 7,
-                6
+                6,
+                12,
+                9
             ],
             "scale": 2.1535,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 160.2043185511957,
-                "y": 175.52820989087533
+                "x": 159.27559786394244,
+                "y": 175.06384954724868
             }
         },
         "mapdata/map.tmj": {
@@ -168,14 +168,26 @@
         },
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
-                9,
-                7
+                7,
+                9
+            ],
+            "scale": 3.4738,
+            "selectedLayer": 5,
+            "viewCenter": {
+                "x": 160.05527088490987,
+                "y": 172.72151534342794
+            }
+        },
+        "mapdata/temple_map.json": {
+            "expandedObjectLayers": [
+                7,
+                9
             ],
             "scale": 3.4738,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 160.34314007714892,
-                "y": 126.08670620070238
+                "x": 151.70706430997754,
+                "y": 129.82900569980998
             }
         },
         "mapdata/test_spirit.tsj": {
@@ -186,8 +198,8 @@
             "scale": 2.5828124999999997,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 159.90320629159106,
-                "y": 87.88868723532971
+                "x": 158.35450695704782,
+                "y": 65.4325468844525
             }
         },
         "miguel_house.tmj": {
@@ -256,8 +268,8 @@
             "scale": 3.2114,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 32.38462975649249,
-                "y": 32.38462975649249
+                "x": 29.893504390608456,
+                "y": 29.89350439060847
             }
         },
         "woman.tsj": {
@@ -299,12 +311,12 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "untitled.tmj",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
         "4_Bedroom_16x16.tsj",
         "assets/22_Museum.tsj",
-        "untitled.tmj",
         "woman.tsj",
         "child.tsj",
         "mapdata/map.json",

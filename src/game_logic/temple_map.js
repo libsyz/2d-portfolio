@@ -80,7 +80,7 @@ export const createTempleMap = async () => {
             }
         }
 
-        if (layer.name === 'scene_control') {
+        if (layer.name === 'interaction') {
             for ( const obj of layer.objects ) {
                 templeMap.add([
                     k.pos(obj.x, obj.y),

@@ -49,17 +49,8 @@ k.scene("main", async (playerSpawnPoint) => {
         k.camPos(center.worldPos());
     })
 
-    // player.onUpdate(()=> {
-    //     k.camPos(player.worldPos());
-    // })
-    k.debug.log(k.camPos())
     const sceneTwo = map.get('scene_2')[0]
     
-
-    // k.onCollide('player', 'scene_1', (player, scene) => {
-    //     k.debug.log('colliding');
-    //     activeScene.moveTo(k.vec2(activeScene.worldPos().x, scene.worldPos().y), 1000 )
-    // })
 
     k.onCollide('player', 'scene_2', (player, scene) => {
         k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
@@ -68,8 +59,6 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'scene_1', (player, scene) => {
-        // center.moveTo(scene.worldPos().x, scene.worldPos().y )
-
         k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
             center.pos = newVal, k.easings.linear;
         })
@@ -288,6 +277,11 @@ k.scene('temple', async (playerSpawnPoint) => {
             // finding the scroll 
             k.get('temple_map')[0].get('skills_scroll')[0].destroy()
         });
+    })
+
+
+    k.onCollide('player', 'exit', () => {
+        k.go('main', 'temple_exit_spawn');
     })
 
  

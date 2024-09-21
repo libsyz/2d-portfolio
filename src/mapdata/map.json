@@ -498,15 +498,26 @@
                  "width":16,
                  "x":80,
                  "y":240
+                }, 
+                {
+                 "height":0,
+                 "id":47,
+                 "name":"temple_exit_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":88,
+                 "y":265
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
  "nextlayerid":13,
- "nextobjectid":47,
+ "nextobjectid":49,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
