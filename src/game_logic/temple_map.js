@@ -48,9 +48,9 @@ export const createTempleMap = async () => {
     const layers = mapData.layers;
     const templeMap = k.add([k.sprite('temple_map'), 
         k.pos(0), 
-        k.scale(4)], // magic number that I use for things to be sized properly
+        k.scale(4), // magic number that I use for things to be sized properly
         'temple_map'
-    ); 
+    ]); 
 
 
     // add spawn points 

@@ -39,8 +39,13 @@ export const createSkillsCutscene = () => {
                 k.scale(0.8),
                 k.anchor('center'),
                 k.pos(160, 60),
-                k.fadeIn(1),
+                k.fadeIn(1), // todo - fadeIn deprecated
                 k.opacity(1),
+                {
+                    customFadeOut(t) {
+                        k.tween( 1, 0, 0.5, (v) => this.opacity = v, k.easings.linear);
+                    }
+                },
                 'spirit'
             ])
 
@@ -137,8 +142,10 @@ export const createSkillsCutscene = () => {
 
             k.wait(0.5, () => {
                 this.player.enterState('explore');
-                this.spirit.destroy(); // would be cool to have the ghost disappear on fadeout
+                this.spirit.customFadeOut(0.5);
             })
+
+            k.wait(1, () => this.spirit.destroy());
         },
         setup() {
             // using bind to reference original context, not array

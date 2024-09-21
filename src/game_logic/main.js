@@ -11,7 +11,7 @@ import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js"
 
-k.setBackground(k.color(255, 255, 255));
+k.setBackground(255, 255, 255);
 
 // import sprites that need to be loaded before anything else
 
@@ -286,7 +286,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             // somehow I can't find the map, so I'm assuming the map 
             // is the first element that can be found, and then I am 
             // finding the scroll 
-            k.get()[0].get('skills_scroll')[0].destroy()
+            k.get('temple_map')[0].get('skills_scroll')[0].destroy()
         });
     })
 
