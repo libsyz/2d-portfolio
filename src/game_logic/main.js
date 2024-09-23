@@ -111,6 +111,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'psychology_diploma', () => {
         showDialogueHouse(
+            gameState,
             'player_face', 
             [
                 'This is my psychology degree', 
@@ -148,6 +149,7 @@ k.scene('house', async (playerSpawnPoint) => {
         openChestEvent.cancel();
 
         showDialogueHouse(
+            gameState,
             'player_face', 
             [
                 'I found my education scroll!', 
@@ -180,7 +182,14 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'christin', (_, christin) => {
             christin.dialogShow();
-            showDialogueHouse('christin_face', ['Are you looking for your experience scroll?', 'It has to be either on the living room or in your room'])
+            showDialogueHouse(
+                gameState,
+                'christin_face', 
+                [
+                    'Are you looking for your experience scroll?', 
+                    'It has to be either on the living room or in your room'
+                ]
+            )
     })
 
     k.onCollideEnd('player', 'christin', (_, christin) => { 
@@ -190,7 +199,12 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'elias', (_, elias) => {
         elias.dialogShow();
-        showDialogueHouse('elias_face', ['Papi Papi I cant wait to go down to the beach!'])
+        showDialogueHouse(
+            gameState,
+            'elias_face', 
+            [
+                'Papi Papi I cant wait to go down to the beach!'
+            ])
 }) 
 
     k.onCollideEnd('player', 'elias', (_, elias) => { 
@@ -199,11 +213,15 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'book_shelf', () => { 
-        showDialogueHouse('player_face', 
-            ['These are some of my favorite books', 
+        showDialogueHouse(
+            gameState,
+            'player_face', 
+            [
+             'These are some of my favorite books', 
              'There are loads of stuff about psychology, product management, systems thinking...',
              'Virtual readers are cool, but there is something about paper I still love',
-             'You can check a full list of books here'])
+             'You can check a full list of books here'
+            ])
     })
 
     k.onCollideEnd('player', 'book_shelf', () => {
@@ -224,9 +242,11 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'painting', () => { 
         showDialogueHouse('player_face', 
-            ['A beautiful picture of Tarifa, Cadiz', 
-             'You can see Africa through the sea',
-             'My dads family comes from here'])
+            [
+             'A picture of Tarifa, Cadiz', 
+             'You can see Africa across the sea',
+             'My dads family comes from here'
+            ])
     })
 
     k.onCollideEnd('player', 'globe', () => {
@@ -615,7 +635,9 @@ k.scene('office', async () => {
 
     player.onStateEnter('first', () => {
         player.play('idle-down');
-        let dialogBox = showDialogueHouse('player-face', 
+        let dialogBox = showDialogueHouse(
+        gameState,    
+        'player-face', 
         [
           'So nervous for my interview today', 
           'Hope everything goes well!'
@@ -632,7 +654,9 @@ k.scene('office', async () => {
 
     player.onStateEnter('third', () => {
         player.play('idle-up');
-        let dialogBox = showDialogueHouse('receptionist-face', 
+        let dialogBox = showDialogueHouse(
+            gameState,
+            'receptionist-face', 
             [
              'Welcome to NinjaCorp! You must be Miguel',
              'Mr Shogun is ready for your interview'
@@ -650,7 +674,9 @@ k.scene('office', async () => {
     player.onStateEnter('fifth', () => {
         player.play('idle-right');
         
-        let dialogBox = showDialogueHouse('shogun_boss-face', 
+        let dialogBox = showDialogueHouse(
+            gameState,
+            'shogun_boss-face', 
             [
              'Mr Miguel! Lets get started with your interview',
              'We will go over your scrolls of education, skills and experience',
@@ -666,4 +692,4 @@ k.scene('office', async () => {
 
 })
 
-k.go('temple', 'player_spawn');
+k.go('office');

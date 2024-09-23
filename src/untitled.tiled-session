@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/untitled.tmj",
+    "activeFile": "mapdata/map.json",
     "expandedProjectPaths": [
         ".",
-        "tilesets",
-        "mapdata"
+        "mapdata",
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -119,11 +119,11 @@
                 12,
                 9
             ],
-            "scale": 2.1535,
-            "selectedLayer": 4,
+            "scale": 4.5491,
+            "selectedLayer": 7,
             "viewCenter": {
-                "x": 159.27559786394244,
-                "y": 175.06384954724868
+                "x": 96.06295750807853,
+                "y": 303.7963553230309
             }
         },
         "mapdata/map.tmj": {
@@ -296,14 +296,13 @@
         "2_LivingRoom_16x16.tsj",
         "4_Bedroom_16x16.tsj",
         "assets/22_Museum.tsj",
-        "untitled.tmj",
         "woman.tsj",
         "child.tsj",
         "mapdata/map.json",
         "tilesets/TilesetFloor.tsj",
         "tilesets/TilesetDesert.tsj",
         "mapdata/TilesetWater.tsj",
-        "mapdata/temple.tmj",
+        "mapdata/temple_map.json",
         "mapdata/TilesetInteriorFloor.tsj",
         "mapdata/TilesetInterior.tsj",
         "mapdata/untitled.tmj",
@@ -311,7 +310,6 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "untitled.tmj",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -319,10 +317,11 @@
         "assets/22_Museum.tsj",
         "woman.tsj",
         "child.tsj",
-        "mapdata/map.json",
-        "tilesets/TilesetFloor.tsj",
-        "tilesets/TilesetDesert.tsj",
-        "mapdata/TilesetWater.tsj"
+        "mapdata/test_spirit.tsj",
+        "mapdata/untitled.tmj",
+        "mapdata/TilesetInterior.tsj",
+        "mapdata/TilesetInteriorFloor.tsj",
+        "mapdata/temple_map.json"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
