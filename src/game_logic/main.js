@@ -51,25 +51,15 @@ k.scene("main", async (playerSpawnPoint) => {
 
     const sceneTwo = map.get('scene_2')[0]
     
+    const sceneNames = ['scene_1', 'scene_2', 'scene_3'];
 
-    k.onCollide('player', 'scene_3', (player, scene) => {
-        k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
-            center.pos = newVal, k.easings.linear;
+    sceneNames.forEach(sceneName => { 
+        k.onCollide('player', sceneName, (player, scene) => {
+            k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
+                center.pos = newVal, k.easings.linear;
+            })
         })
-    })
-
-
-    k.onCollide('player', 'scene_2', (player, scene) => {
-        k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
-            center.pos = newVal, k.easings.linear;
-        })
-    })
-
-    k.onCollide('player', 'scene_1', (player, scene) => {
-        k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
-            center.pos = newVal, k.easings.linear;
-        })
-    })
+    }) 
     
     k.onCollide('player', 'old_man_idle', (_, oldMan) => {
         oldMan.dialogShow();
