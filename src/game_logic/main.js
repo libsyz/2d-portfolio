@@ -226,7 +226,9 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'globe', () => { 
-        showDialogueHouse('player_face', 
+        showDialogueHouse(
+            gameState,
+            'player_face', 
             ['This globe has pins with the places we have been to', 
              'I have worked in 30+ countries, and lived in Europe, Asia and Latin America',
              'Travelling is really a cure for ignorance',
