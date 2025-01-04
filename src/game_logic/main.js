@@ -87,6 +87,12 @@ k.scene("main", async (playerSpawnPoint) => {
         k.debug.log('touching');
         k.go('temple', 'player_spawn');
     })
+
+    k.onCollide('player', 'cave_door', () => {
+        k.debug.log('touching');
+    })
+
+
 });
 
 k.scene('house', async (playerSpawnPoint) => { 
@@ -691,4 +697,4 @@ k.scene('office', async () => {
 
 })
 
-k.go('office', 'player_spawn');
+k.go('main', 'player_spawn');

@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"map.json"
-        }
-    },
  "height":22,
  "infinite":false,
  "layers":[
@@ -303,7 +295,7 @@
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }, 
@@ -318,7 +310,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":0,
                  "y":336
@@ -329,7 +321,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":64,
                  "y":320
@@ -340,7 +332,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":112,
                  "y":336
@@ -351,7 +343,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":208,
                  "y":320
@@ -362,7 +354,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":256,
                  "y":336
@@ -456,15 +448,26 @@
          "name":"spawn_points",
          "objects":[
                 {
-                 "height":0,
-                 "id":16,
-                 "name":"player_spawn",
+                 "height":2,
+                 "id":53,
+                 "name":"cave_exit_spawn",
                  "rotation":0,
                  "type":"",
                  "visible":false,
-                 "width":0,
-                 "x":87.5725122713074,
-                 "y":119.924141008478
+                 "width":2,
+                 "x":487,
+                 "y":38
+                }, 
+                {
+                 "height":16,
+                 "id":52,
+                 "name":"cave_door",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":16,
+                 "x":480,
+                 "y":16
                 }, 
                 {
                  "height":16,
@@ -516,19 +519,30 @@
                  "name":"temple_exit_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":0,
                  "x":88,
                  "y":265
+                }, 
+                {
+                 "height":16,
+                 "id":54,
+                 "name":"player_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":16,
+                 "x":80,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
          "x":0,
          "y":0
         }],
- "nextlayerid":14,
- "nextobjectid":51,
+ "nextlayerid":15,
+ "nextobjectid":55,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
