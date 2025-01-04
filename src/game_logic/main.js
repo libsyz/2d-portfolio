@@ -689,4 +689,4 @@ k.scene('office', async () => {
 
 })
 
-k.go('main');
+k.go('office', 'player_spawn');
