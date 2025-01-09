@@ -19,8 +19,9 @@ export const createBaddieGreenDemon = () => {
          anim: 'idle',
          state: 'idle'
         },
-        k.area({scale: 1.5}),
+        k.area(),
         k.anchor('center'),
+        k.health(3),
         k.scale(scale),
         k.body({isStatic: true}),
         'baddie_green_demon'
@@ -44,8 +45,17 @@ export const createBaddieGreenDemon = () => {
         if (baddieCounter < 60 ) {
             baddieGreenDemon.move(xVel, yVel);
         }
-
 	})
+
+    baddieGreenDemon.onCollide('arrow', (arrow) => {
+        baddieGreenDemon.hurt(1);
+        arrow.destroy();
+    })
+
+    baddieGreenDemon.on('death', () => {
+        baddieGreenDemon.destroy();
+    })
 
     return baddieGreenDemon;
 }   
+

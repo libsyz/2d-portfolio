@@ -2,18 +2,17 @@
 TODO
 -----
 
-Ugly things
------------
-[ ] - remove ugly white border
+Baddie 
 
+Must 
+[] - Anims on movement
+[] - blinking / feedback when hit
+[] - Arrows don't go through
+[] - Push player away on collision
 
-
-
-Bugs
-----
-
-[] - fix centering position, for some reason spawn now happens in a different place 
-
+Nice
+[] - health bar shows when hit first time
+[] - Explosion / effect on death
 
 Navigation 
 ----------
