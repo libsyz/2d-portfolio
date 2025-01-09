@@ -43,6 +43,11 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
+    // testing baddie behavior //
+
+    const baddie = createBaddieGreenDemon(); 
+    baddie.moveTo(map.get('baddie_spawn')[0].worldPos())
+    
     const center = k.get('center')[0]
 
     player.onUpdate(() => {

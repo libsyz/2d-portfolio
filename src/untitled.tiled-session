@@ -109,8 +109,8 @@
                 19
             ],
             "expandedObjectLayers": [
-                20,
-                21
+                21,
+                20
             ],
             "scale": 0.8501,
             "selectedLayer": 6,
@@ -145,21 +145,22 @@
             "expandedObjectLayers": [
                 7,
                 12,
+                5,
                 6,
                 9
             ],
-            "scale": 3.1962,
+            "scale": 1.149,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 476.34691195795006,
-                "y": 60.38420624491584
+                "x": 88.33768494342911,
+                "y": 104.00348128807656
             }
         },
         "mapdata/map.tmj": {
             "expandedObjectLayers": [
-                7,
+                9,
                 6,
-                9
+                7
             ],
             "scale": 1.1458,
             "selectedLayer": 0,
@@ -209,14 +210,14 @@
         },
         "mapdata/temple_map.json": {
             "expandedObjectLayers": [
-                7,
-                9
+                9,
+                7
             ],
             "scale": 3.4738,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.33559790431227,
-                "y": 87.51223444067016
+                "x": 159.91133628879038,
+                "y": 88.08797282514826
             }
         },
         "mapdata/test_spirit.tsj": {
