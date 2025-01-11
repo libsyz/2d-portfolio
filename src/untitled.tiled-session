@@ -5,8 +5,8 @@
     },
     "activeFile": "mapdata/map.json",
     "expandedProjectPaths": [
-        ".",
         "tilesets",
+        ".",
         "mapdata"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -82,7 +82,7 @@
             "scaleInDock": 1
         },
         "mapdata/TilesetInterior.tsj": {
-            "scaleInDock": 1.4149,
+            "scaleInDock": 2.4228,
             "scaleInEditor": 1
         },
         "mapdata/TilesetInteriorFloor.tsj": {
@@ -95,6 +95,14 @@
         "mapdata/TilesetWater.tsj": {
             "scaleInDock": 2.0886,
             "scaleInEditor": 2.46
+        },
+        "mapdata/cave_map.json": {
+            "scale": 4.1328,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 239.90998838559818,
+                "y": 463.8501742160279
+            }
         },
         "mapdata/game_map.json": {
             "scale": 0.8371875,
@@ -115,8 +123,8 @@
             "scale": 0.8501,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 321.7268556640395,
-                "y": 316.4333607810846
+                "x": 319.96235736972125,
+                "y": 314.66886248676633
             }
         },
         "mapdata/house_map.tmj": {
@@ -143,17 +151,17 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                12,
-                5,
                 9,
-                6,
-                7
+                12,
+                7,
+                5,
+                6
             ],
             "scale": 2.2716,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 503.38968128191595,
-                "y": 77.69853847508367
+                "x": 647.7812995245642,
+                "y": 161.5601338263779
             }
         },
         "mapdata/map.tmj": {
@@ -216,8 +224,8 @@
             "scale": 3.4738,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.33559790431227,
-                "y": 87.51223444067016
+                "x": 134.00310898727616,
+                "y": 91.25453393977776
             }
         },
         "mapdata/test_spirit.tsj": {
@@ -333,19 +341,12 @@
         "mapdata/temple_map.json",
         "mapdata/TilesetInteriorFloor.tsj",
         "mapdata/TilesetInterior.tsj",
-        "mapdata/untitled.tmj",
-        "mapdata/test_spirit.tsj",
-        "mapdata/map.tmj",
-        "mapdata/intro_map.json",
         "mapdata/office.tsj",
-        "mapdata/map.json"
+        "mapdata/map.json",
+        "mapdata/cave_map.json"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/untitled.tmj",
-        "mapdata/test_spirit.tsj",
-        "mapdata/intro_map.json",
-        "mapdata/map.tmj",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -353,7 +354,11 @@
         "woman.tsj",
         "child.tsj",
         "tilesets/TilesetFloor.tsj",
-        "tilesets/TilesetDesert.tsj"
+        "tilesets/TilesetDesert.tsj",
+        "mapdata/TilesetWater.tsj",
+        "mapdata/temple_map.json",
+        "mapdata/TilesetInteriorFloor.tsj",
+        "mapdata/TilesetInterior.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",

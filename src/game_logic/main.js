@@ -4,12 +4,13 @@ import { createOfficeMap } from "./office_map.js";
 import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createTempleMap } from "./temple_map.js";
+import { createCaveMap } from "./cave_map.js";
 import { createInterviewer } from "./interviewer.js";
 import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
-import { createSkillsCutscene } from "./skills_cutscene.js"
+import { createSkillsCutscene } from "./skills_cutscene.js";
 
 k.setBackground(255, 255, 255);
 
@@ -94,7 +95,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'cave_door', () => {
-        k.debug.log('touching');
+        k.go('cave', 'player_spawn');
     })
 
 
@@ -700,6 +701,25 @@ k.scene('office', async () => {
 
     })
 
+})
+
+k.scene('cave', async (playerSpawnPoint) => {
+
+    const caveMap = await createCaveMap();
+    const ui = createUI(gameState);
+
+    k.setBackground(255, 255, 255);
+
+    const player = createPlayer();
+
+    player.moveTo(caveMap.get(playerSpawnPoint)[0].worldPos());
+
+    player.onUpdate( () =>  {
+        k.camPos(player.worldPos());
+    });
+    
+    fadeInScene();
+    
 })
 
 k.go('main', 'player_spawn');
