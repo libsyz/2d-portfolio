@@ -97,11 +97,14 @@
             "scaleInEditor": 2.46
         },
         "mapdata/cave_map.json": {
-            "scale": 4.1328,
-            "selectedLayer": 0,
+            "expandedObjectLayers": [
+                4
+            ],
+            "scale": 1.4422,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 239.90998838559818,
-                "y": 463.8501742160279
+                "x": 222.22992650117874,
+                "y": 291.5684371099709
             }
         },
         "mapdata/game_map.json": {
@@ -347,6 +350,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/cave_map.json",
         "mapdata/house_map.json",
         "tilesets/room_builder.tsj",
         "2_LivingRoom_16x16.tsj",
@@ -357,8 +361,7 @@
         "tilesets/TilesetDesert.tsj",
         "mapdata/TilesetWater.tsj",
         "mapdata/temple_map.json",
-        "mapdata/TilesetInteriorFloor.tsj",
-        "mapdata/TilesetInterior.tsj"
+        "mapdata/TilesetInteriorFloor.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
