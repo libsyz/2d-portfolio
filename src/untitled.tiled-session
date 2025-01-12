@@ -100,11 +100,11 @@
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 1.4422,
-            "selectedLayer": 4,
+            "scale": 1.9663,
+            "selectedLayer": 1,
             "viewCenter": {
-                "x": 222.22992650117874,
-                "y": 291.5684371099709
+                "x": 139.09372933936837,
+                "y": 165.2850531455017
             }
         },
         "mapdata/game_map.json": {
@@ -126,8 +126,8 @@
             "scale": 0.8501,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 319.96235736972125,
-                "y": 314.66886248676633
+                "x": 321.7268556640395,
+                "y": 316.4333607810846
             }
         },
         "mapdata/house_map.tmj": {
@@ -163,7 +163,7 @@
             "scale": 2.2716,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 647.7812995245642,
+                "x": 642.0584609966544,
                 "y": 161.5601338263779
             }
         },
@@ -209,14 +209,14 @@
         },
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
-                7,
-                9
+                9,
+                7
             ],
-            "scale": 3.4738,
+            "scale": 2.2442,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 160.05527088490987,
-                "y": 172.72151534342794
+                "x": 145.04054897067996,
+                "y": 69.51252116567149
             }
         },
         "mapdata/temple_map.json": {
@@ -302,7 +302,7 @@
             "scaleInEditor": 3.13
         },
         "tilesets/room_builder.tsj": {
-            "scaleInDock": 1.9545,
+            "scaleInDock": 1.0931,
             "scaleInEditor": 2.46
         },
         "untitled.tmj": {
@@ -350,18 +350,18 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/cave_map.json",
-        "mapdata/house_map.json",
-        "tilesets/room_builder.tsj",
-        "2_LivingRoom_16x16.tsj",
-        "4_Bedroom_16x16.tsj",
-        "woman.tsj",
-        "child.tsj",
-        "tilesets/TilesetFloor.tsj",
-        "tilesets/TilesetDesert.tsj",
+        "mapdata/map.json",
+        "mapdata/office.tsj",
+        "mapdata/TilesetInterior.tsj",
+        "mapdata/TilesetInteriorFloor.tsj",
         "mapdata/TilesetWater.tsj",
-        "mapdata/temple_map.json",
-        "mapdata/TilesetInteriorFloor.tsj"
+        "tilesets/TilesetDesert.tsj",
+        "tilesets/TilesetFloor.tsj",
+        "child.tsj",
+        "woman.tsj",
+        "4_Bedroom_16x16.tsj",
+        "2_LivingRoom_16x16.tsj",
+        "tilesets/room_builder.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
