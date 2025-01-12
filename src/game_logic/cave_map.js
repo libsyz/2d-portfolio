@@ -1,3 +1,4 @@
+import { createBaddieGreenDemon } from './baddie_green_demon.js';
 import { k } from './kaboomCtx.js';
 import { createSpawnPoint } from './spawn_point.js';
 
@@ -32,6 +33,13 @@ export const createCaveMap = async () => {
             }
         }
     }
+
+    caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
+        console.log('hello here');
+        const demon = createBaddieGreenDemon();
+        demon.moveTo(spawnPoint.worldPos());
+    })
+
 
     return caveMap;
 }

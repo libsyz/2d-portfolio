@@ -110,6 +110,39 @@
                  "width":0,
                  "x":160,
                  "y":300
+                }, 
+                {
+                 "height":0,
+                 "id":27,
+                 "name":"baddie_green_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":96,
+                 "y":144
+                }, 
+                {
+                 "height":0,
+                 "id":28,
+                 "name":"baddie_green_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":112,
+                 "y":192
+                }, 
+                {
+                 "height":0,
+                 "id":29,
+                 "name":"baddie_green_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":208,
+                 "y":144
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -118,7 +151,7 @@
          "y":0
         }],
  "nextlayerid":8,
- "nextobjectid":27,
+ "nextobjectid":30,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",
