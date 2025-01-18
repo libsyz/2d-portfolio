@@ -11,6 +11,9 @@
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
+        "": {
+            "scaleInDock": 3.4214
+        },
         "/Users/migueljimenez/code/2d-portfolio/terrain.tsx": {
             "scaleInDock": 1,
             "scaleInEditor": 1
@@ -96,15 +99,23 @@
             "scaleInDock": 2.0886,
             "scaleInEditor": 2.46
         },
+        "mapdata/baddie_green.tmj": {
+            "scale": 1.7198958333333332,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 240.42153715704688,
+                "y": 253.50372478953426
+            }
+        },
         "mapdata/cave_map.json": {
             "expandedObjectLayers": [
                 4
             ],
-            "scale": 1.9663,
-            "selectedLayer": 1,
+            "scale": 1.9408,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 139.09372933936837,
-                "y": 165.2850531455017
+                "x": 238.3037922506183,
+                "y": 136.28400659521847
             }
         },
         "mapdata/game_map.json": {
@@ -215,8 +226,8 @@
             "scale": 2.2442,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 145.04054897067996,
-                "y": 69.51252116567149
+                "x": 251.98288922555918,
+                "y": 109.61589876125122
             }
         },
         "mapdata/temple_map.json": {
@@ -324,7 +335,7 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Boss/GiantSpirit",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenDemon",
     "map.height": 30,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
