@@ -124,9 +124,7 @@ export const createBaddieGreenDemon = () => {
                 baddieGreenDemon.patrol();
             })
     })
-
-
-
+    
     return baddieGreenDemon;
 } 
 

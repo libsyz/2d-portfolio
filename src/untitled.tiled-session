@@ -100,11 +100,11 @@
             "scaleInEditor": 2.46
         },
         "mapdata/baddie_green.tmj": {
-            "scale": 1.7198958333333332,
+            "scale": 2.6177,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 240.42153715704688,
-                "y": 253.50372478953426
+                "x": 57.875233984031766,
+                "y": 114.22240898498683
             }
         },
         "mapdata/cave_map.json": {
@@ -226,8 +226,8 @@
             "scale": 2.2442,
             "selectedLayer": 5,
             "viewCenter": {
-                "x": 251.98288922555918,
-                "y": 109.61589876125122
+                "x": 149.49647981463326,
+                "y": 56.59032171820694
             }
         },
         "mapdata/temple_map.json": {

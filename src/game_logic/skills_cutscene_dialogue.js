@@ -161,7 +161,7 @@ export const skillsCutsceneDialogueData =
                         content: "Unsupervised",
                         isCorrect: true
                     },
-                    {
+                {
                         id: 1,
                         content: "Supervised",
                         isCorrect: false

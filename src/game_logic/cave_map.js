@@ -35,11 +35,43 @@ export const createCaveMap = async () => {
         }
     }
 
+    // what do I need here 
+
+    // I need to set the treasure chest on a location
+    // I need to keep count of the baddies
+
+    let demonArr = []
+
     caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
         const demon = createBaddieGreenDemon();
         demon.moveTo(spawnPoint.worldPos());
+        demonArr.push(demon);
     })
 
+    demonArr.forEach(demon => { 
+        demon.on('death', () => k.debug.log(demonArr))
+    });
+
+    // const experienceChest = (game) => {
+    //     return { 
+    //         setup() {
+    //             if (gameState.scrolls.includes('experience')) {
+    //                 this.play('open');
+    //             }
+    //         }
+    //     }
+    // }
+
+    const experienceChest = caveMap.add([
+        k.sprite('treasure_chest'),
+        k.pos(224, 64),
+        k.area(),
+        k.anchor('center'),
+        k.body({isStatic: true}),
+        'experience_treasure_chest'
+    ])
+
+    // k.debug.log(caveMap.get('treasure_chest_spawn')[0].pos);
 
 
     return caveMap;

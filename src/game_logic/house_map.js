@@ -119,8 +119,6 @@ export const createHouseMap = (gameState) => {
     educationChest.setup();
 
 
-
-
     // Add Christin
 
     const christin = houseMap.add([
