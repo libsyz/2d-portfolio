@@ -708,7 +708,7 @@ k.scene('cave', async (playerSpawnPoint) => {
     const caveMap = await createCaveMap(gameState);
     const ui = createUI(gameState);
 
-    k.setBackground(255, 255, 255);
+    k.setBackground(20, 27, 27);
 
     const player = createPlayer();
 
