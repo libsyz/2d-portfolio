@@ -29,6 +29,10 @@ export const createGameState = () => {
         },
         areAllBaddieGreenDemonsDead() {
             return this.baddieGreenDemonsInCave === 0;
+        },
+        playerHasKey: false,
+        playerObtainedKey() {
+            this.playerHasKey = true;
         }
 
     }
