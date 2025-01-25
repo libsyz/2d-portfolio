@@ -705,7 +705,7 @@ k.scene('office', async () => {
 
 k.scene('cave', async (playerSpawnPoint) => {
 
-    const caveMap = await createCaveMap();
+    const caveMap = await createCaveMap(gameState);
     const ui = createUI(gameState);
 
     k.setBackground(255, 255, 255);
