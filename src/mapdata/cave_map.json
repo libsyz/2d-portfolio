@@ -106,7 +106,7 @@
                  "name":"player_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":0,
                  "x":160,
                  "y":300
@@ -117,7 +117,7 @@
                  "name":"baddie_green_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":0,
                  "x":96,
                  "y":144
@@ -128,7 +128,7 @@
                  "name":"baddie_green_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":0,
                  "x":112,
                  "y":192
@@ -139,7 +139,7 @@
                  "name":"baddie_green_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":0,
                  "x":208,
                  "y":144
@@ -150,14 +150,36 @@
                  "name":"treasure_chest_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":false,
+                 "visible":true,
                  "width":0,
                  "x":224,
                  "y":64
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":false,
+         "visible":true,
+         "x":0,
+         "y":0
+        }, 
+        {
+         "draworder":"topdown",
+         "id":9,
+         "name":"interaction",
+         "objects":[
+                {
+                 "height":0,
+                 "id":67,
+                 "name":"exit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":160,
+                 "y":315
+                }],
+         "opacity":1,
+         "type":"objectgroup",
+         "visible":true,
          "x":0,
          "y":0
         }, 
@@ -404,8 +426,8 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":9,
- "nextobjectid":66,
+ "nextlayerid":10,
+ "nextobjectid":68,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

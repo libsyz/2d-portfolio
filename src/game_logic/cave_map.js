@@ -33,6 +33,18 @@ export const createCaveMap = async (gameState) => {
                     ]);
             }
         }
+
+        if (layer.name === 'interaction') {
+            for ( const obj of layer.objects ) {
+                caveMap.add([
+                    k.pos(obj.x, obj.y),
+                    k.rect(obj.width, obj.height),
+                    k.opacity(0),
+                    k.area(),
+                    obj.name
+                ])
+            }
+        }
     }
 
     // what do I need here 

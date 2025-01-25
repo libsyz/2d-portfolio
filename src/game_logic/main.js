@@ -719,6 +719,10 @@ k.scene('cave', async (playerSpawnPoint) => {
     });
     
     fadeInScene();
+
+    player.onCollide('exit', () => {
+        k.go('main', 'cave_exit_spawn');
+    })
     
 })
 
