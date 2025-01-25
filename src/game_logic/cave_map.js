@@ -48,7 +48,6 @@ export const createCaveMap = async (gameState) => {
     }
 
     // what do I need here 
-
     // I need to set the treasure chest on a location
     // I need to keep count of the baddies
 

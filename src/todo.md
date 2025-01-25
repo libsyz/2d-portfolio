@@ -5,9 +5,9 @@ TODO
 Baddie 
 
 Must 
-[] - Anims on movement
+[X] - Anims on movement
 [] - blinking / feedback when hit
-[] - Arrows don't go through
+[X] - Arrows don't go through
 [] - Push player away on collision
 
 Nice
