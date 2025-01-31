@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/map.json",
+    "activeFile": "mapdata/baddie_green.tmj",
     "expandedProjectPaths": [
         "tilesets",
         ".",
@@ -103,19 +103,24 @@
             "scale": 2.6177,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 57.875233984031766,
-                "y": 114.22240898498683
+                "x": 149.55877296863656,
+                "y": 148.22172135844443
             }
+        },
+        "mapdata/baddie_green.tsj": {
+            "scaleInDock": 3.01,
+            "scaleInEditor": 3.1404
         },
         "mapdata/cave_map.json": {
             "expandedObjectLayers": [
-                4
+                4,
+                9
             ],
             "scale": 2.8994,
-            "selectedLayer": 3,
+            "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.86066082637785,
-                "y": 315.7549837897496
+                "x": 159.1708629371594,
+                "y": 176.07091122301168
             }
         },
         "mapdata/game_map.json": {
@@ -221,7 +226,8 @@
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
                 9,
-                7
+                7,
+                10
             ],
             "scale": 2.2442,
             "selectedLayer": 4,
@@ -343,24 +349,18 @@
     "map.tileWidth": 16,
     "map.width": 30,
     "openFiles": [
-        "mapdata/house_map.json",
-        "tilesets/room_builder.tsj",
-        "2_LivingRoom_16x16.tsj",
-        "4_Bedroom_16x16.tsj",
-        "woman.tsj",
-        "child.tsj",
-        "tilesets/TilesetFloor.tsj",
-        "tilesets/TilesetDesert.tsj",
-        "mapdata/TilesetWater.tsj",
-        "mapdata/temple_map.json",
-        "mapdata/TilesetInteriorFloor.tsj",
-        "mapdata/TilesetInterior.tsj",
-        "mapdata/office.tsj",
-        "mapdata/map.json",
-        "mapdata/cave_map.json"
+        "mapdata/cave_map.json",
+        "mapdata/temple.tmj",
+        "mapdata/baddie_green.tsj",
+        "mapdata/baddie_green.tmj",
+        "mapdata/baddie_green.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/cave_map.json",
+        "mapdata/temple.tmj",
+        "mapdata/baddie_green.tsj",
+        "mapdata/baddie_green.tmj",
         "mapdata/map.json",
         "mapdata/office.tsj",
         "mapdata/TilesetInterior.tsj",
@@ -368,11 +368,7 @@
         "mapdata/TilesetWater.tsj",
         "tilesets/TilesetDesert.tsj",
         "tilesets/TilesetFloor.tsj",
-        "child.tsj",
-        "woman.tsj",
-        "4_Bedroom_16x16.tsj",
-        "2_LivingRoom_16x16.tsj",
-        "tilesets/room_builder.tsj"
+        "child.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
