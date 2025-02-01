@@ -773,7 +773,7 @@ k.scene('cave', async (playerSpawnPoint) => {
         gameState.checkFinished();
     })
 
-    k.onCollideEnd('experience_scroll', 'player', () => {
+    k.onCollideEnd('experience_treasure_chest', 'player', () => {
         if (gameState.scrolls.includes('experience') === true) { 
             k.get('dialog').forEach(el => k.destroy(el));
             k.get('experience_scroll').forEach(el => k.destroy(el));
