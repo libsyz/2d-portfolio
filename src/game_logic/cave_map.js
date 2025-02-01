@@ -75,11 +75,24 @@ export const createCaveMap = async (gameState) => {
     })
 
 
-
+    const experienceChestOpen = (game) => {
+        return { 
+            setup() {
+                if (gameState.scrolls.includes('experience')) {
+                    this.play('open');
+                }
+            }
+        }
+    }
 
     const experienceChestSetup = (game) => {
         return { 
             setup() {
+                if(gameState.scrolls.includes('experience')) {
+                    this.play('open');
+                    return;
+                }
+
                 this.onCollide('player', () => {
                     if (game.playerHasKey) {
                         this.play('open');

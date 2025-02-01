@@ -4,6 +4,7 @@ import { k } from './kaboomCtx';
 // sprites 
 k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
 k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
+k.loadSprite('yellowScrollUI', './src/assets/scroll_thunder.png');
 k.loadSprite('tutorial', './src/assets/tutorial.png');
 
 
@@ -57,7 +58,15 @@ const scrollsComponent = (gameState) => {
             objectName: 'skills_scroll_ui',
             xPos: 56,
             yPos: 18,
-        }
+        }, 
+        {
+            spriteName: 'yellowScrollUI',
+            keyword: 'experience',
+            objectName: 'experience_scroll_ui',
+            xPos: 94,
+            yPos: 18,
+        }, 
+
     ]
 
     return { 
@@ -75,6 +84,7 @@ const scrollsComponent = (gameState) => {
                 scroll.objectName
             ])
         },
+        // get scroll is a terrible name for this function
         getScroll(scrollKeyword) {
             gameState.scrolls.push(scrollKeyword);
             let foundScroll = scrolls.find((scroll) => scroll.keyword === scrollKeyword)

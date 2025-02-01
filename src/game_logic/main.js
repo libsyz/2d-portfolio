@@ -165,6 +165,7 @@ k.scene('house', async (playerSpawnPoint) => {
                 'I suddenly know kung fu!'
             ]
         );
+
         // move it up a bit
         // show a dialogue mentioning what it is 
         // destroy the dialogue
@@ -719,6 +720,62 @@ k.scene('cave', async (playerSpawnPoint) => {
     });
     
     fadeInScene();
+
+
+    let treasureCollision = k.onCollide('experience_treasure_chest', 'player', (treasureChest, player) => {
+        let openChestEvent = k.onKeyRelease('space', () => { 
+        treasureChest.play('open');
+        // spawn the scroll at the center of the chest
+        const edScroll = k.add([
+            k.sprite('scroll'),
+            k.pos(treasureChest.worldPos()),
+            k.scale(3),
+            k.anchor('center'),
+            k.z(999),
+            'experience_scroll',
+        ]);
+
+    
+        k.tween(
+            edScroll.pos, 
+            k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
+            1,
+            (posVal) => { edScroll.pos = posVal }   
+        )
+
+        openChestEvent.cancel();
+
+        showDialogueHouse(
+            gameState,
+            'player_face', 
+            [
+                'I found my experience scroll!', 
+                'I suddenly know kung fu!'
+            ]
+        );
+        
+        // move it up a bit
+        // show a dialogue mentioning what it is 
+        // destroy the dialogue
+        // destroy the scroll
+        
+        // TODO - what a terrible line of code
+        ui.getScroll('experience');
+        //  k.get('ui')[0].children[0].getScroll();
+        })
+
+        gameState.checkFinished();
+    })
+
+    k.onCollideEnd('experience_scroll', 'player', () => {
+        if (gameState.scrolls.includes('experience') === true) { 
+            k.get('dialog').forEach(el => k.destroy(el));
+            k.get('experience_scroll').forEach(el => k.destroy(el));
+            treasureCollision.cancel();
+        }
+
+        
+    })
 
     player.onCollide('exit', () => {
         k.go('main', 'cave_exit_spawn');
