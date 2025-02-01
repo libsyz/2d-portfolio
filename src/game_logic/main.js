@@ -26,7 +26,7 @@ k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
 })
 k.loadSprite('shuriken', './src/assets/shuriken.png');
 k.loadSprite('intro_background', './src/assets/intro_background.png');
-k.loadSprite('scroll', './src/assets/scroll.png');
+k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
 
 // load gamestate, available to all the scenes
@@ -723,46 +723,52 @@ k.scene('cave', async (playerSpawnPoint) => {
 
 
     let treasureCollision = k.onCollide('experience_treasure_chest', 'player', (treasureChest, player) => {
-        let openChestEvent = k.onKeyRelease('space', () => { 
-        treasureChest.play('open');
-        // spawn the scroll at the center of the chest
-        const edScroll = k.add([
-            k.sprite('scroll'),
-            k.pos(treasureChest.worldPos()),
-            k.scale(3),
-            k.anchor('center'),
-            k.z(999),
-            'experience_scroll',
-        ]);
+        let openChestEvent = k.onKeyRelease('space', () => {
 
-    
-        k.tween(
-            edScroll.pos, 
-            k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
-            1,
-            (posVal) => { edScroll.pos = posVal }   
-        )
+            if (!gameState.playerHasKey) {
+                k.debug.log('you need a key to open this chest');
+                return;
+            }
+            
+            treasureChest.play('open');
+            // spawn the scroll at the center of the chest
+            const experienceScroll = k.add([
+                k.sprite('experience_scroll'),
+                k.pos(treasureChest.worldPos()),
+                k.scale(3),
+                k.anchor('center'),
+                k.z(999),
+                'experience_scroll',
+            ]);
 
-        openChestEvent.cancel();
-
-        showDialogueHouse(
-            gameState,
-            'player_face', 
-            [
-                'I found my experience scroll!', 
-                'I suddenly know kung fu!'
-            ]
-        );
         
-        // move it up a bit
-        // show a dialogue mentioning what it is 
-        // destroy the dialogue
-        // destroy the scroll
-        
-        // TODO - what a terrible line of code
-        ui.getScroll('experience');
-        //  k.get('ui')[0].children[0].getScroll();
-        })
+            k.tween(
+                experienceScroll.pos, 
+                k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),
+                1,
+                (posVal) => { experienceScroll.pos = posVal }   
+            )
+
+            openChestEvent.cancel();
+
+            showDialogueHouse(
+                gameState,
+                'player_face', 
+                [
+                    'I found my experience scroll!', 
+                    'I suddenly know jiu jitsu!'
+                ]
+            );
+            
+            // move it up a bit
+            // show a dialogue mentioning what it is 
+            // destroy the dialogue
+            // destroy the scroll
+            
+            // TODO - what a terrible line of code
+            ui.getScroll('experience');
+            //  k.get('ui')[0].children[0].getScroll();
+            })
 
         gameState.checkFinished();
     })

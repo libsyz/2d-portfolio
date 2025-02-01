@@ -92,14 +92,6 @@ export const createCaveMap = async (gameState) => {
                     this.play('open');
                     return;
                 }
-
-                this.onCollide('player', () => {
-                    if (game.playerHasKey) {
-                        this.play('open');
-                    } else {
-                        k.debug.log('You need a key to open this chest');
-                    }
-                })
             }
         }
     }
