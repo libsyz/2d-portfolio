@@ -62,8 +62,8 @@
             "scale": 1.2376,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 215.74014221073045,
-                "y": 241.59663865546221
+                "x": 216.14414996767937,
+                "y": 242.40465416936007
             }
         },
         "intro_map.json": {
@@ -103,8 +103,8 @@
             "scale": 2.6177,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 149.55877296863656,
-                "y": 148.22172135844443
+                "x": 165.2213775451732,
+                "y": 168.46850288421132
             }
         },
         "mapdata/baddie_green.tsj": {
@@ -113,22 +113,22 @@
         },
         "mapdata/cave_map.json": {
             "expandedObjectLayers": [
-                4,
-                9
+                9,
+                4
             ],
             "scale": 2.8994,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.1708629371594,
-                "y": 176.07091122301168
+                "x": 159.68821135407325,
+                "y": 158.13616610333173
             }
         },
         "mapdata/game_map.json": {
             "scale": 0.8371875,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 220.9779768570363,
-                "y": 326.68906308324006
+                "x": 180.96304591265397,
+                "y": 232.32549458753272
             }
         },
         "mapdata/house_map.json": {
@@ -185,15 +185,15 @@
         },
         "mapdata/map.tmj": {
             "expandedObjectLayers": [
+                7,
                 9,
-                6,
-                7
+                6
             ],
             "scale": 1.1458,
-            "selectedLayer": 0,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 252.66189561878167,
-                "y": 216.44266015011348
+                "x": 215.13353115727006,
+                "y": 192.87833827893178
             }
         },
         "mapdata/office.tsj": {
@@ -232,8 +232,8 @@
             "scale": 2.2442,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 160.19071384012116,
-                "y": 80.20675519115942
+                "x": 159.96791729792352,
+                "y": 87.55904108368236
             }
         },
         "mapdata/temple_map.json": {
@@ -357,6 +357,9 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/game_map.json",
+        "mapdata/map.tmj",
+        "game_map.tmx",
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
         "mapdata/baddie_green.tsj",
@@ -365,10 +368,7 @@
         "mapdata/office.tsj",
         "mapdata/TilesetInterior.tsj",
         "mapdata/TilesetInteriorFloor.tsj",
-        "mapdata/TilesetWater.tsj",
-        "tilesets/TilesetDesert.tsj",
-        "tilesets/TilesetFloor.tsj",
-        "child.tsj"
+        "mapdata/TilesetWater.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",
