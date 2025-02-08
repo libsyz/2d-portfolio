@@ -22,7 +22,7 @@ k.loadSprite('flower', './src/assets/flower_animated.png', {
     sliceY: 1,
     anims: { 
         'idle': 0,
-        'bloom': { from: 0, to: 3, loop: true, speed: 1.25 } 
+        'bloom': { from: 0, to: 1, loop: true, speed: 1 } 
     }
 });
 
@@ -31,11 +31,12 @@ k.loadSprite('cloud', './src/assets/cloud.png');
 
 // load the character sprites
 k.loadSprite('old_man_face', './src/assets/old_man_face.png');
-k.loadSprite('old_man_idle', './src/assets/old_man_idle.png', {
-    sliceX: 4,
+k.loadSprite('old_man', './src/assets/old_man.png', {
+    sliceX: 2,
     sliceY: 1,
     anims: {
-        'idle': 0
+        'idle': 0,
+        'bob': { from: 0, to: 1, loop: true, speed: 0.25 }
     }
 })
 
@@ -152,15 +153,17 @@ export const createMap = () => {
     center.moveTo(map.get('scene_1')[0].worldPos());
 
     const oldMan = map.add([
-        k.sprite('old_man_idle'), 
+        k.sprite('old_man'), 
         k.pos(map.get('old_man_spawn')[0].pos),
         {anim: 'idle'},
         k.area(),
         k.scale(1),
         k.body({isStatic: true}),
-        'old_man_idle',
+        'old_man',
         charDialogue()
     ]);
+
+    oldMan.play('bob');
 
     const flowersPoints = map.get('flower_spawn');
 

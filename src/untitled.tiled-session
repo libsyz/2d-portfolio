@@ -171,16 +171,16 @@
         "mapdata/map.json": {
             "expandedObjectLayers": [
                 9,
-                12,
                 7,
-                5,
-                6
+                12,
+                6,
+                5
             ],
-            "scale": 2.2716,
+            "scale": 1.9698,
             "selectedLayer": 7,
             "viewCenter": {
-                "x": 642.0584609966544,
-                "y": 161.5601338263779
+                "x": 165.2452025586354,
+                "y": 134.78525738653667
             }
         },
         "mapdata/map.tmj": {
@@ -341,13 +341,13 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenDemon",
-    "map.height": 30,
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Master",
+    "map.height": 1,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 30,
+    "map.width": 2,
     "openFiles": [
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
