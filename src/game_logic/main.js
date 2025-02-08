@@ -67,13 +67,11 @@ k.scene("main", async (playerSpawnPoint) => {
         })
     }) 
     
-    k.onCollide('player', 'old_man_idle', (_, oldMan) => {
-        oldMan.dialogShow();
+    k.onCollide('player', 'old_man', (_, oldMan) => {
         showDialogue('old_man_face', 'go through the pearly gates to find your skills');
     })
 
-    k.onCollideEnd('player', 'old_man_idle', (_, oldMan) => {
-        oldMan.dialogHide();
+    k.onCollideEnd('player', 'old_man', (_, oldMan) => {
         k.destroy(k.get('dialog')[0]);
     })
 

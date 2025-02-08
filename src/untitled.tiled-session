@@ -119,8 +119,8 @@
             "scale": 2.8994,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.68821135407325,
-                "y": 158.13616610333173
+                "x": 159.1708629371594,
+                "y": 175.89846175070707
             }
         },
         "mapdata/game_map.json": {
@@ -225,15 +225,15 @@
         },
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
-                9,
                 7,
+                9,
                 10
             ],
             "scale": 2.2442,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 159.96791729792352,
-                "y": 87.55904108368236
+                "x": 160.1907138401212,
+                "y": 80.20675519115943
             }
         },
         "mapdata/temple_map.json": {

@@ -164,6 +164,8 @@ export const createMap = () => {
     ]);
 
     oldMan.play('bob');
+    debugger
+    oldMan.setDialogBubble();
 
     const flowersPoints = map.get('flower_spawn');
 

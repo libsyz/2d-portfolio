@@ -110,7 +110,25 @@ export const fadeInScene = () => {
 // kaboom component to show dialogue bubble on top of character head 
 
 export const charDialogue = () => {
-    return { 
+    return {
+        setDialogBubble() {
+            let dialogActivationArea = this.add(
+                [
+                    k.pos(8, 8),
+                    k.rect(40, 40),
+                    k.area(),
+                    k.opacity(0),
+                    k.anchor('center')
+                ])
+
+            dialogActivationArea.onCollide('player', () => {
+                this.dialogShow();
+            })
+
+            dialogActivationArea.onCollideEnd('player', () => {
+                this.dialogHide();
+            })
+        },
         dialogShow() {
             this.dialogBubble = this.add([
                 k.sprite('dialogue_info'),
