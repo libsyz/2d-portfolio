@@ -68,7 +68,7 @@ k.scene("main", async (playerSpawnPoint) => {
     }) 
     
     k.onCollide('player', 'old_man', (_, oldMan) => {
-        showDialogue('old_man_face', 'go through the pearly gates to find your skills');
+        showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.');
     })
 
     k.onCollideEnd('player', 'old_man', (_, oldMan) => {

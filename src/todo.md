@@ -30,21 +30,21 @@ Now it's time to improve things, this needs to rock
 [] Need to make it come more alive
    [X] Add flower animations
    [] Add an animal walking around
-   [] Clouds floating on top
-      [] Spawn the cloud outside at -15, -15
-      [] Move diagonally
+   [X] Clouds floating on top
+      [X] Spawn the cloud outside at -15, -15
+      [X] Move diagonally
       [x] Set opacity very low
 
-[] Old man should be in a different position
-[] Old man should say something helpful
-[] Old man should have a base animation
-   [] edit sprite and reload
-   [] map animations
+[X] Old man should be in a different position
+[X] Old man should say something helpful
+[X] Old man should have a base animation
+   [X] edit sprite and reload
+   [X] map animations
 
 ### Nice to Have
 
-[] Old man speakbox should show up when player is close, disappear when it's far, not on contact
+[X] Old man speakbox should show up when player is close, disappear when it's far, not on contact
 [] Make mailbox more likely to be approached by changing its position on the map
-[] Mailbox, an interactable, should shine to attract the player's attentio
+[] Mailbox, an interactable, should shine to attract the player's attention
 
 
