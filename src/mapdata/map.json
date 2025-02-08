@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"map.json"
-        }
-    },
  "height":22,
  "infinite":false,
  "layers":[
@@ -45,7 +37,7 @@
         }, 
         {
          "data":[0, 1332, 1333, 1356, 1357, 1385, 1386, 1550, 1551, 0, 0, 0, 0, 0, 1408, 1409, 1410, 1411, 1550, 1551, 1380, 1381, 1382, 1596, 1380, 1381, 1382, 1635, 1636, 840, 841, 842, 1635, 1636, 1381, 1382, 1383, 1380, 1381, 1382,
-            0, 1356, 1357, 1534, 1408, 1409, 1410, 1411, 1599, 0, 0, 0, 1599, 0, 1432, 1433, 1434, 1435, 1778, 0, 1404, 1405, 1406, 1407, 1404, 1535, 1635, 1636, 1660, 873, 874, 875, 1659, 1660, 1636, 1535, 1407, 1404, 1405, 1406,
+            0, 1356, 1357, 1534, 1408, 1409, 1410, 1411, 246, 0, 0, 0, 265, 0, 1432, 1433, 1434, 1435, 1778, 0, 1404, 1405, 1406, 1407, 1404, 1535, 1635, 1636, 1660, 873, 874, 875, 1659, 1660, 1636, 1535, 1407, 1404, 1405, 1406,
             0, 0, 0, 0, 1432, 1433, 1434, 1435, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1332, 1333, 1428, 1429, 1430, 1431, 1428, 1559, 1659, 1660, 1075, 0, 0, 0, 1075, 1659, 1660, 1559, 1431, 1428, 1429, 1430,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1356, 1357, 0, 1428, 1429, 1430, 1431, 1583, 0, 1673, 1108, 0, 0, 0, 1108, 1673, 0, 1583, 1598, 1380, 1336, 1337,
             0, 1779, 0, 1164, 0, 0, 0, 0, 1054, 1018, 0, 0, 0, 0, 0, 0, 0, 0, 1332, 1333, 0, 0, 1600, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1524, 1525, 1360, 1361,
@@ -81,7 +73,7 @@
             759, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             956, 0, 0, 0, 573, 574, 575, 576, 0, 0, 573, 574, 575, 576, 577, 578, 579, 580, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             989, 0, 0, 0, 606, 607, 608, 609, 0, 0, 606, 607, 608, 609, 610, 611, 612, 613, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-            0, 0, 0, 0, 639, 640, 641, 642, 0, 0, 639, 640, 641, 642, 643, 644, 645, 646, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+            0, 0, 0, 0, 639, 640, 641, 642, 0, 0, 639, 673, 641, 642, 643, 1913, 645, 646, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 949, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
             0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -120,7 +112,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":304,
                  "y":142
@@ -131,7 +123,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":128,
                  "x":160,
                  "y":32
@@ -142,7 +134,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":128,
                  "y":64
@@ -153,7 +145,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":64,
                  "x":64,
                  "y":32
@@ -164,7 +156,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":0,
                  "y":0
@@ -175,7 +167,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":48,
                  "x":16,
                  "y":0
@@ -186,7 +178,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":288,
                  "y":80
@@ -197,7 +189,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":224,
                  "x":0,
                  "y":160
@@ -208,7 +200,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":0,
                  "y":208
@@ -219,7 +211,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":96,
                  "x":48,
                  "y":208
@@ -230,7 +222,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":80,
                  "x":64,
                  "y":224
@@ -241,7 +233,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":48,
                  "x":64,
                  "y":240
@@ -252,7 +244,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":176,
                  "y":208
@@ -263,7 +255,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":288,
                  "y":160
@@ -274,7 +266,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":304,
                  "y":176
@@ -285,7 +277,7 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":32,
                  "x":288,
                  "y":240
@@ -296,10 +288,21 @@
                  "name":"",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":320,
                  "x":0,
                  "y":304
+                }, 
+                {
+                 "height":16,
+                 "id":56,
+                 "name":"",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":16,
+                 "x":304,
+                 "y":96
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -549,19 +552,107 @@
                  "name":"baddie_spawn",
                  "rotation":0,
                  "type":"",
-                 "visible":true,
+                 "visible":false,
                  "width":16,
                  "x":496,
+                 "y":80
+                }, 
+                {
+                 "height":16,
+                 "id":61,
+                 "name":"flower_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":16,
+                 "x":128,
+                 "y":16
+                }, 
+                {
+                 "height":16,
+                 "id":62,
+                 "name":"flower_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":16,
+                 "x":192,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":64,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":32,
+                 "y":-16
+                }, 
+                {
+                 "height":0,
+                 "id":66,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":64,
+                 "y":-48
+                }, 
+                {
+                 "height":0,
+                 "id":67,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":96,
+                 "y":-80
+                }, 
+                {
+                 "height":0,
+                 "id":68,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":0,
+                 "y":16
+                }, 
+                {
+                 "height":0,
+                 "id":69,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":-32,
+                 "y":48
+                }, 
+                {
+                 "height":0,
+                 "id":70,
+                 "name":"cloud_spawn",
+                 "rotation":0,
+                 "type":"",
+                 "visible":false,
+                 "width":0,
+                 "x":-64,
                  "y":80
                 }],
          "opacity":1,
          "type":"objectgroup",
-         "visible":true,
+         "visible":false,
          "x":0,
          "y":0
         }],
  "nextlayerid":15,
- "nextobjectid":56,
+ "nextobjectid":71,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.10.2",

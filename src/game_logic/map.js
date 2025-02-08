@@ -8,9 +8,8 @@ const mapSprite = k.loadSprite('map', './src/assets/map.png');
 const mapData = await (await fetch("./src/mapdata/map.json")).json();
 
 
-// load the animation sprites 
-
-const waterRipple = k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
+// load the environment animation sprites 
+k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
     sliceX: 4,
     sliceY: 1,
     anims: { 
@@ -18,9 +17,19 @@ const waterRipple = k.loadSprite('water_ripple', './src/assets/water_ripple.png'
     }
 });
 
+k.loadSprite('flower', './src/assets/flower_animated.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: { 
+        'idle': 0,
+        'bloom': { from: 0, to: 3, loop: true, speed: 1.25 } 
+    }
+});
+
+k.loadSprite('cloud', './src/assets/cloud.png');
+
 
 // load the character sprites
-
 k.loadSprite('old_man_face', './src/assets/old_man_face.png');
 k.loadSprite('old_man_idle', './src/assets/old_man_idle.png', {
     sliceX: 4,
@@ -30,15 +39,39 @@ k.loadSprite('old_man_idle', './src/assets/old_man_idle.png', {
     }
 })
 
+const makeCloudComp = () => {
+    return { 
+        makeCloud() {
+            let clouds = this.get('cloud_spawn');
+            const cloud = this.add([
+                k.sprite('cloud'),
+                k.z(999),
+                k.scale(0.5),
+                k.area(),
+                k.move(k.vec2(100, 100), 20),
+                k.opacity(0.15),
+                k.pos(clouds[parseInt(k.rand(clouds.length))].worldPos())
+                // k.offscreen({destroy: true})
+            ])
+
+        },
+
+        startCloudLoop() {
+            k.loop(5, this.makeCloud)
+        }
+    }
 
 
+}
 
 // instatiate the map
 export const createMap = () => {
     const layers = mapData.layers;
     const map = k.add([k.sprite("map"), 
         k.pos(0), 
-        k.scale(4)]);
+        makeCloudComp(),
+        k.scale(4)]
+    );
 
     // add boundaries 
     for (const layer of layers) {
@@ -129,8 +162,30 @@ export const createMap = () => {
         charDialogue()
     ]);
 
+    const flowersPoints = map.get('flower_spawn');
+
+    flowersPoints.forEach(point => {
+        let flower = k.add([
+            k.sprite('flower'),
+            k.pos(point.worldPos()),
+            { anim: 'bloom' },
+            k.area(),
+            k.scale(4),
+            k.body(),
+            'flower_animated'
+            ])
+
+        flower.play('bloom');
+    })
+
+
+    map.startCloudLoop();
+
+    // let's test the cloud behavior
 
 
 
+
+    
     return map;
 }
