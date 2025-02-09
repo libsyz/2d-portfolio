@@ -25,11 +25,11 @@ Now it's time to improve things, this needs to rock
 
 ### Must
 [X] Close doors of houses player should not get into 
-[] Set bounds on the left hand side of the map
+[ ] Set bounds on the left hand side of the map
 [X] Set bounds on the right fence, there's no collision control
-[] Need to make it come more alive
+[ ] Need to make it come more alive
    [X] Add flower animations
-   [] Add an animal walking around
+   [ ] Add an animal walking around
    [X] Clouds floating on top
       [X] Spawn the cloud outside at -15, -15
       [X] Move diagonally

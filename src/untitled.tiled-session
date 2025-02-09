@@ -170,17 +170,17 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
-                9,
                 7,
+                9,
                 12,
                 6,
                 5
             ],
-            "scale": 1.9698,
-            "selectedLayer": 7,
+            "scale": 4.1357,
+            "selectedLayer": 3,
             "viewCenter": {
-                "x": 165.2452025586354,
-                "y": 134.78525738653667
+                "x": 16.07950286529487,
+                "y": 93.5754527649491
             }
         },
         "mapdata/map.tmj": {
@@ -357,6 +357,7 @@
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "mapdata/map.json",
         "mapdata/game_map.json",
         "mapdata/map.tmj",
         "game_map.tmx",
@@ -364,7 +365,6 @@
         "mapdata/temple.tmj",
         "mapdata/baddie_green.tsj",
         "mapdata/baddie_green.tmj",
-        "mapdata/map.json",
         "mapdata/office.tsj",
         "mapdata/TilesetInterior.tsj",
         "mapdata/TilesetInteriorFloor.tsj",
