@@ -40,6 +40,16 @@ k.loadSprite('old_man', './src/assets/old_man.png', {
     }
 })
 
+k.loadSprite('chicken', './src/assets/chicken.png', {
+    sliceX: 2,
+    sliceY: 1,
+    anims: {
+        'idle': 0,
+        'bob': { from: 0, to: 1, loop: true, speed: 1.5 }
+    }
+})
+
+
 const makeCloudComp = () => {
     return { 
         makeCloud() {
@@ -50,7 +60,7 @@ const makeCloudComp = () => {
                 k.scale(0.5),
                 k.area(),
                 k.move(k.vec2(100, 100), 20),
-                k.opacity(0.15),
+                k.opacity(0.3),
                 k.pos(clouds[parseInt(k.rand(clouds.length))].worldPos())
                 // k.offscreen({destroy: true})
             ])
@@ -152,6 +162,8 @@ export const createMap = () => {
 
     center.moveTo(map.get('scene_1')[0].worldPos());
 
+    // Add characters
+
     const oldMan = map.add([
         k.sprite('old_man'), 
         k.pos(map.get('old_man_spawn')[0].pos),
@@ -164,8 +176,49 @@ export const createMap = () => {
     ]);
 
     oldMan.play('bob');
-    debugger
+
     oldMan.setDialogBubble();
+
+    const chickenPatrol = () => {
+        return {
+            patrolDirection: 1, 
+            patrolRight() {
+                return
+            },
+            patrolLeft() {
+                return
+            },
+            startPatrol() {
+               this.patrolLoop(); 
+               this.onUpdate(() =>{
+                    this.move(this.patrolDirection, 0)
+               })
+            },
+            patrolLoop() {
+                k.loop(5, () => {
+                    this.patrolDirection *= -1;
+                    this.flipX = !this.flipX;
+                })
+            }
+        }
+    }
+    
+    const chicken = map.add([
+        k.sprite('chicken'), 
+        k.pos(map.get('chicken_spawn')[0].pos),
+        {anim: 'idle'},
+        k.area(),
+        k.scale(0.75),
+        k.body({isStatic: true}),
+        chickenPatrol(),
+        'chicken'
+    ]);
+
+    chicken.play('bob');
+    chicken.startPatrol();
+
+
+    // Add animated scenery
 
     const flowersPoints = map.get('flower_spawn');
 

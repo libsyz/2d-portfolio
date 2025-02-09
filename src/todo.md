@@ -25,11 +25,11 @@ Now it's time to improve things, this needs to rock
 
 ### Must
 [X] Close doors of houses player should not get into 
-[ ] Set bounds on the left hand side of the map
+[X] Set bounds on the left hand side of the map
 [X] Set bounds on the right fence, there's no collision control
 [ ] Need to make it come more alive
    [X] Add flower animations
-   [ ] Add an animal walking around
+   [X] Add an animal walking around
    [X] Clouds floating on top
       [X] Spawn the cloud outside at -15, -15
       [X] Move diagonally
@@ -48,3 +48,21 @@ Now it's time to improve things, this needs to rock
 [] Mailbox, an interactable, should shine to attract the player's attention
 
 
+
+
+# Beach Scene
+
+### Must 
+
+[ ] Fix bounds on the left hand side
+[ ] Make grounds layer prettier, with nice edges on the surface changes
+[ ] Make it more lively 
+   [ ] Add a monkey
+   [ ] Add someone at the beach, 
+      [ ] fishing or something  
+      [ ] dialogue - gives a cue about the demon in the shrine
+
+
+### Nice to Have
+
+ [ ]  

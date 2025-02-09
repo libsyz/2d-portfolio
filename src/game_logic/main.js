@@ -100,19 +100,19 @@ k.scene("main", async (playerSpawnPoint) => {
 });
 
 k.scene('house', async (playerSpawnPoint) => { 
-   const houseMap = createHouseMap(gameState);
-   const ui = createUI(gameState);
+    const houseMap = createHouseMap(gameState);
+    const ui = createUI(gameState);
    
-   // ui needs to read from the gamestate and update if necessary
+    // ui needs to read from the gamestate and update if necessary
 
-   fadeInScene();
+    fadeInScene();
 
-   const player = createPlayer();
-   player.canAttack = false;
-   player.moveTo(houseMap.get(playerSpawnPoint)[0].worldPos())
+    const player = createPlayer();
+    player.canAttack = false;
+    player.moveTo(houseMap.get(playerSpawnPoint)[0].worldPos())
 
     player.onUpdate( () =>  {
-        k.camPos(player.worldPos());
+            k.camPos(player.worldPos());
     })
 
 
