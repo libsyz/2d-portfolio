@@ -49,6 +49,18 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
     }
 })
 
+k.loadSprite('fisherman_face', './src/assets/fisherman_face.png');
+k.loadSprite('fisherman_rod', './src/assets/fisherman_rod.png' )
+k.loadSprite('fisherman', './src/assets/fisherman.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+        'left': 3
+    }
+})
+
+
+// Cloud and raining effects
 
 const makeCloudComp = () => {
     return { 
@@ -217,6 +229,26 @@ export const createMap = () => {
     chicken.play('bob');
     chicken.startPatrol();
 
+
+    const fisherman = map.add([
+        k.sprite('fisherman'),
+        k.pos(map.get('fisherman_spawn')[0].pos),
+        {anim: 'left'},
+        k.area(),
+        k.scale(1),
+        k.body({isStatic: true}),
+        'fisherman'
+    ])
+
+    fisherman.play('left');
+
+    fisherman.add([
+        k.sprite('fisherman_rod'),
+        k.area(),
+        k.body({isStatic: true}),
+        k.pos(16, 2),
+        k.scale(1)
+    ])
 
     // Add animated scenery
 
