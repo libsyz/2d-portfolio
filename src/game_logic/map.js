@@ -90,11 +90,13 @@ const makeCloudComp = () => {
 // instatiate the map
 export const createMap = () => {
     const layers = mapData.layers;
-    const map = k.add([k.sprite("map"), 
+    const map = k.add([
+        k.sprite("map"), 
         k.pos(0), 
         makeCloudComp(),
-        k.scale(4)]
-    );
+        k.scale(4),
+        'map'
+    ]);
 
     // add boundaries 
     for (const layer of layers) {

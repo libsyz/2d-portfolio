@@ -7,12 +7,13 @@ export const seconds = (secs) => {
     return FRAMERATE * secs
 }
 
-export const showDialogue = (faceTag, message) => {
-    // ALL MAGIC NUMBERS
-    // add the dialogue box
+export const showDialogue = (faceTag, message, gameState) => {
+    const scene = k.get('map')[0].get(gameState.currentScene)[0];
+
+    const { x, y } = scene.worldPos();
     const dialogueBox = k.add([
         k.sprite('dialogue_box_simple'),
-        k.pos(8, 464),
+        k.pos(x - 636, y + 120), // semi-magical numbers
         k.scale(4),
         'dialog'
     ]);

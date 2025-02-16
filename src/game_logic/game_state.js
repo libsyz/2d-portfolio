@@ -2,6 +2,7 @@
 
 export const createGameState = () => {
     return {
+        currentScene: 'scene_1', // Game starts at scene_1
         isDialogueBusy: false,
         tutorial: {
             done: false,

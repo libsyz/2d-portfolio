@@ -60,7 +60,9 @@ k.scene("main", async (playerSpawnPoint) => {
     const sceneNames = ['scene_1', 'scene_2', 'scene_3'];
 
     sceneNames.forEach(sceneName => { 
+
         k.onCollide('player', sceneName, (player, scene) => {
+            gameState.currentScene = sceneName;
             k.tween(center.worldPos(), scene.worldPos(), 0.5, (newVal) => {
                 center.pos = newVal, k.easings.linear;
             })
@@ -68,7 +70,7 @@ k.scene("main", async (playerSpawnPoint) => {
     }) 
     
     k.onCollide('player', 'old_man', (_, oldMan) => {
-        showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.');
+        showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
     })
 
     k.onCollideEnd('player', 'old_man', (_, oldMan) => {
@@ -76,9 +78,13 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'fisherman', (_, fisherMan) => {
-        k.debug.log('colliding');
-        showDialogue('fisherman_face', 'Fishing needs a sharp mind — like dealing with the dungeon spirit.')
+        showDialogue('fisherman_face', 'Fishing needs sharp skills — like dealing with the questions of the spirit within the shrine.', gameState);
     })
+
+    k.onCollideEnd('player', 'fisherman', () => {
+        k.destroy(k.get('dialog')[0]);
+    })
+
 
     k.onCollide('player', 'mailbox', () => {
         showDialogue('player_face', 'You can reach me at miguel.leo.jimenez@gmail.com');
