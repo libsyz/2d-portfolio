@@ -75,6 +75,11 @@ k.scene("main", async (playerSpawnPoint) => {
         k.destroy(k.get('dialog')[0]);
     })
 
+    k.onCollide('player', 'fisherman', (_, fisherMan) => {
+        k.debug.log('colliding');
+        showDialogue('fisherman_face', 'Fishing needs a sharp mind — like dealing with the dungeon spirit.')
+    })
+
     k.onCollide('player', 'mailbox', () => {
         showDialogue('player_face', 'You can reach me at miguel.leo.jimenez@gmail.com');
     })
