@@ -152,8 +152,7 @@ export const charDialogue = () => {
         } 
     }
 }
-
-
+                                                                        
 export const userSelect = (gameState, optionsArray) => {
 
     const {x, y} = k.camPos();
@@ -230,9 +229,7 @@ export const userSelect = (gameState, optionsArray) => {
                 el.active = false;
                 el.color = new k.Color(0, 0, 0);
             }
-        })
-
-    
+        })    
     })
 
     selectBox.onKeyRelease('space', () => {

@@ -82,6 +82,8 @@ const baddiePatrol = () => {
     }
 }
 
+
+
 export const createBaddieGreenDemon = () => {
     const scale = 3.5;
     
@@ -102,6 +104,23 @@ export const createBaddieGreenDemon = () => {
         'baddie_green_demon',
         baddiePatrol()
     ]);
+
+    const baddieGreenDemonPlayerDetectionArea = baddieGreenDemon.add([
+        k.rect(160, 160),
+        k.area(),
+        k.opacity(0),
+        k.anchor('center'),
+        'baddie_green_demon_player_detection_area'
+    ])
+
+    baddieGreenDemonPlayerDetectionArea.onCollide('player', (player) => {
+        k.add([
+            k.rect(20, 20),
+            k.pos(baddieGreenDemon.pos),
+            k.color(1, 0, 0),
+            k.move(player.pos.angle(baddieGreenDemon.pos), 220),
+        ])
+    })
     
     baddieGreenDemon.on('death', () => {
         baddieGreenDemon.patrolEvent.cancel();

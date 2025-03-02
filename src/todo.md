@@ -56,13 +56,20 @@ Now it's time to improve things, this needs to rock
 
 [X] Fix bounds on the left hand side
 [ ] Make grounds layer prettier, with nice edges on the surface changes
-[ ] Make it more lively 
-   [ ] Add a monkey that runs away when the player comes close
-   [X] Add someone at the beach, 
-      [x] fishing   
-      [ ] dialogue - gives a cue about the demon in the shrine
+   [ ] This requires re-learning how to make brushes and honestly dont want to
 
 
 ### Nice to Have
 
  [ ]  
+
+# Forest Scene
+
+### Must 
+
+[ ] Fix the graphics / layout of the forest sucks
+[ ] Add bounds
+[ ] Monster needs to feel a bit more intimidating
+   [ ] when user is in range, fires beam
+   [ ] when user hits with arrow, pushback and blink
+   [ ] when user is hit, pushback and blink in player
