@@ -9,11 +9,16 @@ export const seconds = (secs) => {
 
 export const showDialogue = (faceTag, message, gameState) => {
     const scene = k.get('map')[0].get(gameState.currentScene)[0];
+    
+    
+    // places the dialogue box above or below the player depending on their position
+    let playerY = k.get('player')[0].worldPos().y;
+    let dialogueBoxYOffSet = ( playerY < 1000 ) ? 120 : -360;
 
     const { x, y } = scene.worldPos();
     const dialogueBox = k.add([
         k.sprite('dialogue_box_simple'),
-        k.pos(x - 636, y + 120), // semi-magical numbers
+        k.pos(x - 636, y + dialogueBoxYOffSet), // semi-magical numbers
         k.scale(4),
         'dialog'
     ]);
@@ -38,8 +43,8 @@ export const showDialogue = (faceTag, message, gameState) => {
 // TODO: This is just a shitty function call name, I need to rename this 
 export const showDialogueHouse = (gameState, faceTag, messages) => {
 
-    let currentMessageIdx = 0 
-
+    let currentMessageIdx = 0;
+    
     const {x, y} = k.camPos();
 
     const dialogueBox = k.add([

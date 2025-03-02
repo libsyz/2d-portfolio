@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/baddie_green.tmj",
+    "activeFile": "mapdata/untitled.tmj",
     "expandedProjectPaths": [
         "tilesets",
         ".",
@@ -27,15 +27,15 @@
             "scaleInEditor": 2.46
         },
         "TilesetFloor.tsj": {
-            "scaleInDock": 2.283,
+            "scaleInDock": 0.6287,
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
-            "scaleInDock": 1.4435,
+            "scaleInDock": 1.4524,
             "scaleInEditor": 2.65
         },
         "TilesetNature.tsj": {
-            "scaleInDock": 1.5314,
+            "scaleInDock": 0.8887,
             "scaleInEditor": 2.65
         },
         "TilesetWater.tsj": {
@@ -85,18 +85,18 @@
             "scaleInDock": 1
         },
         "mapdata/TilesetInterior.tsj": {
-            "scaleInDock": 2.4228,
+            "scaleInDock": 0.9607,
             "scaleInEditor": 1
         },
         "mapdata/TilesetInteriorFloor.tsj": {
-            "scaleInDock": 2.6893,
+            "scaleInDock": 0.8839,
             "scaleInEditor": 1
         },
         "mapdata/TilesetNature.tsj": {
             "scaleInDock": 1
         },
         "mapdata/TilesetWater.tsj": {
-            "scaleInDock": 2.0886,
+            "scaleInDock": 3.254,
             "scaleInEditor": 2.46
         },
         "mapdata/baddie_green.tmj": {
@@ -171,7 +171,6 @@
         "mapdata/map.json": {
             "expandedObjectLayers": [
                 7,
-                9,
                 12,
                 6,
                 5
@@ -179,8 +178,8 @@
             "scale": 2.0294,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 290.4799448112743,
-                "y": 189.71124470286787
+                "x": 145.6095397654479,
+                "y": 218.29112052823496
             }
         },
         "mapdata/map.tmj": {
@@ -253,11 +252,11 @@
             "scaleInEditor": 3.3413
         },
         "mapdata/untitled.tmj": {
-            "scale": 2.5828124999999997,
+            "scale": 2.6613,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 159.70961887477316,
-                "y": 88.27586206896552
+                "x": -40.76954871679254,
+                "y": -98.44812685529627
             }
         },
         "miguel_house.tmj": {
@@ -273,6 +272,10 @@
                 "x": 270.3720439825275,
                 "y": 402.92212682632925
             }
+        },
+        "oldMan.tsj": {
+            "scaleInDock": 2.8496,
+            "scaleInEditor": 2.7844
         },
         "player.tmj": {
             "scale": 2.293359375,
@@ -295,7 +298,7 @@
             "scaleInEditor": 1
         },
         "tilesets/TilesetDesert.tsj": {
-            "scaleInDock": 1.8188,
+            "scaleInDock": 1.0622,
             "scaleInEditor": 2.46
         },
         "tilesets/TilesetField.tsj": {
@@ -303,7 +306,7 @@
             "scaleInEditor": 2.65
         },
         "tilesets/TilesetFloor.tsj": {
-            "scaleInDock": 2.7352,
+            "scaleInDock": 1.6921,
             "scaleInEditor": 2.46
         },
         "tilesets/TilesetNature.tsj": {
@@ -353,22 +356,24 @@
         "mapdata/temple.tmj",
         "mapdata/baddie_green.tsj",
         "mapdata/baddie_green.tmj",
-        "mapdata/baddie_green.tsj"
+        "mapdata/map.json",
+        "oldMan.tsj",
+        "mapdata/untitled.tmj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "mapdata/map.json",
-        "mapdata/game_map.json",
-        "mapdata/map.tmj",
-        "game_map.tmx",
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
         "mapdata/baddie_green.tsj",
         "mapdata/baddie_green.tmj",
+        "mapdata/map.json",
+        "oldMan.tsj",
+        "mapdata/untitled.tmj",
+        "mapdata/game_map.json",
+        "mapdata/map.tmj",
+        "game_map.tmx",
         "mapdata/office.tsj",
-        "mapdata/TilesetInterior.tsj",
-        "mapdata/TilesetInteriorFloor.tsj",
-        "mapdata/TilesetWater.tsj"
+        "mapdata/TilesetInterior.tsj"
     ],
     "resizeMap.removeObjects": false,
     "tileset.lastUsedFilter": "All Files (*)",

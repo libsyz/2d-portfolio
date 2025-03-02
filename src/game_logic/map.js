@@ -248,7 +248,7 @@ export const createMap = () => {
         k.sprite('fisherman_rod'),
         k.area(),
         k.body({isStatic: true}),
-        k.pos(16, 2),
+        k.pos(15, 2),
         k.scale(1)
     ])
 

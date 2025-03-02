@@ -54,12 +54,12 @@ Now it's time to improve things, this needs to rock
 
 ### Must 
 
-[ ] Fix bounds on the left hand side
+[X] Fix bounds on the left hand side
 [ ] Make grounds layer prettier, with nice edges on the surface changes
 [ ] Make it more lively 
-   [ ] Add a monkey
-   [ ] Add someone at the beach, 
-      [ ] fishing or something  
+   [ ] Add a monkey that runs away when the player comes close
+   [X] Add someone at the beach, 
+      [x] fishing   
       [ ] dialogue - gives a cue about the demon in the shrine
 
 
