@@ -34,7 +34,7 @@ export const createPlayer = () => {
         k.area(playerAreaScale),
         k.anchor('center'),
         k.scale(playerScale),
-        k.body(),
+        k.body({mass: 1}),
         k.state('attack', ['attack', 'explore', 'dialogue'] ),
         { 
             moveEvents: [], 

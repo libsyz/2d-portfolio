@@ -95,6 +95,31 @@ const baddiePatrol = () => {
     }
 }
 
+const baddieHealthBar = () => {
+    return {
+        makeHealthBar() {
+            this.healthbarBackground = this.add([
+                k.rect(16, 4),
+                k.area(),
+                k.pos(this.pos.x - 28, this.pos.y - 32),
+                k.color(0, 0, 0),
+                k.opacity(0),
+                'health_bar'
+            ])
+
+            this.healthbar = this.add([
+                k.rect(16, 4),
+                k.area(),
+                k.pos(this.pos.x - 28, this.pos.y - 32),
+                k.color(255, 0, 0),
+                k.opacity(0),
+                'health_bar'
+            ])
+
+        }
+    }
+}
+
 
 
 export const createBaddieGreenDemon = () => {
@@ -115,7 +140,8 @@ export const createBaddieGreenDemon = () => {
         componentFlash(),
         k.body({isStatic: true}),
         'baddie_green_demon',
-        baddiePatrol()
+        baddiePatrol(),
+        baddieHealthBar(),
     ]);
 
     const baddieGreenDemonPlayerDetectionArea = baddieGreenDemon.add([
@@ -138,9 +164,18 @@ export const createBaddieGreenDemon = () => {
 
         fireball.play('move');
         fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
+
+        fireball.onCollide('player', (player) => { 
+            fireball.destroy();
+        })
+
+        fireball.onCollide('boundary', () => {
+            fireball.destroy();
+        })
     })
     
     baddieGreenDemon.on('death', () => {
+        baddieGreenDemon.healthbar.destroy();
         baddieGreenDemon.patrolEvent.cancel();
         baddieGreenDemon.unuse('patrol');
         baddieGreenDemon.move(0, 0);
@@ -151,9 +186,13 @@ export const createBaddieGreenDemon = () => {
     })
 
     baddieGreenDemon.patrol();
+    baddieGreenDemon.makeHealthBar();
 
     baddieGreenDemon.onCollide('arrow', (arrow) => {
             baddieGreenDemon.hurt(1);
+            baddieGreenDemon.healthbarBackground.opacity = 1;
+            baddieGreenDemon.healthbar.opacity = 1;
+            baddieGreenDemon.healthbar.width = baddieGreenDemon.healthbar.width - 5; 
             baddieGreenDemon.patrolEvent.cancel();
             baddieGreenDemon.flash(1000);
             arrow.destroy();
