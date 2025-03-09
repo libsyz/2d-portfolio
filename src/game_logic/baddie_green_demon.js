@@ -1,6 +1,8 @@
 import { k } from './kaboomCtx';
 import { seconds } from './utils';
 
+
+
 k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
     sliceX: 4,
     sliceY: 6,
@@ -13,6 +15,17 @@ k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
         dead: 20
     }
 })
+
+k.loadSprite('fireball', './src/assets/fireball.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+        idle: 0,
+        move: { from: 0, to: 3, loop: true, speed: 10 }
+    }
+})
+
+
 
 const componentFlash = (k) => {
     const flash = (interval = 0.15) => {
@@ -114,12 +127,17 @@ export const createBaddieGreenDemon = () => {
     ])
 
     baddieGreenDemonPlayerDetectionArea.onCollide('player', (player) => {
-        k.add([
-            k.rect(20, 20),
+        const fireball = k.add([
+            k.sprite('fireball'),
+            k.area(),
+            k.scale(2),
             k.pos(baddieGreenDemon.pos),
-            k.color(1, 0, 0),
             k.move(player.pos.angle(baddieGreenDemon.pos), 220),
+            'fireball'
         ])
+
+        fireball.play('move');
+        fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
     })
     
     baddieGreenDemon.on('death', () => {
