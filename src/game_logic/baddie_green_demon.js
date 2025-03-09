@@ -120,8 +120,6 @@ const baddieHealthBar = () => {
     }
 }
 
-
-
 export const createBaddieGreenDemon = () => {
     const scale = 3.5;
     
@@ -188,7 +186,7 @@ export const createBaddieGreenDemon = () => {
     baddieGreenDemon.patrol();
     baddieGreenDemon.makeHealthBar();
 
-    baddieGreenDemon.onCollide('arrow', (arrow) => {
+    baddieGreenDemon.onCollide('shuriken', (arrow) => {
             baddieGreenDemon.hurt(1);
             baddieGreenDemon.healthbarBackground.opacity = 1;
             baddieGreenDemon.healthbar.opacity = 1;

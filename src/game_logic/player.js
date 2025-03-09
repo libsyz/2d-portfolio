@@ -19,7 +19,49 @@ k.loadSprite('player', './src/assets/player.png', {
     }
 })
 
-const arrow = k.loadSprite('arrow', './src/assets/arrow.png');
+k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
+    sliceX: 2,
+    sliceY: 1,
+    anims: {
+        throw: { from: 0, to: 1, loop: true, speed: 10 }
+    }
+})
+
+
+const shurikenComp = () => {
+    return {
+        throwShuriken(){
+            const SHURIKEN_SPEED = 800;
+            let xOffset = 0;
+            let yOffset = 0;
+            
+            if (this.direction === k.RIGHT) {
+                xOffset = 32;
+            } else if (this.direction === k.LEFT ) { 
+                xOffset = -32
+            } else if (this.direction === k.UP) {
+                yOffset = -32
+            } else {
+                yOffset = 32
+            }
+
+            const shuriken = k.add([
+                k.sprite('shuriken2', { anim: 'throw'}),  
+                k.area(),
+                k.pos( this.pos.x + xOffset , this.pos.y + yOffset ),
+                k.anchor("center"),
+                k.color(127, 127, 255),
+                k.scale(2),
+                k.move(this.direction, SHURIKEN_SPEED),
+                k.offscreen({ destroy: true }),
+                // strings here means a tag
+                "shuriken",
+            ])
+
+            return shuriken
+        }
+    }
+}
 
 export const createPlayer = () => {
     const playerScale = 4;
@@ -36,13 +78,14 @@ export const createPlayer = () => {
         k.scale(playerScale),
         k.body({mass: 1}),
         k.state('attack', ['attack', 'explore', 'dialogue'] ),
+        shurikenComp(),
         { 
             moveEvents: [], 
             attackEvents: [],
             setPlayerAttackEvents() {
                 this.attackEvents.push(
                     this.onKeyPress("space", () => {
-                        spawnArrow(this.pos, this.direction);    
+                        let shuri = this.throwShuriken();
 
                         if (this.direction === k.DOWN) {
                             this.play('attack-down');
@@ -166,62 +209,6 @@ export const createPlayer = () => {
     
     // init player in idle state
     player.play('idle-down')
-    
-    // [NEXT TODO]
-    // Goal - Avoid guard clause hell to decide when the player should move
-    //      - I don't want to check at every action if the player should move, attack or whatever
-    //      - what I want is to tell the player what to do
-    //      - player reacts to state changes, updated movement and attach capabilities
-    //      - scene interactions trigger state changes
-    
-    // add player and bind the arrow movements via a component 
-    // all movement events get added and stored in an array
-    // all the attack events get added in another array
-    // we have states for free exploration, room exploration and dialogue
-    // whenever these states kick in, they flush all events and add them accordingly
-    
-
-    
-    // get the direction of the player
-    // use that to instantiate a shuriken
-    // and send it flying 
-    
-    
-
-    
-    const spawnArrow = (playerPos, posDirection) => {
-        const ARROW_SPEED = 800;
-        let rotation = 0;
-        let xOffset = 0;
-        let yOffset = 0;
-        
-        if (posDirection === k.RIGHT) {
-            rotation = 0;
-            xOffset = 32;
-        } else if (posDirection === k.LEFT ) { 
-            rotation = 180;
-            xOffset = -32
-        } else if (posDirection === k.UP) {
-            rotation = 270
-            yOffset = -32
-        } else {
-            rotation = 90
-            yOffset = 32
-        }
-        k.add([
-            k.sprite('arrow'),
-            k.area(),
-            k.pos( player.pos.x + xOffset , player.pos.y + yOffset ),
-            k.anchor("center"),
-            k.rotate(rotation),
-            k.color(127, 127, 255),
-            k.scale(4),
-            k.move(posDirection, ARROW_SPEED),
-            k.offscreen({ destroy: true }),
-            // strings here means a tag
-            "arrow",
-        ])
-    }
     
     return player;
 }

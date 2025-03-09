@@ -103,8 +103,8 @@
             "scale": 2.6177,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 165.2213775451732,
-                "y": 168.46850288421132
+                "x": 32.28024601749627,
+                "y": 48.13385796691753
             }
         },
         "mapdata/baddie_green.tsj": {
@@ -113,14 +113,14 @@
         },
         "mapdata/cave_map.json": {
             "expandedObjectLayers": [
-                9,
-                4
+                4,
+                9
             ],
             "scale": 2.8994,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 76.39511623094435,
-                "y": 144.16775884665793
+                "x": 159.86066082637788,
+                "y": 158.30861557563634
             }
         },
         "mapdata/game_map.json": {
@@ -172,14 +172,14 @@
             "expandedObjectLayers": [
                 7,
                 12,
-                6,
-                5
+                5,
+                6
             ],
             "scale": 2.0294,
             "selectedLayer": 1,
             "viewCenter": {
-                "x": 145.6095397654479,
-                "y": 218.29112052823496
+                "x": 319.5525771163891,
+                "y": 176.4068197496797
             }
         },
         "mapdata/map.tmj": {
@@ -224,15 +224,15 @@
         },
         "mapdata/temple.tmj": {
             "expandedObjectLayers": [
+                10,
                 7,
-                9,
-                10
+                9
             ],
             "scale": 2.2442,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 75.08243472061314,
-                "y": 45.89608769271899
+                "x": 160.1907138401212,
+                "y": 88.22743071027537
             }
         },
         "mapdata/temple_map.json": {
@@ -255,8 +255,8 @@
             "scale": 2.6613,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -40.76954871679254,
-                "y": -98.44812685529627
+                "x": -8.830270920226951,
+                "y": -71.017923571187
             }
         },
         "miguel_house.tmj": {
@@ -344,7 +344,7 @@
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
     "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/Master",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/FX/Projectile",
     "map.height": 1,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
