@@ -67,14 +67,15 @@ Now it's time to improve things, this needs to rock
 
 ### Must 
 
+[ ] Monster needs to feel a bit more intimidating
+   [X] when user is in range, fires beam
+   [ ] when user hits monster with arrow, pushback and blink
+   [ ] when user is hit, 
+      blink
+      pushback
 
 [ ] Add bounds
-[ ] Monster needs to feel a bit more intimidating
-   [ ] when user is in range, fires beam
-   [ ] when user hits with arrow, pushback and blink
-   [ ] when user is hit, pushback and blink in player
-
 [ ] Fix the graphics / layout of the forest sucks
-[ ] Monster should have a health bar 
+[X] Monster should have a health bar 
 
-[ ] Player needs to throw shurikens that spin, arrows makes no sense
+[X] Player needs to throw shurikens that spin, arrows makes no sense

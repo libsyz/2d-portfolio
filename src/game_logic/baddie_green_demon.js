@@ -183,20 +183,27 @@ export const createBaddieGreenDemon = () => {
         })
     })
 
+    baddieGreenDemon.on('hurt', ()=> {
+        baddieGreenDemon.play('dead');
+        baddieGreenDemon.healthbarBackground.opacity = 1;
+        baddieGreenDemon.healthbar.opacity = 1;
+        baddieGreenDemon.healthbar.width = baddieGreenDemon.healthbar.width - 5; 
+        baddieGreenDemon.patrolEvent.cancel();
+        baddieGreenDemon.flash(1000);
+        k.wait(0.2, () => {
+            if (baddieGreenDemon.hp() > 0) {
+                baddieGreenDemon.play('down');
+                baddieGreenDemon.patrol();
+            }
+        })
+    })
+
     baddieGreenDemon.patrol();
     baddieGreenDemon.makeHealthBar();
 
-    baddieGreenDemon.onCollide('shuriken', (arrow) => {
+    baddieGreenDemon.onCollide('shuriken', (shuriken) => {
+            shuriken.destroy();
             baddieGreenDemon.hurt(1);
-            baddieGreenDemon.healthbarBackground.opacity = 1;
-            baddieGreenDemon.healthbar.opacity = 1;
-            baddieGreenDemon.healthbar.width = baddieGreenDemon.healthbar.width - 5; 
-            baddieGreenDemon.patrolEvent.cancel();
-            baddieGreenDemon.flash(1000);
-            arrow.destroy();
-            k.wait(1, () => {
-                baddieGreenDemon.patrol();
-            })
     })
 
     return baddieGreenDemon;
