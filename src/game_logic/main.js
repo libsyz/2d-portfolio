@@ -24,7 +24,7 @@ k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
         'show': {from: 0, to: 3, loop: true, speed: 5}
     }
 })
-k.loadSprite('shuriken', './src/assets/shuriken.png');
+
 k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
