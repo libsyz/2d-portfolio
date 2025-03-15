@@ -2,7 +2,7 @@ import { k } from './kaboomCtx';
 
 k.loadSprite('player', './src/assets/player.png', {
     sliceX: 4,
-    sliceY: 5,
+    sliceY: 6,
     anims: {
         'idle-down': 0,
         'idle-up': 4,
@@ -15,7 +15,8 @@ k.loadSprite('player', './src/assets/player.png', {
         'down': {from: 0, to: 3, loop: true, speed: 8 },
         'up': {from: 4, to: 7, loop: true, speed: 8 },
         'left': {from: 8, to: 11, loop: true, speed: 8},
-        'right': {from: 12, to: 15, loop: true, speed: 8}
+        'right': {from: 12, to: 15, loop: true, speed: 8},
+        'hurt': 24
     }
 })
 
