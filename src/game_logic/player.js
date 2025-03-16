@@ -12,6 +12,7 @@ k.loadSprite('player', './src/assets/player.png', {
         'attack-up': 17,
         'attack-left': 18,
         'attack-right': 19,
+        'hurt': 20,
         'down': {from: 0, to: 3, loop: true, speed: 8 },
         'up': {from: 4, to: 7, loop: true, speed: 8 },
         'left': {from: 8, to: 11, loop: true, speed: 8},
@@ -205,6 +206,13 @@ export const createPlayer = () => {
         player.goIdle();
         player.clearAttackEvents();
         player.clearMovementEvents();
+    })
+
+    player.onCollide('fireball', () => {
+        player.play('hurt');
+        k.wait(0.2, () => {
+            player.goIdle();
+        })
     })
     
     // init player in idle state
