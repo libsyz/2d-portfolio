@@ -10,24 +10,24 @@ import { showDialogue, showDialogueHouse } from './utils.js';
 
 k.loadSprite('player-face', './src/assets/player_face.png')
 
-k.loadSprite('player', './src/assets/player.png', {
-    sliceX: 4,
-    sliceY: 5,
-    anims: {
-        'idle-down': 0,
-        'idle-up': 4,
-        'idle-left': 8,
-        'idle-right': 12,
-        'attack-down': 16,
-        'attack-up': 17,
-        'attack-left': 18,
-        'attack-right': 19,
-        'down': {from: 0, to: 3, loop: true, speed: 8 },
-        'up': {from: 4, to: 7, loop: true, speed: 8 },
-        'left': {from: 8, to: 11, loop: true, speed: 8},
-        'right': {from: 12, to: 15, loop: true, speed: 8}
-    }
-})
+// k.loadSprite('player', './src/assets/player.png', {
+//     sliceX: 4,
+//     sliceY: 5,
+//     anims: {
+//         'idle-down': 0,
+//         'idle-up': 4,
+//         'idle-left': 8,
+//         'idle-right': 12,
+//         'attack-down': 16,
+//         'attack-up': 17,
+//         'attack-left': 18,
+//         'attack-right': 19,
+//         'down': {from: 0, to: 3, loop: true, speed: 8 },
+//         'up': {from: 4, to: 7, loop: true, speed: 8 },
+//         'left': {from: 8, to: 11, loop: true, speed: 8},
+//         'right': {from: 12, to: 15, loop: true, speed: 8}
+//     }
+// })
 
 // receptionist
 

@@ -36,7 +36,7 @@ const gameState = createGameState();
 // load scenes
 
 k.scene("main", async (playerSpawnPoint) => {
-    
+    k.debug.log('whaddup son');
     const map = createMap();
     const ui = createUI(gameState);
     fadeInScene();

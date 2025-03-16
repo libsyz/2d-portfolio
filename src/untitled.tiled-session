@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "mapdata/untitled.tmj",
+    "activeFile": "player.tmj",
     "expandedProjectPaths": [
-        "tilesets",
+        "mapdata",
         ".",
-        "mapdata"
+        "tilesets"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -27,15 +27,15 @@
             "scaleInEditor": 2.46
         },
         "TilesetFloor.tsj": {
-            "scaleInDock": 0.6287,
+            "scaleInDock": 0.5458,
             "scaleInEditor": 5.1
         },
         "TilesetHouse.tsj": {
-            "scaleInDock": 1.4524,
+            "scaleInDock": 1.7366,
             "scaleInEditor": 2.65
         },
         "TilesetNature.tsj": {
-            "scaleInDock": 0.8887,
+            "scaleInDock": 1.2238,
             "scaleInEditor": 2.65
         },
         "TilesetWater.tsj": {
@@ -43,7 +43,7 @@
             "scaleInEditor": 2.65
         },
         "assets/22_Museum.tsj": {
-            "scaleInDock": 2.7037,
+            "scaleInDock": 1.8629,
             "scaleInEditor": 2.46
         },
         "child.tsj": {
@@ -100,7 +100,7 @@
             "scaleInDock": 1
         },
         "mapdata/TilesetWater.tsj": {
-            "scaleInDock": 3.254,
+            "scaleInDock": 1.1395,
             "scaleInEditor": 2.46
         },
         "mapdata/baddie_green.tmj": {
@@ -117,14 +117,14 @@
         },
         "mapdata/cave_map.json": {
             "expandedObjectLayers": [
-                4,
-                9
+                9,
+                4
             ],
             "scale": 2.8994,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 90.53597295992274,
-                "y": 149.6861419604056
+                "x": 159.86066082637788,
+                "y": 158.30861557563634
             }
         },
         "mapdata/game_map.json": {
@@ -174,16 +174,16 @@
         },
         "mapdata/map.json": {
             "expandedObjectLayers": [
+                6,
                 7,
-                12,
                 5,
-                6
+                12
             ],
             "scale": 2.1027,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 197.12750273457934,
-                "y": 117.94359632852999
+                "x": 209.01697817092307,
+                "y": 149.8073904979312
             }
         },
         "mapdata/map.tmj": {
@@ -235,8 +235,8 @@
             "scale": 2.2442,
             "selectedLayer": 4,
             "viewCenter": {
-                "x": 75.52802780500846,
-                "y": 45.89608769271901
+                "x": 160.1907138401212,
+                "y": 88.22743071027537
             }
         },
         "mapdata/temple_map.json": {
@@ -282,11 +282,11 @@
             "scaleInEditor": 2.7844
         },
         "player.tmj": {
-            "scale": 2.293359375,
+            "scale": 3.2826,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 70.42071197411002,
-                "y": 51.888945665133704
+                "x": 23.30469749588741,
+                "y": 12.490099311521348
             }
         },
         "player.tsj": {
@@ -310,7 +310,7 @@
             "scaleInEditor": 2.65
         },
         "tilesets/TilesetFloor.tsj": {
-            "scaleInDock": 1.6921,
+            "scaleInDock": 0.4872,
             "scaleInEditor": 2.46
         },
         "tilesets/TilesetNature.tsj": {
@@ -347,39 +347,36 @@
         }
     },
     "last.exportedFilePath": "/Users/migueljimenez/code/2d-portfolio/src/mapdata",
-    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Backgrounds/Tilesets/Interior",
-    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/FX/Projectile",
-    "map.height": 1,
+    "last.externalTilesetPath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenNinja",
+    "last.imagePath": "/Users/migueljimenez/Downloads/NinjaAdventure/Actor/Characters/GreenNinja",
+    "map.height": 6,
     "map.lastUsedExportFilter": "All Files (*)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 16,
     "map.tileWidth": 16,
-    "map.width": 2,
+    "map.width": 4,
     "openFiles": [
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
-        "mapdata/baddie_green.tsj",
-        "mapdata/baddie_green.tmj",
         "mapdata/map.json",
-        "oldMan.tsj",
-        "mapdata/untitled.tmj"
+        "player.tmj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
+        "player.tmj",
+        "mapdata/cave_map.json",
+        "mapdata/temple.tmj",
+        "mapdata/map.json",
         "mapdata/map.tmj",
         "mapdata/baddie_green.tsj",
         "mapdata/baddie_green.tmj",
-        "mapdata/map.json",
         "oldMan.tsj",
         "mapdata/Shuriken.tsj",
         "mapdata/untitled.tmj",
-        "mapdata/cave_map.json",
-        "mapdata/temple.tmj",
         "mapdata/game_map.json",
-        "game_map.tmx",
-        "mapdata/office.tsj"
+        "game_map.tmx"
     ],
-    "resizeMap.removeObjects": false,
+    "resizeMap.removeObjects": true,
     "tileset.lastUsedFilter": "All Files (*)",
     "tileset.lastUsedFormat": "json",
     "tileset.tileSize": {
