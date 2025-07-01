@@ -3,11 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "player.tmj",
+    "activeFile": "",
     "expandedProjectPaths": [
-        "mapdata",
+        "tilesets",
         ".",
-        "tilesets"
+        "mapdata"
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
@@ -290,7 +290,7 @@
             }
         },
         "player.tsj": {
-            "scaleInDock": 4.5416,
+            "scaleInDock": 3.1839,
             "scaleInEditor": 2.9781
         },
         "room_builder.tsj": {
@@ -359,22 +359,22 @@
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
         "mapdata/map.json",
-        "player.tmj"
+        "player.tsj"
     ],
     "project": "untitled.tiled-project",
     "recentFiles": [
-        "player.tmj",
         "mapdata/cave_map.json",
         "mapdata/temple.tmj",
         "mapdata/map.json",
+        "player.tsj",
+        "player.tmj",
         "mapdata/map.tmj",
         "mapdata/baddie_green.tsj",
         "mapdata/baddie_green.tmj",
         "oldMan.tsj",
         "mapdata/Shuriken.tsj",
         "mapdata/untitled.tmj",
-        "mapdata/game_map.json",
-        "game_map.tmx"
+        "mapdata/game_map.json"
     ],
     "resizeMap.removeObjects": true,
     "tileset.lastUsedFilter": "All Files (*)",
