@@ -21,7 +21,11 @@ export const createGameState = () => {
         checkFinished() {
             return this.scrolls.length === 3 ? true : false;
         },
+        isBaddieGreenDemonInForestDead: false,
         baddieGreenDemonsInCave: 0,
+        killBaddieGreenDemonInForest() {
+            this.isBaddieGreenDemonInForestDead = true;
+        },
         addBaddieGreenDemon() {
             this.baddieGreenDemonsInCave += 1;
         },

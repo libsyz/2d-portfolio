@@ -47,32 +47,30 @@ export const createCaveMap = async (gameState) => {
         }
     }
 
-    // what do I need here 
-    // I need to set the treasure chest on a location
-    // I need to keep count of the baddies
+    if (gameState.playerHasKey === false) {
+        caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
+            const demon = createBaddieGreenDemon();
+            demon.moveTo(spawnPoint.worldPos());
+            gameState.addBaddieGreenDemon();
 
-    caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
-        const demon = createBaddieGreenDemon();
-        demon.moveTo(spawnPoint.worldPos());
-        gameState.addBaddieGreenDemon();
-
-        demon.on('death', () => {
-            // problem - need to guarantee demon only dies once
-            if (demon.hp() === 0) {
-                let pos = demon.worldPos();
-                gameState.killBaddieGreenDemon();
-                k.debug.log(gameState.baddieGreenDemonsInCave);
-                if (gameState.areAllBaddieGreenDemonsDead()) {
-                    const key = createKey()
-                    key.moveTo(pos);
-                    key.onCollide('player', () => {
-                        key.destroy();
-                        gameState.playerObtainedKey();
-                    })
-                }
-            }   
+            demon.on('death', () => {
+                // problem - need to guarantee demon only dies once
+                if (demon.hp() === 0) {
+                    let pos = demon.worldPos();
+                    gameState.killBaddieGreenDemon();
+                    k.debug.log(gameState.baddieGreenDemonsInCave);
+                    if (gameState.areAllBaddieGreenDemonsDead()) {
+                        const key = createKey()
+                        key.moveTo(pos);
+                        key.onCollide('player', () => {
+                            key.destroy();
+                            gameState.playerObtainedKey();
+                        })
+                    }
+                }   
+            })
         })
-    })
+    }
 
 
     const experienceChestOpen = (game) => {
