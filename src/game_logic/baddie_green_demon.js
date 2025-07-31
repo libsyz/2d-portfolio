@@ -99,10 +99,11 @@ const baddiePatrol = () => {
 const baddieHealthBar = () => {
     return {
         makeHealthBar() {
+
             this.healthbarBackground = this.add([
                 k.rect(16, 4),
                 k.area(),
-                k.pos(this.pos.x - 28, this.pos.y - 32),
+                k.pos(-8, -14),
                 k.color(0, 0, 0),
                 k.opacity(0),
                 'health_bar'
@@ -111,7 +112,7 @@ const baddieHealthBar = () => {
             this.healthbar = this.add([
                 k.rect(16, 4),
                 k.area(),
-                k.pos(this.pos.x - 28, this.pos.y - 32),
+                k.pos(-8, -14),
                 k.color(255, 0, 0),
                 k.opacity(0),
                 'health_bar'

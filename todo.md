@@ -13,7 +13,9 @@
 
 ## Bugs
 
-[] Touching the mailbox crashes the game
+[X] Touching the mailbox crashes the game
+
+[X] Baddies HP bar disappeared :-/
 
 [] Baddies should not be able to walk through walls in the cave
 
