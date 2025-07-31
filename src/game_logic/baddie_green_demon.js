@@ -73,7 +73,8 @@ const baddiePatrol = () => {
     return { 
         patrol() {
             this.patrolEvent = this.onUpdate( () => {
-                if ( baddieCounter == seconds(2) ) {
+                if ( baddieCounter === seconds(2) ) {
+                    debugger
                     baddieCounter = 0;
                     xVel = -20 + Math.random() * 40;
                     yVel = -20 + Math.random() * 40;
@@ -87,6 +88,8 @@ const baddiePatrol = () => {
                     } else { 
                         this.play('up');
                     }
+
+                    
                 } else if ( baddieCounter < seconds(2) ) {
                     baddieCounter++;
                     this.move(xVel, yVel);
@@ -246,6 +249,10 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
     baddieGreenDemon.onCollide('shuriken', (shuriken) => {
             shuriken.destroy();
             baddieGreenDemon.hurt(1);
+    })
+
+    baddieGreenDemon.onCollide('boundary', () => {
+        k.debug.log('hitting bounds');
     })
 
     return baddieGreenDemon;
