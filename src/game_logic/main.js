@@ -85,7 +85,7 @@ k.scene("main", async (playerSpawnPoint) => {
 
 
     k.onCollide('player', 'mailbox', () => {
-        showDialogue('player_face', 'You can reach me at miguel.leo.jimenez@gmail.com');
+        showDialogue('player_face', 'You can reach me at miguel.leo.jimenez@gmail.com', gameState);
     })
 
     k.onCollideEnd('player', 'mailbox', () => {
@@ -104,7 +104,6 @@ k.scene("main", async (playerSpawnPoint) => {
     k.onCollide('player', 'cave_door', () => {
         k.go('cave', 'player_spawn');
     })
-
 
 });
 
