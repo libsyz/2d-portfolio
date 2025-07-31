@@ -29,7 +29,7 @@ export const createGameState = () => {
         addBaddieGreenDemon() {
             this.baddieGreenDemonsInCave += 1;
         },
-        killBaddieGreenDemon() {
+        killBaddieGreenDemonInCave() {
             this.baddieGreenDemonsInCave -= 1;
         },
         areAllBaddieGreenDemonsDead() {

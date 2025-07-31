@@ -9,7 +9,7 @@
 
 ## Code quality 
 
-[] Create a factory that manages baddy creation and cleans up the code
+[X] Create a factory that manages baddy creation and cleans up the code
 
 ## Bugs
 

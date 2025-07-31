@@ -1,5 +1,6 @@
 import { k } from './kaboomCtx';
 import { seconds } from './utils';
+import { createKey } from './key.js';
 
 
 
@@ -120,15 +121,26 @@ const baddieHealthBar = () => {
     }
 }
 
-export const createBaddieGreenDemon = () => {
+export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) => {
     const scale = 3.5;
-    
+
+    if (baddieType === 'forest' && 
+        gameState.isBaddieGreenDemonInForestDead === true ) {
+        return;
+    }
+
+    if (baddieType === 'cave' && 
+        gameState.playerHasKey === true ) {
+        return;
+    }
+
     const baddieGreenDemon = k.add([
         k.sprite('baddie_green_demon'), 
         k.pos(20, 20),
         {
          anim: 'idle',
-         state: 'idle'
+         state: 'idle',
+         type: baddieType
         },
         k.area(),
         k.anchor('center'),
@@ -141,6 +153,8 @@ export const createBaddieGreenDemon = () => {
         baddiePatrol(),
         baddieHealthBar(),
     ]);
+
+    baddieGreenDemon.moveTo(baddieLocation);
 
     const baddieGreenDemonPlayerDetectionArea = baddieGreenDemon.add([
         k.rect(160, 160),
@@ -178,6 +192,33 @@ export const createBaddieGreenDemon = () => {
         baddieGreenDemon.unuse('patrol');
         baddieGreenDemon.move(0, 0);
         baddieGreenDemon.play('dead');
+
+        if (baddieType === 'forest') {
+            gameState.killBaddieGreenDemonInForest();
+        }
+
+        if (baddieType === 'cave') {
+            
+            k.debug.log(gameState.baddieGreenDemonsInCave);
+            let keyPos = baddieGreenDemon.worldPos();
+
+            // check on hp prevents that the number of demons only 
+            // decreases by one ( death event can fire multiple times if the object does not disappear )
+
+            if (baddieGreenDemon.hp() === 0 ) { 
+                gameState.killBaddieGreenDemonInCave();
+            }
+
+            if (gameState.areAllBaddieGreenDemonsDead()) {
+                const key = createKey(keyPos)
+                key.moveTo(keyPos);
+                key.onCollide('player', () => {
+                    key.destroy();
+                    gameState.playerObtainedKey();
+                })
+            }
+        }
+
         k.wait(0.5, () => {
             baddieGreenDemon.destroy();
         })

@@ -1,7 +1,7 @@
 import { createBaddieGreenDemon } from './baddie_green_demon.js';
 import { k } from './kaboomCtx.js';
 import { createSpawnPoint } from './spawn_point.js';
-import { createKey } from './key.js';
+
 
 const mapSprite = k.loadSprite('cave_map', './src/assets/cave_map.png');
 const mapData = await (await fetch("./src/mapdata/cave_map.json")).json();
@@ -47,30 +47,12 @@ export const createCaveMap = async (gameState) => {
         }
     }
 
-    if (gameState.playerHasKey === false) {
-        caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
-            const demon = createBaddieGreenDemon();
-            demon.moveTo(spawnPoint.worldPos());
-            gameState.addBaddieGreenDemon();
 
-            demon.on('death', () => {
-                // problem - need to guarantee demon only dies once
-                if (demon.hp() === 0) {
-                    let pos = demon.worldPos();
-                    gameState.killBaddieGreenDemon();
-                    k.debug.log(gameState.baddieGreenDemonsInCave);
-                    if (gameState.areAllBaddieGreenDemonsDead()) {
-                        const key = createKey()
-                        key.moveTo(pos);
-                        key.onCollide('player', () => {
-                            key.destroy();
-                            gameState.playerObtainedKey();
-                        })
-                    }
-                }   
-            })
-        })
-    }
+    caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
+        const demon = createBaddieGreenDemon(gameState, 'cave', spawnPoint.worldPos());
+        gameState.addBaddieGreenDemon();
+    });
+
 
 
     const experienceChestOpen = (game) => {

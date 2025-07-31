@@ -44,13 +44,8 @@ k.scene("main", async (playerSpawnPoint) => {
     const player = createPlayer();
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
-    if (gameState.isBaddieGreenDemonInForestDead === false) {
-        const baddie = createBaddieGreenDemon(); 
-        baddie.moveTo(map.get('baddie_spawn')[0].worldPos())
-        baddie.on('death', () => {
-            gameState.killBaddieGreenDemonInForest();
-        })
-    }
+    const forestBaddieLocation = map.get('baddie_spawn')[0].worldPos();
+    createBaddieGreenDemon(gameState, 'forest', forestBaddieLocation); 
     
     const center = k.get('center')[0]
 
