@@ -67,36 +67,54 @@ const componentFlash = (k) => {
 const baddiePatrol = () => {
     
     let baddieCounter = 0;
-    let xVel = -20 + Math.random() * 40;
-    let yVel = -20 + Math.random() * 40;
     
     return { 
+        patrolSwitch() {
+            this.xVel = -this.xVel 
+            this.yVel = -this.yVel
+
+            this.setDirection();
+        },
         patrol() {
             this.patrolEvent = this.onUpdate( () => {
                 if ( baddieCounter === seconds(2) ) {
-                    debugger
                     baddieCounter = 0;
-                    xVel = -20 + Math.random() * 40;
-                    yVel = -20 + Math.random() * 40;
-
-                    if( xVel > 0 && xVel > yVel ) {
-                        this.play('right');
-                    } else if ( xVel < 0 && xVel > yVel ) {
-                        this.play('left');
-                    } else if ( yVel > 0 ) {
-                        this.play('down');
-                    } else { 
-                        this.play('up');
-                    }
-
+                    this.xVel = -20 + Math.random() * 40;
+                    this.yVel = -20 + Math.random() * 40;
+                    this.setDirection();
                     
                 } else if ( baddieCounter < seconds(2) ) {
                     baddieCounter++;
-                    this.move(xVel, yVel);
+                    this.move(this.xVel, this.yVel);
                 } 
             })
-        }
-    }
+
+            this.onCollide('boundary', () => {
+                this.patrolSwitch();
+            }) 
+
+            this.onCollide('baddie_green_demon', () => {
+                this.patrolSwitch();
+            })
+        },
+        setDirection() {
+            if( this.xVel > 0 && 
+                this.xVel > this.yVel ) {
+                this.direction = 'right';
+                this.play('right');
+            } else if ( this.xVel < 0 
+                        && this.xVel > this.yVel ) {
+                this.direction = 'left';
+                this.play('left');
+            } else if ( this.yVel > 0 ) {
+                this.direction = 'down';
+                this.play('down');
+            } else { 
+                this.direction = 'up';
+                this.play('up');
+            }
+        }  
+    } 
 }
 
 const baddieHealthBar = () => {
@@ -142,9 +160,11 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         k.sprite('baddie_green_demon'), 
         k.pos(20, 20),
         {
-         anim: 'idle',
-         state: 'idle',
-         type: baddieType
+         anim: 'down',
+         direction: 'down',
+         type: baddieType,
+         xVel: -20 + Math.random() * 40,
+         yVel: -20 + Math.random() * 40
         },
         k.area(),
         k.anchor('center'),
@@ -159,6 +179,7 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
     ]);
 
     baddieGreenDemon.moveTo(baddieLocation);
+    baddieGreenDemon.setDirection();
 
     const baddieGreenDemonPlayerDetectionArea = baddieGreenDemon.add([
         k.rect(160, 160),
@@ -181,7 +202,7 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         fireball.play('move');
         fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
 
-        fireball.onCollide('player', (player) => { 
+        fireball.onCollide('player', () => { 
             fireball.destroy();
         })
 
