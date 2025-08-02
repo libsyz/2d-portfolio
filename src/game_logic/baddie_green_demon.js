@@ -189,12 +189,30 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         'baddie_green_demon_player_detection_area'
     ])
 
+    // Throws fireball at player when enters range
     baddieGreenDemonPlayerDetectionArea.onCollide('player', (player) => {
+        let fireballXOffset = 0;
+        let fireballYOffset = 0;
+        let direction = baddieGreenDemon.direction;
+
+        if ( direction === "up" ) {
+            fireballYOffset = -32
+        } else if ( direction === "down" ) {
+            fireballYOffset = +32
+        } else if ( direction === "right" ) {
+            fireballXOffset = 32
+        } else if ( direction === "left" ) {
+            fireballXOffset = -32
+        } 
+
+
         const fireball = k.add([
             k.sprite('fireball'),
             k.area(),
             k.scale(2),
-            k.pos(baddieGreenDemon.pos),
+            k.anchor('center'),
+            k.pos(baddieGreenDemon.pos.x + fireballXOffset, 
+                baddieGreenDemon.pos.y + fireballYOffset),
             k.move(player.pos.angle(baddieGreenDemon.pos), 220),
             'fireball'
         ])
@@ -223,8 +241,7 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         }
 
         if (baddieType === 'cave') {
-            
-            k.debug.log(gameState.baddieGreenDemonsInCave);
+        
             let keyPos = baddieGreenDemon.worldPos();
 
             // check on hp prevents that the number of demons only 
@@ -270,10 +287,6 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
     baddieGreenDemon.onCollide('shuriken', (shuriken) => {
             shuriken.destroy();
             baddieGreenDemon.hurt(1);
-    })
-
-    baddieGreenDemon.onCollide('boundary', () => {
-        k.debug.log('hitting bounds');
     })
 
     return baddieGreenDemon;

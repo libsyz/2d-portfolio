@@ -17,7 +17,7 @@
 
 [X] Baddies HP bar disappeared :-/
 
-[] Baddies should not be able to walk through walls in the cave
+[X] Baddies should not be able to walk through walls in the cave
 
 [] Layering - When the player passes close to a tree, he should go under it and not over it 
 
@@ -27,5 +27,5 @@
 
 ## Nice to haves
 
-[] Baddie Fireball should come from the direction the baddie is facing 
+[X] Baddie Fireball should come from the direction the baddie is facing 
 
