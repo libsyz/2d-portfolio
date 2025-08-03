@@ -31,18 +31,25 @@ k.loadSprite('player_face', './src/assets/player_face.png');
 
 // load gamestate, available to all the scenes
 
+const gameState = createGameState();
+
 const gameEndSceneController = k.add([
     'gameEndSceneController'
 ])
 
-gameEndSceneController.on('game-end', () => { 
+gameEndSceneController.on('endgame', () => { 
     k.debug.log('firing end of game sequence');
-    // Show Dialogue of ninja saying he got all three things now
-    // Go back to the office and talk to the shogun again. 
-}) 
+    const dialog = showDialogueMultiple(gameState, 'player-face', [
+        'I have found all my scrolls!',
+        'Time to go back to the Shogun and talk smack to him!',
+        'if you know what Im saying'
+    ])
 
+    dialog.onStateEnter('end', () => {
+        k.go('end');
+    })
 
-const gameState = createGameState();
+})
 
 
 k.scene("main", async (playerSpawnPoint) => {
@@ -178,7 +185,8 @@ k.scene('house', async (playerSpawnPoint) => {
             [
                 'I found my education scroll!', 
                 'I suddenly know kung fu!'
-            ]
+            ],
+            gameEndSceneController
         );
 
         ui.getScroll('education');

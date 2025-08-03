@@ -99,7 +99,7 @@ export const showDialogueMultiple = (gameState, faceTag, messages) => {
 }
 
 
-export const showDialogueScrollAcquired = (gameState, faceTag, messages) => {
+export const showDialogueScrollAcquired = (gameState, faceTag, messages, gameEndSceneController) => {
 
     let currentMessageIdx = 0;
     
@@ -149,7 +149,7 @@ export const showDialogueScrollAcquired = (gameState, faceTag, messages) => {
             dialogueBox.destroy();
             k.debug.log(gameState.scrolls);
             if ( gameState.checkFinished() ) { 
-                k.trigger('game-end');
+                gameEndSceneController.trigger('endgame');
             }
         }
     })

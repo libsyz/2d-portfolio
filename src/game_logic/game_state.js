@@ -1,6 +1,6 @@
 
 
-export const createGameState = (s) => {
+export const createGameState = () => {
     return {
         currentScene: 'scene_1', // Game starts at scene_1
         isDialogueBusy: false,
@@ -15,7 +15,12 @@ export const createGameState = (s) => {
         }, 
         scrolls: [],
         updateScrolls(scroll) {
-            this.scrolls.push(scroll);
+            console.log(`adding ${scroll}`)
+            console.log(this.scrolls);
+            // Check if the scroll is already in the array before adding it
+            if (!this.scrolls.includes(scroll)) {
+                this.scrolls.push(scroll);
+            }
         },
         // Checks if the game is over when we have all 3 scrolls
         checkFinished() {

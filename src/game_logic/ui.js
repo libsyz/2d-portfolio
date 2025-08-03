@@ -86,7 +86,6 @@ const scrollsComponent = (gameState) => {
         },
         // get scroll is a terrible name for this function
         getScroll(scrollKeyword) {
-            gameState.scrolls.push(scrollKeyword);
             let foundScroll = scrolls.find((scroll) => scroll.keyword === scrollKeyword)
             foundScroll.gameObject.opacity = 1;
         }
