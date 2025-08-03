@@ -2,7 +2,7 @@ import { k } from './kaboomCtx.js';
 // import { createInteraction } from './interaction.js';
 // import { seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
-import { showDialogue, showDialogueHouse } from './utils.js';
+import { showDialogue, showDialogueMultiple } from './utils.js';
 
 // load the character sprites 
 

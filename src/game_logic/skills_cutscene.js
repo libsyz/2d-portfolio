@@ -1,6 +1,6 @@
 import { k } from "./kaboomCtx.js";
 import { skillsCutsceneDialogueData } from "./skills_cutscene_dialogue.js";
-import { showDialogueHouse } from "./utils";
+import { showDialogueMultiple } from "./utils";
 import { userSelect } from "./utils";
 
 
@@ -25,7 +25,7 @@ export const createSkillsCutscene = (gameState) => {
         },
         spiritDialogue() {
 
-            let dialogue = showDialogueHouse(
+            let dialogue = showDialogueMultiple(
                 gameState,
                 'spirit-face', 
                 [
@@ -90,7 +90,7 @@ export const createSkillsCutscene = (gameState) => {
                 return qs[this.sceneState.questionSelection];
             }
 
-            const dialogue = showDialogueHouse(
+            const dialogue = showDialogueMultiple(
                 gameState,
                 'spirit-face', 
                 ['Let\'s see if you can answer this...', question()]
@@ -129,13 +129,13 @@ export const createSkillsCutscene = (gameState) => {
 
 
             if (evaluation.isCorrect ) {
-                dialogue = showDialogueHouse(
+                dialogue = showDialogueMultiple(
                     gameState,
                     'spirit-face', 
                     ['You answer is correct!', 'You are worthy of the skills scroll']
                 )
             } else { 
-                dialogue = showDialogueHouse(
+                dialogue = showDialogueMultiple(
                     gameState,
                     'spirit-face', 
                     [
@@ -190,9 +190,5 @@ export const createSkillsCutscene = (gameState) => {
             this.parts[this.sceneCounter]();
             this.sceneCounter++
         }
-
-            
-
-
     }
 }

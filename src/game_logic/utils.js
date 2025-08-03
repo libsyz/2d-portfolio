@@ -1,3 +1,5 @@
+
+
 import { k } from './kaboomCtx.js'
 
 
@@ -41,7 +43,7 @@ export const showDialogue = (faceTag, message, gameState) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueHouse = (gameState, faceTag, messages) => {
+export const showDialogueMultiple = (gameState, faceTag, messages) => {
 
     let currentMessageIdx = 0;
     
@@ -96,6 +98,64 @@ export const showDialogueHouse = (gameState, faceTag, messages) => {
     return dialogueBox;
 }
 
+
+export const showDialogueScrollAcquired = (gameState, faceTag, messages) => {
+
+    let currentMessageIdx = 0;
+    
+    const {x, y} = k.camPos();
+
+    const dialogueBox = k.add([
+        k.sprite('dialogue_box_simple'),
+        k.pos(x - 632, y + 116),
+        k.scale(4),
+        k.state('start', ['end']),
+        'dialog'
+    ]);
+
+    dialogueBox.add([
+        k.sprite(faceTag), 
+        k.pos(12, 12),
+        k.scale(1)
+    ])
+
+    let currentMessage = dialogueBox.add([
+        k.text(
+            messages[currentMessageIdx], { 
+            size: 12, width: 256
+        }),
+        k.pos(56, 12),
+        k.color(0,0,0)
+    ])
+
+    dialogueBox.onKeyRelease('space', () => {
+        if ( gameState.isDialogueBusy === true ) { 
+            return
+        }
+
+        if (currentMessageIdx + 1 < messages.length ) {
+            currentMessage.destroy();
+            currentMessageIdx++;
+                currentMessage = dialogueBox.add([
+                    k.text(
+                        messages[currentMessageIdx], { 
+                        size: 12, width: 256
+                    }),
+                    k.pos(56, 12),
+                    k.color(0,0,0)
+                ])
+        } else {
+            dialogueBox.enterState('end');
+            dialogueBox.destroy();
+            k.debug.log(gameState.scrolls);
+            if ( gameState.checkFinished() ) { 
+                k.trigger('game-end');
+            }
+        }
+    })
+
+    return dialogueBox;
+}
 
 export const fadeInScene = () => { 
     const rectangleFade = k.add([

@@ -86,7 +86,6 @@ export const createCaveMap = async (gameState) => {
         'experience_treasure_chest'
     ])
 
-    // k.debug.log(caveMap.get('treasure_chest_spawn')[0].pos);
 
     experienceChest.setup()
 

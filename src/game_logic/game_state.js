@@ -1,6 +1,6 @@
 
 
-export const createGameState = () => {
+export const createGameState = (s) => {
     return {
         currentScene: 'scene_1', // Game starts at scene_1
         isDialogueBusy: false,
@@ -19,7 +19,7 @@ export const createGameState = () => {
         },
         // Checks if the game is over when we have all 3 scrolls
         checkFinished() {
-            return this.scrolls.length === 3 ? true : false;
+            return this.scrolls.length === 1 ? true : false; 
         },
         isBaddieGreenDemonInForestDead: false,
         baddieGreenDemonsInCave: 0,

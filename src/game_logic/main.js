@@ -6,7 +6,7 @@ import { createHouseMap } from "./house_map.js";
 import { createTempleMap } from "./temple_map.js";
 import { createCaveMap } from "./cave_map.js";
 import { createInterviewer } from "./interviewer.js";
-import { showDialogue, showDialogueHouse, fadeInScene } from "./utils.js";
+import { showDialogue, fadeInScene, showDialogueMultiple, showDialogueScrollAcquired } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
@@ -31,12 +31,21 @@ k.loadSprite('player_face', './src/assets/player_face.png');
 
 // load gamestate, available to all the scenes
 
+const gameEndSceneController = k.add([
+    'gameEndSceneController'
+])
+
+gameEndSceneController.on('game-end', () => { 
+    k.debug.log('firing end of game sequence');
+    // Show Dialogue of ninja saying he got all three things now
+    // Go back to the office and talk to the shogun again. 
+}) 
+
+
 const gameState = createGameState();
 
-// load scenes
 
 k.scene("main", async (playerSpawnPoint) => {
-    k.debug.log('whaddup son');
     const map = createMap();
     const ui = createUI(gameState);
     fadeInScene();
@@ -125,7 +134,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
 
     k.onCollide('player', 'psychology_diploma', () => {
-        showDialogueHouse(
+        showDialogueMultiple(
             gameState,
             'player_face', 
             [
@@ -163,7 +172,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
         openChestEvent.cancel();
 
-        showDialogueHouse(
+        showDialogueScrollAcquired(
             gameState,
             'player_face', 
             [
@@ -172,17 +181,11 @@ k.scene('house', async (playerSpawnPoint) => {
             ]
         );
 
-        // move it up a bit
-        // show a dialogue mentioning what it is 
-        // destroy the dialogue
-        // destroy the scroll
-        
-        // TODO - what a terrible line of code
         ui.getScroll('education');
-        //  k.get('ui')[0].children[0].getScroll();
+        
         })
-
-        gameState.checkFinished();
+        gameState.updateScrolls('education');
+        
     })
 
     k.onCollideEnd('education_treasure_chest', 'player', () => {
@@ -198,7 +201,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'christin', (_, christin) => {
             christin.dialogShow();
-            showDialogueHouse(
+            showDialogueMultiple(
                 gameState,
                 'christin_face', 
                 [
@@ -215,7 +218,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'elias', (_, elias) => {
         elias.dialogShow();
-        showDialogueHouse(
+        showDialogueMultiple(
             gameState,
             'elias_face', 
             [
@@ -229,7 +232,7 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'book_shelf', () => { 
-        showDialogueHouse(
+        showDialogueMultiple(
             gameState,
             'player_face', 
             [
@@ -245,7 +248,7 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'globe', () => { 
-        showDialogueHouse(
+        showDialogueMultiple(
             gameState,
             'player_face', 
             ['This globe has pins with the places we have been to', 
@@ -259,7 +262,7 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'painting', () => { 
-        showDialogueHouse('player_face', 
+        showDialogueMultiple('player_face', 
             [
              'A picture of Tarifa, Cadiz', 
              'You can see Africa across the sea',
@@ -276,7 +279,6 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
 })
-
 
 k.scene('temple', async (playerSpawnPoint) => { 
     const templeMap = await createTempleMap();
@@ -302,7 +304,7 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
-        let dialog = showDialogueHouse(
+        let dialog = showDialogueMultiple(
             gameState,
             'player_face', [
             'I found my skills scroll', 
@@ -326,79 +328,87 @@ k.scene('temple', async (playerSpawnPoint) => {
 
  
 })
-//# Intro Stage
 
-// k.scene('intro', () => {
-//     k.setBackground(155, 155, 155);
-//     const bgImage = k.add([
-//         k.pos(0),
-//         k.sprite('intro_background'),
-//         k.scale(0.5)
-//     ])
 
-//     const startGame = k.add([
-//         k.pos(10, 240),
-//         k.text("Start Game", {
-//             size: 20, 
-//             width: 500, 
-//             align: 'center'
-//         }),
-//         k.color(248, 169, 69),
-//         'title', {
-//             isSelected: true
-//         }
-//     ])
+k.scene('end', () => { 
+    k.setBackground(200, 200, 200);
+    k.add([
+        k.sprite('intro_background'),
+        k.scale(0.5)
+    ])
+})
 
-//     const downloadResume = k.add([
-//         k.pos(10, 270),
-//         k.text("See Resume", {
-//             size: 20, 
-//             width: 500, 
-//             align: 'center'
-//         }),
-//         k.color(248, 169, 69),
-//         'title', {
-//             isSelected: false
-//         }
-//     ])
+k.scene('intro', () => {
+    k.setBackground(155, 155, 155);
+    const bgImage = k.add([
+        k.pos(0),
+        k.sprite('intro_background'),
+        k.scale(0.5)
+    ])
 
-//     const makeSelector = (titleObj) => { 
-//         titleObj.add([
-//             k.pos(140, -5),
-//             k.sprite('shuriken'),
-//             k.scale(1.5)
-//         ])
-//     }
+    const startGame = k.add([
+        k.pos(10, 240),
+        k.text("Start Game", {
+            size: 20, 
+            width: 500, 
+            align: 'center'
+        }),
+        k.color(248, 169, 69),
+        'title', {
+            isSelected: true
+        }
+    ])
 
-//     makeSelector(startGame);
+    const downloadResume = k.add([
+        k.pos(10, 270),
+        k.text("See Resume", {
+            size: 20, 
+            width: 500, 
+            align: 'center'
+        }),
+        k.color(248, 169, 69),
+        'title', {
+            isSelected: false
+        }
+    ])
 
-//     k.onKeyPress('space', () => {
-//         if(startGame.isSelected) {
-//             k.go('opening');
-//         } else {
-//             k.debug.log('should open CV');
-//             window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
-//         }
-//     })
+    const makeSelector = (titleObj) => { 
+        titleObj.add([
+            k.pos(140, -5),
+            k.sprite('shuriken'),
+            k.scale(1.5)
+        ])
+    }
 
-//     k.onKeyPress('down', () => {
-//         if (startGame.isSelected) {
-//             startGame.isSelected = false;
-//             downloadResume.isSelected = true;
-//             k.destroy(startGame.children[0]);
-//             makeSelector(downloadResume);
-//         }
-//     })
+    makeSelector(startGame);
 
-//     k.onKeyDown('up', () => {
-//         if (downloadResume.isSelected) {
-//             startGame.isSelected = true;
-//             downloadResume.isSelected = false;
-//             k.destroy(downloadResume.children[0]);
-//             makeSelector(startGame);
-//         }
-//     })
-// })
+    k.onKeyPress('space', () => {
+        if(startGame.isSelected) {
+            k.go('opening');
+        } else {
+            k.debug.log('should open CV');
+            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+        }
+    })
+
+    k.onKeyPress('down', () => {
+        if (startGame.isSelected) {
+            startGame.isSelected = false;
+            downloadResume.isSelected = true;
+            k.destroy(startGame.children[0]);
+            makeSelector(downloadResume);
+        }
+    })
+
+    k.onKeyDown('up', () => {
+        if (downloadResume.isSelected) {
+            startGame.isSelected = true;
+            downloadResume.isSelected = false;
+            k.destroy(downloadResume.children[0]);
+            makeSelector(startGame);
+        }
+    })
+})
 
 
 // k.scene('opening', () => {
@@ -434,208 +444,6 @@ k.scene('temple', async (playerSpawnPoint) => {
     
 // })
 
-// k.scene('skills_quest', () => { 
-//     k.setBackground(201, 197, 197);
-//     createPlayer();
-    
-//     for (let i = 0; i < 3; i++) {
-//         createBaddieGreenDemon();    
-//     }
-
-//     k.onCollide('arrow', 'baddie_green_demon', (arrow, baddie) => {
-//         arrow.destroy();
-//         baddie.color = k.color(255, 255, 255);
-//         baddie.scale = 2.5;
-//         k.wait(0.2, () => {
-//             baddie.destroy();
-
-//         })
-        
-//     }) 
-
-
-//     k.onCollide('player', 'baddie_green_demon', (player, baddie) => {
-//         k.shake(2);
-//         // player blinks as it takes damage
-//         k.wait(0.1, () => {
-//                 player.opacity = 0;
-//         })
-
-//         k.wait(0.2, () => {
-//             player.opacity = 1;
-//         })
-
-//         k.wait(0.3, () => {
-//                 player.opacity = 0;
-//         })
-
-//         k.wait(0.4, () => {
-//             player.opacity = 1;
-//         })
-//     })
-
-//     k.onCollide('player', 'scroll', (player, scroll) => {
-//         scroll.destroy();
-//     })
-
-
-//     k.onDestroy('baddie_green_demon', (baddie) => {
-//         // render a parchment if all baddies are dead
-//         const baddieCount = k.get('baddie_green_demon').length;
-
-
-//         if (baddieCount === 0) { 
-//             k.add([
-//                 k.sprite('scroll'),
-//                 k.pos(baddie.pos),
-//                 k.scale(2),
-//                 k.area(),
-//                 k.body(),
-//                 'scroll'
-//             ])
-//         }
-//     })
-    
-
-// })
-
-// // test Scene with Camera logic that follows the character 
-// k.scene('camera_follow_test', () => {
-//     k.camScale(2);
-
-//     // Easy
-//     // Make the camera follow the player
-//     const map = k.add([
-//         k.rect(1120 * 3, 600 * 3),
-//         k.color(41, 41, 41),
-//         k.z(0),
-//         k.anchor('center'),
-//         k.pos(k.center())
-//     ])
-
-
-//     const freeMovement = k.add([
-//         k.rect(200, 200),
-//         k.color(125, 125, 125),
-//         k.z(2),
-//         k.anchor('center'),
-//         k.pos(k.center())
-//     ])
-
-//     const bounds = k.add([
-//         k.rect(400, 400),
-//         k.color(198, 182, 226),
-//         k.z(1),
-//         k.anchor('center'),
-//         k.pos(k.center()),
-//     ])
-
-//     const player = createPlayer();
-//     player.moveTo(k.center());
-//     player.z = 3
-
-    
-//     // if only I could figure this out dynamically based on screen size hahaha
-//     // this only works on Mac 13 inch screen. super weak
-
-//     let camBounds = { left: 620, right: 820, up: 277, down: 477}
-    
-//     player.onUpdate(() => {
-//         k.debug.log(k.camPos());
-//         const camCoords = k.camPos();
-        
-//         // if player is inside the bounds, camera moves both x and y
-        
-//         // if player is inside the x bounds but outside y bounds, move only x
-//         // if player is inside the y bounds but outside the x bounds, move only y
-
-//         if (player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
-//             player.pos.y > camBounds.up && camBounds.down > player.pos.y ) 
-//         { 
-//             k.camPos(player.worldPos())
-//         } 
-//         else if (
-//             player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
-//             player.pos.y < camBounds.up
-//         )
-//         {
-//             k.camPos( player.pos.x , camBounds.up )
-
-//         } else if ( 
-//             player.pos.x > camBounds.left && camBounds.right > player.pos.x &&
-//             player.pos.y > camBounds.down
-//         ) 
-//         {
-//             k.camPos( player.pos.x , camBounds.down )
-//         } else if (
-//             player.pos.y > camBounds.up && camBounds.down > player.pos.y &&
-//             player.pos.x > camBounds.right
-//         ) {
-//             k.camPos( camBounds.right, player.pos.y )
-//         } else if (
-//             player.pos.y > camBounds.up && camBounds.down > player.pos.y &&
-//             player.pos.x < camBounds.left
-//         ) {
-//             k.camPos( camBounds.left, player.pos.y )
-//         } else {
-//             return
-//         }
-
-//     })
-
-
-    
-
-//     // Med
-//     // Make the camera follow the player, but stop following when approaching screen limit
-
-
-//     // Hard
-//     // Transition the from one point to another after the player has crossed a line
-
-
-// })
-
-
-// test Scene with Camera logic that switches to another scene when the character moves out 
-
-// k.scene('camera_walkout_test', () => { 
-//     const firstScene = k.add([
-//         k.rect(1120, 600),
-//         k.color(41, 41, 41)
-//     ])
-
-//     const centerPiece = k.add([
-//         k.rect(30, 30),
-//         k.color(0, 0, 0),
-//         k.z(2),
-//         k.anchor('center'),
-//         k.pos(1120 / 2 , 600 / 2)
-//     ])
-
-//     const secondScene = k.add([
-//         k.rect(1120, 600),
-//         k.color(120, 120, 120),
-//         k.pos(firstScene.renderArea().pos.x, firstScene.renderArea().pos.x + 600),
-//         k.z(2)
-//     ])
-
-//     const player = createPlayer();
-//     player.moveTo(k.vec2(1120/2, 600))
-//     player.z = 3
-
-
-//     centerPiece.onUpdate(() => {
-//         k.camPos(centerPiece.worldPos())
-//     })
-
-//     player.onUpdate( () => {
-//         k.debug.log(player.pos.y);
-//         if ( player.pos.y > 600 ) {
-//             centerPiece.moveTo(1120/2, 600 * 2 * 0.75, 1000)
-//         } 
-//     })
-// })
 
 
 k.scene('office', async () => { 
@@ -653,7 +461,7 @@ k.scene('office', async () => {
 
     player.onStateEnter('first', () => {
         player.play('idle-down');
-        let dialogBox = showDialogueHouse(
+        let dialogBox = showDialogueMultiple(
         gameState,    
         'player-face', 
         [

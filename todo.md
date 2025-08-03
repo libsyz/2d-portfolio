@@ -1,11 +1,21 @@
 
 ## Todo 
 
-[X]  When the monster guarding the entry has been killed, should not appear again
+[X] When the monster guarding the entry has been killed, should not appear again
 
 [X] When the lightning scroll has been obtained, the monsters in the cave should not appear again
 
 [X] tune gitignore so it ignores all the assets and unneccesary information 
+
+[ ] Add dialogue to the chicken!  
+
+[ ] Add background sounds
+
+[ ] Add FX
+
+[ ] Add Sound Controls
+
+[ ] Add Closing Scene
 
 ## Code quality 
 
