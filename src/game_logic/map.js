@@ -49,6 +49,10 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
     }
 })
 
+k.loadSprite('chicken_face', './src/assets/chicken_face.png');
+k.loadSprite('chicken_dark_face', './src/assets/chicken_dark_face.png');
+
+
 k.loadSprite('fisherman_face', './src/assets/fisherman_face.png');
 k.loadSprite('fisherman_rod', './src/assets/fisherman_rod.png' )
 k.loadSprite('fisherman', './src/assets/fisherman.png', {
@@ -216,7 +220,40 @@ export const createMap = () => {
             }
         }
     }
-    
+
+    const chickenDialogueComp = () => {
+        return {
+            chickenDialogueCount: 0,
+            getChickenDialogue() {
+                this.chickenDialogueCount++;
+            // Generate a random number between 0 and 1
+                if (this.chickenDialogueCount > 2 && Math.random() < 0.4) {
+                    return "dark-chicken-dialogue";
+                } else {
+                    return "chicken-dialogue";
+                }
+            },
+            getDarkDialogue() {
+                const darkDialogues = [
+                    "Bok... The resume is a lie.",
+                    "Cluck. The system feeds on hope.",
+                    "Peck the wheel, run the maze, die forgotten.",
+                    "Minimum wage... maximum despair.",
+                    "Bawk! They sold dreams by the dozen.",
+                    "Cluck... I interned for exposure... and vanished.",
+                    "The feed is poisoned. So is the system.",
+                    "Bok bok... Promotions are illusions.",
+                    "They promised eggs. They gave debt.",
+                    "Cluck. I believed the job board. Fools do.",
+                    "Bawk... Endless grind. No nest.",
+                    "I wore the tie. I played the part. Still not enough."
+                ]
+                
+                return darkDialogues[Math.floor(Math.random() * darkDialogues.length)];
+            }
+        }
+    }
+
     const chicken = map.add([
         k.sprite('chicken'), 
         k.pos(map.get('chicken_spawn')[0].pos),
@@ -225,6 +262,7 @@ export const createMap = () => {
         k.scale(0.75),
         k.body({isStatic: true}),
         chickenPatrol(),
+        chickenDialogueComp(),
         'chicken'
     ]);
 

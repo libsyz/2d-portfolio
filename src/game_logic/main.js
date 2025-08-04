@@ -91,6 +91,18 @@ k.scene("main", async (playerSpawnPoint) => {
         k.destroy(k.get('dialog')[0]);
     })
 
+    k.onCollide('player', 'chicken', (_, chicken) => {
+        if (chicken.getChickenDialogue() === 'chicken-dialogue') {
+            showDialogue('chicken_face', 'Bok...bok bok!', gameState);
+        } else {
+            showDialogue('chicken_dark_face', chicken.getDarkDialogue(), gameState);
+        }
+    })
+
+    k.onCollideEnd('player', 'chicken', (_, chicken) => {
+        k.destroy(k.get('dialog')[0]);
+    })
+
     k.onCollide('player', 'fisherman', (_, fisherMan) => {
         showDialogue('fisherman_face', 'Fishing needs sharp skills — like dealing with the questions of the spirit within the shrine.', gameState);
     })
@@ -488,7 +500,7 @@ k.scene('office', async () => {
 
     player.onStateEnter('third', () => {
         player.play('idle-up');
-        let dialogBox = showDialogueHouse(
+        let dialogBox = showDialogueMultiple(
             gameState,
             'receptionist-face', 
             [
@@ -508,7 +520,7 @@ k.scene('office', async () => {
     player.onStateEnter('fifth', () => {
         player.play('idle-right');
         
-        let dialogBox = showDialogueHouse(
+        let dialogBox = showDialogueMultiple(
             gameState,
             'shogun_boss-face', 
             [
@@ -573,7 +585,7 @@ k.scene('cave', async (playerSpawnPoint) => {
 
             openChestEvent.cancel();
 
-            showDialogueHouse(
+            showDialogueMultiple(
                 gameState,
                 'player_face', 
                 [
