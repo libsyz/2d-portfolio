@@ -125,7 +125,6 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'temple_door', () => {
-        k.debug.log('touching');
         k.go('temple', 'player_spawn');
     })
 
@@ -169,7 +168,7 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     let treasureCollision = k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
-        let openChestEvent = k.onKeyRelease('space', () => { 
+        let openChestEvent = k.onKeyRelease('space', async () => { 
         treasureChest.play('open');
         // spawn the scroll at the center of the chest
         const edScroll = k.add([
@@ -189,7 +188,7 @@ k.scene('house', async (playerSpawnPoint) => {
             (posVal) => { edScroll.pos = posVal }   
         )
 
-        openChestEvent.cancel();
+        await openChestEvent.cancel();
 
         showDialogueScrollAcquired(
             gameState,
