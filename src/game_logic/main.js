@@ -323,13 +323,20 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
-        let dialog = showDialogueMultiple(
-            gameState,
-            'player_face', [
-            'I found my skills scroll', 
-            'I suddenly know jiu jitsu!'
-        ]);
+        gameState.updateScrolls('skills');
         ui.getScroll('skills');
+
+        let dialog = showDialogueScrollAcquired(
+            gameState,
+            'player_face', 
+            [
+                'I found my skills scroll', 
+                'I suddenly know jiu jitsu!'
+            ],
+            gameEndSceneController
+            );
+        
+        
 
         dialog.onStateEnter('end', () => {
             // hating this line of code but I need to keep moving forward
@@ -349,13 +356,30 @@ k.scene('temple', async (playerSpawnPoint) => {
 })
 
 
-k.scene('end', () => { 
-    k.setBackground(200, 200, 200);
-    k.add([
-        k.sprite('intro_background'),
-        k.scale(0.5)
-    ])
+k.scene('end', async () => { 
+    const officeMap = await createOfficeMap();
+    const player = await createOfficePlayer();
+
+    fadeInScene();
+    // fourth is the way point that is in front of the Shogun
+    player.moveTo(officeMap.get('fourth')[0].worldPos());
+
+    k.wait(1, () => {
+        player.play('idle-right');
+        k.wait(0.5, () => { 
+            showDialogueMultiple(
+                gameState,
+                'shogun_boss-face', 
+                ['So you are now back',
+                'Your credentials look very impressive!',
+                'Welcome to Shogun & Co!'
+                ] 
+            )}
+        );
+    })
 })
+
+
 
 k.scene('intro', () => {
     k.setBackground(155, 155, 155);
@@ -583,24 +607,19 @@ k.scene('cave', async (playerSpawnPoint) => {
             )
 
             openChestEvent.cancel();
-
-            showDialogueMultiple(
+            gameState.updateScrolls('experience');
+            showDialogueScrollAcquired(
                 gameState,
                 'player_face', 
                 [
                     'I found my experience scroll!', 
                     'I suddenly know jiu jitsu!'
-                ]
+                ],
+                gameEndSceneController
             );
             
-            // move it up a bit
-            // show a dialogue mentioning what it is 
-            // destroy the dialogue
-            // destroy the scroll
-            
-            // TODO - what a terrible line of code
             ui.getScroll('experience');
-            //  k.get('ui')[0].children[0].getScroll();
+
             })
 
         gameState.checkFinished();
@@ -618,6 +637,7 @@ k.scene('cave', async (playerSpawnPoint) => {
 
     player.onCollide('exit', () => {
         k.go('main', 'cave_exit_spawn');
+
     })
     
 })
