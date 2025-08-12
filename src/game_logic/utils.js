@@ -307,3 +307,15 @@ export const userSelect = (gameState, optionsArray) => {
 }
 
 
+export const createScroll = (scrollSpriteName, scrollObjectName, position ) => {
+    const scrollObj = k.add([
+        k.sprite(scrollSpriteName),
+        k.pos(position.x + 16, position.y - 8),
+        k.scale(3),
+        k.anchor('center'),
+        scrollObjectName
+    ])
+
+    return scrollObj;
+}
+

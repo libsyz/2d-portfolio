@@ -6,7 +6,7 @@ import { createHouseMap } from "./house_map.js";
 import { createTempleMap } from "./temple_map.js";
 import { createCaveMap } from "./cave_map.js";
 import { createInterviewer } from "./interviewer.js";
-import { showDialogue, fadeInScene, showDialogueMultiple, showDialogueScrollAcquired } from "./utils.js";
+import { showDialogue, fadeInScene, showDialogueMultiple, showDialogueScrollAcquired, createScroll } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
@@ -364,19 +364,53 @@ k.scene('end', async () => {
     // fourth is the way point that is in front of the Shogun
     player.moveTo(officeMap.get('fourth')[0].worldPos());
 
-    k.wait(1, () => {
+    let sceneCounter = 1; 
+    k.wait(sceneCounter, () => {
         player.play('idle-right');
-        k.wait(0.5, () => { 
-            showDialogueMultiple(
-                gameState,
-                'shogun_boss-face', 
-                ['So you are now back',
-                'Your credentials look very impressive!',
-                'Welcome to Shogun & Co!'
-                ] 
-            )}
-        );
     })
+
+    sceneCounter += 0.5
+
+    k.wait(sceneCounter, () => { 
+        const shogunDialog = showDialogueMultiple(
+            gameState,
+            'shogun_boss-face', 
+            [
+                'So you are now back', 
+                'I hope you have something to show??'
+            ] 
+        )
+
+        shogunDialog.onStateEnter('end', () => {
+
+            const scrolls = [
+                { spriteName: 'yellowScrollUI', objectName: 'experience'}, 
+                { spriteName: 'redScrollUI', objectName: 'knowledge' },
+                { spriteName: 'greenScrollUI', objectName: 'skills' }
+            ]
+
+            scrolls.forEach(async (scroll) => {
+                let scrollObj = await createScroll(scroll.spriteName, scroll.objectName, player.worldPos())
+                let scrollWaypoint = await officeMap.get(`${scroll.objectName}_waypoint`)[0].worldPos();
+
+                k.tween(scrollObj.pos, scrollWaypoint, 1, newPos => scrollObj.pos = newPos, k.easings.linear )
+            })
+
+            k.wait(2, () => {
+                showDialogueMultiple(
+                    gameState,
+                    'shogun_boss-face', 
+                    [
+                        'Wow, your credentials look very impressive', 
+                        'Welcome to Shogun and Co!'
+                    ] 
+                )
+            })
+        })
+    })
+
+    
+    
 })
 
 
@@ -642,4 +676,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('main', 'player_spawn');
+k.go('end', 'player_spawn');

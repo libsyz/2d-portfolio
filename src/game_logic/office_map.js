@@ -128,6 +128,18 @@ export const createOfficeMap = async () => {
                 ])
             }
         }
+
+        if (layer.name === 'scrolls_tween_waypoints') {
+            for ( const obj of layer.objects ) {
+                officeMap.add([
+                    k.pos(obj.x, obj.y),
+                    obj.name,
+                    k.anchor('center')
+                ])
+            }
+        }
+
+
     }
 
     // Add the characters 
