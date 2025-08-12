@@ -676,4 +676,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('end', 'player_spawn');
+k.go('main', 'player_spawn');

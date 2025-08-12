@@ -6,6 +6,7 @@ k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
 k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
 k.loadSprite('yellowScrollUI', './src/assets/scroll_thunder.png');
 k.loadSprite('tutorial', './src/assets/tutorial.png');
+k.loadSprite('speaker', './src/assets/speaker.png');
 
 
 const tutorialComponent = (gameState) => {
@@ -93,17 +94,39 @@ const scrollsComponent = (gameState) => {
     }
 }
 
+const speakerComponent = () => {
+    return {
+        initSpeaker() {
+            this.speaker = this.add([
+                k.sprite('speaker'),
+                k.pos(1160, -20),
+                k.scale(0.10),
+                k.area(),
+                'speaker'
+            ])
+
+            k.onClick('speaker', () => {
+                k.debug.log('turn on sound switch');
+            })
+        }
+
+    }
+
+}
+
 export const createUI = (gameState) => { 
     const hud = k.add([
          k.fixed(),  
          k.z(999),
          tutorialComponent(gameState),
          scrollsComponent(gameState),
+         speakerComponent(),
          'ui'
     ]);
 
     hud.initTutorial();
     hud.initScrolls();
+    hud.initSpeaker();
     return hud;
 }
 

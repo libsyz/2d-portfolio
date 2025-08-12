@@ -7,7 +7,10 @@
 
 [X] tune gitignore so it ignores all the assets and unneccesary information 
 
-[ ] Add dialogue to the chicken!  
+[X] Add dialogue to the chicken!  
+    - import chicken face
+    - Add method call to the chicken on contact
+    - Add easter egg - whenever you have spoken to the chicken several times, the chicken will say something
 
 [ ] Add background sounds
 
@@ -21,7 +24,13 @@
 
 [X] Create a factory that manages baddy creation and cleans up the code
 
+[ ] DialogShow should be DialogBubbleShow or something like that
+
 ## Bugs
+
+[ ] Apartment house background is white - should be the same color as the rest of the scenario 
+
+[ ] Lightining scroll does not disappear when obtained
 
 [X] Touching the mailbox crashes the game
 
