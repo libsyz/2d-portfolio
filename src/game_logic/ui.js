@@ -94,19 +94,59 @@ const scrollsComponent = (gameState) => {
     }
 }
 
+const soundToggleComponent = () => {
+    return { 
+        toggleSound() {
+            if (this.sound == 'on') { 
+                this.sound = 'off';
+                this.get('sound-disabled').forEach(el => el.opacity = 1)
+            } else {
+                this.sound = 'on'
+                this.get('sound-disabled').forEach(el => el.opacity = 0)
+            }
+        }
+    }
+}
+
 const speakerComponent = () => {
+
     return {
         initSpeaker() {
             this.speaker = this.add([
                 k.sprite('speaker'),
-                k.pos(1160, -20),
+                k.pos(1200, 40),
                 k.scale(0.10),
                 k.area(),
-                'speaker'
+                k.anchor('center'),
+                'speaker',
+                {
+                    sound: 'on'
+                },
+                soundToggleComponent()
+            ])
+
+            this.speaker.add([
+                k.rect(550, 60),
+                k.rotate(45),
+                k.anchor('center'),
+                k.color(225,0,0),
+                k.pos(0,0),
+                k.opacity(0),
+                'sound-disabled'
+            ])
+
+            this.speaker.add([
+                k.rect(550, 60),
+                k.rotate(-45),
+                k.anchor('center'),
+                k.color(225,0,0),
+                k.pos(0,0),
+                k.opacity(0),
+                'sound-disabled',
             ])
 
             k.onClick('speaker', () => {
-                k.debug.log('turn on sound switch');
+                this.speaker.toggleSound();
             })
         }
 
