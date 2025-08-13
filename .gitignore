@@ -34,3 +34,5 @@ assets
 *.tiled-project
 *.tiled-session
 tilesets
+sound
+sound/*

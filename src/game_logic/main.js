@@ -14,6 +14,11 @@ import { createSkillsCutscene } from "./skills_cutscene.js";
 
 k.setBackground(255, 255, 255);
 
+
+// import music for the scene
+
+k.loadMusic('main', './src/audio/musics/main.mp3');
+
 // import sprites that need to be loaded before anything else
 
 k.loadSprite('dialogue_box_simple', './src/assets/dialogue_box_simple.png');
@@ -30,6 +35,7 @@ k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
 
 // load gamestate, available to all the scenes
+
 
 const gameState = createGameState();
 
@@ -52,9 +58,19 @@ gameEndSceneController.on('endgame', () => {
 })
 
 
+
 k.scene("main", async (playerSpawnPoint) => {
     const map = createMap();
     const ui = createUI(gameState);
+
+    k.onKeyPress("space", () => {
+        k.play('main', {
+            loop: true,
+            volume: 1
+        })
+    })
+
+
     fadeInScene();
 
     const player = createPlayer();
