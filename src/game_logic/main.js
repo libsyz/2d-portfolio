@@ -15,9 +15,9 @@ import { createSkillsCutscene } from "./skills_cutscene.js";
 k.setBackground(255, 255, 255);
 
 
-// import music for the scene
+// import bgm music for the scene
 
-k.loadMusic('main', './src/audio/musics/main.mp3');
+k.loadMusic('bgm-main', './src/audio/musics/main.mp3');
 
 // import sprites that need to be loaded before anything else
 
