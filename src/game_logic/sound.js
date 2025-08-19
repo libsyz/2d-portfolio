@@ -24,13 +24,13 @@ export const createSoundManager = (k) => {
         } 
         
         soundManager.currentBGM = k.play(`${soundManager.sounds[sound]}`, {
-            loop: true,
-            volume: 0.7
+            volume: 0,
+            loop: true
         })
     })
 
     soundManager.on('toggle', () => {
-        k.debug.log('receiving message from UI');
+        soundManager.currentBGM.paused = !soundManager.currentBGM.paused
     })
     
 
