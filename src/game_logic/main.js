@@ -11,6 +11,7 @@ import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js";
+import { createSoundManager } from "./sound.js";
 
 k.setBackground(255, 255, 255);
 
@@ -18,6 +19,11 @@ k.setBackground(255, 255, 255);
 // import bgm music for the scene
 
 k.loadMusic('bgm-main', './src/audio/musics/main.mp3');
+k.loadMusic('bgm-house', './src/audio/musics/house.mp3');
+k.loadMusic('bgm-temple', './src/audio/musics/temple.mp3');
+k.loadMusic('bgm-cave', './src/audio/musics/cave.mp3');
+k.loadMusic('bgm-office', './src/audio/musics/office.mp3');
+
 
 // import sprites that need to be loaded before anything else
 
@@ -35,7 +41,6 @@ k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
 
 // load gamestate, available to all the scenes
-
 
 const gameState = createGameState();
 
@@ -57,19 +62,13 @@ gameEndSceneController.on('endgame', () => {
 
 })
 
-
+const soundManager = createSoundManager(k);
 
 k.scene("main", async (playerSpawnPoint) => {
     const map = createMap();
-    const ui = createUI(gameState);
+    const ui = createUI(gameState, soundManager);
 
-    k.onKeyPress("space", () => {
-        k.play('main', {
-            loop: true,
-            volume: 1
-        })
-    })
-
+    soundManager.trigger('play-bgm', 'main');
 
     fadeInScene();
 
@@ -152,7 +151,9 @@ k.scene("main", async (playerSpawnPoint) => {
 
 k.scene('house', async (playerSpawnPoint) => { 
     const houseMap = createHouseMap(gameState);
-    const ui = createUI(gameState);
+    const ui = createUI(gameState, soundManager);
+
+    soundManager.trigger('play-bgm', 'house');
    
     // ui needs to read from the gamestate and update if necessary
 
@@ -317,7 +318,8 @@ k.scene('house', async (playerSpawnPoint) => {
 
 k.scene('temple', async (playerSpawnPoint) => { 
     const templeMap = await createTempleMap();
-    const ui = createUI(gameState);
+    const ui = createUI(gameState, soundManager);
+    soundManager.trigger('play-bgm', 'temple');
 
     const player = createPlayer();
     player.canAttack = false;
@@ -375,7 +377,7 @@ k.scene('temple', async (playerSpawnPoint) => {
 k.scene('end', async () => { 
     const officeMap = await createOfficeMap();
     const player = await createOfficePlayer();
-
+    soundManager.trigger('office', 'house');
     fadeInScene();
     // fourth is the way point that is in front of the Shogun
     player.moveTo(officeMap.get('fourth')[0].worldPos());
@@ -542,7 +544,7 @@ k.scene('intro', () => {
 k.scene('office', async () => { 
     const officeMap = await createOfficeMap();
     const player = await createOfficePlayer();
-
+    soundManager.trigger('play-bgm', 'office');
     player.moveTo(officeMap.get('player_spawn')[0].worldPos());
 
     player.onStateEnter('spawn', () => {
@@ -614,8 +616,8 @@ k.scene('office', async () => {
 k.scene('cave', async (playerSpawnPoint) => {
 
     const caveMap = await createCaveMap(gameState);
-    const ui = createUI(gameState);
-
+    const ui = createUI(gameState, soundManager);
+    soundManager.trigger('play-bgm', 'cave');
     k.setBackground(20, 27, 27);
 
     const player = createPlayer();

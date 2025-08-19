@@ -147,6 +147,7 @@ const speakerComponent = () => {
 
             k.onClick('speaker', () => {
                 this.speaker.toggleSound();
+                this.soundManager.trigger('toggle');
             })
         }
 
@@ -154,14 +155,17 @@ const speakerComponent = () => {
 
 }
 
-export const createUI = (gameState) => { 
+export const createUI = (gameState, soundManager) => { 
     const hud = k.add([
          k.fixed(),  
          k.z(999),
          tutorialComponent(gameState),
          scrollsComponent(gameState),
          speakerComponent(),
-         'ui'
+         'ui',
+         {
+            soundManager: soundManager
+         }
     ]);
 
     hud.initTutorial();
