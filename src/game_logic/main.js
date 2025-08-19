@@ -15,7 +15,6 @@ import { createSoundManager } from "./sound.js";
 
 k.setBackground(255, 255, 255);
 
-
 // import bgm music for the scene
 
 k.loadMusic('bgm-main', './src/audio/musics/main.mp3');

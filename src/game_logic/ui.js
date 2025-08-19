@@ -97,12 +97,12 @@ const scrollsComponent = (gameState) => {
 const soundToggleComponent = () => {
     return { 
         toggleSound() {
-            if (this.sound == 'on') { 
-                this.sound = 'off';
-                this.get('sound-disabled').forEach(el => el.opacity = 1)
+            if (this.soundManager.state === 'on') { 
+                this.soundManager.enterState('off');
+                this.speaker.get('sound-disabled').forEach(el => el.opacity = 1)
             } else {
-                this.sound = 'on'
-                this.get('sound-disabled').forEach(el => el.opacity = 0)
+                this.soundManager.enterState('on')
+                this.speaker.get('sound-disabled').forEach(el => el.opacity = 0)
             }
         }
     }
@@ -112,42 +112,43 @@ const speakerComponent = () => {
 
     return {
         initSpeaker() {
+            const isTransparent = this.soundManager.state === 'on' ? 0 : 1
+
+            // Speaker sprite
             this.speaker = this.add([
                 k.sprite('speaker'),
                 k.pos(1200, 40),
                 k.scale(0.10),
                 k.area(),
                 k.anchor('center'),
-                'speaker',
-                {
-                    sound: 'on'
-                },
-                soundToggleComponent()
+                'speaker'
             ])
 
+            // Right side of the 'off' cross
             this.speaker.add([
                 k.rect(550, 60),
                 k.rotate(45),
                 k.anchor('center'),
                 k.color(225,0,0),
                 k.pos(0,0),
-                k.opacity(0),
+                k.opacity(isTransparent),
                 'sound-disabled'
             ])
 
+
+        // Left side of the 'off' cross
             this.speaker.add([
                 k.rect(550, 60),
                 k.rotate(-45),
                 k.anchor('center'),
                 k.color(225,0,0),
                 k.pos(0,0),
-                k.opacity(0),
+                k.opacity(isTransparent),
                 'sound-disabled',
             ])
 
             k.onClick('speaker', () => {
-                this.speaker.toggleSound();
-                this.soundManager.trigger('toggle');
+                this.toggleSound();
             })
         }
 
@@ -162,6 +163,7 @@ export const createUI = (gameState, soundManager) => {
          tutorialComponent(gameState),
          scrollsComponent(gameState),
          speakerComponent(),
+         soundToggleComponent(),
          'ui',
          {
             soundManager: soundManager
@@ -170,7 +172,7 @@ export const createUI = (gameState, soundManager) => {
 
     hud.initTutorial();
     hud.initScrolls();
-    hud.initSpeaker();
+    hud.initSpeaker(soundManager);
     return hud;
 }
 

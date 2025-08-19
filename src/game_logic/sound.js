@@ -4,6 +4,7 @@
 export const createSoundManager = (k) => { 
     const soundManager = k.make([
         'sound_manager',
+        k.state('on', ['on', 'off']),
         {
             currentBGM: null,
             sounds: {
@@ -17,6 +18,7 @@ export const createSoundManager = (k) => {
     ])
 
     soundManager.on('play-bgm', async (sound) => {
+        const paused = soundManager.paused 
 
         if (soundManager.currentBGM) {
            await soundManager.currentBGM.stop();
@@ -24,21 +26,19 @@ export const createSoundManager = (k) => {
         } 
         
         soundManager.currentBGM = k.play(`${soundManager.sounds[sound]}`, {
-            volume: 0,
-            loop: true
+            volume: 0.0,
+            loop: true, 
+            paused: soundManager.state === 'on' ? false : true
         })
     })
 
-    soundManager.on('toggle', () => {
-        soundManager.currentBGM.paused = !soundManager.currentBGM.paused
+    soundManager.onStateEnter('on', () => {
+        soundManager.currentBGM.paused = false;
     })
-    
 
-    // soundManager.init();
-            
-            
-    //     })
-    // })
+    soundManager.onStateEnter('off', () => {
+        soundManager.currentBGM.paused = true;
+    })
     
     return soundManager;
 }
