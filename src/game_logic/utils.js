@@ -175,7 +175,6 @@ export const fadeInScene = () => {
 }
 
 // kaboom component to show dialogue bubble on top of character head 
-
 export const charDialogue = () => {
     return {
         setDialogBubble() {
@@ -319,3 +318,17 @@ export const createScroll = (scrollSpriteName, scrollObjectName, position ) => {
     return scrollObj;
 }
 
+export const fxComp = (fxObj) => { 
+    // fxObj should be shaped like this 
+    // { eventOne: soundOne, eventTwo: soundTwo  }
+    return {
+        add() {
+            if (!this.fxCollection) { 
+                throw new Error("Component needs host to have an Fx collection Object to mount successfully");
+            }
+        },
+        fxPlay(event) {
+            k.play(this.fxCollection[event]);
+        }
+    }
+}

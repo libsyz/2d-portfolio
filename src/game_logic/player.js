@@ -1,4 +1,6 @@
 import { k } from './kaboomCtx';
+import { fxComp } from './utils';
+
 
 k.loadSprite('player', './src/assets/player.png', {
     sliceX: 4,
@@ -28,6 +30,9 @@ k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
     }
 })
 
+
+k.loadSound('player-shuriken-throw', './src/audio/fx/player-shuriken-throw.mp3');
+k.loadSound('player-hurt', './src/audio/fx/player-hurt.mp3');
 
 const shurikenComp = () => {
     return {
@@ -80,13 +85,20 @@ export const createPlayer = () => {
         k.body({mass: 1}),
         k.state('attack', ['attack', 'explore', 'dialogue'] ),
         shurikenComp(),
+        fxComp(),
         { 
+            fxCollection: {
+                //event: audio name played
+                attack: 'player-shuriken-throw',
+                hurt: 'player-hurt'
+            },
             moveEvents: [], 
             attackEvents: [],
             setPlayerAttackEvents() {
                 this.attackEvents.push(
                     this.onKeyPress("space", () => {
-                        let shuri = this.throwShuriken();
+                        this.throwShuriken();
+                        this.fxPlay('attack');
 
                         if (this.direction === k.DOWN) {
                             this.play('attack-down');
@@ -210,6 +222,7 @@ export const createPlayer = () => {
 
     player.onCollide('fireball', () => {
         player.play('hurt');
+        player.fxPlay('hurt');
         k.wait(0.2, () => {
             player.goIdle();
         })

@@ -1,7 +1,7 @@
 import { k } from './kaboomCtx';
 import { seconds } from './utils';
 import { createKey } from './key.js';
-
+import { fxComp } from './utils';
 
 
 k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
@@ -26,7 +26,7 @@ k.loadSprite('fireball', './src/assets/fireball.png', {
     }
 })
 
-
+k.loadSound('baddie-fireball-throw', './src/audio/fx/baddie-fireball-throw.wav');
 
 const componentFlash = (k) => {
     const flash = (interval = 0.15) => {
@@ -176,6 +176,12 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         'baddie_green_demon',
         baddiePatrol(),
         baddieHealthBar(),
+        {
+            fxCollection: {
+                fireball: 'baddie-fireball-throw'
+            }
+        },
+        fxComp()
     ]);
 
     baddieGreenDemon.moveTo(baddieLocation);
@@ -217,6 +223,7 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
             'fireball'
         ])
 
+        baddieGreenDemon.fxPlay('fireball');
         fireball.play('move');
         fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
 
