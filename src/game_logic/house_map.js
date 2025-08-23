@@ -1,8 +1,9 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js';
-import { charDialogue, seconds } from './utils.js';
+import { charDialogue, leftRightPatrol, seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
-import { seconds as secondstwo } from './utils';
+
+
 
 // load the map
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
@@ -60,49 +61,7 @@ k.loadSprite('elias_face', '../src/assets/elias_face.png');
 
 // Patrol Component for Elias 
 
-const leftRightPatrolImproved = () => {
 
-    return {  
-        patrolCounter: 0, 
-        patrolDirection: 'right',
-        patrolRight() {
-            this.patrolDirection = 'right';
-            this.move( 10, 0 );
-            if (this.curAnim() !== 'walk-right') {
-                this.play('walk-right');
-            }
-        },
-        patrolLeft() {
-            this.patrolDirection = 'left';
-            this.move( -10, 0 );
-            if (this.curAnim() !== 'walk-left') {
-                this.play('walk-left');
-            }
-        },
-        
-        patrol() {
-            this.patrolEv = this.onUpdate(()  => {
-                    if ( this.pos.x >= ( this.landmarkX + 20 ) ) {
-                        this.patrolDirection = 'left'
-                    }
-
-                    if ( this.pos.x <= this.landmarkX) {
-                        this.patrolDirection = 'right'
-                    }
-
-                    if (this.patrolDirection === 'right') {
-                        this.patrolRight();
-                    } else if (this.patrolDirection === 'left') {
-                        this.patrolLeft();
-                    }
-            })
-        }, 
-        cancelPatrol() {
-            this.patrolEv.cancel();
-        }
-
-    }
-}
 
 // instatiate the map
 export const createHouseMap = (gameState) => {
@@ -221,7 +180,7 @@ export const createHouseMap = (gameState) => {
         {
             landmarkX: 360
         },
-        leftRightPatrolImproved(),
+        leftRightPatrol(10, 20),
         charDialogue(),
         'elias'
     ])

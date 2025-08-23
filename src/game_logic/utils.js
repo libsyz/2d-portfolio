@@ -332,3 +332,52 @@ export const fxComp = (fxObj) => {
         }
     }
 }
+
+
+export const leftRightPatrol = (speed, distance) => {
+
+    return {  
+        patrolCounter: 0, 
+        patrolDirection: 'right',
+        patrolRight() {
+            this.patrolDirection = 'right';
+            this.move( speed, 0 );
+            if (this.curAnim() !== 'walk-right') {
+                this.play('walk-right');
+            }
+        },
+        patrolLeft() {
+            this.patrolDirection = 'left';
+            this.move( -speed, 0 );
+            if (this.curAnim() !== 'walk-left') {
+                this.play('walk-left');
+            }
+        },
+        
+        patrol() {
+            if (!this.landmarkX) {
+                throw('Component requires landmarkX property to function');
+            }
+
+            this.patrolEv = this.onUpdate(()  => {
+                    if ( this.pos.x >= ( this.landmarkX + distance ) ) {
+                        this.patrolDirection = 'left'
+                    }
+
+                    if ( this.pos.x <= this.landmarkX) {
+                        this.patrolDirection = 'right'
+                    }
+
+                    if (this.patrolDirection === 'right') {
+                        this.patrolRight();
+                    } else if (this.patrolDirection === 'left') {
+                        this.patrolLeft();
+                    }
+            })
+        }, 
+        cancelPatrol() {
+            this.patrolEv.cancel();
+        }
+
+    }
+}

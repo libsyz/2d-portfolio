@@ -1,6 +1,6 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
-import { charDialogue } from './utils.js';
+import { charDialogue, leftRightPatrol } from './utils.js';
 
 
 // load the map sprite
@@ -45,7 +45,8 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
     sliceY: 1,
     anims: {
         'idle': 0,
-        'bob': { from: 0, to: 1, loop: true, speed: 1.5 }
+        'walk-right': { from: 0, to: 1, loop: true, speed: 1.5 },
+        'walk-left': { from: 0, to: 1, loop:true, speed: 1.5 } 
     }
 })
 
@@ -197,24 +198,6 @@ export const createMap = () => {
 
     oldMan.setDialogBubble();
 
-    const chickenPatrol = () => {
-        return {
-            patrolDirection: 1,
-            startPatrol() {
-               this.patrolLoop(); 
-               this.onUpdate(() =>{
-                    this.move(this.patrolDirection, 0)
-               })
-            },
-            patrolLoop() {
-                k.loop(5, () => {
-                    this.patrolDirection *= -1;
-                    this.flipX = !this.flipX;
-                })
-            }
-        }
-    }
-
     const chickenDialogueComp = () => {
         return {
             chickenDialogueCount: 0,
@@ -255,14 +238,24 @@ export const createMap = () => {
         k.area(),
         k.scale(0.75),
         k.body({isStatic: true}),
-        chickenPatrol(),
+        leftRightPatrol(5, 10),
+        {
+            landmarkX: map.get('chicken_spawn')[0].pos.x
+        },
         chickenDialogueComp(),
         'chicken'
     ]);
 
-    chicken.play('bob');
-    chicken.startPatrol();
+    chicken.patrol();
 
+    chicken.onCollide('player', () => {
+        chicken.play('idle');
+        chicken.cancelPatrol();
+    })
+
+    chicken.onCollideEnd('player', () => {
+        chicken.patrol();
+    })
 
     const fisherman = map.add([
         k.sprite('fisherman'),
