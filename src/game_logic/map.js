@@ -42,11 +42,11 @@ k.loadSprite('old_man', './src/assets/old_man.png', {
 
 k.loadSprite('chicken', './src/assets/chicken.png', {
     sliceX: 2,
-    sliceY: 1,
+    sliceY: 2,
     anims: {
         'idle': 0,
-        'walk-right': { from: 0, to: 1, loop: true, speed: 1.5 },
-        'walk-left': { from: 0, to: 1, loop:true, speed: 1.5 } 
+        'walk-right': { from: 0, to: 1, loop: true, speed: 3 },
+        'walk-left': { from: 2, to: 3, loop:true, speed: 3 } 
     }
 })
 
