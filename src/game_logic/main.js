@@ -99,10 +99,12 @@ k.scene("main", async (playerSpawnPoint) => {
     }) 
     
     k.onCollide('player', 'old_man', (_, oldMan) => {
+        player.enterState('explore');
         showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
     })
 
     k.onCollideEnd('player', 'old_man', (_, oldMan) => {
+        player.enterState('attack');
         k.destroy(k.get('dialog')[0]);
     })
 

@@ -206,15 +206,17 @@ export const createPlayer = () => {
         'player'
     ]);
 
+    player.onAdd(() => {
+        k.debug.log('calling');
+    })
 
     player.onStateEnter('attack', () => {   
-        player.setPlayerMovementEvents();
         player.setPlayerAttackEvents();
     })
 
     player.onStateEnter('explore', () => {
-        player.clearAttackEvents();
         player.setPlayerMovementEvents();
+        player.clearAttackEvents();
         
     })
 

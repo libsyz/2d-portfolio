@@ -20,11 +20,16 @@
 [X] Apartment house background is white - should be the same color as the rest of the scenario 
 [X] Game Crashes when player interacts with tarifa painting
 [X] Elias should stop the patrol when in touch with the player
+[ ] Shader/Shine/Blink on items of interest
 
+-- Village --
+
+[X] Improve Chicken Behavior - Add the same Patrol Component as Elias 
+[ ] Should not be able to throw Shurikens when talking to the old man
 
 ## Bugs
 
-[ ] 
+[ ]
 
 
 
@@ -53,3 +58,5 @@
 [] Add Coworkers talking to one another on the coffee area of the office
 
 [] Player Dance/Celebrate animation when scroll is obtained
+[] Shurikens hit against boundaries
+[] Screen movement does not follow when the player hits an edge of the village and then immediately reverses direction
