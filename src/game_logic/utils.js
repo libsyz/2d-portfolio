@@ -133,7 +133,6 @@ export const showDialogueScrollAcquired = (gameState, faceTag, messages, gameEnd
         if ( gameState.isDialogueBusy === true ) { 
             return
         }
-        k.debug.log(messages[currentMessageIdx]);
         if (currentMessageIdx + 1 < messages.length ) {
             currentMessage.destroy();
             currentMessageIdx++;
@@ -148,7 +147,6 @@ export const showDialogueScrollAcquired = (gameState, faceTag, messages, gameEnd
         } else {
             dialogueBox.enterState('end');
             dialogueBox.destroy();
-            k.debug.log(gameState.scrolls);
             if ( gameState.checkFinished() ) { 
                 await dialogueBoxEvent.cancel();
                 gameEndSceneController.trigger('endgame');

@@ -48,7 +48,6 @@ const gameEndSceneController = k.add([
 ])
 
 gameEndSceneController.on('endgame', () => { 
-    k.debug.log('firing end of game sequence');
     const dialog = showDialogueMultiple(gameState, 'player-face', [
         'I have found all my scrolls!',
         'Time to go back to the Shogun and talk smack to him!',
@@ -98,12 +97,12 @@ k.scene("main", async (playerSpawnPoint) => {
         })
     }) 
     
-    k.onCollide('player', 'old_man', (_, oldMan) => {
+    k.onCollide('player', 'old_man', (player, _) => {
         player.enterState('explore');
         showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
     })
 
-    k.onCollideEnd('player', 'old_man', (_, oldMan) => {
+    k.onCollideEnd('player', 'old_man', (player, _) => {
         player.enterState('attack');
         k.destroy(k.get('dialog')[0]);
     })
@@ -120,11 +119,13 @@ k.scene("main", async (playerSpawnPoint) => {
         k.destroy(k.get('dialog')[0]);
     })
 
-    k.onCollide('player', 'fisherman', (_, fisherMan) => {
+    k.onCollide('player', 'fisherman', (player, _) => {
+        player.enterState('explore');
         showDialogue('fisherman_face', 'Fishing needs sharp skills — like dealing with the questions of the spirit within the shrine.', gameState);
     })
 
-    k.onCollideEnd('player', 'fisherman', () => {
+    k.onCollideEnd('player', 'fisherman', (player, _) => {
+        player.enterState('attack');
         k.destroy(k.get('dialog')[0]);
     })
 
@@ -524,7 +525,7 @@ k.scene('office', async () => {
     
 
     player.onStateEnter('start', () => {
-        k.debug.log('spawning player');
+
         player.play('right');
         k.tween(player.pos, officeMap.get('first')[0].worldPos(), 1, newPos => player.pos = newPos, k.easings.linear )
         k.wait(1, () => player.enterState('first'))

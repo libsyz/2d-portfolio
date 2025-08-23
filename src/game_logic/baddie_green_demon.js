@@ -144,6 +144,7 @@ const baddieHealthBar = () => {
     }
 }
 
+
 export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) => {
     const scale = 3.5;
 
@@ -198,48 +199,69 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
     ])
 
     // Throws fireball at player when enters range
+
     baddieGreenDemonPlayerDetectionArea.onCollide('player', (player) => {
-        let fireballXOffset = 0;
-        let fireballYOffset = 0;
-        let direction = baddieGreenDemon.direction;
+        k.debug.log(baddieGreenDemon.fireBallLoop);
+        if (!baddieGreenDemon.fireBallLoop) {
+            
+            baddieGreenDemon.fireBallLoop = k.loop(1, () => {
 
-        if ( direction === "up" ) {
-            fireballYOffset = -32
-        } else if ( direction === "down" ) {
-            fireballYOffset = +32
-        } else if ( direction === "right" ) {
-            fireballXOffset = 32
-        } else if ( direction === "left" ) {
-            fireballXOffset = -32
-        } 
+                let fireballXOffset = 0;
+                let fireballYOffset = 0;
+                let direction = baddieGreenDemon.direction;
+
+                if ( direction === "up" ) {
+                    fireballYOffset = -32
+                } else if ( direction === "down" ) {
+                    fireballYOffset = +32
+                } else if ( direction === "right" ) {
+                    fireballXOffset = 32
+                } else if ( direction === "left" ) {
+                    fireballXOffset = -32
+                } 
 
 
-        const fireball = k.add([
-            k.sprite('fireball'),
-            k.area(),
-            k.scale(2),
-            k.anchor('center'),
-            k.pos(baddieGreenDemon.pos.x + fireballXOffset, 
-                baddieGreenDemon.pos.y + fireballYOffset),
-            k.move(player.pos.angle(baddieGreenDemon.pos), 220),
-            'fireball'
-        ])
+                const fireball = k.add([
+                    k.sprite('fireball'),
+                    k.area(),
+                    k.scale(2),
+                    k.anchor('center'),
+                    k.pos(baddieGreenDemon.pos.x + fireballXOffset, 
+                        baddieGreenDemon.pos.y + fireballYOffset),
+                    k.move(player.pos.angle(baddieGreenDemon.pos), 220),
+                    'fireball'
+                ])
 
-        baddieGreenDemon.fxPlay('fireball');
-        fireball.play('move');
-        fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
+                baddieGreenDemon.fxPlay('fireball');
+                fireball.play('move');
+                fireball.angle = player.pos.angle(baddieGreenDemon.pos) + 90;
 
-        fireball.onCollide('player', () => { 
-            fireball.destroy();
-        })
+                fireball.onCollide('player', () => { 
+                    fireball.destroy();
+                })
 
-        fireball.onCollide('boundary', () => {
-            fireball.destroy();
-        })
+                fireball.onCollide('boundary', () => {
+                    fireball.destroy();
+                })
+
+            })
+        }
+    })
+
+    baddieGreenDemonPlayerDetectionArea.onCollideEnd('player', () =>{
+        baddieGreenDemon.fireBallLoop.cancel();
+        baddieGreenDemon.fireBallLoop = null;
     })
     
     baddieGreenDemon.on('death', () => {
+        if (baddieGreenDemon.fireBallLoop) { 
+            baddieGreenDemon.fireBallLoop.cancel();
+
+            baddieGreenDemon.fireBallLoop = null;
+        }
+
         baddieGreenDemon.healthbar.destroy();
+        baddieGreenDemonPlayerDetectionArea.destroy();
         baddieGreenDemon.patrolEvent.cancel();
         baddieGreenDemon.unuse('patrol');
         baddieGreenDemon.move(0, 0);

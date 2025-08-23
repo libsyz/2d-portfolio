@@ -239,7 +239,11 @@ export const createPlayer = () => {
     player.onCollide('fireball', () => {
         player.play('hurt');
         player.fxPlay('hurt');
+        player.clearAttackEvents();
+        player.clearMovementEvents();
         k.wait(0.2, () => {
+            player.setPlayerAttackEvents();
+            player.setPlayerMovementEvents();
             player.goIdle();
         })
     })
