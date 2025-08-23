@@ -196,7 +196,7 @@ k.scene('house', async (playerSpawnPoint) => {
             'education_scroll',
         ]);
 
-    
+        player.fxPlay('scrollObtained');
         k.tween(
             edScroll.pos, 
             k.vec2(edScroll.pos.x, edScroll.pos.y - 20),
@@ -342,7 +342,7 @@ k.scene('temple', async (playerSpawnPoint) => {
     player.onCollide('skills_scroll', () => {
         gameState.updateScrolls('skills');
         ui.getScroll('skills');
-
+        player.fxPlay('scrollObtained');
         let dialog = showDialogueScrollAcquired(
             gameState,
             'player_face', 
@@ -649,7 +649,7 @@ k.scene('cave', async (playerSpawnPoint) => {
                 'experience_scroll',
             ]);
 
-        
+            player.fxPlay('scrollObtained');
             k.tween(
                 experienceScroll.pos, 
                 k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),

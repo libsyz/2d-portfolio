@@ -34,6 +34,7 @@ k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
 k.loadSound('player-shuriken-throw', './src/audio/fx/player-shuriken-throw.mp3');
 k.loadSound('player-hurt', './src/audio/fx/player-hurt.mp3');
 k.loadSound('player-key-obtained', './src/audio/fx/player-key-obtained.mp3');
+k.loadSound('player-scroll-obtained', './src/audio/fx/player-scroll-obtained.mp3');
 
 const shurikenComp = () => {
     return {
@@ -92,7 +93,8 @@ export const createPlayer = () => {
                 //event: audio name played
                 attack: 'player-shuriken-throw',
                 hurt: 'player-hurt',
-                keyObtained: 'player-key-obtained'
+                keyObtained: 'player-key-obtained',
+                scrollObtained: 'player-scroll-obtained'
             },
             moveEvents: [], 
             attackEvents: [],
