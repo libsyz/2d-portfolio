@@ -98,7 +98,14 @@ export const createPlayer = () => {
             },
             moveEvents: [], 
             attackEvents: [],
+            add() {
+                this.setPlayerMovementEvents()
+            },
             setPlayerAttackEvents() {
+                if (this.attackEvents.length > 0) {
+                    return
+                }
+
                 this.attackEvents.push(
                     this.onKeyPress("space", () => {
                         this.throwShuriken();
@@ -128,6 +135,10 @@ export const createPlayer = () => {
                 )
             },
             setPlayerMovementEvents() {
+                if (this.moveEvents.length > 0 ) {
+                    return
+                }
+
                 this.moveEvents.push(
                         this.onKeyDown('right', () => {
                         this.move(playerBaseSpeed, 0);
@@ -181,12 +192,14 @@ export const createPlayer = () => {
             },
             clearAttackEvents() {
                 if (this.attackEvents.length > 0) {
-                    this.attackEvents.forEach((ev) => ev.cancel());          
+                    this.attackEvents.forEach((ev) => ev.cancel());
+                    this.attackEvents = [];          
                 }
             },
             clearMovementEvents() {
                 if (this.moveEvents.length > 0) {
                     this.moveEvents.forEach((ev) => ev.cancel());          
+                    this.moveEvents = [];
                 }
             },
             goIdle() {
@@ -206,18 +219,15 @@ export const createPlayer = () => {
         'player'
     ]);
 
-    player.onAdd(() => {
-        k.debug.log('calling');
-    })
 
     player.onStateEnter('attack', () => {   
+        player.setPlayerMovementEvents()
         player.setPlayerAttackEvents();
     })
 
     player.onStateEnter('explore', () => {
         player.setPlayerMovementEvents();
         player.clearAttackEvents();
-        
     })
 
     player.onStateEnter('dialogue', () => {
