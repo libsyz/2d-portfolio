@@ -199,13 +199,7 @@ export const createMap = () => {
 
     const chickenPatrol = () => {
         return {
-            patrolDirection: 1, 
-            patrolRight() {
-                return
-            },
-            patrolLeft() {
-                return
-            },
+            patrolDirection: 1,
             startPatrol() {
                this.patrolLoop(); 
                this.onUpdate(() =>{
@@ -226,7 +220,7 @@ export const createMap = () => {
             chickenDialogueCount: 0,
             getChickenDialogue() {
                 this.chickenDialogueCount++;
-            // Generate a random number between 0 and 1
+                 // Generate a random number between 0 and 1
                 if (this.chickenDialogueCount > 2 && Math.random() < 0.4) {
                     return "dark-chicken-dialogue";
                 } else {

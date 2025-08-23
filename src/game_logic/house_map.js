@@ -2,6 +2,7 @@ import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js';
 import { charDialogue, seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
+import { seconds as secondstwo } from './utils';
 
 // load the map
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
@@ -47,14 +48,61 @@ k.loadSprite('elias', '../src/assets/child.png', {
     sliceY: 4,
     anims: {
         'idle': 0,
-        'walk-down': {from: 1, to: 2, loop: true, speed: 3},
-        'walk-up':  {from: 3, to: 4, loop: true, speed: 3},
-        'walk-left': {from: 5,to: 6, loop: true, speed: 3}, 
+        'walk-down': {from: 0, to: 1, loop: true, speed: 3},
+        'walk-up':  {from: 2, to: 3, loop: true, speed: 3},
+        'walk-left': {from: 4,to: 5, loop: true, speed: 3}, 
         'walk-right': {from: 6,to: 7, loop: true, speed: 3}, 
     }
 });
 
 k.loadSprite('elias_face', '../src/assets/elias_face.png');
+
+
+// Patrol Component for Elias 
+
+const leftRightPatrolImproved = () => {
+
+    return {  
+        patrolCounter: 0, 
+        patrolDirection: 'right',
+        patrolRight() {
+            this.patrolDirection = 'right';
+            this.move( 10, 0 );
+            if (this.curAnim() !== 'walk-right') {
+                this.play('walk-right');
+            }
+        },
+        patrolLeft() {
+            this.patrolDirection = 'left';
+            this.move( -10, 0 );
+            if (this.curAnim() !== 'walk-left') {
+                this.play('walk-left');
+            }
+        },
+        
+        patrol() {
+            this.patrolEv = this.onUpdate(()  => {
+                    if ( this.pos.x >= ( this.landmarkX + 20 ) ) {
+                        this.patrolDirection = 'left'
+                    }
+
+                    if ( this.pos.x <= this.landmarkX) {
+                        this.patrolDirection = 'right'
+                    }
+
+                    if (this.patrolDirection === 'right') {
+                        this.patrolRight();
+                    } else if (this.patrolDirection === 'left') {
+                        this.patrolLeft();
+                    }
+            })
+        }, 
+        cancelPatrol() {
+            this.patrolEv.cancel();
+        }
+
+    }
+}
 
 // instatiate the map
 export const createHouseMap = (gameState) => {
@@ -138,30 +186,31 @@ export const createHouseMap = (gameState) => {
 
     // Add Elias
 
-    const leftRightPatrol = () => {
-        return {
-            id: 'switchPatrol', 
-            tick() {
-                if ( this.patrolState === 'idle') {
-                    this.direction *= -1;
-                    this.flipX = !this.flipX;
-                    this.patrolState = 'move';
-                } else {
-                    this.patrolState = 'idle';
-                }
-            },
-            patrol() {
-                if (this.patrolState === 'idle') {
-                    this.move( 10 * this.direction , 0 );
-                    if (this.curAnim() !== 'walk-right') {
-                        this.play('walk-right');
-                    }
-                } else {
-                    this.play('idle');
-                }
-            } 
-        }
-    }
+
+    // const leftRightPatrol = () => {
+    //     return {
+    //         id: 'switchPatrol', 
+    //         tick() {
+    //             if ( this.patrolState === 'idle') {
+    //                 this.direction *= -1;
+    //                 this.flipX = !this.flipX;
+    //                 this.patrolState = 'move';
+    //             } else {
+    //                 this.patrolState = 'idle';
+    //             }
+    //         },
+    //         patrol() {
+    //             if (this.patrolState === 'idle') {
+    //                 this.move( 10 * this.direction , 0 );
+    //                 if (this.curAnim() !== 'walk-right') {
+    //                     this.play('walk-right');
+    //                 }
+    //             } else {
+    //                 this.play('idle');
+    //             }
+    //         } 
+    //     }
+    // }
 
     const elias = houseMap.add([
         k.sprite('elias'),
@@ -169,15 +218,27 @@ export const createHouseMap = (gameState) => {
         k.area(),
         k.scale(0.70),
         k.body({isStatic: true}),
-        leftRightPatrol(),
+        {
+            landmarkX: 360
+        },
+        leftRightPatrolImproved(),
         charDialogue(),
-        'elias',
-        { 
-            patrolState: 'idle',
-            direction: 1,
-        }
+        'elias'
     ])
+
+    // elias.onUpdate(() => {
+    //     k.debug.log('constant call');
+    // })
+    elias.patrol();
     
+    elias.onCollide('player', () => {
+        elias.cancelPatrol();
+        elias.play('idle');
+    })
+
+    elias.onCollideEnd('player', () => {
+        elias.patrol();
+    })
     // elias patrol 
     // on cycles of two seconds
     // move elias right 
@@ -185,11 +246,24 @@ export const createHouseMap = (gameState) => {
     // move elias left
     // stop, be idle
 
-    setInterval(() => elias.tick(), 2000); // TODO - there has to be a better way than a setinterval
+    // setInterval(() => elias.tick(), 2000); // TODO - there has to be a better way than a setinterval
 
-    elias.onUpdate(() => {
-        elias.patrol(); // TODO - Could I move this to the elias object itself? 
-    })
+    // elias.onUpdate(() => {
+    //     elias.patrol(); // TODO - Could I move this to the elias object itself? 
+    // })
+
+    // this patrol behavior really sucks I must say
+
+    // Ideally it should be something like  -
+    // Character gets spawned
+    // Walks until it has reached a certain distance in X away from the spawnpoint 
+    // Turns around, changes direction
+    // Walks until it has reached the spawnpoint
+
+    // When in contact with the player
+    // Patrol behavior stops
+    // Patrol behavior remembers direction and how far away from spawnpoint
+    // 
 
     return houseMap;
 

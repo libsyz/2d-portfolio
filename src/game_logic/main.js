@@ -72,6 +72,7 @@ k.scene("main", async (playerSpawnPoint) => {
     fadeInScene();
 
     const player = createPlayer();
+
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
     const forestBaddieLocation = map.get('baddie_spawn')[0].worldPos();
@@ -151,6 +152,7 @@ k.scene("main", async (playerSpawnPoint) => {
 k.scene('house', async (playerSpawnPoint) => { 
     const houseMap = createHouseMap(gameState);
     const ui = createUI(gameState, soundManager);
+    k.setBackground(58, 58, 81);
 
     soundManager.trigger('play-bgm', 'house');
    
@@ -159,7 +161,7 @@ k.scene('house', async (playerSpawnPoint) => {
     fadeInScene();
 
     const player = createPlayer();
-    player.canAttack = false;
+    player.enterState('explore');
     player.moveTo(houseMap.get(playerSpawnPoint)[0].worldPos())
 
     player.onUpdate( () =>  {
@@ -297,7 +299,9 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'painting', () => { 
-        showDialogueMultiple('player_face', 
+        showDialogueMultiple(
+            gameState,
+            'player_face', 
             [
              'A picture of Tarifa, Cadiz', 
              'You can see Africa across the sea',
@@ -431,13 +435,12 @@ k.scene('end', async () => {
 })
 
 
-
 k.scene('intro', () => {
     k.setBackground(155, 155, 155);
     const bgImage = k.add([
         k.pos(0),
         k.sprite('intro_background'),
-        k.scale(0.5)
+    k.scale(0.75)
     ])
 
     const startGame = k.add([
@@ -469,7 +472,7 @@ k.scene('intro', () => {
     const makeSelector = (titleObj) => { 
         titleObj.add([
             k.pos(140, -5),
-            k.sprite('shuriken'),
+            k.sprite('shuriken2'),
             k.scale(1.5)
         ])
     }
@@ -478,10 +481,10 @@ k.scene('intro', () => {
 
     k.onKeyPress('space', () => {
         if(startGame.isSelected) {
-            k.go('opening');
+            k.go('office');
         } else {
             k.debug.log('should open CV');
-            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            // window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })
 
@@ -504,49 +507,21 @@ k.scene('intro', () => {
     })
 })
 
-
-// k.scene('opening', () => {
-//     k.setBackground(200, 200, 200);
-//     k.add([
-//         k.sprite('interview_room'),
-//         k.scale(0.5)
-//     ])
-
-//     const player = createPlayer();
-//     const interviewer = createInterviewer();
-    
-//     k.wait(2, async () => {
-//         await showDialogue('interviewer_face', "Thanks for coming to the interview Mr Miguel");
-//     });
-
-//     k.wait(4, async () => {
-//         await showDialogue('interviewer_face', "Unfortunately your CV is empty! This is disgraceful");
-//     })
-
-//     k.wait(6, async () => {
-//         await showDialogue('interviewer_face', "Go back to your village and bring us a complete resume");
-//     })
-
-//     k.wait(8, async () => {
-//         await showDialogue('interviewer_face', "We want to see experience, education and skills!");
-//     })
-
-//     k.wait(10, () => {
-//         k.go('main');
-//     })
-
-    
-// })
-
-
-
 k.scene('office', async () => { 
     const officeMap = await createOfficeMap();
-    const player = await createOfficePlayer();
     soundManager.trigger('play-bgm', 'office');
-    player.moveTo(officeMap.get('player_spawn')[0].worldPos());
 
-    player.onStateEnter('spawn', () => {
+    const player = await createOfficePlayer();
+    player.moveTo(officeMap.get('player_spawn')[0].worldPos());
+    fadeInScene();
+
+    k.wait(2, () => {
+        player.opacity = 1;
+        player.enterState('start');
+    })
+    
+
+    player.onStateEnter('start', () => {
         k.debug.log('spawning player');
         player.play('right');
         k.tween(player.pos, officeMap.get('first')[0].worldPos(), 1, newPos => player.pos = newPos, k.easings.linear )
@@ -693,4 +668,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('main', 'player_spawn');
+k.go('house', 'player_spawn');

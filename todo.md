@@ -1,42 +1,34 @@
 
 ## Todo 
 
-[X] When the monster guarding the entry has been killed, should not appear again
+[] I need a new concept for the intro scene
+[] How am I going to handle mobile users? 
+[] Fix Tutorial - should not show the gamepad
 
-[X] When the lightning scroll has been obtained, the monsters in the cave should not appear again
 
-[X] tune gitignore so it ignores all the assets and unneccesary information 
 
-[X] Add dialogue to the chicken!  
-    - import chicken face
-    - Add method call to the chicken on contact
-    - Add easter egg - whenever you have spoken to the chicken several times, the chicken will say something
 
-[ ] Add background sounds
+-- Intro Scene -- 
 
-[ ] Add FX
+[X] Add fadein function
+[X] Have 1 second delay until ninja comes in for drama effect
+ 
+-- House --
 
-[ ] Add Sound Controls
+[X] Player should not be able to shoot in the bedroom
+[X] need to improve bounds
+[X] Apartment house background is white - should be the same color as the rest of the scenario 
+[X] Game Crashes when player interacts with tarifa painting
+[X] Elias should stop the patrol when in touch with the player
 
-[ ] Add Closing Scene
-
-## Code quality 
-
-[X] Create a factory that manages baddy creation and cleans up the code
-
-[ ] DialogShow should be DialogBubbleShow or something like that
 
 ## Bugs
 
-[ ] Apartment house background is white - should be the same color as the rest of the scenario 
+[ ] 
+
+
 
 [ ] Lightining scroll does not disappear when obtained
-
-[X] Touching the mailbox crashes the game
-
-[X] Baddies HP bar disappeared :-/
-
-[X] Baddies should not be able to walk through walls in the cave
 
 [] Layering - When the player passes close to a tree, he should go under it and not over it 
 
@@ -44,7 +36,20 @@
 
 [] When the user comes out of a building, the screen should not roll
 
+## Code quality 
+
+[X] Create a factory that manages baddy creation and cleans up the code
+
+[ ] DialogShow should be DialogBubbleShow or something like that
+
 ## Nice to haves
 
-[X] Baddie Fireball should come from the direction the baddie is facing 
+[] Baddie should face the player when casting fireball
 
+[] Improve rendering of dialogues to prevent blinking between event/phase changes
+
+[] In the bedroom, it would be cool if you could change colors in the wardrobe and keep it throughout the game 
+
+[] Add Coworkers talking to one another on the coffee area of the office
+
+[] Player Dance/Celebrate animation when scroll is obtained
