@@ -22,6 +22,7 @@ export const showDialogue = (faceTag, message, gameState) => {
         k.sprite('dialogue_box_simple'),
         k.pos(x - 636, y + dialogueBoxYOffSet), // semi-magical numbers
         k.scale(4),
+        k.z(9999),
         'dialog'
     ]);
 
