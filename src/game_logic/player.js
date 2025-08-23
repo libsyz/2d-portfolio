@@ -33,6 +33,7 @@ k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
 
 k.loadSound('player-shuriken-throw', './src/audio/fx/player-shuriken-throw.mp3');
 k.loadSound('player-hurt', './src/audio/fx/player-hurt.mp3');
+k.loadSound('player-key-obtained', './src/audio/fx/player-key-obtained.mp3');
 
 const shurikenComp = () => {
     return {
@@ -90,7 +91,8 @@ export const createPlayer = () => {
             fxCollection: {
                 //event: audio name played
                 attack: 'player-shuriken-throw',
-                hurt: 'player-hurt'
+                hurt: 'player-hurt',
+                keyObtained: 'player-key-obtained'
             },
             moveEvents: [], 
             attackEvents: [],
@@ -226,6 +228,10 @@ export const createPlayer = () => {
         k.wait(0.2, () => {
             player.goIdle();
         })
+    })
+
+    player.onCollide('key', () => {
+        player.fxPlay('keyObtained');
     })
     
     // init player in idle state

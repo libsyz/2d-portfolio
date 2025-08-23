@@ -26,7 +26,8 @@ k.loadSprite('fireball', './src/assets/fireball.png', {
     }
 })
 
-k.loadSound('baddie-fireball-throw', './src/audio/fx/baddie-fireball-throw.wav');
+k.loadSound('baddie-fireball-throw', './src/audio/fx/baddie-fireball-throw.mp3');
+k.loadSound('baddie-hurt', './src/audio/fx/baddie-hurt.mp3');
 
 const componentFlash = (k) => {
     const flash = (interval = 0.15) => {
@@ -178,7 +179,8 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         baddieHealthBar(),
         {
             fxCollection: {
-                fireball: 'baddie-fireball-throw'
+                fireball: 'baddie-fireball-throw',
+                    hurt: 'baddie-hurt'
             }
         },
         fxComp()
@@ -275,6 +277,7 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
 
     baddieGreenDemon.on('hurt', ()=> {
         baddieGreenDemon.play('dead');
+        baddieGreenDemon.fxPlay('hurt');
         baddieGreenDemon.healthbarBackground.opacity = 1;
         baddieGreenDemon.healthbar.opacity = 1;
         baddieGreenDemon.healthbar.width = baddieGreenDemon.healthbar.width - 5; 

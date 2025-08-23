@@ -1,6 +1,6 @@
-
 import { k } from './kaboomCtx';
-import { seconds } from './utils';
+
+
 
 k.loadSprite('treasure_key', './src/assets/key.png', {
     sliceX: 1,
