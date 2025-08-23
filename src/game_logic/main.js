@@ -610,58 +610,52 @@ k.scene('cave', async (playerSpawnPoint) => {
 
     let treasureCollision = k.onCollide('experience_treasure_chest', 'player', (treasureChest, player) => {
         let openChestEvent = k.onKeyRelease('space', () => {
-
+            
             if (!gameState.playerHasKey) {
-                k.debug.log('you need a key to open this chest');
-                return;
+                gameState.isDialogueBusy = true;
+                showDialogueMultiple(gameState, 'player_face', ['Seems like I need a key to open this...']);
+            } else { 
+                treasureChest.play('open');
+                // spawn the scroll at the center of the chest
+                const experienceScroll = k.add([
+                    k.sprite('experience_scroll'),
+                    k.pos(treasureChest.worldPos()),
+                    k.scale(3),
+                    k.anchor('center'),
+                    k.z(999),
+                    'experience_scroll',
+                ]);
+
+                player.fxPlay('scrollObtained');
+                k.tween(
+                    experienceScroll.pos, 
+                    k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),
+                    1,
+                    (posVal) => { experienceScroll.pos = posVal }   
+                )
+
+                openChestEvent.cancel();
+                gameState.updateScrolls('experience');
+                showDialogueScrollAcquired(
+                    gameState,
+                    'player_face', 
+                    [
+                        'I found my experience scroll!', 
+                        'I suddenly know jiu jitsu!'
+                    ],
+                    gameEndSceneController
+                );
+                
+                ui.getScroll('experience');
+                gameState.checkFinished();
             }
-            
-            treasureChest.play('open');
-            // spawn the scroll at the center of the chest
-            const experienceScroll = k.add([
-                k.sprite('experience_scroll'),
-                k.pos(treasureChest.worldPos()),
-                k.scale(3),
-                k.anchor('center'),
-                k.z(999),
-                'experience_scroll',
-            ]);
-
-            player.fxPlay('scrollObtained');
-            k.tween(
-                experienceScroll.pos, 
-                k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),
-                1,
-                (posVal) => { experienceScroll.pos = posVal }   
-            )
-
-            openChestEvent.cancel();
-            gameState.updateScrolls('experience');
-            showDialogueScrollAcquired(
-                gameState,
-                'player_face', 
-                [
-                    'I found my experience scroll!', 
-                    'I suddenly know jiu jitsu!'
-                ],
-                gameEndSceneController
-            );
-            
-            ui.getScroll('experience');
-
-            })
-
-        gameState.checkFinished();
+        })
     })
 
     k.onCollideEnd('experience_treasure_chest', 'player', () => {
-        if (gameState.scrolls.includes('experience') === true) { 
             k.get('dialog').forEach(el => k.destroy(el));
             k.get('experience_scroll').forEach(el => k.destroy(el));
             treasureCollision.cancel();
-        }
-
-        
     })
 
     player.onCollide('exit', () => {
@@ -671,4 +665,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('house', 'player_spawn');
+k.go('cave', 'player_spawn');

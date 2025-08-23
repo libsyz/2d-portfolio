@@ -53,18 +53,6 @@ export const createCaveMap = async (gameState) => {
         gameState.addBaddieGreenDemon();
     });
 
-
-
-    const experienceChestOpen = (game) => {
-        return { 
-            setup() {
-                if (gameState.scrolls.includes('experience')) {
-                    this.play('open');
-                }
-            }
-        }
-    }
-
     const experienceChestSetup = (game) => {
         return { 
             setup() {

@@ -54,6 +54,7 @@ export const showDialogueMultiple = (gameState, faceTag, messages) => {
         k.sprite('dialogue_box_simple'),
         k.pos(x - 632, y + 116),
         k.scale(4),
+        k.z(9999),
         k.state('start', ['end']),
         'dialog'
     ]);
