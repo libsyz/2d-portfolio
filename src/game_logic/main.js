@@ -609,12 +609,17 @@ k.scene('cave', async (playerSpawnPoint) => {
 
 
     let treasureCollision = k.onCollide('experience_treasure_chest', 'player', (treasureChest, player) => {
-        let openChestEvent = k.onKeyRelease('space', () => {
-            
-            if (!gameState.playerHasKey) {
-                gameState.isDialogueBusy = true;
-                showDialogueMultiple(gameState, 'player_face', ['Seems like I need a key to open this...']);
-            } else { 
+        if (!gameState.playerHasKey) {
+                showDialogueMultiple(
+                    gameState, 
+                    'player_face', 
+                    [
+                        'Seems like I need a key to open this...',
+                    ]);
+
+        } else {
+            k.debug.log('here');
+            let openChestEvent = k.onKeyRelease('space', () => {
                 treasureChest.play('open');
                 // spawn the scroll at the center of the chest
                 const experienceScroll = k.add([
@@ -648,14 +653,16 @@ k.scene('cave', async (playerSpawnPoint) => {
                 
                 ui.getScroll('experience');
                 gameState.checkFinished();
-            }
-        })
+            })
+        }
     })
 
     k.onCollideEnd('experience_treasure_chest', 'player', () => {
             k.get('dialog').forEach(el => k.destroy(el));
             k.get('experience_scroll').forEach(el => k.destroy(el));
-            treasureCollision.cancel();
+            if (gameState.playerHasKey) {
+                treasureCollision.cancel();
+            }
     })
 
     player.onCollide('exit', () => {
@@ -665,4 +672,37 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('cave', 'player_spawn');
+k.scene('test', () => {
+
+
+    k.loadShader(
+        "red_light",
+        null,
+        `
+       uniform float u_time;  
+    
+        vec4 frag() {
+              float brightness = 0.5 + 0.5 * sin(u_time * 2.0);
+
+              vec3 baseColor = vec3(1.0, 0.0, 0.0);  
+              vec3 finalColor = baseColor * brightness;
+
+              return vec4(finalColor, 1.0);
+        }
+        `,
+    );
+
+    k.setBackground(k.BLACK);
+
+    const rectangle = k.add([
+        k.rect(100, 100),
+        k.color(120, 12, 12),
+        k.pos(0, 0),
+        k.shader('red_light', () => ({
+            "u_time": k.time(),
+        }))
+    ])
+    
+})
+
+k.go('test', 'player_spawn');
