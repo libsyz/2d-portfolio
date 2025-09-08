@@ -117,7 +117,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollideEnd('player', 'chicken', (_, chicken) => {
-        player.enterState('attack');
+        player.enterState('attack'); 
         k.destroy(k.get('dialog')[0]);
     })
 
@@ -349,10 +349,12 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
+        const dialogueStartObj = templeMap.get('dialogue_start')[0];
+        dialogueStartObj.destroy();
         gameState.updateScrolls('skills');
         ui.getScroll('skills');
         player.fxPlay('scrollObtained');
-        let dialog = showDialogueScrollAcquired(
+        const dialog = showDialogueScrollAcquired(
             gameState,
             'player_face', 
             [
