@@ -50,7 +50,8 @@ export const createCaveMap = async (gameState) => {
     const baddieGreenSpawnPoints = caveMap.get('baddie_green_spawn')
     baddieGreenSpawnPoints.forEach((spawnPoint) => {
         const demon = createBaddieGreenDemon(gameState, 'cave', spawnPoint.worldPos());
-        // Prevents number of demons exceding the cave 
+        // this guard prevents number of demons in gameState from ever being more
+        // than the number of baddie waypoints  
         if ( gameState.baddieGreenDemonsInCave < baddieGreenSpawnPoints.length ) {
             gameState.addBaddieGreenDemon();
         }
