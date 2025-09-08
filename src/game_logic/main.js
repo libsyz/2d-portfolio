@@ -667,42 +667,41 @@ k.scene('cave', async (playerSpawnPoint) => {
 
     player.onCollide('exit', () => {
         k.go('main', 'cave_exit_spawn');
-
     })
     
 })
 
-k.scene('test', () => {
+// k.scene('test', () => {
 
 
-    k.loadShader(
-        "red_light",
-        null,
-        `
-       uniform float u_time;  
+//     k.loadShader(
+//         "red_light",
+//         null,
+//         `
+//        uniform float u_time;  
     
-        vec4 frag() {
-              float brightness = 0.5 + 0.5 * sin(u_time * 2.0);
+//         vec4 frag() {
+//               float brightness = 0.5 + 0.5 * sin(u_time * 2.0);
 
-              vec3 baseColor = vec3(1.0, 0.0, 0.0);  
-              vec3 finalColor = baseColor * brightness;
+//               vec3 baseColor = vec3(1.0, 0.0, 0.0);  
+//               vec3 finalColor = baseColor * brightness;
 
-              return vec4(finalColor, 1.0);
-        }
-        `,
-    );
+//               return vec4(finalColor, 1.0);
+//         }
+//         `,
+//     );
 
-    k.setBackground(k.BLACK);
+//     k.setBackground(k.BLACK);
 
-    const rectangle = k.add([
-        k.rect(100, 100),
-        k.color(120, 12, 12),
-        k.pos(0, 0),
-        k.shader('red_light', () => ({
-            "u_time": k.time(),
-        }))
-    ])
+//     const rectangle = k.add([
+//         k.rect(100, 100),
+//         k.color(120, 12, 12),
+//         k.pos(0, 0),
+//         k.shader('red_light', () => ({
+//             "u_time": k.time(),
+//         }))
+//     ])
     
-})
+// })
 
-k.go('test', 'player_spawn');
+k.go('main', 'player_spawn');

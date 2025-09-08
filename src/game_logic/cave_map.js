@@ -47,10 +47,13 @@ export const createCaveMap = async (gameState) => {
         }
     }
 
-
-    caveMap.get('baddie_green_spawn').forEach((spawnPoint) => {
+    const baddieGreenSpawnPoints = caveMap.get('baddie_green_spawn')
+    baddieGreenSpawnPoints.forEach((spawnPoint) => {
         const demon = createBaddieGreenDemon(gameState, 'cave', spawnPoint.worldPos());
-        gameState.addBaddieGreenDemon();
+        // Prevents number of demons exceding the cave 
+        if ( gameState.baddieGreenDemonsInCave < baddieGreenSpawnPoints.length ) {
+            gameState.addBaddieGreenDemon();
+        }
     });
 
     const experienceChestSetup = (game) => {
