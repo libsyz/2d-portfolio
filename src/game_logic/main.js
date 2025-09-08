@@ -108,6 +108,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'chicken', (_, chicken) => {
+        player.enterState('explore');
         if (chicken.getChickenDialogue() === 'chicken-dialogue') {
             showDialogue('chicken_face', 'Bok...bok bok!', gameState);
         } else {
@@ -116,6 +117,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollideEnd('player', 'chicken', (_, chicken) => {
+        player.enterState('attack');
         k.destroy(k.get('dialog')[0]);
     })
 
