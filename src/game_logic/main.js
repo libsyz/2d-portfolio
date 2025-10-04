@@ -349,6 +349,8 @@ k.scene('temple', async (playerSpawnPoint) => {
      })
 
     player.onCollide('skills_scroll', () => {
+        // stops dialogue from restarting if player hits dialogue_start point
+        // again before obtaining the scroll
         const dialogueStartObj = templeMap.get('dialogue_start')[0];
         dialogueStartObj.destroy();
         gameState.updateScrolls('skills');
@@ -675,37 +677,51 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-// k.scene('test', () => {
+k.scene('test', () => {
 
+    let saturationEnabled = false;
 
-//     k.loadShader(
-//         "red_light",
-//         null,
-//         `
-//        uniform float u_time;  
-    
-//         vec4 frag() {
-//               float brightness = 0.5 + 0.5 * sin(u_time * 2.0);
+    k.loadShader(
+        "saturate",
+        null,
+        `
+            uniform float u_time;
+            uniform vec2 u_pos;
+            uniform vec2 u_size;
 
-//               vec3 baseColor = vec3(1.0, 0.0, 0.0);  
-//               vec3 finalColor = baseColor * brightness;
+            vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
+                vec4 c = def_frag();
+                return c + vec4(mix(vec3(0.0), vec3(1.0), u_time), 0.0);
+            }
+        `,
+    );
 
-//               return vec4(finalColor, 1.0);
-//         }
-//         `,
-//     );
+    k.setBackground(k.BLACK);
+    k.debug.log(k.time());
+    const rectangle = k.add([
+        k.rect(100, 100),
+        k.color(120, 12, 12),
+        k.pos(0, 0),
+        'rectangle'
+    ])
 
-//     k.setBackground(k.BLACK);
+//     k.wait(3, () => {
+//         k.get('rectangle')[0].unuse('shader');
+//    } )
 
-//     const rectangle = k.add([
-//         k.rect(100, 100),
-//         k.color(120, 12, 12),
-//         k.pos(0, 0),
-//         k.shader('red_light', () => ({
-//             "u_time": k.time(),
-//         }))
-//     ])
-    
-// })
+    k.onKeyPress('space', () => {
+        if (saturationEnabled) {
+            k.get('rectangle')[0].unuse('shader');
+            saturationEnabled = false;
+        } else {
+            k.get('rectangle')[0].use(k.shader('saturate', () => ({
+                "u_time": k.time() % 0.30,
+                "u_pos": k.vec2(0, 0),
+                "u_size": k.vec2(100, 100),
+            })))
+            saturationEnabled = true;
+        }
+    })
+})
 
-k.go('main', 'player_spawn');
+k.go('test', 'player_spawn');
