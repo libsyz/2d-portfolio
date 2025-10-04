@@ -29,7 +29,19 @@ k.loadSprite('fireball', './src/assets/fireball.png', {
 k.loadSound('baddie-fireball-throw', './src/audio/fx/baddie-fireball-throw.mp3');
 k.loadSound('baddie-hurt', './src/audio/fx/baddie-hurt.mp3');
 
-const componentFlash = (k) => {
+
+k.loadShader("saturate", null, `
+    uniform float u_time;
+    uniform vec2 u_pos;
+    uniform vec2 u_size;
+    
+    vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
+        vec4 c = def_frag();
+        return c + vec4(mix(vec3(0.0), vec3(1.1), u_time), 0.0);
+    }`
+)
+
+const componentFlash = () => {
     const flash = (interval = 0.15) => {
         let _loop = null;
 
@@ -300,12 +312,19 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
     baddieGreenDemon.on('hurt', ()=> {
         baddieGreenDemon.play('dead');
         baddieGreenDemon.fxPlay('hurt');
+        baddieGreenDemon.use(k.shader('saturate', () => ({
+            "u_time": k.time() % 0.30,
+            "u_pos": k.vec2(0, 0),
+            "u_size": k.vec2(100, 100),
+        })))
+
         baddieGreenDemon.healthbarBackground.opacity = 1;
         baddieGreenDemon.healthbar.opacity = 1;
         baddieGreenDemon.healthbar.width = baddieGreenDemon.healthbar.width - 5; 
         baddieGreenDemon.patrolEvent.cancel();
         baddieGreenDemon.flash(1000);
         k.wait(0.2, () => {
+            baddieGreenDemon.unuse('shader');
             if (baddieGreenDemon.hp() > 0) {
                 baddieGreenDemon.play('down');
                 baddieGreenDemon.patrol();

@@ -724,4 +724,4 @@ k.scene('test', () => {
     })
 })
 
-k.go('test', 'player_spawn');
+k.go('main', 'player_spawn');
