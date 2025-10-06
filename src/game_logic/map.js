@@ -193,7 +193,7 @@ export const createMap = () => {
         'old_man',
         charDialogue()
     ]);
-    
+     
     oldMan.faceTag = 'old_man_face';
     oldMan.getDialogueMessages = () => {
         return [
@@ -252,7 +252,8 @@ export const createMap = () => {
         chickenDialogueComp(),
         'chicken'
     ]);
-
+    chicken.faceTag = 'chicken_face';
+    
     chicken.patrol();
 
     chicken.onCollide('player', () => {

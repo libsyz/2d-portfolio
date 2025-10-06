@@ -116,7 +116,7 @@ k.scene("main", async (playerSpawnPoint) => {
     k.onCollide('player', 'chicken', (_, chicken) => {
         player.enterState('explore');
         if (chicken.getChickenDialogue() === 'chicken-dialogue') {
-            showDialogue('chicken_face', 'Bok...bok bok!', gameState);
+        showDialogue('chicken_face', 'Bok...bok bok!', gameState);
         } else {
             showDialogue('chicken_dark_face', chicken.getDarkDialogue(), gameState);
         }
