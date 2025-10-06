@@ -193,7 +193,14 @@ export const createMap = () => {
         'old_man',
         charDialogue()
     ]);
-
+    
+    oldMan.faceTag = 'old_man_face';
+    oldMan.getDialogueMessages = () => {
+        return [
+            'Experience is a great teacher…',
+            'though some say it lives in a cave to the east, waiting to bite back.'
+        ]
+    } 
     oldMan.play('bob');
 
     oldMan.setDialogBubble();

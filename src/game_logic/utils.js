@@ -44,7 +44,7 @@ export const showDialogue = (faceTag, message, gameState) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueMultiple = (gameState, faceTag, messages) => {
+export const showDialogueMultiple = (faceTag, messages) => {
 
     let currentMessageIdx = 0;
     
@@ -65,35 +65,25 @@ export const showDialogueMultiple = (gameState, faceTag, messages) => {
         k.scale(1)
     ])
 
-    let currentMessage = dialogueBox.add([
-        k.text(
-            messages[currentMessageIdx], { 
-            size: 12, width: 256
-        }),
-        k.pos(56, 12),
-        k.color(0,0,0)
-    ])
-
     dialogueBox.onKeyRelease('space', () => {
-        if ( gameState.isDialogueBusy === true ) { 
-            return
-        }
-
-        if (currentMessageIdx + 1 < messages.length ) {
-            currentMessage.destroy();
-            currentMessageIdx++;
-                currentMessage = dialogueBox.add([
-                    k.text(
-                        messages[currentMessageIdx], { 
-                        size: 12, width: 256
-                    }),
-                    k.pos(56, 12),
-                    k.color(0,0,0)
-                ])
+        k.debug.log('currentMessageIdx', currentMessageIdx);
+        if (currentMessageIdx < messages.length ) {
+            // currentMessage.destroy(); 
+            dialogueBox.get('text').forEach(el => el.destroy());
+            dialogueBox.add([
+                k.text(
+                    messages[currentMessageIdx], { 
+                    size: 12, width: 256
+                }),
+                k.pos(56, 12),
+                k.color(0,0,0),
+                'text'
+            ])
+            debugger
+            currentMessageIdx += 1;
         } else {
             dialogueBox.enterState('end');
             dialogueBox.destroy();
-            
         }
     })
 

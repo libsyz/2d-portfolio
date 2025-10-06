@@ -1,6 +1,6 @@
 import { k } from './kaboomCtx';
 import { fxComp } from './utils';
-
+import { showDialogueMultiple } from './utils';
 
 k.loadSprite('player', './src/assets/player.png', {
     sliceX: 4,
@@ -71,6 +71,18 @@ const shurikenComp = () => {
     }
 }
 
+const dialogueComp = () => {
+    return {
+        playerShowDialogue(gameState, faceTag, messages) {
+            this.clearDialogueEvents();
+            const dialogueBox = showDialogueMultiple(gameState, faceTag, messages);
+            dialogueBox.onStateEnter('end', () => {
+                this.enterState('explore');
+            })
+        }
+    }
+}
+
 export const createPlayer = () => {
     const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.3)};
@@ -87,6 +99,7 @@ export const createPlayer = () => {
         k.body({mass: 1}),
         k.state('attack', ['attack', 'explore', 'dialogue'] ),
         shurikenComp(),
+        dialogueComp(),
         fxComp(),
         { 
             fxCollection: {
@@ -98,6 +111,7 @@ export const createPlayer = () => {
             },
             moveEvents: [], 
             attackEvents: [],
+            dialogueEvent: null,
             add() {
                 this.setPlayerMovementEvents()
             },
@@ -202,6 +216,12 @@ export const createPlayer = () => {
                     this.moveEvents = [];
                 }
             },
+            clearDialogueEvents() {
+                if (this.dialogueEvent) {
+                    this.dialogueEvent.cancel();
+                    this.dialogueEvent = null;
+                }
+            },
             goIdle() {
                 if (this.direction === k.UP) {
                     this.play('idle-up')
@@ -221,19 +241,27 @@ export const createPlayer = () => {
 
 
     player.onStateEnter('attack', () => {   
+        player.clearDialogueEvents();
         player.setPlayerMovementEvents()
         player.setPlayerAttackEvents();
     })
 
     player.onStateEnter('explore', () => {
+        player.clearDialogueEvents();
         player.setPlayerMovementEvents();
         player.clearAttackEvents();
     })
 
-    player.onStateEnter('dialogue', () => {
-        player.goIdle();
+    player.onStateEnter('dialogue', (interactable) => {
         player.clearAttackEvents();
-        player.clearMovementEvents();
+        player.dialogueEvent = player.onKeyRelease('space', () => {
+            player.clearMovementEvents(); 
+            player.goIdle();
+            player.playerShowDialogue(
+                interactable.faceTag, 
+                interactable.getDialogueMessages()
+            );
+        })  
     })
 
     player.onCollide('fireball', () => {

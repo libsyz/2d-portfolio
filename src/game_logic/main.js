@@ -97,14 +97,20 @@ k.scene("main", async (playerSpawnPoint) => {
         })
     }) 
     
-    k.onCollide('player', 'old_man', (player, _) => {
-        player.enterState('explore');
-        showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
+
+    // Leave for now this code works
+    // k.onCollide('player', 'old_man', (player, _) => {
+    //     player.enterState('explore');
+    //     showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
+    // })
+
+
+    k.onCollide('player', 'old_man', (player, oldMan) => {
+        player.enterState('dialogue', oldMan);
     })
 
     k.onCollideEnd('player', 'old_man', (player, _) => {
         player.enterState('attack');
-        k.destroy(k.get('dialog')[0]);
     })
 
     k.onCollide('player', 'chicken', (_, chicken) => {
@@ -675,53 +681,6 @@ k.scene('cave', async (playerSpawnPoint) => {
         k.go('main', 'cave_exit_spawn');
     })
     
-})
-
-k.scene('test', () => {
-
-    let saturationEnabled = false;
-
-    k.loadShader(
-        "saturate",
-        null,
-        `
-            uniform float u_time;
-            uniform vec2 u_pos;
-            uniform vec2 u_size;
-
-            vec4 frag(vec2 pos, vec2 uv, vec4 color, sampler2D tex) {
-                vec4 c = def_frag();
-                return c + vec4(mix(vec3(0.0), vec3(1.0), u_time), 0.0);
-            }
-        `,
-    );
-
-    k.setBackground(k.BLACK);
-    k.debug.log(k.time());
-    const rectangle = k.add([
-        k.rect(100, 100),
-        k.color(120, 12, 12),
-        k.pos(0, 0),
-        'rectangle'
-    ])
-
-//     k.wait(3, () => {
-//         k.get('rectangle')[0].unuse('shader');
-//    } )
-
-    k.onKeyPress('space', () => {
-        if (saturationEnabled) {
-            k.get('rectangle')[0].unuse('shader');
-            saturationEnabled = false;
-        } else {
-            k.get('rectangle')[0].use(k.shader('saturate', () => ({
-                "u_time": k.time() % 0.30,
-                "u_pos": k.vec2(0, 0),
-                "u_size": k.vec2(100, 100),
-            })))
-            saturationEnabled = true;
-        }
-    })
 })
 
 k.go('main', 'player_spawn');
