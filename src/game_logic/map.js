@@ -194,7 +194,7 @@ export const createMap = () => {
         charDialogue()
     ]);
      
-    oldMan.faceTag = 'old_man_face';
+    oldMan.getFaceTag = () =>  { return 'old_man_face'; }
     oldMan.getDialogueMessages = () => {
         return [
             'Experience is a great teacher…',
@@ -211,10 +211,10 @@ export const createMap = () => {
             getChickenDialogue() {
                 this.chickenDialogueCount++;
                  // Generate a random number between 0 and 1
-                if (this.chickenDialogueCount > 2 && Math.random() < 0.4) {
-                    return "dark-chicken-dialogue";
+                if (this.darkMode) {
+                    return this.getDarkDialogue();
                 } else {
-                    return "chicken-dialogue";
+                    return 'Bok...bok bok!';
                 }
             },
             getDarkDialogue() {
@@ -252,7 +252,19 @@ export const createMap = () => {
         chickenDialogueComp(),
         'chicken'
     ]);
-    chicken.faceTag = 'chicken_face';
+    chicken.getFaceTag = () => { 
+        if (chicken.chickenDialogueCount > 2 && Math.random() < 0.4) {
+            chicken.darkMode = true;
+            return 'chicken_dark_face';
+        }
+        chicken.darkMode = false;
+        return 'chicken_face'; 
+    }
+    chicken.getDialogueMessages = () => {
+        return [
+            chicken.getChickenDialogue()
+        ]
+    }
     
     chicken.patrol();
 

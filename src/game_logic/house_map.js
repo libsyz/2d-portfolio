@@ -138,6 +138,14 @@ export const createHouseMap = (gameState) => {
         charDialogue()
     ])
 
+    christin.getFaceTag = () => { return 'christin_face'; }
+    christin.getDialogueMessages = () => {
+        return [
+            'Are you looking for your experience scroll?', 
+            'It has to be either on the living room or in your room'
+        ]
+    }
+
     setInterval( () => {
         christin.play('vibe');
     }, 3000)
@@ -185,9 +193,13 @@ export const createHouseMap = (gameState) => {
         'elias'
     ])
 
-    // elias.onUpdate(() => {
-    //     k.debug.log('constant call');
-    // })
+    elias.getFaceTag = () => { return 'elias_face'; }
+    elias.getDialogueMessages = () => {
+        return [
+            'Papi Papi I cant wait to go down to the beach!'
+        ]
+    }
+
     elias.patrol();
     
     elias.onCollide('player', () => {

@@ -66,7 +66,6 @@ export const showDialogueMultiple = (faceTag, messages) => {
     ])
 
     dialogueBox.onKeyRelease('space', () => {
-        k.debug.log('currentMessageIdx', currentMessageIdx);
         if (currentMessageIdx < messages.length ) {
             // currentMessage.destroy(); 
             dialogueBox.get('text').forEach(el => el.destroy());

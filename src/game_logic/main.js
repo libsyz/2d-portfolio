@@ -98,13 +98,6 @@ k.scene("main", async (playerSpawnPoint) => {
     }) 
     
 
-    // Leave for now this code works
-    // k.onCollide('player', 'old_man', (player, _) => {
-    //     player.enterState('explore');
-    //     showDialogue('old_man_face', 'Experience is a great teacher… though some say it lives in a cave to the east, waiting to bite back.', gameState);
-    // })
-
-
     k.onCollide('player', 'old_man', (player, oldMan) => {
         player.enterState('dialogue', oldMan);
     })
@@ -114,17 +107,17 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'chicken', (_, chicken) => {
-        player.enterState('explore');
-        if (chicken.getChickenDialogue() === 'chicken-dialogue') {
-        showDialogue('chicken_face', 'Bok...bok bok!', gameState);
-        } else {
-            showDialogue('chicken_dark_face', chicken.getDarkDialogue(), gameState);
-        }
+        player.enterState('dialogue', chicken);
+        // player.enterState('explore');
+        // if (chicken.getChickenDialogue() === 'chicken-dialogue') {
+        // showDialogue('chicken_face', 'Bok...bok bok!', gameState);
+        // } else {
+        //     showDialogue('chicken_dark_face', chicken.getDarkDialogue(), gameState);
+        // }
     })
 
     k.onCollideEnd('player', 'chicken', (_, chicken) => {
         player.enterState('attack'); 
-        k.destroy(k.get('dialog')[0]);
     })
 
     k.onCollide('player', 'fisherman', (player, _) => {
@@ -242,41 +235,23 @@ k.scene('house', async (playerSpawnPoint) => {
             k.get('education_scroll').forEach(el => k.destroy(el));
             treasureCollision.cancel();
         }
-
-        
     })
 
 
-    k.onCollide('player', 'christin', (_, christin) => {
-            christin.dialogShow();
-            showDialogueMultiple(
-                gameState,
-                'christin_face', 
-                [
-                    'Are you looking for your experience scroll?', 
-                    'It has to be either on the living room or in your room'
-                ]
-            )
+    k.onCollide('player', 'christin', (player, christin) => {
+        player.enterState('dialogue', christin);
     })
 
-    k.onCollideEnd('player', 'christin', (_, christin) => { 
-        christin.dialogHide();
-        k.get('dialog').forEach(el => k.destroy(el));
+    k.onCollideEnd('player', 'christin', (player, _) => { 
+        player.enterState('explore');
     })
 
-    k.onCollide('player', 'elias', (_, elias) => {
-        elias.dialogShow();
-        showDialogueMultiple(
-            gameState,
-            'elias_face', 
-            [
-                'Papi Papi I cant wait to go down to the beach!'
-            ])
+    k.onCollide('player', 'elias', (player, elias) => {
+        player.enterState('dialogue', elias);
 }) 
 
-    k.onCollideEnd('player', 'elias', (_, elias) => { 
-        elias.dialogHide();
-        k.get('dialog').forEach(el => k.destroy(el));
+    k.onCollideEnd('player', 'elias', (player, _) => { 
+        player.enterState('explore');
     })
 
     k.onCollide('player', 'book_shelf', () => { 
