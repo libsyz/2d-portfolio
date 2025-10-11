@@ -167,13 +167,6 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
 
-    k.onCollide('player', 'psychology_diploma', (player, diploma) => {
-        player.enterState('dialogue', diploma);
-    })
-
-    k.onCollideEnd('player', 'psychology_diploma', (player, _) => { 
-        player.enterState('explore');
-    })
 
     let treasureCollision = k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
         let openChestEvent = k.onKeyRelease('space', async () => { 
@@ -252,26 +245,28 @@ k.scene('house', async (playerSpawnPoint) => {
         player.enterState('dialogue', globe);
     })
 
-    k.onCollideEnd('player', 'globe', () => {
+    k.onCollideEnd('player', 'globe', (player, _) => {
         player.enterState('explore');
     })
 
-    k.onCollide('player', 'painting', () => { 
-        showDialogueMultiple(
-            gameState,
-            'player_face', 
-            [
-             'A picture of Tarifa, Cadiz', 
-             'You can see Africa across the sea',
-             'My dads family comes from here'
-            ])
+    k.onCollide('player', 'painting', (player, painting) => { 
+        player.enterState('dialogue', painting);
     })
 
-    k.onCollideEnd('player', 'globe', () => {
-        k.get('dialog').forEach(el => k.destroy(el));
+    k.onCollideEnd('player', 'painting', (player, _) => {
+        player.enterState('explore');
+    })
+
+    k.onCollide('player', 'psychology_diploma', (player, diploma) => {
+        player.enterState('dialogue', diploma);
+    })
+
+    k.onCollideEnd('player', 'psychology_diploma', (player, _) => { 
+        player.enterState('explore');
     })
 
     k.onCollide('player', 'exit', () => {
+        k.debug.log('exit');
         k.go('main', 'house_exit_spawn');
     })
 

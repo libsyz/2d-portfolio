@@ -78,7 +78,7 @@ export const showDialogueMultiple = (faceTag, messages) => {
                 k.color(0,0,0),
                 'text'
             ])
-            debugger
+
             currentMessageIdx += 1;
         } else {
             dialogueBox.enterState('end');

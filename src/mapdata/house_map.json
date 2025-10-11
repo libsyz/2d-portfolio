@@ -822,13 +822,13 @@
          "name":"spawn_points",
          "objects":[
                 {
-                 "height":0,
+                 "height":1,
                  "id":51,
                  "name":"player_spawn",
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":0,
+                 "width":1,
                  "x":264.471980765674,
                  "y":612.962033343021
                 }, 
