@@ -767,7 +767,7 @@
          "name":"interaction",
          "objects":[
                 {
-                 "height":32,
+                 "height":28,
                  "id":38,
                  "name":"psychology_diploma",
                  "rotation":0,
@@ -775,18 +775,7 @@
                  "visible":true,
                  "width":16,
                  "x":336,
-                 "y":208
-                }, 
-                {
-                 "height":7.49208497474444,
-                 "id":43,
-                 "name":"exit",
-                 "rotation":0,
-                 "type":"",
-                 "visible":true,
-                 "width":15.8300505111535,
-                 "x":255.939289943689,
-                 "y":616.284409212848
+                 "y":212
                 }, 
                 {
                  "height":16,
@@ -811,7 +800,7 @@
                  "y":480
                 }, 
                 {
-                 "height":32,
+                 "height":16,
                  "id":47,
                  "name":"globe",
                  "rotation":0,
@@ -842,6 +831,17 @@
                  "width":0,
                  "x":264.471980765674,
                  "y":612.962033343021
+                }, 
+                {
+                 "height":7.49208497474444,
+                 "id":43,
+                 "name":"exit",
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":15.8300505111535,
+                 "x":255.939289943689,
+                 "y":616.284409212848
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -849,7 +849,7 @@
          "x":0,
          "y":0
         }],
- "nextlayerid":22,
+ "nextlayerid":23,
  "nextobjectid":79,
  "orientation":"orthogonal",
  "renderorder":"right-down",

@@ -1,5 +1,5 @@
 import { k } from './kaboomCtx.js';
-import { createInteraction } from './interaction.js';
+import { createSparkleInteraction } from './interaction.js';
 import { charDialogue, leftRightPatrol, seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
 
@@ -9,6 +9,15 @@ import { createSpawnPoint } from './spawn_point.js';
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
 const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
 
+
+// load sparkle effect
+k.loadSprite('sparkle', './src/assets/spark.png', {
+    sliceX: 4,
+    sliceY: 1,
+    anims: {
+        'gleam': { from: 0, to: 3, loop: true, speed: 8 }
+    }
+});
 
 
 // load interactables
@@ -21,6 +30,7 @@ k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
         'open': 1
     }
 });
+
 
 // education scroll
 k.loadSprite('education_scroll', '../src/assets/scroll_plant.png');
@@ -88,7 +98,7 @@ export const createHouseMap = (gameState) => {
 
         if (layer.name === 'interaction') {
             for ( const obj of layer.objects ) {
-                createInteraction(houseMap, obj);
+                createSparkleInteraction(houseMap, obj);
             }
         }
 

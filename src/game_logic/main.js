@@ -108,12 +108,6 @@ k.scene("main", async (playerSpawnPoint) => {
 
     k.onCollide('player', 'chicken', (_, chicken) => {
         player.enterState('dialogue', chicken);
-        // player.enterState('explore');
-        // if (chicken.getChickenDialogue() === 'chicken-dialogue') {
-        // showDialogue('chicken_face', 'Bok...bok bok!', gameState);
-        // } else {
-        //     showDialogue('chicken_dark_face', chicken.getDarkDialogue(), gameState);
-        // }
     })
 
     k.onCollideEnd('player', 'chicken', (_, chicken) => {
@@ -173,20 +167,12 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
 
-    k.onCollide('player', 'psychology_diploma', () => {
-        showDialogueMultiple(
-            gameState,
-            'player_face', 
-            [
-                'This is my psychology degree', 
-                'I learned so much about humans here, but also thinking machines',
-                'Everyone says my work has nothing to do with psychology, but I think it does!'
-            ]
-        )
+    k.onCollide('player', 'psychology_diploma', (player, diploma) => {
+        player.enterState('dialogue', diploma);
     })
 
-    k.onCollideEnd('player', 'psychology_diploma', () => { 
-        k.get('dialog').forEach(el => k.destroy(el));
+    k.onCollideEnd('player', 'psychology_diploma', (player, _) => { 
+        player.enterState('explore');
     })
 
     let treasureCollision = k.onCollide('education_treasure_chest', 'player', (treasureChest, player) => {
@@ -254,34 +240,20 @@ k.scene('house', async (playerSpawnPoint) => {
         player.enterState('explore');
     })
 
-    k.onCollide('player', 'book_shelf', () => { 
-        showDialogueMultiple(
-            gameState,
-            'player_face', 
-            [
-             'These are some of my favorite books', 
-             'There are loads of stuff about psychology, product management, systems thinking...',
-             'Virtual readers are cool, but there is something about paper I still love',
-             'You can check a full list of books here'
-            ])
+    k.onCollide('player', 'book_shelf', (player, bookShelf) => { 
+        player.enterState('dialogue', bookShelf);
     })
 
     k.onCollideEnd('player', 'book_shelf', () => {
-        k.get('dialog').forEach(el => k.destroy(el));
+        player.enterState('explore');
     })
 
-    k.onCollide('player', 'globe', () => { 
-        showDialogueMultiple(
-            gameState,
-            'player_face', 
-            ['This globe has pins with the places we have been to', 
-             'I have worked in 30+ countries, and lived in Europe, Asia and Latin America',
-             'Travelling is really a cure for ignorance',
-             'Cant wait for the next adventure!'])
+    k.onCollide('player', 'globe', (player, globe) => { 
+        player.enterState('dialogue', globe);
     })
 
     k.onCollideEnd('player', 'globe', () => {
-        k.get('dialog').forEach(el => k.destroy(el));
+        player.enterState('explore');
     })
 
     k.onCollide('player', 'painting', () => { 

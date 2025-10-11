@@ -317,7 +317,13 @@ export const fxComp = (fxObj) => {
             }
         },
         fxPlay(event) {
-            k.play(this.fxCollection[event]);
+            return k.play(this.fxCollection[event]);
+        },
+        fxStop(event) {
+            k.stop(this.fxCollection[event]);
+        },
+        fxPlayLoop(event) {
+            return k.play(this.fxCollection[event], { loop: true });
         }
     }
 }

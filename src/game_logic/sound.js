@@ -17,7 +17,7 @@ export const createSoundManager = (k) => {
         }
     ])
 
-    soundManager.on('play-bgm', async (sound) => {
+    soundManager.on('play-bgm', async (soundsKey) => {
         const paused = soundManager.paused 
 
         if (soundManager.currentBGM) {
@@ -25,7 +25,7 @@ export const createSoundManager = (k) => {
            soundManager.currentBGM = null;
         } 
         
-        soundManager.currentBGM = k.play(`${soundManager.sounds[sound]}`, {
+        soundManager.currentBGM = k.play(`${soundManager.sounds[soundsKey]}`, {
             volume: 0.0,
             loop: true, 
             paused: soundManager.state === 'on' ? false : true
@@ -42,3 +42,4 @@ export const createSoundManager = (k) => {
     
     return soundManager;
 }
+
