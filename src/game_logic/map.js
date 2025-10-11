@@ -39,6 +39,7 @@ k.loadSprite('old_man', './src/assets/old_man.png', {
         'bob': { from: 0, to: 1, loop: true, speed: 0.25 }
     }
 })
+k.loadSound('old_man_voice', './src/audio/fx/old_man_voice.mp3');
 
 k.loadSprite('chicken', './src/assets/chicken.png', {
     sliceX: 2,
@@ -193,10 +194,11 @@ export const createMap = () => {
     ]);
      
     oldMan.getFaceTag = () =>  { return 'old_man_face'; }
+    oldMan.getVoice = () => { return 'old_man_voice'; }
     oldMan.getDialogueMessages = () => {
         return [
             'Experience is a great teacher…',
-            'though some say it lives in a cave to the east, waiting to bite back.'
+            'though some say it lives in a\ncave to the east, waiting to\nbite back.'
         ]
     } 
     oldMan.play('bob');

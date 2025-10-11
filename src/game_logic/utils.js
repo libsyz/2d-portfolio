@@ -44,7 +44,7 @@ export const showDialogue = (faceTag, message, gameState) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueMultiple = (faceTag, messages) => {
+export const showDialogueMultiple = (faceTag, messages, voice) => {
 
     let currentMessageIdx = 0;
     
@@ -65,26 +65,64 @@ export const showDialogueMultiple = (faceTag, messages) => {
         k.scale(1)
     ])
 
-    dialogueBox.onKeyRelease('space', () => {
-        if (currentMessageIdx < messages.length ) {
-            // currentMessage.destroy(); 
-            dialogueBox.get('text').forEach(el => el.destroy());
-            dialogueBox.add([
-                k.text(
-                    messages[currentMessageIdx], { 
-                    size: 12, width: 256
-                }),
-                k.pos(56, 12),
-                k.color(0,0,0),
-                'text'
-            ])
+    const text = dialogueBox.add([
+        k.text(
+            "", { 
+            size: 12, width: 240
+        }),
+        k.pos(56, 12),
+        k.color(0,0,0),
+        'dialogue_box_text'
+    ])
 
-            currentMessageIdx += 1;
+    const dialogueBoxEvent = dialogueBox.onKeyRelease('space', () => {
+        if (dialogueBox.isWriting) {
+            return;
+        }
+        dialogueBox.isWriting = true;
+        text.text = "";
+        let dialogCount = 0;
+        if (currentMessageIdx < messages.length ) {
+            const writingLoop = k.loop(0.025, () => {
+                text.text = messages[currentMessageIdx].slice(0, text.text.length + 1);
+                k.play(voice);
+                dialogCount += 1;
+                if (dialogCount === messages[currentMessageIdx].length) {
+                    writingLoop.cancel();
+                    currentMessageIdx += 1;
+                    dialogueBox.isWriting = false;
+                }
+            })
+
+            
         } else {
             dialogueBox.enterState('end');
             dialogueBox.destroy();
+            dialogueBoxEvent.cancel();
         }
     })
+
+    // * This code works *
+    // dialogueBox.onKeyRelease('space', () => {
+    //     if (currentMessageIdx < messages.length ) {
+    //         // currentMessage.destroy(); 
+    //         dialogueBox.get('text').forEach(el => el.destroy());
+    //         dialogueBox.add([
+    //             k.text(
+    //                 messages[currentMessageIdx], { 
+    //                 size: 12, width: 256
+    //             }),
+    //             k.pos(56, 12),
+    //             k.color(0,0,0),
+    //             'text'
+    //         ])
+
+    //         currentMessageIdx += 1;
+    //     } else {
+    //         dialogueBox.enterState('end');
+    //         dialogueBox.destroy();
+    //     }
+    // })
 
     return dialogueBox;
 }

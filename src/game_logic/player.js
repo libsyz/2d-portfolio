@@ -259,7 +259,8 @@ export const createPlayer = () => {
             player.goIdle();
             player.playerShowDialogue(
                 interactable.getFaceTag(), 
-                interactable.getDialogueMessages()
+                interactable.getDialogueMessages(),
+                interactable.getVoice()
             );
         })  
     })
