@@ -22,7 +22,8 @@ k.loadMusic('bgm-house', './src/audio/musics/house.mp3');
 k.loadMusic('bgm-temple', './src/audio/musics/temple.mp3');
 k.loadMusic('bgm-cave', './src/audio/musics/cave.mp3');
 k.loadMusic('bgm-office', './src/audio/musics/office.mp3');
-
+k.loadSound('default-voice', './src/audio/fx/default-voice.mp3');
+k.loadSound('player-voice', './src/audio/fx/player-voice.mp3');
 
 // import sprites that need to be loaded before anything else
 
@@ -114,14 +115,12 @@ k.scene("main", async (playerSpawnPoint) => {
         player.enterState('attack'); 
     })
 
-    k.onCollide('player', 'fisherman', (player, _) => {
-        player.enterState('explore');
-        showDialogue('fisherman_face', 'Fishing needs sharp skills — like dealing with the questions of the spirit within the shrine.', gameState);
+    k.onCollide('player', 'fisherman', (player, fisherman) => {
+        player.enterState('dialogue', fisherman);
     })
 
     k.onCollideEnd('player', 'fisherman', (player, _) => {
         player.enterState('attack');
-        k.destroy(k.get('dialog')[0]);
     })
 
 

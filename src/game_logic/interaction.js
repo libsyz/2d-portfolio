@@ -64,6 +64,7 @@ export const createSparkleInteraction = (map, obj) => {
             ])
 
             interactable.getFaceTag = () => { return 'player_face'; }
+            interactable.getVoice = () => { return 'player-voice'; }
             interactable.getDialogueMessages = () => { return objectDialogues[obj.name]; }
 
     const interactableDetectionArea = interactable.add([

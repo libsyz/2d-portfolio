@@ -149,10 +149,11 @@ export const createHouseMap = (gameState) => {
     ])
 
     christin.getFaceTag = () => { return 'christin_face'; }
+    christin.getVoice = () => { return 'default-voice'; }
     christin.getDialogueMessages = () => {
         return [
-            'Are you looking for your experience scroll?', 
-            'It has to be either on the living room or in your room'
+            'Are you looking for your\neducation scroll?', 
+            'It has to be either on the\nliving room or in your room'
         ]
     }
 
@@ -204,9 +205,10 @@ export const createHouseMap = (gameState) => {
     ])
 
     elias.getFaceTag = () => { return 'elias_face'; }
+    elias.getVoice = () => { return 'default-voice'; }
     elias.getDialogueMessages = () => {
         return [
-            'Papi Papi I cant wait to go down to the beach!'
+            'Papi Papi I cant wait to go\ndown to the beach!'
         ]
     }
 

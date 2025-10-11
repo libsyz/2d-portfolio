@@ -39,7 +39,6 @@ k.loadSprite('old_man', './src/assets/old_man.png', {
         'bob': { from: 0, to: 1, loop: true, speed: 0.25 }
     }
 })
-k.loadSound('old_man_voice', './src/audio/fx/old_man_voice.mp3');
 
 k.loadSprite('chicken', './src/assets/chicken.png', {
     sliceX: 2,
@@ -50,6 +49,9 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
         'walk-left': { from: 2, to: 3, loop:true, speed: 3 } 
     }
 })
+
+k.loadSound('chicken-voice', './src/audio/fx/chicken-bock.mp3');
+
 
 k.loadSprite('chicken_face', './src/assets/chicken_face.png');
 k.loadSprite('chicken_dark_face', './src/assets/chicken_dark_face.png');
@@ -194,7 +196,7 @@ export const createMap = () => {
     ]);
      
     oldMan.getFaceTag = () =>  { return 'old_man_face'; }
-    oldMan.getVoice = () => { return 'old_man_voice'; }
+    oldMan.getVoice = () => { return 'default-voice'; }
     oldMan.getDialogueMessages = () => {
         return [
             'Experience is a great teacher…',
@@ -265,6 +267,8 @@ export const createMap = () => {
             chicken.getChickenDialogue()
         ]
     }
+
+    chicken.getVoice = () => { return 'chicken-voice'; }
     
     chicken.patrol();
 
@@ -296,6 +300,14 @@ export const createMap = () => {
         k.pos(15, 2),
         k.scale(1)
     ])
+
+    fisherman.getFaceTag = () => { return 'fisherman_face'; }
+    fisherman.getVoice = () => { return 'default-voice'; }
+    fisherman.getDialogueMessages = () => {
+        return [
+            'Fishing needs sharp skills —\nlike dealing with the questions of the spirit within the shrine.'
+        ]
+    }
 
     // Add animated scenery
 
