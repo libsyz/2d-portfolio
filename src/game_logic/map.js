@@ -51,6 +51,7 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
 })
 
 k.loadSound('chicken-voice', './src/audio/fx/chicken-bock.mp3');
+k.loadSound('chicken-dark-voice', './src/audio/fx/chicken-dark-voice.mp3');
 
 
 k.loadSprite('chicken_face', './src/assets/chicken_face.png');
@@ -210,14 +211,23 @@ export const createMap = () => {
     const chickenDialogueComp = () => {
         return {
             chickenDialogueCount: 0,
-            getChickenDialogue() {
+            darkMode: false,
+            getDialogueAssets() {
+                
                 this.chickenDialogueCount++;
+                if (this.chickenDialogueCount > 2 && Math.random() < 0.4) {
+                    this.darkMode = true;
+                }
                  // Generate a random number between 0 and 1
                 if (this.darkMode) {
-                    return this.getDarkDialogue();
+                    this.darkMode = false;
+                    return [ 'chicken_dark_face', this.getDarkDialogue(), 'chicken-dark-voice'];
                 } else {
-                    return 'Bok...bok bok!';
+                    return [ 'chicken_face', this.getLightDialogue(), 'chicken-voice'];
                 }
+            },
+            getLightDialogue() {
+                return [ 'Bok...bok bok!']
             },
             getDarkDialogue() {
                 const darkDialogues = [
@@ -227,7 +237,7 @@ export const createMap = () => {
                     "Minimum wage... maximum despair.",
                     "Bawk! They sold dreams by the dozen.",
                     "Cluck... I interned for exposure... and vanished.",
-                    "The feed is poisoned. So is the system.",
+                    "The feed is poisoned. So is the job market.",
                     "Bok bok... Promotions are illusions.",
                     "They promised eggs. They gave debt.",
                     "Cluck. I believed the job board. Fools do.",
@@ -235,7 +245,7 @@ export const createMap = () => {
                     "I wore the tie. I played the part. Still not enough."
                 ]
                 
-                return darkDialogues[Math.floor(Math.random() * darkDialogues.length)];
+                return [darkDialogues[Math.floor(Math.random() * darkDialogues.length)]];
             }
         }
     }
@@ -254,21 +264,7 @@ export const createMap = () => {
         chickenDialogueComp(),
         'chicken'
     ]);
-    chicken.getFaceTag = () => { 
-        if (chicken.chickenDialogueCount > 2 && Math.random() < 0.4) {
-            chicken.darkMode = true;
-            return 'chicken_dark_face';
-        }
-        chicken.darkMode = false;
-        return 'chicken_face'; 
-    }
-    chicken.getDialogueMessages = () => {
-        return [
-            chicken.getChickenDialogue()
-        ]
-    }
-
-    chicken.getVoice = () => { return 'chicken-voice'; }
+   
     
     chicken.patrol();
 

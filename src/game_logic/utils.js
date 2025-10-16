@@ -44,7 +44,7 @@ export const showDialogue = (faceTag, message, gameState) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueMultiple = (faceTag, messages, voice) => {
+export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = false) => {
 
     let currentMessageIdx = 0;
     
@@ -75,6 +75,7 @@ export const showDialogueMultiple = (faceTag, messages, voice) => {
         'dialogue_box_text'
     ])
 
+
     const dialogueBoxEvent = dialogueBox.onKeyRelease('space', () => {
         if (dialogueBox.isWriting) {
             return;
@@ -82,10 +83,18 @@ export const showDialogueMultiple = (faceTag, messages, voice) => {
         dialogueBox.isWriting = true;
         text.text = "";
         let dialogCount = 0;
+        let voiceHasPlayed = false;
         if (currentMessageIdx < messages.length ) {
             const writingLoop = k.loop(0.025, () => {
                 text.text = messages[currentMessageIdx].slice(0, text.text.length + 1);
-                k.play(voice);
+                if (playVoiceOnce && !voiceHasPlayed) {
+                    k.play(voice);
+                    voiceHasPlayed = true;
+                } else if (playVoiceOnce && voiceHasPlayed) {
+                    // no op
+                } else {
+                    k.play(voice);
+                }
                 dialogCount += 1;
                 if (dialogCount === messages[currentMessageIdx].length) {
                     writingLoop.cancel();

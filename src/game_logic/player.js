@@ -73,9 +73,9 @@ const shurikenComp = () => {
 
 const dialogueComp = () => {
     return {
-        playerShowDialogue(gameState, faceTag, messages) {
+        playerShowDialogue(faceTag, messages, voice, playVoiceOnce = false) {
             this.clearDialogueEvents();
-            const dialogueBox = showDialogueMultiple(gameState, faceTag, messages);
+            const dialogueBox = showDialogueMultiple(faceTag, messages, voice, playVoiceOnce);
             dialogueBox.onStateEnter('end', () => {
                 this.enterState('explore');
             })
@@ -97,7 +97,7 @@ export const createPlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body({mass: 1}),
-        k.state('attack', ['attack', 'explore', 'dialogue'] ),
+        k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken'] ),
         shurikenComp(),
         dialogueComp(),
         fxComp(),
@@ -265,6 +265,15 @@ export const createPlayer = () => {
         })  
     })
 
+    player.onStateEnter('dialogue_chicken', (chicken) => {
+        player.clearAttackEvents();
+        player.dialogueEvent = player.onKeyRelease('space', () => {
+            player.clearMovementEvents(); 
+            player.goIdle();
+            const [faceTag, messages, voice] = chicken.getDialogueAssets()
+            player.playerShowDialogue(faceTag, messages, voice, true);
+        })
+    })
     player.onCollide('fireball', () => {
         player.play('hurt');
         player.fxPlay('hurt');
