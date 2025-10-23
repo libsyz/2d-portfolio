@@ -75,9 +75,15 @@ const dialogueComp = () => {
     return {
         playerShowDialogue(faceTag, messages, voice, playVoiceOnce = false) {
             this.clearDialogueEvents();
+            
+            let advanceDialogue = k.onKeyRelease('space', () => {
+                k.trigger('play-dialogue', 'dialog-box');
+            })
+
             const dialogueBox = showDialogueMultiple(faceTag, messages, voice, playVoiceOnce);
             dialogueBox.onStateEnter('end', () => {
                 this.enterState('explore');
+                advanceDialogue.cancel();
             })
         }
     }
@@ -97,7 +103,7 @@ export const createPlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body({mass: 1}),
-        k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken'] ),
+        k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene'] ),
         shurikenComp(),
         dialogueComp(),
         fxComp(),
@@ -262,6 +268,7 @@ export const createPlayer = () => {
                 interactable.getDialogueMessages(),
                 interactable.getVoice()
             );
+            // k.trigger('play-dialogue', 'dialog-box');
         })  
     })
 
@@ -274,6 +281,13 @@ export const createPlayer = () => {
             player.playerShowDialogue(faceTag, messages, voice, true);
         })
     })
+
+    player.onStateEnter('cutscene', (_) => {
+        player.clearAttackEvents();
+        player.clearMovementEvents();
+        player.goIdle();
+    })
+
     player.onCollide('fireball', () => {
         player.play('hurt');
         player.fxPlay('hurt');

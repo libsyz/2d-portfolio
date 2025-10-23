@@ -288,7 +288,7 @@ k.scene('temple', async (playerSpawnPoint) => {
 
     player.onCollide('dialogue_start', async () => {
         if (gameState.scrolls.includes('skills') === false ) {
-            player.enterState('dialogue');
+            player.enterState('cutscene');
             cutScene.init(templeMap, player);
         } else {
             return

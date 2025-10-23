@@ -2,7 +2,6 @@
 
 import { k } from './kaboomCtx.js'
 
-
 const FRAMERATE = 60;
 
 export const seconds = (secs) => {
@@ -44,7 +43,7 @@ export const showDialogue = (faceTag, message, gameState) => {
 
 
 // TODO: This is just a shitty function call name, I need to rename this 
-export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = false) => {
+export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = false ) => {
 
     let currentMessageIdx = 0;
     
@@ -56,7 +55,7 @@ export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = f
         k.scale(4),
         k.z(9999),
         k.state('start', ['end']),
-        'dialog'
+        'dialog-box'
     ]);
 
     dialogueBox.add([
@@ -76,7 +75,7 @@ export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = f
     ])
 
 
-    const dialogueBoxEvent = dialogueBox.onKeyRelease('space', () => {
+    const dialogueBoxEvent = k.on('play-dialogue', 'dialog-box', () => {
         if (dialogueBox.isWriting) {
             return;
         }

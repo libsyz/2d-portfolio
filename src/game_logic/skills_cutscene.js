@@ -26,16 +26,23 @@ export const createSkillsCutscene = (gameState) => {
         spiritDialogue() {
 
             let dialogue = showDialogueMultiple(
-                gameState,
                 'spirit-face', 
                 [
                     'Hello seeker', 
                     'Answer my questions correctly to get your skills scrolls',
                     'Choose your topic wisely'
-                ]);
+                ], 
+                'default-voice');
+
+            k.trigger('play-dialogue', 'dialog-box');
+
+            let advanceDialogue = k.onKeyRelease('space', () => {
+                k.trigger('play-dialogue', 'dialog-box');
+            })
 
             dialogue.onStateEnter('end', () => { 
                 gameState.isDialogueBusy = true;
+                advanceDialogue.cancel();
                 this.next()
                 k.wait(0.2, () => {
                     gameState.isDialogueBusy = false;
@@ -91,13 +98,20 @@ export const createSkillsCutscene = (gameState) => {
             }
 
             const dialogue = showDialogueMultiple(
-                gameState,
                 'spirit-face', 
-                ['Let\'s see if you can answer this...', question()]
+                ['Let\'s see if you can answer this...', question()],
+                'default-voice'
             )
+
+            k.trigger('play-dialogue', 'dialog-box');
+
+            let advanceDialogue = k.onKeyRelease('space', () => {
+                k.trigger('play-dialogue', 'dialog-box');
+            })
 
             dialogue.onStateEnter('end', () => {
                 this.next();
+                advanceDialogue.cancel();
                 k.wait(0.2, () => {
                     gameState.isDialogueBusy = false;
                 })
@@ -130,24 +144,31 @@ export const createSkillsCutscene = (gameState) => {
 
             if (evaluation.isCorrect ) {
                 dialogue = showDialogueMultiple(
-                    gameState,
                     'spirit-face', 
-                    ['You answer is correct!', 'You are worthy of the skills scroll']
-                )
+                    ['You answer is correct!', 'You are worthy of the skills scroll'],
+                    'default-voice'
+                    )
             } else { 
                 dialogue = showDialogueMultiple(
-                    gameState,
                     'spirit-face', 
                     [
                      'You answer is incorrect!', 
                      'But I will give you the skills scroll anyway',
                      'Finding a job is already hard enough'
-                    ]
+                    ],
+                    'default-voice'
                 )
             }
 
-            dialogue.onStateEnter('end', () => { 
+            k.trigger('play-dialogue', 'dialog-box');
+
+            let advanceDialogue = k.onKeyRelease('space', () => {
+                k.trigger('play-dialogue', 'dialog-box');
+            })
+
+            dialogue.onStateEnter('end', () => {    
                 this.next();
+                advanceDialogue.cancel();
                 k.wait(0.2, () => { 
                     gameState.isDialogueBusy = false; 
                 })
