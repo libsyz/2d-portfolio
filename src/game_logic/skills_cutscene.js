@@ -29,7 +29,7 @@ export const createSkillsCutscene = (gameState) => {
                 'spirit-face', 
                 [
                     'Hello seeker', 
-                    'Answer my questions correctly to get your skills scrolls',
+                    'Answer my questions correctly\nto get your skills scrolls',
                     'Choose your topic wisely'
                 ], 
                 'default-voice');
@@ -99,7 +99,7 @@ export const createSkillsCutscene = (gameState) => {
 
             const dialogue = showDialogueMultiple(
                 'spirit-face', 
-                ['Let\'s see if you can answer this...', question()],
+                ['Let\'s see if you can answer\nthis...', question()],
                 'default-voice'
             )
 
@@ -145,7 +145,7 @@ export const createSkillsCutscene = (gameState) => {
             if (evaluation.isCorrect ) {
                 dialogue = showDialogueMultiple(
                     'spirit-face', 
-                    ['You answer is correct!', 'You are worthy of the skills scroll'],
+                    ['You answer is correct!', 'You are worthy of the\nskills scroll'],
                     'default-voice'
                     )
             } else { 
@@ -153,8 +153,8 @@ export const createSkillsCutscene = (gameState) => {
                     'spirit-face', 
                     [
                      'You answer is incorrect!', 
-                     'But I will give you the skills scroll anyway',
-                     'Finding a job is already hard enough'
+                     'But I will give you\nthe skills scroll anyway',
+                     'Finding a job is already\nhard enough'
                     ],
                     'default-voice'
                 )

@@ -52,46 +52,46 @@ export const skillsCutsceneDialogueData =
                     },
                     {
                         id: 2, 
-                        content: "An approach to generating debate with engineers",
+                        content: "A technique to decline feature requests",
                         isCorrect: false
                     }
                 ]
             },
             { 
                 id: 1,
-                question: "What does AARRR stand for?" ,
+                question: "What does the last letter\nof AARRR stand for?" ,
                 playerAnswers: 
                 [
                     { 
                         id: 0,
-                        content: "Acquisition, Activation, Retention, Referral, Revenue",
+                        content: "Retention",
                         isCorrect: true
                     },
                     {
                         id: 1,
-                        content: "Awareness, Activation, Recognition, Retargeting, Revenue",
+                        content: "Revenue",
                         isCorrect: false
                     },
                     {
                         id: 2, 
-                        content: "I prefer GROG matey",
+                        content: "Referral",
                         isCorrect: false
                     }
                 ]
             },
             { 
                 id: 2,
-                question: "What are dark patterns in product design?" ,
+                question: "What are dark patterns\nin product design?" ,
                 playerAnswers: 
                 [
                     { 
                         id: 0,
-                        content: "Layering tech debt to get revenue short term",
+                        content: "using tech debt to ship faster",
                         isCorrect: false
                     },
                     {
                         id: 1,
-                        content: "Using tricks to take advantage of users",
+                        content: "using tricks to take advantage of users",
                         isCorrect: true
                     },
                     {
@@ -131,7 +131,7 @@ export const skillsCutsceneDialogueData =
             },
             { 
                 id: 1,
-                question: "Which of the following is most expensive process?" ,
+                question: "Which of the following\nis the most expensive process?" ,
                 playerAnswers: 
                 [
                     { 
@@ -153,7 +153,7 @@ export const skillsCutsceneDialogueData =
             },
             { 
                 id: 2,
-                question: "What learning strategy do LLMs mostly use?" ,
+                question: "What learning strategy\ndo LLMs mostly use?" ,
                 playerAnswers: 
                 [
                     { 
@@ -180,7 +180,7 @@ export const skillsCutsceneDialogueData =
         questions: [
             { 
                 id: 0,
-                question: "Who is the father of experimental psychology" ,
+                question: "Who is the father of \nexperimental psychology" ,
                 playerAnswers: 
                 [
                     { 
@@ -202,7 +202,7 @@ export const skillsCutsceneDialogueData =
             },
             { 
                 id: 2,
-                question: "Can you use coaching to treat anxiety disorders?" ,
+                question: "Can you use coaching to\ntreat anxiety disorders?" ,
                 playerAnswers: 
                 [
                     { 
@@ -224,7 +224,7 @@ export const skillsCutsceneDialogueData =
             },
             { 
                 id: 3,
-                question: "How much of their brain potential do most people use?" ,
+                question: "How much of their brain\npotential do most people use?" ,
                 playerAnswers: 
                 [
                     { 
@@ -239,7 +239,7 @@ export const skillsCutsceneDialogueData =
                     },
                     {
                         id: 2, 
-                        content: "~10% during the day, ~70% at night",
+                        content: "10% during the day, 70% at night",
                         isCorrect: false
                     }
                 ]
