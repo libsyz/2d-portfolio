@@ -66,8 +66,8 @@ gameEndSceneController.on('endgame', () => {
 
 const soundManager = createSoundManager(k);
 
-k.scene("main", async (playerSpawnPoint) => {
-    const map = createMap();
+k.scene("main", async (playerSpawnPoint, sceneName) => {
+    const map = createMap(sceneName);
     const ui = createUI(gameState, soundManager);
 
     soundManager.trigger('play-bgm', 'main');
@@ -87,7 +87,6 @@ k.scene("main", async (playerSpawnPoint) => {
         k.camPos(center.worldPos());
     })
 
-    const sceneTwo = map.get('scene_2')[0]
     
     const sceneNames = ['scene_1', 'scene_2', 'scene_3'];
 
@@ -269,7 +268,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
     k.onCollide('player', 'exit', () => {
         k.debug.log('exit');
-        k.go('main', 'house_exit_spawn');
+        k.go('main', 'house_exit_spawn', 'scene_1');
     })
 
 })
@@ -329,7 +328,7 @@ k.scene('temple', async (playerSpawnPoint) => {
 
 
     k.onCollide('player', 'exit', () => {
-        k.go('main', 'temple_exit_spawn');
+        k.go('main', 'temple_exit_spawn', 'scene_2');
     })
 
  
@@ -353,13 +352,18 @@ k.scene('end', async () => {
 
     k.wait(sceneCounter, () => { 
         const shogunDialog = showDialogueMultiple(
-            gameState,
             'shogun_boss-face', 
             [
                 'So you are now back', 
                 'I hope you have something to show??'
-            ] 
+            ],
+            'default-voice'
         )
+
+        k.trigger('play-dialogue', 'dialog-box');
+        k.onKeyRelease('space', () => {
+            k.trigger('play-dialogue', 'dialog-box');
+        });
 
         shogunDialog.onStateEnter('end', () => {
 
@@ -378,13 +382,18 @@ k.scene('end', async () => {
 
             k.wait(2, () => {
                 showDialogueMultiple(
-                    gameState,
                     'shogun_boss-face', 
                     [
                         'Wow, your credentials look very impressive', 
                         'Welcome to Shogun and Co!'
-                    ] 
-                )
+                    ],
+                    'default-voice'
+                );
+
+                k.trigger('play-dialogue', 'dialog-box');
+                k.onKeyRelease('space', () => {
+                    k.trigger('play-dialogue', 'dialog-box');
+                });
             })
         })
     })
@@ -614,9 +623,9 @@ k.scene('cave', async (playerSpawnPoint) => {
     })
 
     player.onCollide('exit', () => {
-        k.go('main', 'cave_exit_spawn');
+        k.go('main', 'cave_exit_spawn', 'scene_3');
     })
     
 })
 
-k.go('cave', 'player_spawn');
+k.go('main', 'player_spawn');

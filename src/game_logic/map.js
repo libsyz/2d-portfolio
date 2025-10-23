@@ -97,7 +97,7 @@ const makeCloudComp = () => {
 }
 
 // instatiate the map
-export const createMap = () => {
+export const createMap = (sceneName = 'scene_1') => {
     const layers = mapData.layers;
     const map = k.add([
         k.sprite("map"), 
@@ -127,7 +127,7 @@ export const createMap = () => {
                 map.add([
                     k.rect(scene.width, scene.height),
                     k.area(),
-                    k.pos(scene.x + 162, scene.y + 86),
+                    k.pos(scene.x + 162, scene.y + 86), // magic numbers
                     k.anchor('center'),
                     scene.name,
                     k.opacity(0)
@@ -168,8 +168,6 @@ export const createMap = () => {
                 waterRipple.play('ripple');
             }
         }
-
-
     }
 
     const center = k.add([
@@ -181,7 +179,7 @@ export const createMap = () => {
         'center'
     ])
 
-    center.moveTo(map.get('scene_1')[0].worldPos());
+    center.moveTo(map.get(sceneName)[0].worldPos());
 
     // Add characters
 

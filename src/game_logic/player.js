@@ -366,7 +366,6 @@ export const createPlayer = () => {
 export const createOfficePlayer = () => {
     const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.3)};
-    const playerBaseSpeed = 340;
     
     const player = k.add([
         k.sprite('player'), 
@@ -376,7 +375,7 @@ export const createOfficePlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body(),
-        k.opacity(0),
+        k.opacity(1),
         k.state('spawn', ['start', 'first', 'second', 'third', 'fourth', 'fifth']),
         'player'
     ]);

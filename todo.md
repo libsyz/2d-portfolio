@@ -1,10 +1,20 @@
 
 ## Todo 
 [] Loading screen
+[] Need a background for the main app container
 [] I need a new concept for the intro scene
 [] How am I going to handle mobile users? 
-[] Fix Tutorial - should not show the gamepad and wasd instead
+[] Fix Tutorial Snapshot - should not show the gamepad and wasd instead
+[] Dialogue box improvement
+   Min
+   [X] Word show one by one at decent speed
+   [X] Sound plays on loop while they show
+   [X] Stop Sound at the end
+   [X] At stop, the user can press space to move to the next
 
+   Consider
+   [] Add Frame around character head
+ 
 -- Intro Scene -- 
 
 [X] Add fadein function
@@ -12,71 +22,38 @@
  
 -- House --
 
-[X] Player should not be able to shoot in the bedroom
-[X] need to improve bounds
-[X] Apartment house background is white - should be the same color as the rest of the scenario 
-[X] Game Crashes when player interacts with tarifa painting
-[X] Elias should stop the patrol when in touch with the player
-[ ] Shader/Glow/Blink on items of interest
-
--- Village --
-
-[X] Improve Chicken Behavior - Add the same Patrol Component as Elias 
-[X] Should not be able to throw Shurikens when talking to the old man
-
--- Beach -- 
-
-[x] fisherman dialogue needs to be superimposed - z 9999 or something like that
-[x] Floor looks bad - either make a proper degradation or make it all sand
-[x] Should not throw shurikens when talking to the fisherman
-
 --- Forest -- 
 
 [] Layering - When the player passes close to a tree, he should go under it and not over it 
    - But this makes 0 sense because I dont want to have the forest layer as a separate set of objects 
    - So I need to work on the collision detection of the player so it doesn't 'crawl' over vertical things
 
-[X] Player should not be able to move for a bit when hit by fireball
-
--- Cave -- 
-
-[X] When the player tries to open the chest and he does not have a key, a dialog should inform the user  
-[X] Make the entry waypoint a bit bigger
-
-
 
 ## Bugs
 
-[ ] Temple scene stopped working after I changed the dialogue components
+[X] Game crashes when player tries to open dungeon 
+chest but does not have the key yet
 
-[X] Key will not drop if you dont kill all three baddies without leaving the cave
-
-[X] Ghost should not appear again after dialogue has finished
-
-[] Player does not show up on the final game scene
- 
-[X] Game not finishing when all scrolls are obtained 
- 
-[X] Lightining scroll does not disappear when obtained - can't replicate
+[X] Player does not show up on the final game scene
 
 [] Upper corner of the forest is wrong
 
-[] When the user comes out of a building, the screen should not roll
+[X] When the user comes out of a building, the screen should not roll
 
 ## Code quality 
 
-[ ] ShowDialogueMultiple method is an absolute mess 
+[X] ShowDialogueMultiple method is an absolute mess 
 [X] Create a factory that manages baddy creation and cleans up the code
 
 [ ] DialogShow should be DialogBubbleShow or something like that
 
 ## Nice to haves
 
-[] Dialogue screens go progressively word by word, megaman style
+[X] Dialogue screens go progressively word by word, megaman style
 
 [] Cast Shadow on characters on main map
 
-[] Bok bok bok sound when chicken speaks - enlightened sound when dark chicken speaks
+[X] Bok bok bok sound when chicken speaks - enlightened sound when dark chicken speaks
 
 [] Rain Fx on Forest
 
@@ -92,12 +69,12 @@
 
 [] Player Dance/Celebrate animation when scroll is obtained
 
-[] Shurikens hit against boundaries
-
 [] Shuriken particle hit against baddie green demon
 
 [] Screen movement does not follow when the player hits an edge of the village and then immediately reverses direction
 
 [] Limit amount of shurikens to throw, default to swordslash 
-[] Baddies should continue to throw fireballs while user is in range
+
+[X] Baddies should continue to throw fireballs while user is in range
+
 [] Make scrolls clickable and show actual pixel art scrolls with the content
