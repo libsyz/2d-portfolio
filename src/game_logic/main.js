@@ -55,10 +55,13 @@ gameEndSceneController.on('endgame', () => {
         'if you know what Im saying'
     ], 'player-voice')
 
+    k.onKeyRelease('space', () => {
+        k.trigger('play-dialogue', 'dialog-box');
+    })
+
     dialog.onStateEnter('end', () => {
         k.go('end');
     })
-
 })
 
 const soundManager = createSoundManager(k);
@@ -603,47 +606,6 @@ k.scene('cave', async (playerSpawnPoint) => {
         }
     })
 
-
-    //This code works but needs cleaning
-
-    //     } else {
-    //         let openChestEvent = k.onKeyRelease('space', () => {
-    //             treasureChest.play('open');
-    //             // spawn the scroll at the center of the chest
-    //             const experienceScroll = k.add([
-    //                 k.sprite('experience_scroll'),
-    //                 k.pos(treasureChest.worldPos()),
-    //                 k.scale(3),
-    //                 k.anchor('center'),
-    //                 k.z(999),
-    //                 'experience_scroll',
-    //             ]);
-
-    //             player.fxPlay('scrollObtained');
-    //             k.tween(
-    //                 experienceScroll.pos, 
-    //                 k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),
-    //                 1,
-    //                 (posVal) => { experienceScroll.pos = posVal }   
-    //             )
-
-    //             openChestEvent.cancel();
-    //             gameState.updateScrolls('experience');
-    //             showDialogueScrollAcquired(
-    //                 gameState,
-    //                 'player_face', 
-    //                 [
-    //                     'I found my experience scroll!', 
-    //                     'I suddenly know jiu jitsu!'
-    //                 ],
-    //                 gameEndSceneController
-    //             );
-                
-    //             ui.getScroll('experience');
-    //             gameState.checkFinished();
-    //         })
-    //     }
-    // })
 
     k.onCollideEnd('experience_treasure_chest', 'player', () => {
             k.get('dialog-box').forEach(el => k.destroy(el));
