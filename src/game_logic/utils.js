@@ -2,6 +2,8 @@
 
 import { k } from './kaboomCtx.js'
 
+k.loadSound('dialog-select', './src/audio/fx/dialog-select.mp3');
+
 const FRAMERATE = 60;
 
 export const seconds = (secs) => {
@@ -109,28 +111,6 @@ export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = f
             dialogueBoxEvent.cancel();
         }
     })
-
-    // * This code works *
-    // dialogueBox.onKeyRelease('space', () => {
-    //     if (currentMessageIdx < messages.length ) {
-    //         // currentMessage.destroy(); 
-    //         dialogueBox.get('text').forEach(el => el.destroy());
-    //         dialogueBox.add([
-    //             k.text(
-    //                 messages[currentMessageIdx], { 
-    //                 size: 12, width: 256
-    //             }),
-    //             k.pos(56, 12),
-    //             k.color(0,0,0),
-    //             'text'
-    //         ])
-
-    //         currentMessageIdx += 1;
-    //     } else {
-    //         dialogueBox.enterState('end');
-    //         dialogueBox.destroy();
-    //     }
-    // })
 
     return dialogueBox;
 }
@@ -297,6 +277,8 @@ export const userSelect = (gameState, optionsArray) => {
         }
 
         selectBox.activeOption += 1
+        k.debug.log('down');
+        k.play('dialog-select');
 
         selectBox.children.forEach((el) => {
             if ( el.position === selectBox.activeOption ) {
@@ -315,6 +297,7 @@ export const userSelect = (gameState, optionsArray) => {
         }
 
         selectBox.activeOption -= 1
+        k.play('dialog-select');
 
         selectBox.children.forEach((el) => {
             if ( el.position == selectBox.activeOption ) {
@@ -354,7 +337,8 @@ export const createScroll = (scrollSpriteName, scrollObjectName, position ) => {
 }
 
 export const fxComp = (fxObj) => { 
-    // fxObj should be shaped like this 
+    // expects game element to have a fxCollection object
+    // fxCollection should be shaped like this 
     // { eventOne: soundOne, eventTwo: soundTwo  }
     return {
         add() {

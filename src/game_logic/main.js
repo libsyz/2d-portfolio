@@ -116,7 +116,7 @@ k.scene("main", async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'fisherman', (player, fisherman) => {
-    player.enterState('dialogue', fisherman);
+        player.enterState('dialogue', fisherman);
     })
 
     k.onCollideEnd('player', 'fisherman', (player, _) => {
