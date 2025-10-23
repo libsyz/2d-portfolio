@@ -1,3 +1,4 @@
+import { k } from "./kaboomCtx.js";
 
 
 export const createGameState = () => {
@@ -15,8 +16,8 @@ export const createGameState = () => {
         }, 
         scrolls: [],
         updateScrolls(scroll) {
-            console.log(`adding ${scroll}`)
-            console.log(this.scrolls);
+            k.debug.log(`adding ${scroll}`)
+            k.debug.log(this.scrolls.length);
             // Check if the scroll is already in the array before adding it
             if (!this.scrolls.includes(scroll)) {
                 this.scrolls.push(scroll);

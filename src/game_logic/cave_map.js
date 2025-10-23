@@ -79,6 +79,15 @@ export const createCaveMap = async (gameState) => {
     ])
 
 
+    experienceChest.getFaceTag = () =>  { return 'player_face'; }
+    experienceChest.getVoice = () => { return 'player-voice'; }
+    experienceChest.getDialogueMessages = () => {
+        return [
+            'Seems like I need a key to open this...'
+        ]
+    } 
+
+
     experienceChest.setup()
 
     return caveMap;

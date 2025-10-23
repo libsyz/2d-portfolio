@@ -116,7 +116,7 @@ export const showDialogueMultiple = (faceTag, messages, voice, playVoiceOnce = f
 }
 
 
-export const showDialogueScrollAcquired = (gameState, faceTag, messages, gameEndSceneController) => {
+export const showDialogueScrollAcquired = (gameState, faceTag, messages) => {
 
     let currentMessageIdx = 0;
     
@@ -165,7 +165,7 @@ export const showDialogueScrollAcquired = (gameState, faceTag, messages, gameEnd
             dialogueBox.destroy();
             if ( gameState.checkFinished() ) { 
                 await dialogueBoxEvent.cancel();
-                gameEndSceneController.trigger('endgame');
+                k.trigger('endgame', 'gameEndSceneController');
             }
         }
     })

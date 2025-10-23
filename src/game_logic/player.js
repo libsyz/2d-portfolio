@@ -75,7 +75,7 @@ const dialogueComp = () => {
     return {
         playerShowDialogue(faceTag, messages, voice, playVoiceOnce = false) {
             this.clearDialogueEvents();
-            
+
             let advanceDialogue = k.onKeyRelease('space', () => {
                 k.trigger('play-dialogue', 'dialog-box');
             })
@@ -85,6 +85,8 @@ const dialogueComp = () => {
                 this.enterState('explore');
                 advanceDialogue.cancel();
             })
+
+            return dialogueBox;
         }
     }
 }
@@ -103,7 +105,7 @@ export const createPlayer = () => {
         k.anchor('center'),
         k.scale(playerScale),
         k.body({mass: 1}),
-        k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene'] ),
+        k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene', 'open_experience_chest'] ),
         shurikenComp(),
         dialogueComp(),
         fxComp(),
@@ -268,7 +270,6 @@ export const createPlayer = () => {
                 interactable.getDialogueMessages(),
                 interactable.getVoice()
             );
-            // k.trigger('play-dialogue', 'dialog-box');
         })  
     })
 
@@ -286,6 +287,58 @@ export const createPlayer = () => {
         player.clearAttackEvents();
         player.clearMovementEvents();
         player.goIdle();
+    })
+
+    player.onStateEnter('open_experience_chest', (treasureChest, gameState) => {
+        player.clearAttackEvents();
+        if (!gameState.playerHasKey) {
+            player.clearMovementEvents();
+            player.goIdle();
+            player.dialogueEvent = player.onKeyRelease('space', () => {
+                player.playerShowDialogue(
+                    'player_face', 
+                    ['Seems like I need a key to open this...'],
+                    'player-voice'
+                );
+            })
+        } else {
+            player.clearMovementEvents();
+            player.goIdle();
+            let openChestEvent = k.onKeyRelease('space', () => {
+                treasureChest.play('open');
+                // spawn the scroll at the center of the chest
+                const experienceScroll = k.add([
+                    k.sprite('experience_scroll'),
+                    k.pos(treasureChest.worldPos()),
+                    k.scale(3),
+                    k.anchor('center'),
+                    k.z(999),
+                    'experience_scroll',
+                ]);
+
+                player.fxPlay('scrollObtained');
+                k.tween(
+                    experienceScroll.pos, 
+                    k.vec2(experienceScroll.pos.x, experienceScroll.pos.y - 20),
+                    1,
+                    (posVal) => { experienceScroll.pos = posVal }   
+                )
+
+                openChestEvent.cancel();
+                gameState.updateScrolls('experience');
+                ui.getScroll('experience');
+
+                showDialogueScrollAcquired(
+                    gameState,
+                    'player_face', 
+                    [
+                        'I found my experience scroll!', 
+                        'I suddenly know jiu jitsu!'
+                    ]
+                );
+            
+            })
+        }
     })
 
     player.onCollide('fireball', () => {
