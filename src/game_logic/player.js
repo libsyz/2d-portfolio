@@ -108,6 +108,7 @@ export const createPlayer = () => {
         k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene', 'open_experience_chest'] ),
         shurikenComp(),
         dialogueComp(),
+        k.z(10),
         fxComp(),
         { 
             fxCollection: {

@@ -406,3 +406,19 @@ export const leftRightPatrol = (speed, distance) => {
 
     }
 }
+
+
+export const characterShadow = () => { 
+    return {
+        id: 'character-shadow-comp',
+        add() {
+            this.add([
+                k.sprite('character-shadow'),
+                k.anchor('center'),
+                k.pos(0, 6),
+                k.z(9),
+                'character-shadow'
+            ])
+        }
+    }
+}

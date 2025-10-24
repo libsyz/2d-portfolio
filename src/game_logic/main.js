@@ -12,10 +12,9 @@ import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js";
 import { createSoundManager } from "./sound.js";
+import { characterShadow } from "./utils.js";
 
 k.setBackground(255, 255, 255);
-
-// import bgm music for the scene
 
 k.loadMusic('bgm-main', './src/audio/musics/main.mp3');
 k.loadMusic('bgm-house', './src/audio/musics/house.mp3');
@@ -39,6 +38,7 @@ k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
 k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
+k.loadSprite('character-shadow', './src/assets/character_shadow.png');
 
 // load gamestate, available to all the scenes
 
@@ -69,12 +69,17 @@ const soundManager = createSoundManager(k);
 k.scene("main", async (playerSpawnPoint, sceneName) => {
     const map = createMap(sceneName);
     const ui = createUI(gameState, soundManager);
+    k.setLayers(['obj', 'shadow'], 'obj');
 
     soundManager.trigger('play-bgm', 'main');
 
     fadeInScene();
 
     const player = createPlayer();
+    player.use(characterShadow());
+    player.use(k.layer('obj'));
+    player.get('character-shadow')[0].use(k.layer('shadow'));
+    k.debug.log(player.layer);
 
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
