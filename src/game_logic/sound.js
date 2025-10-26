@@ -2,7 +2,7 @@
 
 
 export const createSoundManager = (k) => { 
-    const soundManager = k.make([
+    const soundManager = k.add([
         'sound_manager',
         k.state('off', ['on', 'off']),
         {

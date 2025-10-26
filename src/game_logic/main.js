@@ -12,7 +12,7 @@ import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js";
 import { createSoundManager } from "./sound.js";
-import { characterShadow } from "./utils.js";
+
 
 k.setBackground(255, 255, 255);
 
@@ -67,19 +67,16 @@ gameEndSceneController.on('endgame', () => {
 const soundManager = createSoundManager(k);
 
 k.scene("main", async (playerSpawnPoint, sceneName) => {
+
     const map = createMap(sceneName);
     const ui = createUI(gameState, soundManager);
-    k.setLayers(['obj', 'shadow'], 'obj');
+    
 
     soundManager.trigger('play-bgm', 'main');
 
     fadeInScene();
 
-    const player = createPlayer();
-    player.use(characterShadow());
-    player.use(k.layer('obj'));
-    player.get('character-shadow')[0].use(k.layer('shadow'));
-    k.debug.log(player.layer);
+    const player = createPlayer({shadow: true});
 
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 

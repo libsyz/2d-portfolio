@@ -1,6 +1,8 @@
 import { k } from './kaboomCtx';
 import { fxComp } from './utils';
 import { showDialogueMultiple } from './utils';
+import { drawShadow } from './utils';
+
 
 k.loadSprite('player', './src/assets/player.png', {
     sliceX: 4,
@@ -91,15 +93,20 @@ const dialogueComp = () => {
     }
 }
 
-export const createPlayer = () => {
+export const createPlayer = (args={}) => {
     const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.3)};
     const playerBaseSpeed = 340;
     
     const player = k.add([
+        k.pos(20, 20),
+        { 
+            direction: k.DOWN, 
+            draw() { 
+                drawShadow(args.shadow);
+            }
+        },
         k.sprite('player'), 
-        { direction: k.DOWN },
-        k.pos(20, 20), 
         //scale constrains bounds to the right place :-)
         k.area(playerAreaScale),
         k.anchor('center'),
@@ -108,7 +115,6 @@ export const createPlayer = () => {
         k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene', 'open_experience_chest'] ),
         shurikenComp(),
         dialogueComp(),
-        k.z(10),
         fxComp(),
         { 
             fxCollection: {

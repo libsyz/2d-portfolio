@@ -1,7 +1,7 @@
 import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
 import { charDialogue, leftRightPatrol } from './utils.js';
-
+import { drawShadow } from './utils.js';
 
 // load the map sprite
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
@@ -184,6 +184,7 @@ export const createMap = (sceneName = 'scene_1') => {
     // Add characters
 
     const oldMan = map.add([
+        { draw() { drawShadow(true); } },
         k.sprite('old_man'), 
         k.pos(map.get('old_man_spawn')[0].pos),
         {anim: 'idle'},
@@ -249,6 +250,7 @@ export const createMap = (sceneName = 'scene_1') => {
     }
 
     const chicken = map.add([
+        { draw() { drawShadow(true); } },
         k.sprite('chicken'), 
         k.pos(map.get('chicken_spawn')[0].pos),
         {anim: 'idle'},
@@ -276,6 +278,7 @@ export const createMap = (sceneName = 'scene_1') => {
     })
 
     const fisherman = map.add([
+        { draw() { drawShadow(true); } },
         k.sprite('fisherman'),
         k.pos(map.get('fisherman_spawn')[0].pos),
         {anim: 'left'},
