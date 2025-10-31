@@ -66,6 +66,100 @@ gameEndSceneController.on('endgame', () => {
 
 const soundManager = createSoundManager(k);
 
+k.scene('intro', () => {
+    k.setBackground(12, 12, 12);
+    fadeInScene();
+
+    const title = k.add([
+        k.anchor('center'),
+        k.text("The Lost Ninja Scrolls",
+            {
+            size: 48, // 48 pixels tall
+            width: 300,
+            align: 'center', // it'll wrap to next line when width exceeds this value
+            font: "sans-serif", // specify any font you loaded or browser built-in
+            }
+        ),
+        k.pos(640, 100),
+        k.color(248, 169, 69)
+    ])
+
+    const subtitle = k.add([
+        k.anchor('center'),
+        k.text("An interactive resume adventure",
+            {
+            size: 32, // 48 pixels tall
+            width: 480, // it'll wrap to next line when width exceeds this value
+            font: "sans-serif", // specify any font you loaded or browser built-in
+            }
+        ),
+        k.pos(640, 160)
+    ])
+
+    const startGame = k.add([
+        k.text("Start Game", {
+            size: 20, 
+            width: 150, 
+            align: 'center'
+        }),
+        k.color(248, 169, 69),
+        'title', {
+            isSelected: true
+        },
+        k.pos(640, 240),
+    ])
+
+    const downloadResume = k.add([
+        k.text("See Resume", {
+            size: 20, 
+            width: 150, 
+            align: 'center'
+        }),
+        k.color(248, 169, 69),
+        'title', {
+            isSelected: false
+        },
+        k.pos(640, 260),
+    ])
+
+    const makeSelector = (titleObj) => { 
+        titleObj.add([
+            k.pos(140, -5),
+            k.sprite('shuriken2'),
+            k.scale(1.5)
+        ])
+    }
+
+    makeSelector(startGame);
+
+    k.onKeyPress('space', () => {
+        if(startGame.isSelected) {
+            k.go('office');
+        } else {
+            k.debug.log('should open CV');
+            // window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+        }
+    })
+
+    k.onKeyPress('down', () => {
+        if (startGame.isSelected) {
+            startGame.isSelected = false;
+            downloadResume.isSelected = true;
+            k.destroy(startGame.children[0]);
+            makeSelector(downloadResume);
+        }
+    })
+
+    k.onKeyDown('up', () => {
+        if (downloadResume.isSelected) {
+            startGame.isSelected = true;
+            downloadResume.isSelected = false;
+            k.destroy(downloadResume.children[0]);
+            makeSelector(startGame);
+        }
+    })
+})
+
 k.scene("main", async (playerSpawnPoint, sceneName) => {
 
     const map = createMap(sceneName);
@@ -422,78 +516,6 @@ k.scene('end', async () => {
 })
 
 
-k.scene('intro', () => {
-    k.setBackground(155, 155, 155);
-    const bgImage = k.add([
-        k.pos(0),
-        k.sprite('intro_background'),
-    k.scale(0.75)
-    ])
-
-    const startGame = k.add([
-        k.pos(10, 240),
-        k.text("Start Game", {
-            size: 20, 
-            width: 500, 
-            align: 'center'
-        }),
-        k.color(248, 169, 69),
-        'title', {
-            isSelected: true
-        }
-    ])
-
-    const downloadResume = k.add([
-        k.pos(10, 270),
-        k.text("See Resume", {
-            size: 20, 
-            width: 500, 
-            align: 'center'
-        }),
-        k.color(248, 169, 69),
-        'title', {
-            isSelected: false
-        }
-    ])
-
-    const makeSelector = (titleObj) => { 
-        titleObj.add([
-            k.pos(140, -5),
-            k.sprite('shuriken2'),
-            k.scale(1.5)
-        ])
-    }
-
-    makeSelector(startGame);
-
-    k.onKeyPress('space', () => {
-        if(startGame.isSelected) {
-            k.go('office');
-        } else {
-            k.debug.log('should open CV');
-            // window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
-        }
-    })
-
-    k.onKeyPress('down', () => {
-        if (startGame.isSelected) {
-            startGame.isSelected = false;
-            downloadResume.isSelected = true;
-            k.destroy(startGame.children[0]);
-            makeSelector(downloadResume);
-        }
-    })
-
-    k.onKeyDown('up', () => {
-        if (downloadResume.isSelected) {
-            startGame.isSelected = true;
-            downloadResume.isSelected = false;
-            k.destroy(downloadResume.children[0]);
-            makeSelector(startGame);
-        }
-    })
-})
-
 k.scene('office', async () => { 
     const officeMap = await createOfficeMap();
     soundManager.trigger('play-bgm', 'office');
@@ -647,4 +669,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('main', 'player_spawn');
+k.go('intro', 'player_spawn');
