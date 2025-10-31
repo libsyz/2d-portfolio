@@ -183,8 +183,21 @@ export const createMap = (sceneName = 'scene_1') => {
 
     // Add characters
 
+
+    const oldManShadow = {
+        renderShadow: true,
+        xOffSet: 2.5,
+        yOffSet: 11,
+        scale: 1
+    }
+
+
     const oldMan = map.add([
-        { draw() { drawShadow(true); } },
+        { 
+            draw() { 
+                drawShadow(oldManShadow); 
+            } 
+        },
         k.sprite('old_man'), 
         k.pos(map.get('old_man_spawn')[0].pos),
         {anim: 'idle'},
@@ -248,9 +261,17 @@ export const createMap = (sceneName = 'scene_1') => {
             }
         }
     }
+    
+    const chickenShadow = {
+        renderShadow: true,
+        xOffSet: 4,
+        yOffSet: 12,
+        scale: 0.75
+    }
+
 
     const chicken = map.add([
-        { draw() { drawShadow(true); } },
+        { draw() { drawShadow(chickenShadow); } },
         k.sprite('chicken'), 
         k.pos(map.get('chicken_spawn')[0].pos),
         {anim: 'idle'},
@@ -277,8 +298,15 @@ export const createMap = (sceneName = 'scene_1') => {
         chicken.patrol();
     })
 
+    const fishermanShadow = {
+        renderShadow: true,
+        xOffSet: 2.5,
+        yOffSet: 11,
+        scale: 1
+    }
+
     const fisherman = map.add([
-        { draw() { drawShadow(true); } },
+        { draw() { drawShadow(fishermanShadow); } },
         k.sprite('fisherman'),
         k.pos(map.get('fisherman_spawn')[0].pos),
         {anim: 'left'},

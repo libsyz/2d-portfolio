@@ -51,7 +51,11 @@ chest but does not have the key yet
 
 [X] Dialogue screens go progressively word by word, megaman style
 
-[] Cast Shadow on characters on main map
+[] Cast Shadow on characters on main map - Tomorrow morning I do this
+   [X] import shadow
+   [] create cast shadow component
+   [] test on player
+   [] Add to all characters on the main map
 
 [X] Bok bok bok sound when chicken speaks - enlightened sound when dark chicken speaks
 
@@ -65,7 +69,6 @@ chest but does not have the key yet
 
 [] In the bedroom, it would be cool if you could change colors in the wardrobe and keep it throughout the game 
 
-[] Add Coworkers talking to one another on the coffee area of the office
 
 [] Player Dance/Celebrate animation when scroll is obtained
 

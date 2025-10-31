@@ -408,11 +408,12 @@ export const leftRightPatrol = (speed, distance) => {
 }
 
 
-export const drawShadow = (shadowValue = false) => {
-    if (shadowValue === true) {
+export const drawShadow = (shadowArgs) => {
+    if (shadowArgs.renderShadow === true) {
         k.drawSprite({
             sprite: 'character-shadow', 
-                pos: k.vec2(-6, 3),
-                })
-            }
+            pos: k.vec2(shadowArgs.xOffSet, shadowArgs.yOffSet),
+            scale: shadowArgs.scale
+        })
+    }
 }

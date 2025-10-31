@@ -76,12 +76,29 @@ k.scene("main", async (playerSpawnPoint, sceneName) => {
 
     fadeInScene();
 
-    const player = createPlayer({shadow: true});
+    const player = createPlayer(
+        {
+            shadow: {   
+                renderShadow: true,
+                xOffSet: -6,
+                yOffSet: 3,
+                scale: 1
+            }
+        }
+    );
 
     player.moveTo(map.get(playerSpawnPoint)[0].worldPos())
 
     const forestBaddieLocation = map.get('baddie_spawn')[0].worldPos();
-    createBaddieGreenDemon(gameState, 'forest', forestBaddieLocation); 
+
+    const baddieGreenDemonShadow = {
+        renderShadow: true,
+        xOffSet: -6,
+        yOffSet: 3,
+        scale: 1
+    }
+
+    createBaddieGreenDemon(gameState, 'forest', forestBaddieLocation, baddieGreenDemonShadow); 
     
     const center = k.get('center')[0]
 

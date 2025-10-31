@@ -2,7 +2,7 @@ import { k } from './kaboomCtx';
 import { seconds } from './utils';
 import { createKey } from './key.js';
 import { fxComp } from './utils';
-
+import { drawShadow } from './utils';
 
 k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
     sliceX: 4,
@@ -157,7 +157,7 @@ const baddieHealthBar = () => {
 }
 
 
-export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) => {
+export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation, shadowArgs = {}) => {
     const scale = 3.5;
 
     if (baddieType === 'forest' && 
@@ -170,7 +170,10 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation) =>
         return;
     }
 
+
+
     const baddieGreenDemon = k.add([
+        { draw() { drawShadow(shadowArgs); } },
         k.sprite('baddie_green_demon'), 
         k.pos(20, 20),
         {
