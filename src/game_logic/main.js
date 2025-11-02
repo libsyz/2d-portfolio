@@ -86,7 +86,6 @@ k.scene('intro', () => {
     k.setBackground(12, 12, 12);
     fadeInScene();
 
-
     const menuOptionsComp = () => {
         const selectedColor = new k.Color(255, 255, 255);
         const unselectedColor = new k.Color(248, 169, 69);
@@ -205,7 +204,6 @@ k.scene('intro', () => {
         k.anchor('center'),
         k.state('unselected', ['selected', 'unselected']),
         menuOptionsComp(),
-        
     ])
 
 
@@ -216,7 +214,7 @@ k.scene('intro', () => {
             });
         } else {
             k.debug.log('should open CV');
-            // window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })
 
@@ -604,10 +602,8 @@ k.scene('office', async () => {
         player.opacity = 1;
         player.enterState('start');
     })
-    
 
     player.onStateEnter('start', () => {
-
         player.play('right');
         k.tween(player.pos, officeMap.get('first')[0].worldPos(), 1, newPos => player.pos = newPos, k.easings.linear )
         k.wait(1, () => player.enterState('first'))
@@ -616,14 +612,20 @@ k.scene('office', async () => {
     player.onStateEnter('first', () => {
         player.play('idle-down');
         let dialogBox = showDialogueMultiple(
-        gameState,    
         'player-face', 
         [
-          'So nervous for my interview today', 
+          'So nervous for my interview\ntoday', 
           'Hope everything goes well!'
-        ])
+        ], 
+        'player-voice')
 
         dialogBox.onStateEnter('end', () => player.enterState('second'))
+
+        dialogBox.trigger('play-dialogue', 'dialog-box');
+        k.wait(2, () => {
+            dialogBox.trigger('play-dialogue', 'dialog-box');
+        })
+        k.wait(3,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
     })
 
     player.onStateEnter('second', () => {
@@ -635,12 +637,19 @@ k.scene('office', async () => {
     player.onStateEnter('third', () => {
         player.play('idle-up');
         let dialogBox = showDialogueMultiple(
-            gameState,
             'receptionist-face', 
             [
              'Welcome to NinjaCorp! You must be Miguel',
              'Mr Shogun is ready for your interview'
-            ])
+            ], 
+            'default-voice'
+        )
+
+        dialogBox.trigger('play-dialogue', 'dialog-box');
+        k.wait(4, () => {
+            dialogBox.trigger('play-dialogue', 'dialog-box');
+        })
+        k.wait(6,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
         
         dialogBox.onStateEnter('end', () => player.enterState('fourth'))
     })
@@ -655,14 +664,22 @@ k.scene('office', async () => {
         player.play('idle-right');
         
         let dialogBox = showDialogueMultiple(
-            gameState,
             'shogun_boss-face', 
             [
-             'Mr Miguel! Lets get started with your interview',
-             'We will go over your scrolls of education, skills and experience',
-             'you did not bring them?? what a joke!',
-             'Go back to your village and dont come back until you have them!'
-            ])
+             'Mr Miguel! Lets get started with your\ninterview',
+             'We will go over your scrolls of\neducation, skills and experience',
+             'what do you mean you did not bring\nthem?? what a joke!',
+             'Go back to your village and come\nback when you have them!'
+            ], 
+            'default-voice')
+
+        dialogBox.trigger('play-dialogue', 'dialog-box');
+        k.wait(2, () => {
+            dialogBox.trigger('play-dialogue', 'dialog-box');
+        })
+        k.wait(5,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
+        k.wait(8,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
+        k.wait(11,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
 
         dialogBox.onStateEnter('end', () => {
             k.wait(1, () => k.go('main', 'player_spawn'));

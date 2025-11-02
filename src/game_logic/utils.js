@@ -408,7 +408,7 @@ export const leftRightPatrol = (speed, distance) => {
 }
 
 
-export const drawShadow = (shadowArgs) => {
+export const drawShadow = (shadowArgs = {}) => {
     if (shadowArgs.renderShadow === true) {
         k.drawSprite({
             sprite: 'character-shadow', 
