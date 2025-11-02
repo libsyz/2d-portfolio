@@ -41,6 +41,7 @@ k.loadSound('player-scroll-obtained', './src/audio/fx/player-scroll-obtained.mp3
 const shurikenComp = () => {
     return {
         throwShuriken(){
+
             const SHURIKEN_SPEED = 800;
             let xOffset = 0;
             let yOffset = 0;
@@ -58,7 +59,7 @@ const shurikenComp = () => {
             const shuriken = k.add([
                 k.sprite('shuriken2', { anim: 'throw'}),  
                 k.area(),
-                k.pos( this.pos.x + xOffset , this.pos.y + yOffset ),
+                k.pos( this.worldPos().x + xOffset , this.worldPos().y + yOffset ),
                 k.anchor("center"),
                 k.color(127, 127, 255),
                 k.scale(2),
@@ -391,6 +392,42 @@ export const createOfficePlayer = () => {
     player.play('idle-down')
     
     return player;
+}
+
+export const addMenuPlayer = (menuObj, xPos, yPos) => {
+    const playerScale = 4;
+
+    const menuPlayer = menuObj.add([
+        k.sprite('player'),
+        k.pos(xPos, yPos),
+        k.anchor('center'),
+        k.scale(playerScale),
+        k.body(),
+        fxComp(),
+        { 
+            fxCollection: {
+
+                attack: 'player-shuriken-throw',
+            }
+        },
+        shurikenComp(),
+        k.opacity(1),
+        'player'
+    ]);
+
+    menuPlayer.play('idle-down');
+
+    k.onKeyPress('space', () => {
+        menuPlayer.direction = k.RIGHT;
+        menuPlayer.play('attack-right');
+        menuPlayer.throwShuriken();
+        menuPlayer.fxPlay('attack');
+        k.wait(0.2, () => {
+            menuPlayer.play('idle-right');
+        })
+    })
+
+    return menuPlayer;
 }
 
 

@@ -12,9 +12,20 @@ import { createUI } from "./ui.js";
 import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js";
 import { createSoundManager } from "./sound.js";
+import { addMenuPlayer } from "./player.js";
 
 
 k.setBackground(255, 255, 255);
+
+
+// Load fonts
+
+k.loadFont("pixel-script", "./src/fonts/pixel-script.ttf");
+k.loadFont("maru-minya", "./src/fonts/maru-minya.ttf");
+k.loadFont("pixelify-sans", "./src/fonts/pixelify-sans.ttf");
+
+
+// Load music
 
 k.loadMusic('bgm-main', './src/audio/musics/main.mp3');
 k.loadMusic('bgm-house', './src/audio/musics/house.mp3');
@@ -39,6 +50,7 @@ k.loadSprite('intro_background', './src/assets/intro_background.png');
 k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
 k.loadSprite('player_face', './src/assets/player_face.png');
 k.loadSprite('character-shadow', './src/assets/character_shadow.png');
+k.loadSprite('menu-parchment', './src/assets/parchment.png');
 
 // load gamestate, available to all the scenes
 
@@ -67,96 +79,160 @@ gameEndSceneController.on('endgame', () => {
 const soundManager = createSoundManager(k);
 
 k.scene('intro', () => {
+
+    const SCREEN_HEIGHT = 704;
+    const SCREEN_WIDTH = 1280;
+
     k.setBackground(12, 12, 12);
     fadeInScene();
 
-    const title = k.add([
-        k.anchor('center'),
-        k.text("The Lost Ninja Scrolls",
-            {
-            size: 48, // 48 pixels tall
-            width: 300,
-            align: 'center', // it'll wrap to next line when width exceeds this value
-            font: "sans-serif", // specify any font you loaded or browser built-in
+
+    const menuOptionsComp = () => {
+        const selectedColor = new k.Color(255, 255, 255);
+        const unselectedColor = new k.Color(248, 169, 69);
+
+        return {
+            add() { 
+                this.onStateEnter('selected', () => {
+                    this.color = selectedColor;
+                    k.play('dialog-select');
+                    addMenuPlayer(this, -150, -10);
+                }) 
+                this.onStateEnter('unselected', () => {
+                    this.color = unselectedColor;
+                    if (this.children.length > 0 ) {
+                        this.children.forEach(el => el.destroy());
+                    }
+                })
             }
-        ),
-        k.pos(640, 100),
-        k.color(248, 169, 69)
-    ])
-
-    const subtitle = k.add([
-        k.anchor('center'),
-        k.text("An interactive resume adventure",
-            {
-            size: 32, // 48 pixels tall
-            width: 480, // it'll wrap to next line when width exceeds this value
-            font: "sans-serif", // specify any font you loaded or browser built-in
-            }
-        ),
-        k.pos(640, 160)
-    ])
-
-    const startGame = k.add([
-        k.text("Start Game", {
-            size: 20, 
-            width: 150, 
-            align: 'center'
-        }),
-        k.color(248, 169, 69),
-        'title', {
-            isSelected: true
-        },
-        k.pos(640, 240),
-    ])
-
-    const downloadResume = k.add([
-        k.text("See Resume", {
-            size: 20, 
-            width: 150, 
-            align: 'center'
-        }),
-        k.color(248, 169, 69),
-        'title', {
-            isSelected: false
-        },
-        k.pos(640, 260),
-    ])
-
-    const makeSelector = (titleObj) => { 
-        titleObj.add([
-            k.pos(140, -5),
-            k.sprite('shuriken2'),
-            k.scale(1.5)
-        ])
+        }
     }
 
-    makeSelector(startGame);
+    const menuTitleContainer = k.add([
+        k.anchor('center'),
+        k.pos(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100),
+        k.color(50, 169, 69),
+        k.opacity(0),
+        k.rect(10, 10),
+    ])
+    
+    const parchment = menuTitleContainer.add([
+        k.sprite('menu-parchment'),
+        k.anchor('center'),
+        k.pos(0, -50),
+        k.opacity(1)
+    ])
+
+    const scrollText = menuTitleContainer.add([
+        k.text("私を雇ってもらう", {
+            size: 40,
+            width: 480,
+            align: 'center',
+            font: "maru-minya",
+        }),
+        k.anchor('center'),
+        k.pos(0, -50),
+        k.color(5, 5, 5),
+        k.opacity(1)
+    ])
+
+    const title = menuTitleContainer.add([
+        k.text("THE LOST NINJA SCROLLS",
+            {
+            size: 48, // 48 pixels tall
+            width: 600,
+            align: 'center', // it'll wrap to next line when width exceeds this value
+            font: "pixelify-sans", // specify any font you loaded or browser built-in
+            }
+        ),
+        k.anchor('center'),
+        k.pos(0, 20),
+        k.color(20, 155, 96)
+    ])
+
+    
+    const subtitle = menuTitleContainer.add([
+        k.anchor('center'),
+        k.text("An interactive CV adventure",
+            {
+            size: 32,
+            width: 480, // it'll wrap to next line when width exceeds this value
+            font: "pixel-script", // specify any font you loaded or browser built-in
+            }
+        ),
+        k.anchor('center'),
+        k.color(200, 200, 200),
+        k.pos(24, 70)
+    ])
+
+
+    const menuOptionsContainer = k.add([
+        k.rect(10, 10),
+        k.anchor('center'),
+        k.pos(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 * 2),
+        k.color(60, 169, 69),
+        k.opacity(0),
+        'menu-options-container'
+    ])
+
+    const startGame = menuOptionsContainer.add([
+        k.text("Start Game", {
+            size: 30, 
+            width: 200, 
+            align: 'left',
+            font: "pixelify-sans"
+        }),
+        k.color(248, 169, 69),
+        'menu-option', 
+        k.pos(0, 0),
+        k.anchor('center'),
+        k.state('selected', ['selected', 'unselected']),
+        menuOptionsComp(),
+    ])
+
+
+
+    const downloadResume = menuOptionsContainer.add([
+        k.text("See Resume", {
+            size: 30, 
+            width: 200, 
+            align: 'left',
+            font: "pixelify-sans"
+        }),
+        k.color(248, 169, 69),
+        'menu-option', 
+        k.pos(0, 60),
+        k.anchor('center'),
+        k.state('unselected', ['selected', 'unselected']),
+        menuOptionsComp(),
+        
+    ])
+
 
     k.onKeyPress('space', () => {
-        if(startGame.isSelected) {
-            k.go('office');
+        if(startGame.state === 'selected') {
+            k.wait(1, () => {
+                k.go('office');
+            });
         } else {
             k.debug.log('should open CV');
             // window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })
 
+    // this is a mess let's create state controllers
     k.onKeyPress('down', () => {
-        if (startGame.isSelected) {
-            startGame.isSelected = false;
-            downloadResume.isSelected = true;
-            k.destroy(startGame.children[0]);
-            makeSelector(downloadResume);
+        if (startGame.state === 'selected') {
+            startGame.enterState('unselected');
+            downloadResume.enterState('selected');
         }
     })
 
     k.onKeyDown('up', () => {
-        if (downloadResume.isSelected) {
-            startGame.isSelected = true;
-            downloadResume.isSelected = false;
-            k.destroy(downloadResume.children[0]);
-            makeSelector(startGame);
-        }
+        if (downloadResume.state === 'selected') {
+            downloadResume.enterState('unselected');
+            startGame.enterState('selected');
+        }   
     })
 })
 
