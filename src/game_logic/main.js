@@ -23,6 +23,7 @@ k.setBackground(255, 255, 255);
 k.loadFont("pixel-script", "./src/fonts/pixel-script.ttf");
 k.loadFont("maru-minya", "./src/fonts/maru-minya.ttf");
 k.loadFont("pixelify-sans", "./src/fonts/pixelify-sans.ttf");
+k.loadFont("micro-5", "./src/fonts/micro-5-regular.ttf");
 
 
 // Load music
@@ -156,12 +157,28 @@ k.scene('intro', () => {
             {
             size: 32,
             width: 480, // it'll wrap to next line when width exceeds this value
-            font: "pixel-script", // specify any font you loaded or browser built-in
+            font: "pixel-script",
+            align: 'center' // specify any font you loaded or browser built-in
             }
         ),
         k.anchor('center'),
         k.color(200, 200, 200),
-        k.pos(24, 70)
+        k.pos(0, 70)
+    ])
+
+
+    const credits = menuTitleContainer.add([
+        k.anchor('center'),
+        k.text("2025 © BY MIGUEL JIMENEZ",
+            {
+            size: 20,
+            width: 480, // it'll wrap to next line when width exceeds this value
+            font: "micro-5",
+            align: 'center' // specify any font you loaded or browser built-in
+            }
+        ),
+        k.color(200, 200, 200),
+        k.pos(0, 400)
     ])
 
 
@@ -232,6 +249,8 @@ k.scene('intro', () => {
             startGame.enterState('selected');
         }   
     })
+
+
 })
 
 k.scene("main", async (playerSpawnPoint, sceneName) => {
@@ -379,7 +398,7 @@ k.scene('house', async (playerSpawnPoint) => {
 
         await openChestEvent.cancel();
 
-        showDialogueScrollAcquired(
+        const dialog = await showDialogueScrollAcquired(
             gameState,
             'player_face', 
             [
@@ -390,9 +409,14 @@ k.scene('house', async (playerSpawnPoint) => {
         );
 
         ui.getScroll('education');
-        
-        })
         gameState.updateScrolls('education');
+
+        dialog.onStateEnter('end', () => {
+            if ( gameState.checkFinished()) {
+                gameEndSceneController.trigger('endgame');
+                }
+            })
+        })
         
     })
 
@@ -498,8 +522,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             [
                 'I found my skills scroll', 
                 'I suddenly know jiu jitsu!'
-            ],
-            gameEndSceneController
+            ]
             );
         
         
@@ -510,6 +533,9 @@ k.scene('temple', async (playerSpawnPoint) => {
             // is the first element that can be found, and then I am 
             // finding the scroll 
             k.get('temple_map')[0].get('skills_scroll')[0].destroy()
+            if ( gameState.checkFinished() ) {
+                gameEndSceneController.trigger('endgame')
+            }
         });
     })
 

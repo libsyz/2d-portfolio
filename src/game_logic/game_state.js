@@ -25,6 +25,7 @@ export const createGameState = () => {
         },
         // Checks if the game is over when we have all 3 scrolls
         checkFinished() {
+            console.log(this.scrolls.length);
             return this.scrolls.length === 3 ? true : false; 
         },
         isBaddieGreenDemonInForestDead: false,
