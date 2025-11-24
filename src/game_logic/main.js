@@ -396,6 +396,8 @@ k.scene('house', async (playerSpawnPoint) => {
             (posVal) => { edScroll.pos = posVal }   
         )
 
+        player.dance();
+
         await openChestEvent.cancel();
 
         const dialog = await showDialogueScrollAcquired(
@@ -412,6 +414,7 @@ k.scene('house', async (playerSpawnPoint) => {
         gameState.updateScrolls('education');
 
         dialog.onStateEnter('end', () => {
+            player.play('idle-down');
             if ( gameState.checkFinished()) {
                 gameEndSceneController.trigger('endgame');
                 }
@@ -525,7 +528,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             ]
             );
         
-        
+        player.dance();
 
         dialog.onStateEnter('end', () => {
             // hating this line of code but I need to keep moving forward
@@ -533,6 +536,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             // is the first element that can be found, and then I am 
             // finding the scroll 
             k.get('temple_map')[0].get('skills_scroll')[0].destroy()
+            player.play('idle-down');
             if ( gameState.checkFinished() ) {
                 gameEndSceneController.trigger('endgame')
             }
@@ -665,8 +669,8 @@ k.scene('office', async () => {
         let dialogBox = showDialogueMultiple(
             'receptionist-face', 
             [
-             'Welcome to NinjaCorp! You must be Miguel',
-             'Mr Shogun is ready for your interview'
+             'Welcome to NinjaCorp! You must\nbe Miguel',
+             'Mr Shogun is ready for your\ninterview'
             ], 
             'default-voice'
         )
@@ -760,13 +764,15 @@ k.scene('cave', async (playerSpawnPoint) => {
                     1,
                     (posVal) => { experienceScroll.pos = posVal }   
                 )
-
+                player.dance();
+                
                 ui.getScroll('experience');
                 gameState.updateScrolls('experience');
                 openChestEvent.cancel();
                 const dialogueBox = player.playerShowDialogue('player_face', ['I found my experience scroll!', 'I suddenly know jiu jitsu!'], 'player-voice');
 
                 dialogueBox.onStateEnter('end', () => { 
+                    player.play('idle-down');
                     if ( gameState.checkFinished() ) {
                         gameEndSceneController.trigger('endgame');
                     }
@@ -788,4 +794,4 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('intro', 'player_spawn');
+k.go('main', 'player_spawn');

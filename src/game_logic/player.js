@@ -20,7 +20,11 @@ k.loadSprite('player', './src/assets/player.png', {
         'down': {from: 0, to: 3, loop: true, speed: 8 },
         'up': {from: 4, to: 7, loop: true, speed: 8 },
         'left': {from: 8, to: 11, loop: true, speed: 8},
-        'right': {from: 12, to: 15, loop: true, speed: 8}
+        'right': {from: 12, to: 15, loop: true, speed: 8},
+        'hooray': 21,
+        'yes': 22,
+        'jutsu': 23,
+        'dance': {from: 21, to: 23, loop: true, speed: 2 }
     }
 })
 
@@ -94,6 +98,26 @@ const dialogueComp = () => {
     }
 }
 
+const playerDanceComp = () => {
+    return {
+        dance() {
+            this.play('dance');
+        },
+        celebrate() {
+            this.play('hooray');
+            k.wait(0.5, () => {
+                this.play('yes');
+            });
+            k.wait(1), () => {
+                this.play('hooray');
+            }
+            k.wait(1.5), () => {
+                this.play('yes');
+            }
+        }      
+    }
+}
+
 export const createPlayer = (args={}) => {
     const playerScale = 4;
     const playerAreaScale = {scale: k.vec2(0.3, 0.3)};
@@ -108,7 +132,6 @@ export const createPlayer = (args={}) => {
             }
         },
         k.sprite('player'), 
-        //scale constrains bounds to the right place :-)
         k.area(playerAreaScale),
         k.anchor('center'),
         k.scale(playerScale),
@@ -116,7 +139,9 @@ export const createPlayer = (args={}) => {
         k.state('attack', ['attack', 'explore', 'dialogue', 'dialogue_chicken', 'cutscene', 'open_experience_chest'] ),
         shurikenComp(),
         dialogueComp(),
+        playerDanceComp(),
         fxComp(),
+        k.z(10),
         { 
             fxCollection: {
                 //event: audio name played

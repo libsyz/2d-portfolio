@@ -60,6 +60,7 @@ export const createSparkleInteraction = (map, obj) => {
             k.pos(obj.x, obj.y),
             sparkleComp(obj),
             charDialogue(),
+            k.z(9999),
             obj.name
             ])
 

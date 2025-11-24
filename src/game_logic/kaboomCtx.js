@@ -5,7 +5,8 @@ export const k = kaplay({
     touchToMouse: true, 
     canvas: document.getElementById("game"),
     height: 704,
-    width: 1280
+    width: 1280,
+    loadingScreen: true
 });
 
 

@@ -14,7 +14,7 @@ export const createGameState = () => {
                 this.done = true
             }
         }, 
-        scrolls: ['x', 'x'],
+        scrolls: ['x'],
         updateScrolls(scroll) {
             k.debug.log(`adding ${scroll}`)
             k.debug.log(this.scrolls.length);

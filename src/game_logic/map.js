@@ -82,7 +82,8 @@ const makeCloudComp = () => {
                 k.area(),
                 k.move(k.vec2(100, 100), 20),
                 k.opacity(0.3),
-                k.pos(clouds[parseInt(k.rand(clouds.length))].worldPos())
+                k.pos(clouds[parseInt(k.rand(clouds.length))].worldPos()),
+                k.z(9999)
                 // k.offscreen({destroy: true})
             ])
 
