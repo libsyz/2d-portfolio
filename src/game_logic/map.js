@@ -7,6 +7,11 @@ import { drawShadow } from './utils.js';
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
 const mapData = await (await fetch("./src/mapdata/map.json")).json();
 
+const loadMapData = async () => {
+    const mapData = await (await fetch("./src/mapdata/map.json")).json();
+    return mapData;
+}
+
 
 // load the environment animation sprites 
 k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
@@ -98,7 +103,8 @@ const makeCloudComp = () => {
 }
 
 // instatiate the map
-export const createMap = (sceneName = 'scene_1') => {
+export const createMap = async (sceneName = 'scene_1') => {
+    const mapData = await loadMapData();
     const layers = mapData.layers;
     const map = k.add([
         k.sprite("map"), 

@@ -255,7 +255,7 @@ k.scene('intro', () => {
 
 k.scene("main", async (playerSpawnPoint, sceneName) => {
 
-    const map = createMap(sceneName);
+    const map = await createMap(sceneName);
     const ui = createUI(gameState, soundManager);
     
 
@@ -765,7 +765,7 @@ k.scene('cave', async (playerSpawnPoint) => {
                     (posVal) => { experienceScroll.pos = posVal }   
                 )
                 player.dance();
-                
+
                 ui.getScroll('experience');
                 gameState.updateScrolls('experience');
                 openChestEvent.cancel();
