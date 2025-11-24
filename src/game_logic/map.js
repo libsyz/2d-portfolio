@@ -5,7 +5,7 @@ import { drawShadow } from './utils.js';
 
 // load the map sprite
 const mapSprite = k.loadSprite('map', './src/assets/map.png');
-const mapData = await (await fetch("./src/mapdata/map.json")).json();
+
 
 const loadMapData = async () => {
     const mapData = await (await fetch("./src/mapdata/map.json")).json();

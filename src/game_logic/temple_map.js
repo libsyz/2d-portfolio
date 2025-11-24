@@ -42,9 +42,15 @@ k.loadSprite('skills_scroll', '../src/assets/scroll_fire.png');
 
 // load the map
 k.loadSprite('temple_map', './src/assets/temple_map.png');
-const mapData = await (await fetch("./src/mapdata/temple_map.json")).json();
+
+const loadMapData = async () => {
+    const mapData = await (await fetch("./src/mapdata/temple_map.json")).json();
+    return mapData;
+}
+
 
 export const createTempleMap = async () => {
+    const mapData = await loadMapData();
     const layers = mapData.layers;
     const templeMap = k.add([k.sprite('temple_map'), 
         k.pos(0), 

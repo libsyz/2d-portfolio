@@ -355,7 +355,7 @@ k.scene("main", async (playerSpawnPoint, sceneName) => {
 });
 
 k.scene('house', async (playerSpawnPoint) => { 
-    const houseMap = createHouseMap(gameState);
+    const houseMap = await createHouseMap(gameState);
     const ui = createUI(gameState, soundManager);
     k.setBackground(58, 58, 81);
 

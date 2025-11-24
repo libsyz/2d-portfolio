@@ -4,9 +4,15 @@ import { createSpawnPoint } from './spawn_point.js';
 
 
 const mapSprite = k.loadSprite('cave_map', './src/assets/cave_map.png');
-const mapData = await (await fetch("./src/mapdata/cave_map.json")).json();
+
+const loadMapData = async () => {
+    const mapData = await (await fetch("./src/mapdata/cave_map.json")).json();
+    return mapData;
+}
+
 
 export const createCaveMap = async (gameState) => {
+    const mapData = await loadMapData();
     const layers = mapData.layers;
     const caveMap = k.add([k.sprite("cave_map"), 
         k.pos(0), 

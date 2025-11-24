@@ -102,11 +102,16 @@ k.loadSprite('cat', './src/assets/cat.png', {
 
 // load the map
 const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
-const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
+
+const loadMapData = async () => {
+    const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
+    return mapData;
+}
 
 export const spawnPoints = {};
 
 export const createOfficeMap = async () => {
+    const mapData = await loadMapData();
     const layers = mapData.layers;
     const officeMap = k.add([k.sprite("office_map"), 
         k.pos(0), 

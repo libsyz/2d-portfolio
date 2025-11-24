@@ -7,8 +7,13 @@ import { createSpawnPoint } from './spawn_point.js';
 
 // load the map
 const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
-const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
 
+
+
+const loadMapData = async () => {
+    const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
+    return mapData;
+}
 
 // load sparkle effect
 k.loadSprite('sparkle', './src/assets/spark.png', {
@@ -74,7 +79,8 @@ k.loadSprite('elias_face', '../src/assets/elias_face.png');
 
 
 // instatiate the map
-export const createHouseMap = (gameState) => {
+export const createHouseMap = async (gameState) => {
+    const mapData = await loadMapData();
     const layers = mapData.layers;
     const houseMap = k.add([k.sprite("house_map"), 
         k.pos(0), 
