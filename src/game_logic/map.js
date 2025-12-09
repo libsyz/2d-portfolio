@@ -2,9 +2,9 @@ import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
 import { charDialogue, leftRightPatrol } from './utils.js';
 import { drawShadow } from './utils.js';
-
+import mapSpriteUrl from './../assets/map.png';
 // load the map sprite
-const mapSprite = k.loadSprite('map', './src/assets/map.png');
+const mapSprite = k.loadSprite('map', mapSpriteUrl);
 
 
 const loadMapData = async () => {
