@@ -50,12 +50,15 @@ k.loadSprite('shogun_boss-face', './src/assets/shogun_boss_face.png' )
 
 k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
     sliceX: 4, 
-    sliceY: 1,
+    sliceY: 2,
     anims: {
         'down': 0,
         'up': 1,
         'right': 2,
-        'left': 3
+        'left': 3,
+        'surprised': 4,
+        'jutsu': 7,
+        'dance': {from: 5, to: 7, loop: true, speed: 2 }
     }
 });
 

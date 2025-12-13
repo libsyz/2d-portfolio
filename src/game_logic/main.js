@@ -555,6 +555,9 @@ k.scene('temple', async (playerSpawnPoint) => {
 k.scene('end', async () => { 
     const officeMap = await createOfficeMap();
     const player = await createOfficePlayer();
+
+    const shogunBoss = officeMap.get('shogun_boss')[0];
+
     soundManager.trigger('office', 'house');
     fadeInScene();
     // fourth is the way point that is in front of the Shogun
@@ -568,7 +571,7 @@ k.scene('end', async () => {
     sceneCounter += 0.5
 
     k.wait(sceneCounter, () => { 
-        const shogunDialog = showDialogueMultiple(
+        let shogunDialog = showDialogueMultiple(
             'shogun_boss-face', 
             [
                 'So you are now back', 
@@ -590,6 +593,8 @@ k.scene('end', async () => {
                 { spriteName: 'greenScrollUI', objectName: 'skills' }
             ]
 
+            player.play('jutsu');
+
             scrolls.forEach(async (scroll) => {
                 let scrollObj = await createScroll(scroll.spriteName, scroll.objectName, player.worldPos())
                 let scrollWaypoint = await officeMap.get(`${scroll.objectName}_waypoint`)[0].worldPos();
@@ -598,7 +603,11 @@ k.scene('end', async () => {
             })
 
             k.wait(2, () => {
-                showDialogueMultiple(
+                player.play('idle-right');
+
+                shogunBoss.play('surprised');
+
+                shogunDialog = showDialogueMultiple(
                     'shogun_boss-face', 
                     [
                         'Wow, your credentials look very impressive', 
@@ -611,6 +620,15 @@ k.scene('end', async () => {
                 k.onKeyRelease('space', () => {
                     k.trigger('play-dialogue', 'dialog-box');
                 });
+
+                shogunDialog.onStateEnter('end', () => {
+                    shogunBoss.play('dance');
+                    player.play('dance');
+                    k.wait(2, () => {
+                        k.go('thank-you');
+                    })
+                })
+
             })
         })
     })
@@ -794,4 +812,178 @@ k.scene('cave', async (playerSpawnPoint) => {
     
 })
 
-k.go('main', 'player_spawn');
+
+k.scene('thank-you', async () => {
+    const SCREEN_HEIGHT = 704;
+    const SCREEN_WIDTH = 1280;
+
+    k.setBackground(12, 12, 12);
+    fadeInScene();
+
+    const menuOptionsComp = () => {
+        const selectedColor = new k.Color(255, 255, 255);
+        const unselectedColor = new k.Color(248, 169, 69);
+
+        return {
+            add() { 
+                this.onStateEnter('selected', () => {
+                    this.color = selectedColor;
+                    k.play('dialog-select');
+                    addMenuPlayer(this, -150, -10);
+                }) 
+                this.onStateEnter('unselected', () => {
+                    this.color = unselectedColor;
+                    if (this.children.length > 0 ) {
+                        this.children.forEach(el => el.destroy());
+                    }
+                })
+            }
+        }
+    }
+
+    const menuTitleContainer = k.add([
+        k.anchor('center'),
+        k.pos(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2 - 100),
+        k.color(50, 169, 69),
+        k.opacity(0),
+        k.rect(10, 10),
+    ])
+    
+    const parchment = menuTitleContainer.add([
+        k.sprite('menu-parchment'),
+        k.anchor('center'),
+        k.pos(0, -50),
+        k.opacity(1)
+    ])
+
+    const scrollText = menuTitleContainer.add([
+        k.text("私を雇ってもらう", {
+            size: 40,
+            width: 480,
+            align: 'center',
+            font: "maru-minya",
+        }),
+        k.anchor('center'),
+        k.pos(0, -50),
+        k.color(5, 5, 5),
+        k.opacity(1)
+    ])
+
+    const title = menuTitleContainer.add([
+        k.text("THANK YOU FOR PLAYING",
+            {
+            size: 48, // 48 pixels tall
+            width: 600,
+            align: 'center', // it'll wrap to next line when width exceeds this value
+            font: "pixelify-sans", // specify any font you loaded or browser built-in
+            }
+        ),
+        k.anchor('center'),
+        k.pos(0, 20),
+        k.color(20, 155, 96)
+    ])
+
+    
+    // const subtitle = menuTitleContainer.add([
+    //     k.anchor('center'),
+    //     k.text("An interactive CV adventure",
+    //         {
+    //         size: 32,
+    //         width: 480, // it'll wrap to next line when width exceeds this value
+    //         font: "pixel-script",
+    //         align: 'center' // specify any font you loaded or browser built-in
+    //         }
+    //     ),
+    //     k.anchor('center'),
+    //     k.color(200, 200, 200),
+    //     k.pos(0, 70)
+    // ])
+
+
+    const credits = menuTitleContainer.add([
+        k.anchor('center'),
+        k.text("Game Design and Testing by Miguel Jimenez",
+            {
+            size: 20,
+            width: 480, // it'll wrap to next line when width exceeds this value
+            font: "micro-5",
+            align: 'center' // specify any font you loaded or browser built-in
+            }
+        ),
+        k.color(200, 200, 200),
+        k.pos(0, 400)
+    ])
+
+
+    const menuOptionsContainer = k.add([
+        k.rect(10, 10),
+        k.anchor('center'),
+        k.pos(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 * 2),
+        k.color(60, 169, 69),
+        k.opacity(0),
+        'menu-options-container'
+    ])
+
+    const startGame = menuOptionsContainer.add([
+        k.text("Play Again", {
+            size: 30, 
+            width: 200, 
+            align: 'left',
+            font: "pixelify-sans"
+        }),
+        k.color(248, 169, 69),
+        'menu-option', 
+        k.pos(0, 0),
+        k.anchor('center'),
+        k.state('selected', ['selected', 'unselected']),
+        menuOptionsComp(),
+    ])
+
+
+
+    const downloadResume = menuOptionsContainer.add([
+        k.text("See Resume", {
+            size: 30, 
+            width: 200, 
+            align: 'left',
+            font: "pixelify-sans"
+        }),
+        k.color(248, 169, 69),
+        'menu-option', 
+        k.pos(0, 60),
+        k.anchor('center'),
+        k.state('unselected', ['selected', 'unselected']),
+        menuOptionsComp(),
+    ])
+
+
+    k.onKeyPress('space', () => {
+        if(startGame.state === 'selected') {
+            k.wait(1, () => {
+                k.go('office');
+            });
+        } else {
+            k.debug.log('should open CV');
+            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+        }
+    })
+
+    // this is a mess let's create state controllers
+    k.onKeyPress('down', () => {
+        if (startGame.state === 'selected') {
+            startGame.enterState('unselected');
+            downloadResume.enterState('selected');
+        }
+    })
+
+    k.onKeyDown('up', () => {
+        if (downloadResume.state === 'selected') {
+            downloadResume.enterState('unselected');
+            startGame.enterState('selected');
+        }   
+    })
+
+
+})
+
+k.go('thank-you', 'player_spawn');
