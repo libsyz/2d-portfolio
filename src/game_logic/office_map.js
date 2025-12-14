@@ -3,12 +3,21 @@ import { k } from './kaboomCtx.js';
 // import { seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
 import { showDialogue, showDialogueMultiple } from './utils.js';
-
+import playerFaceSpriteUrl from './../assets/player_face.png';
+import receptionistSpriteUrl from './../assets/receptionist.png';
+import receptionistFaceSpriteUrl from './../assets/receptionist_face.png';
+import shogunBossFaceSpriteUrl from './../assets/shogun_boss_face.png';
+import shogunBossSpriteUrl from './../assets/shogun_boss.png';
+import workerOneSpriteUrl from './../assets/worker_one.png';
+import workerTwoSpriteUrl from './../assets/worker_two.png';
+import catSpriteUrl from './../assets/cat.png';
+import officeMapSpriteUrl from './../assets/office_map.png';
+import officeMapUrl from './../mapdata/office_map.json';
 // load the character sprites 
 
 // player
 
-k.loadSprite('player-face', './src/assets/player_face.png')
+k.loadSprite('player-face', playerFaceSpriteUrl)
 
 // k.loadSprite('player', './src/assets/player.png', {
 //     sliceX: 4,
@@ -31,24 +40,25 @@ k.loadSprite('player-face', './src/assets/player_face.png')
 
 // receptionist
 
-k.loadSprite('receptionist', './src/assets/receptionist.png', {
+k.loadSprite('receptionist', receptionistSpriteUrl, {
     sliceX: 4, 
-    sliceY: 1,
+    sliceY: 2,
     anims: {
         'down': 0,
         'up': 1,
         'right': 2,
-        'left': 3
+        'left': 3,
+        'dance': {from: 4, to: 7, loop: true, speed: 2 }
     }
 });
 
-k.loadSprite('receptionist-face', './src/assets/receptionist_face.png' )
+k.loadSprite('receptionist-face', receptionistFaceSpriteUrl )
 
 // shogun boss 
 
-k.loadSprite('shogun_boss-face', './src/assets/shogun_boss_face.png' )
+k.loadSprite('shogun_boss-face', shogunBossFaceSpriteUrl )
 
-k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
+k.loadSprite('shogun_boss', shogunBossSpriteUrl, {
     sliceX: 4, 
     sliceY: 2,
     anims: {
@@ -64,38 +74,36 @@ k.loadSprite('shogun_boss', './src/assets/shogun_boss.png', {
 
 // worker one ( does nothing )
 
-k.loadSprite('worker_one', './src/assets/worker_one.png', {
+k.loadSprite('worker_one', workerOneSpriteUrl, {
     sliceX: 4, 
-    sliceY: 1,
+    sliceY: 2,
     anims: {
         'down': 0,
         'up': 1,
         'right': 2,
-        'left': 3
+        'left': 3,
+        'dance': {from: 5, to: 7, loop: true, speed: 2 }
     }
 });
 
 // worker two ( tweens - goes to grab coffee )
 
-k.loadSprite('worker_two', './src/assets/worker_two.png', {
+k.loadSprite('worker_two', workerTwoSpriteUrl, {
     sliceX: 4, 
-    sliceY: 4,
+    sliceY: 2,
     anims: {
         'down': 0,
-        'up': 4,
-        'left': 9,
-        'right': 13,
-        'walk-down': {from: 0, to: 3, loop: true, speed: 6 },
-        'walk-up': {from: 4, to: 7, loop: true, speed: 6 },
-        'walk-left': {from: 8, to: 11, loop: true, speed: 6},
-        'walk-right': {from: 12, to: 15, loop: true, speed: 6} 
+        'up': 1,
+        'right': 2,
+        'left': 3,
+        'dance': {from: 5, to: 7, loop: true, speed: 2 }
     }
 });
 
 
 // cat ( does nothing )
 
-k.loadSprite('cat', './src/assets/cat.png', {
+k.loadSprite('cat', catSpriteUrl, {
     sliceX: 12, 
     sliceY: 1,
     anims: {
@@ -104,11 +112,10 @@ k.loadSprite('cat', './src/assets/cat.png', {
 })
 
 // load the map
-const mapSprite = k.loadSprite('office_map', './src/assets/office_map.png');
+const mapSprite = k.loadSprite('office_map', officeMapSpriteUrl);
 
 const loadMapData = async () => {
-    const mapData = await (await fetch("./src/mapdata/office_map.json")).json();
-    return mapData;
+    return officeMapUrl;
 }
 
 export const spawnPoints = {};

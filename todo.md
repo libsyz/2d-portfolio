@@ -6,11 +6,11 @@
 -- Final Screen --
 
 [X] Jutsu Animation when Miguel releases the scrolls
-[ ] Shock animation when the Shogun sees the scrolls
-[ ] Everyone dances when the Shogun welcomes Miguel to the Co
+[X] Shock animation when the Shogun sees the scrolls
+[X] Everyone dances when the Shogun welcomes Miguel to the Co
 
 -- Thank you for playing Screen -- 
-[ ] Concept 
+[X] Concept 
  - Very similar to start screen, no complications
  - 3 options:
     - Contact miguel

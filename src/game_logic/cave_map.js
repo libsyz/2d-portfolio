@@ -1,12 +1,15 @@
 import { createBaddieGreenDemon } from './baddie_green_demon.js';
 import { k } from './kaboomCtx.js';
 import { createSpawnPoint } from './spawn_point.js';
+import caveMapSpriteUrl from './../assets/cave_map.png';
+import caveMapUrl from './../mapdata/cave_map.json';
 
 
-const mapSprite = k.loadSprite('cave_map', './src/assets/cave_map.png');
+const mapSprite = k.loadSprite('cave_map', caveMapSpriteUrl);
+
 
 const loadMapData = async () => {
-    const mapData = await (await fetch("./src/mapdata/cave_map.json")).json();
+    const mapData = await (await fetch(caveMapUrl)).json();
     return mapData;
 }
 

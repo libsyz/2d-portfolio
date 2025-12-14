@@ -3,8 +3,12 @@ import { seconds } from './utils';
 import { createKey } from './key.js';
 import { fxComp } from './utils';
 import { drawShadow } from './utils';
+import baddieGreenDemonSpriteUrl from './../assets/baddie_green_demon.png';
+import fireballSpriteUrl from './../assets/fireball.png';
+import baddieFireballThrowSoundUrl from './../audio/fx/baddie-fireball-throw.mp3';
+import baddieHurtSoundUrl from './../audio/fx/baddie-hurt.mp3';
 
-k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
+k.loadSprite('baddie_green_demon', baddieGreenDemonSpriteUrl, {
     sliceX: 4,
     sliceY: 6,
     anims: {
@@ -17,7 +21,7 @@ k.loadSprite('baddie_green_demon', './src/assets/baddie_green_demon.png', {
     }
 })
 
-k.loadSprite('fireball', './src/assets/fireball.png', {
+k.loadSprite('fireball', fireballSpriteUrl, {
     sliceX: 4,
     sliceY: 1,
     anims: {
@@ -26,8 +30,8 @@ k.loadSprite('fireball', './src/assets/fireball.png', {
     }
 })
 
-k.loadSound('baddie-fireball-throw', './src/audio/fx/baddie-fireball-throw.mp3');
-k.loadSound('baddie-hurt', './src/audio/fx/baddie-hurt.mp3');
+k.loadSound('baddie-fireball-throw', baddieFireballThrowSoundUrl);
+k.loadSound('baddie-hurt', baddieHurtSoundUrl);
 
 
 k.loadShader("saturate", null, `

@@ -2,11 +2,20 @@
 import { k } from './kaboomCtx';
 
 // sprites 
-k.loadSprite('greenScrollUI', './src/assets/scroll_plant.png');
-k.loadSprite('redScrollUI', './src/assets/scroll_fire.png');
-k.loadSprite('yellowScrollUI', './src/assets/scroll_thunder.png');
-k.loadSprite('tutorial', './src/assets/tutorial.png');
-k.loadSprite('speaker', './src/assets/speaker.png');
+
+import greenScrollUISpriteUrl from './../assets/scroll_plant.png';
+import redScrollUISpriteUrl from './../assets/scroll_fire.png';
+import yellowScrollUISpriteUrl from './../assets/scroll_thunder.png';
+import tutorialSpriteUrl from './../assets/tutorial.png';
+import speakerSpriteUrl from './../assets/speaker.png'; 
+
+
+k.loadSprite('greenScrollUI', greenScrollUISpriteUrl);
+k.loadSprite('redScrollUI', redScrollUISpriteUrl);
+k.loadSprite('yellowScrollUI', yellowScrollUISpriteUrl);
+k.loadSprite('tutorial', tutorialSpriteUrl);
+k.loadSprite('speaker', speakerSpriteUrl);
+
 
 
 const tutorialComponent = (gameState) => {

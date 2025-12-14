@@ -2,19 +2,33 @@ import { k } from './kaboomCtx.js';
 import { createInteraction } from './interaction.js'
 import { charDialogue, leftRightPatrol } from './utils.js';
 import { drawShadow } from './utils.js';
+import waterRippleSpriteUrl from './../assets/water_ripple.png';
+import flowerAnimatedSpriteUrl from './../assets/flower_animated.png';
+import cloudSpriteUrl from './../assets/cloud.png';
+import oldManFaceSpriteUrl from './../assets/old_man_face.png';
+import oldManSpriteUrl from './../assets/old_man.png';
+import chickenSpriteUrl from './../assets/chicken.png';
+import chickenFaceSpriteUrl from './../assets/chicken_face.png';
+import chickenBockSoundUrl from './../audio/fx/chicken-bock.mp3';
+import chickenDarkVoiceSoundUrl from './../audio/fx/chicken-dark-voice.mp3';
+import chickenDarkFaceSpriteUrl from './../assets/chicken_dark_face.png';
+import fishermanSpriteUrl from './../assets/fisherman.png';
+import fishermanFaceSpriteUrl from './../assets/fisherman_face.png';
+import fishermanRodSpriteUrl from './../assets/fisherman_rod.png';
+import mapDataUrl from './../mapdata/map.json';
+
 import mapSpriteUrl from './../assets/map.png';
 // load the map sprite
 const mapSprite = k.loadSprite('map', mapSpriteUrl);
 
 
 const loadMapData = async () => {
-    const mapData = await (await fetch("./src/mapdata/map.json")).json();
-    return mapData;
+    return mapDataUrl;
 }
 
 
 // load the environment animation sprites 
-k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
+k.loadSprite('water_ripple', waterRippleSpriteUrl, {
     sliceX: 4,
     sliceY: 1,
     anims: { 
@@ -22,7 +36,7 @@ k.loadSprite('water_ripple', './src/assets/water_ripple.png', {
     }
 });
 
-k.loadSprite('flower', './src/assets/flower_animated.png', {
+k.loadSprite('flower', flowerAnimatedSpriteUrl, {
     sliceX: 4,
     sliceY: 1,
     anims: { 
@@ -31,12 +45,12 @@ k.loadSprite('flower', './src/assets/flower_animated.png', {
     }
 });
 
-k.loadSprite('cloud', './src/assets/cloud.png');
+k.loadSprite('cloud', cloudSpriteUrl);
 
 
 // load the character sprites
-k.loadSprite('old_man_face', './src/assets/old_man_face.png');
-k.loadSprite('old_man', './src/assets/old_man.png', {
+k.loadSprite('old_man_face', oldManFaceSpriteUrl);
+k.loadSprite('old_man', oldManSpriteUrl, {
     sliceX: 2,
     sliceY: 1,
     anims: {
@@ -45,7 +59,7 @@ k.loadSprite('old_man', './src/assets/old_man.png', {
     }
 })
 
-k.loadSprite('chicken', './src/assets/chicken.png', {
+k.loadSprite('chicken', chickenSpriteUrl, {
     sliceX: 2,
     sliceY: 2,
     anims: {
@@ -55,17 +69,17 @@ k.loadSprite('chicken', './src/assets/chicken.png', {
     }
 })
 
-k.loadSound('chicken-voice', './src/audio/fx/chicken-bock.mp3');
-k.loadSound('chicken-dark-voice', './src/audio/fx/chicken-dark-voice.mp3');
+k.loadSound('chicken-voice', chickenBockSoundUrl);
+k.loadSound('chicken-dark-voice', chickenDarkVoiceSoundUrl);
 
 
-k.loadSprite('chicken_face', './src/assets/chicken_face.png');
-k.loadSprite('chicken_dark_face', './src/assets/chicken_dark_face.png');
+k.loadSprite('chicken_face', chickenFaceSpriteUrl);
+k.loadSprite('chicken_dark_face', chickenDarkFaceSpriteUrl);
 
 
-k.loadSprite('fisherman_face', './src/assets/fisherman_face.png');
-k.loadSprite('fisherman_rod', './src/assets/fisherman_rod.png' )
-k.loadSprite('fisherman', './src/assets/fisherman.png', {
+k.loadSprite('fisherman_face', fishermanFaceSpriteUrl);
+k.loadSprite('fisherman_rod', fishermanRodSpriteUrl);
+k.loadSprite('fisherman', fishermanSpriteUrl, {
     sliceX: 4,
     sliceY: 1,
     anims: {

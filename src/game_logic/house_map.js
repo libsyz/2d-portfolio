@@ -2,16 +2,22 @@ import { k } from './kaboomCtx.js';
 import { createSparkleInteraction } from './interaction.js';
 import { charDialogue, leftRightPatrol, seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
-
-
+import houseMapSpriteUrl from './../assets/house_map.png';
+import houseMapUrl from './../mapdata/house_map.json';
+import bigTreasureChestSpriteUrl from './../assets/big_treasure_chest.png';
+import educationScrollSpriteUrl from './../assets/scroll_plant.png';
+import christinSpriteUrl from './../assets/woman.png';
+import christinFaceSpriteUrl from './../assets/christin_face.png';
+import eliasSpriteUrl from './../assets/child.png';
+import eliasFaceSpriteUrl from './../assets/elias_face.png';
 
 // load the map
-const mapSprite = k.loadSprite('house_map', './src/assets/house_map.png');
+const mapSprite = k.loadSprite('house_map', houseMapSpriteUrl);
 
 
 
 const loadMapData = async () => {
-    const mapData = await (await fetch("./src/mapdata/house_map.json")).json();
+    const mapData = await (await fetch(houseMapUrl)).json();
     return mapData;
 }
 
@@ -27,7 +33,7 @@ k.loadSprite('sparkle', './src/assets/spark.png', {
 
 // load interactables
 // treasure chest
-k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
+k.loadSprite('treasure_chest', bigTreasureChestSpriteUrl, {
     sliceX: 2, 
     sliceY: 1,
     anims: {
@@ -38,12 +44,12 @@ k.loadSprite('treasure_chest', './src/assets/big_treasure_chest.png', {
 
 
 // education scroll
-k.loadSprite('education_scroll', '../src/assets/scroll_plant.png');
+k.loadSprite('education_scroll', educationScrollSpriteUrl);
 
 
 // christin
 
-k.loadSprite('christin', '../src/assets/woman.png', {
+k.loadSprite('christin', christinSpriteUrl, {
     sliceX: 4,
     sliceY: 2,
     anims: {
@@ -54,12 +60,12 @@ k.loadSprite('christin', '../src/assets/woman.png', {
     }
 });
 
-k.loadSprite('christin_face', '../src/assets/christin_face.png');
+k.loadSprite('christin_face', christinFaceSpriteUrl);
 
 
 // Elias
 
-k.loadSprite('elias', '../src/assets/child.png', {
+k.loadSprite('elias', eliasSpriteUrl, {
     sliceX: 2,
     sliceY: 4,
     anims: {
@@ -71,7 +77,7 @@ k.loadSprite('elias', '../src/assets/child.png', {
     }
 });
 
-k.loadSprite('elias_face', '../src/assets/elias_face.png');
+k.loadSprite('elias_face', eliasFaceSpriteUrl);
 
 
 // Patrol Component for Elias 

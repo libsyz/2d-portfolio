@@ -5,7 +5,6 @@ import { createMap } from "./map.js";
 import { createHouseMap } from "./house_map.js";
 import { createTempleMap } from "./temple_map.js";
 import { createCaveMap } from "./cave_map.js";
-import { createInterviewer } from "./interviewer.js";
 import { showDialogue, fadeInScene, showDialogueMultiple, showDialogueScrollAcquired, createScroll } from "./utils.js";
 import { createBaddieGreenDemon } from "./baddie_green_demon.js";
 import { createUI } from "./ui.js";
@@ -557,6 +556,10 @@ k.scene('end', async () => {
     const player = await createOfficePlayer();
 
     const shogunBoss = officeMap.get('shogun_boss')[0];
+    const receptionist = officeMap.get('receptionist')[0];
+    const workerOne = officeMap.get('worker_one')[0];
+    const workerTwo = officeMap.get('worker_two')[0];
+
 
     soundManager.trigger('office', 'house');
     fadeInScene();
@@ -624,7 +627,10 @@ k.scene('end', async () => {
                 shogunDialog.onStateEnter('end', () => {
                     shogunBoss.play('dance');
                     player.play('dance');
-                    k.wait(2, () => {
+                    receptionist.play('dance'); 
+                    workerOne.play('dance');
+                    workerTwo.play('dance');
+                    k.wait(5, () => {
                         k.go('thank-you');
                     })
                 })
@@ -857,9 +863,9 @@ k.scene('thank-you', async () => {
     ])
 
     const scrollText = menuTitleContainer.add([
-        k.text("私を雇ってもらう", {
+        k.text("ありがとうございます！", {
             size: 40,
-            width: 480,
+            width: 600,
             align: 'center',
             font: "maru-minya",
         }),
@@ -870,7 +876,7 @@ k.scene('thank-you', async () => {
     ])
 
     const title = menuTitleContainer.add([
-        k.text("THANK YOU FOR PLAYING",
+        k.text("THANK YOU FOR PLAYING!",
             {
             size: 48, // 48 pixels tall
             width: 600,
@@ -883,26 +889,10 @@ k.scene('thank-you', async () => {
         k.color(20, 155, 96)
     ])
 
-    
-    // const subtitle = menuTitleContainer.add([
-    //     k.anchor('center'),
-    //     k.text("An interactive CV adventure",
-    //         {
-    //         size: 32,
-    //         width: 480, // it'll wrap to next line when width exceeds this value
-    //         font: "pixel-script",
-    //         align: 'center' // specify any font you loaded or browser built-in
-    //         }
-    //     ),
-    //     k.anchor('center'),
-    //     k.color(200, 200, 200),
-    //     k.pos(0, 70)
-    // ])
-
 
     const credits = menuTitleContainer.add([
         k.anchor('center'),
-        k.text("Game Design and Testing by Miguel Jimenez",
+        k.text("Game Design and Testing by Miguel Jimenez\nGraphics by pixel-boy and limezu",
             {
             size: 20,
             width: 480, // it'll wrap to next line when width exceeds this value
@@ -924,8 +914,8 @@ k.scene('thank-you', async () => {
         'menu-options-container'
     ])
 
-    const startGame = menuOptionsContainer.add([
-        k.text("Play Again", {
+    const downloadResume = menuOptionsContainer.add([
+        k.text("See Resume", {
             size: 30, 
             width: 200, 
             align: 'left',
@@ -939,10 +929,8 @@ k.scene('thank-you', async () => {
         menuOptionsComp(),
     ])
 
-
-
-    const downloadResume = menuOptionsContainer.add([
-        k.text("See Resume", {
+    const playAgain = menuOptionsContainer.add([
+        k.text("Play Again", {
             size: 30, 
             width: 200, 
             align: 'left',
@@ -958,7 +946,7 @@ k.scene('thank-you', async () => {
 
 
     k.onKeyPress('space', () => {
-        if(startGame.state === 'selected') {
+        if(playAgain.state === 'selected') {
             k.wait(1, () => {
                 k.go('office');
             });
@@ -968,22 +956,21 @@ k.scene('thank-you', async () => {
         }
     })
 
-    // this is a mess let's create state controllers
     k.onKeyPress('down', () => {
-        if (startGame.state === 'selected') {
-            startGame.enterState('unselected');
-            downloadResume.enterState('selected');
+        if (downloadResume.state === 'selected') {
+            downloadResume.enterState('unselected');
+            playAgain.enterState('selected');
         }
     })
 
     k.onKeyDown('up', () => {
-        if (downloadResume.state === 'selected') {
-            downloadResume.enterState('unselected');
-            startGame.enterState('selected');
+        if (playAgain.state === 'selected') {
+            playAgain.enterState('unselected');
+            downloadResume.enterState('selected');
         }   
     })
 
 
 })
 
-k.go('thank-you', 'player_spawn');
+k.go('main', 'player_spawn');

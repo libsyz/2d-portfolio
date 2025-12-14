@@ -4,8 +4,9 @@
 import { k } from './kaboomCtx';
 import { fxComp } from './utils';
 import { charDialogue } from './utils';
+import sparkleGleamSoundUrl from './../audio/fx/sparkle-gleam.mp3';
 
-k.loadSound('sparkle-gleam', './src/audio/fx/sparkle-gleam.mp3');
+k.loadSound('sparkle-gleam', sparkleGleamSoundUrl);
 
 const objectDialogues = {
     'psychology_diploma': ['This is my psychology degree', 'I learned so much about humans here, but also thinking machines', 'Everyone says my work has nothing to do with psychology, but I think it does!'],

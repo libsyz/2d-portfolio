@@ -2,7 +2,12 @@
 
 import { k } from './kaboomCtx.js'
 
-k.loadSound('dialog-select', './src/audio/fx/dialog-select.mp3');
+import dialogueBoxSimpleSpriteUrl from './../assets/dialogue_box_simple.png';   
+import dialogSelectSoundUrl from './../audio/fx/dialog-select.mp3';
+import dialogueInfoSpriteUrl from './../assets/dialogue_info.png';
+import characterShadowSpriteUrl from './../assets/character_shadow.png';
+
+k.loadSound('dialog-select', dialogSelectSoundUrl);
 
 const FRAMERATE = 60;
 

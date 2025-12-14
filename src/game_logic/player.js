@@ -2,9 +2,14 @@ import { k } from './kaboomCtx';
 import { fxComp } from './utils';
 import { showDialogueMultiple } from './utils';
 import { drawShadow } from './utils';
+import playerSpriteUrl from './../assets/player.png';
+import shuriken2SpriteUrl from './../assets/shuriken2.png';
+import playerShurikenThrowSoundUrl from './../audio/fx/player-shuriken-throw.mp3';
+import playerHurtSoundUrl from './../audio/fx/player-hurt.mp3';
+import playerKeyObtainedSoundUrl from './../audio/fx/player-key-obtained.mp3';
+import playerScrollObtainedSoundUrl from './../audio/fx/player-scroll-obtained.mp3';
 
-
-k.loadSprite('player', './src/assets/player.png', {
+k.loadSprite('player', playerSpriteUrl, {
     sliceX: 4,
     sliceY: 6,
     anims: {
@@ -28,7 +33,7 @@ k.loadSprite('player', './src/assets/player.png', {
     }
 })
 
-k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
+k.loadSprite('shuriken2', shuriken2SpriteUrl, {
     sliceX: 2,
     sliceY: 1,
     anims: {
@@ -37,10 +42,10 @@ k.loadSprite('shuriken2', './src/assets/shuriken2.png', {
 })
 
 
-k.loadSound('player-shuriken-throw', './src/audio/fx/player-shuriken-throw.mp3');
-k.loadSound('player-hurt', './src/audio/fx/player-hurt.mp3');
-k.loadSound('player-key-obtained', './src/audio/fx/player-key-obtained.mp3');
-k.loadSound('player-scroll-obtained', './src/audio/fx/player-scroll-obtained.mp3');
+k.loadSound('player-shuriken-throw', playerShurikenThrowSoundUrl);
+k.loadSound('player-hurt', playerHurtSoundUrl);
+k.loadSound('player-key-obtained', playerKeyObtainedSoundUrl);
+k.loadSound('player-scroll-obtained', playerScrollObtainedSoundUrl);
 
 const shurikenComp = () => {
     return {

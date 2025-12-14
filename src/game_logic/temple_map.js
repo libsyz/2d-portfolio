@@ -2,13 +2,17 @@ import { k } from './kaboomCtx.js';
 // import { createInteraction } from './interaction.js';
 // import { seconds } from './utils.js';
 import { createSpawnPoint } from './spawn_point.js';
-
+import templeMapSpriteUrl from './../assets/temple_map.png';
+import templeMapUrl from './../mapdata/temple_map.json';
+import skillsScrollSpriteUrl from './../assets/scroll_fire.png';
+import spiritFaceSpriteUrl from './../assets/spirit_face.png';
+import spiritSpriteUrl from './../assets/spirit.png';
 // load the character sprites 
 
 // spirit
-k.loadSprite('spirit-face', './src/assets/spirit_face.png');
+k.loadSprite('spirit-face', spiritFaceSpriteUrl);
 
-k.loadSprite('spirit',  './src/assets/spirit.png', {
+k.loadSprite('spirit',  spiritSpriteUrl, {
     sliceX: 5,
     sliceY: 1,
     anims: {
@@ -38,13 +42,15 @@ k.loadSprite('spirit',  './src/assets/spirit.png', {
 
 // load interactables 
 
-k.loadSprite('skills_scroll', '../src/assets/scroll_fire.png');
+k.loadSprite('skills_scroll', skillsScrollSpriteUrl);
 
 // load the map
-k.loadSprite('temple_map', './src/assets/temple_map.png');
+
+
+k.loadSprite('temple_map', templeMapSpriteUrl);
 
 const loadMapData = async () => {
-    const mapData = await (await fetch("./src/mapdata/temple_map.json")).json();
+    const mapData = await (await fetch(templeMapUrl)).json();
     return mapData;
 }
 
