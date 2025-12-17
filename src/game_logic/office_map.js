@@ -153,8 +153,6 @@ export const createOfficeMap = async () => {
                 ])
             }
         }
-
-
     }
 
     // Add the characters 

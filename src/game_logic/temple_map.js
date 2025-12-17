@@ -50,8 +50,8 @@ k.loadSprite('skills_scroll', skillsScrollSpriteUrl);
 k.loadSprite('temple_map', templeMapSpriteUrl);
 
 const loadMapData = async () => {
-    const mapData = await (await fetch(templeMapUrl)).json();
-    return mapData;
+    const mapData = templeMapUrl;
+    return mapData
 }
 
 

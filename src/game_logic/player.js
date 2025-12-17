@@ -146,7 +146,6 @@ export const createPlayer = (args={}) => {
         dialogueComp(),
         playerDanceComp(),
         fxComp(),
-        k.z(10),
         { 
             fxCollection: {
                 //event: audio name played
