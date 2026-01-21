@@ -19,26 +19,43 @@ k.setBackground(255, 255, 255);
 
 // Load fonts
 
-k.loadFont("pixel-script", "./src/fonts/pixel-script.ttf");
-k.loadFont("maru-minya", "./src/fonts/maru-minya.ttf");
-k.loadFont("pixelify-sans", "./src/fonts/pixelify-sans.ttf");
-k.loadFont("micro-5", "./src/fonts/micro-5-regular.ttf");
+import pixelScriptFontUrl from "/src/fonts/pixel-script.ttf";
+import maruMinyaFontUrl from "/src/fonts/maru-minya.ttf";
+import pixelifySansUrl from "/src/fonts/pixelify-sans.ttf";
+import micro5FontUrl from "/src/fonts/micro-5-regular.ttf";
+
+k.loadFont("pixel-script", pixelScriptFontUrl);
+k.loadFont("maru-minya", maruMinyaFontUrl);
+k.loadFont("pixelify-sans", pixelifySansUrl);
+k.loadFont("micro-5", micro5FontUrl);
 
 
 // Load music
+import mainMusicUrl from './..//audio/musics/main.mp3'
+import houseMusicUrl from './../audio/musics/house.mp3'
+import templeMusicUrl from './../audio/musics/temple.mp3'
+import caveMusicUrl from './../audio/musics/cave.mp3'
+import officeMusicUrl from './../audio/musics/office.mp3'
+import defaultVoiceUrl from './../audio/fx/default-voice.mp3'
+import playerVoiceUrl from './../audio/fx/player-voice.mp3'
 
-k.loadMusic('bgm-main', './src/audio/musics/main.mp3');
-k.loadMusic('bgm-house', './src/audio/musics/house.mp3');
-k.loadMusic('bgm-temple', './src/audio/musics/temple.mp3');
-k.loadMusic('bgm-cave', './src/audio/musics/cave.mp3');
-k.loadMusic('bgm-office', './src/audio/musics/office.mp3');
-k.loadSound('default-voice', './src/audio/fx/default-voice.mp3');
-k.loadSound('player-voice', './src/audio/fx/player-voice.mp3');
+k.loadMusic('bgm-main', mainMusicUrl);
+k.loadMusic('bgm-house', houseMusicUrl);
+k.loadMusic('bgm-temple', templeMusicUrl);
+k.loadMusic('bgm-cave', caveMusicUrl);
+k.loadMusic('bgm-office', officeMusicUrl);
+k.loadSound('default-voice', defaultVoiceUrl);
+k.loadSound('player-voice', playerVoiceUrl);
 
 // import sprites that need to be loaded before anything else
 
-k.loadSprite('dialogue_box_simple', './src/assets/dialogue_box_simple.png');
-k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
+
+import dialogueBoxUrl from './../assets/dialogue_box_simple.png'
+import dialogueInfoUrl from  './../assets/dialogue_info.png'
+
+
+k.loadSprite('dialogue_box_simple', dialogueBoxUrl);
+k.loadSprite('dialogue_info', dialogueInfoUrl, {
     sliceX: 4, 
     sliceY: 1,
     anims: {
@@ -46,11 +63,18 @@ k.loadSprite('dialogue_info', './src/assets/dialogue_info.png', {
     }
 })
 
-k.loadSprite('intro_background', './src/assets/intro_background.png');
-k.loadSprite('experience_scroll', './src/assets/scroll_thunder.png');
-k.loadSprite('player_face', './src/assets/player_face.png');
-k.loadSprite('character-shadow', './src/assets/character_shadow.png');
-k.loadSprite('menu-parchment', './src/assets/parchment.png');
+
+import introBackgroundUrl from './../assets/intro_background.png'
+import experienceScrollUrl from './../assets/scroll_thunder.png'
+import playerFaceUrl from './../assets/player_face.png'
+import characterShadowUrl from './../assets/character_shadow.png'
+import menuParchmentUrl from './../assets/parchment.png'
+
+k.loadSprite('intro_background', introBackgroundUrl);
+k.loadSprite('experience_scroll', experienceScrollUrl);
+k.loadSprite('player_face', playerFaceUrl);
+k.loadSprite('character-shadow', characterShadowUrl);
+k.loadSprite('menu-parchment', menuParchmentUrl);
 
 // load gamestate, available to all the scenes
 
@@ -229,7 +253,6 @@ k.scene('intro', () => {
                 k.go('office');
             });
         } else {
-            k.debug.log('should open CV');
             window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })
@@ -480,7 +503,6 @@ k.scene('house', async (playerSpawnPoint) => {
     })
 
     k.onCollide('player', 'exit', () => {
-        k.debug.log('exit');
         k.go('main', 'house_exit_spawn', 'scene_1');
     })
 
@@ -951,7 +973,6 @@ k.scene('thank-you', async () => {
                 k.go('office');
             });
         } else {
-            k.debug.log('should open CV');
             window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
         }
     })

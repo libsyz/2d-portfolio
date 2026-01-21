@@ -9,7 +9,7 @@ const mapSprite = k.loadSprite('cave_map', caveMapSpriteUrl);
 
 
 const loadMapData = async () => {
-    const mapData = await (await fetch(caveMapUrl)).json();
+    const mapData = caveMapUrl;
     return mapData;
 }
 

@@ -1,8 +1,8 @@
 import { k } from './kaboomCtx';
 
+import treasureKeySpriteUrl from '/src/assets/key.png';
 
-
-k.loadSprite('treasure_key', './src/assets/key.png', {
+k.loadSprite('treasure_key', treasureKeySpriteUrl, {
     sliceX: 1,
     sliceY: 1
 })

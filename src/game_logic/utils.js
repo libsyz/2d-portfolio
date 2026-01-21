@@ -282,7 +282,6 @@ export const userSelect = (gameState, optionsArray) => {
         }
 
         selectBox.activeOption += 1
-        k.debug.log('down');
         k.play('dialog-select');
 
         selectBox.children.forEach((el) => {

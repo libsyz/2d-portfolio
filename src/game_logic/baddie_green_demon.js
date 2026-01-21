@@ -220,7 +220,6 @@ export const createBaddieGreenDemon = (gameState, baddieType, baddieLocation, sh
     // Throws fireball at player when enters range
 
     baddieGreenDemonPlayerDetectionArea.onCollide('player', (player) => {
-        k.debug.log(baddieGreenDemon.fireBallLoop);
         if (!baddieGreenDemon.fireBallLoop) {
             
             baddieGreenDemon.fireBallLoop = k.loop(1, () => {
