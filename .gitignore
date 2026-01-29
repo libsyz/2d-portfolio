@@ -28,7 +28,6 @@ dist-ssr
 *.png
 ninja_adventure_artist_assets
 mapdata/*.tsj
-assets
 *.tsj
 *.tmx
 *.tiled-project
