@@ -3,36 +3,14 @@
 
 -- 
 
--- Final Screen --
+-- Final Check Before Launch! --
 
-[X] Jutsu Animation when Miguel releases the scrolls
-[X] Shock animation when the Shogun sees the scrolls
-[X] Everyone dances when the Shogun welcomes Miguel to the Co
-
--- Thank you for playing Screen -- 
-[X] Concept 
- - Very similar to start screen, no complications
- - 3 options:
-    - Contact miguel
-    - See Full CV on Notion
-    - Play Again
-
-
--- Scroll Capture --
-
-[X] Add success dance move when scroll is obtained
-[ ] Add effect? ( i.e. thunder around character when thunder scroll obtained? )
-
-
--- House --
-
---- Forest -- 
-
-[] Layering - When the player passes close to a tree, he should go under it and not over it 
-   - But this makes 0 sense because I dont want to have the forest layer as a separate set of objects 
-   - So I need to work on the collision detection of the player so it doesn't 'crawl' over vertical things
-
--
+[] Resume Page Needs to be better
+[] Add a Domain // miguelleojimenez.c
+[] Fix Dialogues
+[] Make sure you start at the menu
+[] Music Vol Adjustment
+[] Test Runs
 
 
 ## Bugs
@@ -68,7 +46,7 @@ chest but does not have the key yet
 
 [] In the bedroom, it would be cool if you could change colors in the wardrobe and keep it throughout the game 
 
-[] Player Dance/Celebrate animaetion when scroll is obtained
+[X] Player Dance/Celebrate animaetion when scroll is obtained
 
 [] Shuriken particle hit against baddie green demon
 

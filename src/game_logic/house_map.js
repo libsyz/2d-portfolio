@@ -10,6 +10,7 @@ import christinSpriteUrl from './../assets/woman.png';
 import christinFaceSpriteUrl from './../assets/christin_face.png';
 import eliasSpriteUrl from './../assets/child.png';
 import eliasFaceSpriteUrl from './../assets/elias_face.png';
+import sparkSpriteUrl from './../assets/spark.png';
 
 // load the map
 const mapSprite = k.loadSprite('house_map', houseMapSpriteUrl);
@@ -22,7 +23,7 @@ const loadMapData = async () => {
 }
 
 // load sparkle effect
-k.loadSprite('sparkle', './src/assets/spark.png', {
+k.loadSprite('sparkle', sparkSpriteUrl, {
     sliceX: 4,
     sliceY: 1,
     anims: {
