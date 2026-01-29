@@ -14,7 +14,7 @@ export const createGameState = () => {
                 this.done = true
             }
         }, 
-        scrolls: ['x'],
+        scrolls: [],
         updateScrolls(scroll) {
             // Check if the scroll is already in the array before adding it
             if (!this.scrolls.includes(scroll)) {
