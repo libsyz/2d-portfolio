@@ -583,7 +583,7 @@ k.scene('end', async () => {
     const workerTwo = officeMap.get('worker_two')[0];
 
 
-    soundManager.trigger('office', 'house');
+    soundManager.trigger('play-bgm', 'office');
     fadeInScene();
     // fourth is the way point that is in front of the Shogun
     player.moveTo(officeMap.get('fourth')[0].worldPos());
@@ -599,7 +599,7 @@ k.scene('end', async () => {
         let shogunDialog = showDialogueMultiple(
             'shogun_boss-face', 
             [
-                'So you are now back', 
+                'So you are back', 
                 'I hope you have something to show??'
             ],
             'default-voice'
@@ -994,4 +994,4 @@ k.scene('thank-you', async () => {
 
 })
 
-k.go('main', 'player_spawn');
+k.go('intro', 'player_spawn');

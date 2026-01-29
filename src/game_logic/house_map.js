@@ -18,7 +18,7 @@ const mapSprite = k.loadSprite('house_map', houseMapSpriteUrl);
 
 
 const loadMapData = async () => {
-    const mapData = await (await fetch(houseMapUrl)).json();
+    const mapData = await houseMapUrl;
     return mapData;
 }
 

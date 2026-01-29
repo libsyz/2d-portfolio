@@ -4,7 +4,7 @@
 export const createSoundManager = (k) => { 
     const soundManager = k.add([
         'sound_manager',
-        k.state('off', ['on', 'off']),
+        k.state('on', ['on', 'off']),
         {
             currentBGM: null,
             sounds: {
