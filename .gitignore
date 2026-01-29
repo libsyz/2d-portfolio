@@ -25,8 +25,8 @@ dist-ssr
 
 
 # Assets
-*.png
 ninja_adventure_artist_assets
+ninja_adventure_artist_assets/*
 mapdata/*.tsj
 *.tsj
 *.tmx
