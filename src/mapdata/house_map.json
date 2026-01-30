@@ -1,12 +1,4 @@
 { "compressionlevel":-1,
- "editorsettings":
-    {
-     "export":
-        {
-         "format":"json",
-         "target":"house_map.json"
-        }
-    },
  "height":40,
  "infinite":false,
  "layers":[
@@ -839,8 +831,8 @@
                  "rotation":0,
                  "type":"",
                  "visible":true,
-                 "width":15.8300505111535,
-                 "x":255.939289943689,
+                 "width":80.83,
+                 "x":223.94,
                  "y":616.284409212848
                 }],
          "opacity":1,
