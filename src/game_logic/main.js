@@ -1002,4 +1002,4 @@ k.scene('thank-you', async () => {
 
 })
 
-k.go('main', 'player_spawn');
+k.go('intro', 'player_spawn');
