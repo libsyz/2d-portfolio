@@ -37,8 +37,9 @@ const tutorialComponent = (gameState) => {
             ])
 
             tutorialContainer.add([
-                k.pos(180, 0),
+                k.pos(650, 70),
                 k.scale(4),
+                k.anchor('center'),
                 k.sprite('tutorial')
             ])
     

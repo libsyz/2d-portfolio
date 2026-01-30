@@ -42,7 +42,13 @@ export const createGameState = () => {
         playerHasKey: false,
         playerObtainedKey() {
             this.playerHasKey = true;
-        }
+        },     
+        reset() {
+            this.scrolls = [];
+            this.baddieGreenDemonsInCave = 0;
+            this.playerHasKey = false;
+            this.isBaddieGreenDemonInForestDead = false;
+        },
 
     }
 }

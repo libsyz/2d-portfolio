@@ -1,20 +1,22 @@
 
 ## Todo 
-
 -- 
 
 -- Final Check Before Launch! --
 
-[] Resume Page Needs to be better
 [] Add a Domain // miguelleojimenez.c
+[] Make sure sound is on start
 [] Fix Dialogues
-[] Make sure you start at the menu
+[] Make sure you start at the menu 
 [] Music Vol Adjustment
 [] Test Runs
-
+[] Improve Notion Page
+[x] Edge of the screen load
+[X] More time needs to pass before launching game after intro screen so you can read the caption fully
 
 ## Bugs
 
+[X] Spark not loading
 [ ] Player z is above clouds! 
 [ ] Spawn points for clouds seem like it's coming out of nowhere 
 
@@ -22,7 +24,7 @@
 chest but does not have the key yet
 
 [ ] Player is able to move when opening a chest on the dungeon!
-
+[ ] Play Again should clear the gamestate
 
 [] Upper corner of the forest is wrong
 

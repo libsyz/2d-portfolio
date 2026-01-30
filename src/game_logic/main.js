@@ -253,7 +253,9 @@ k.scene('intro', () => {
                 k.go('office');
             });
         } else {
-            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            k.wait(1, () => {
+                window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            });
         }
     })
 
@@ -758,7 +760,7 @@ k.scene('office', async () => {
         k.wait(11,() => { dialogBox.trigger('play-dialogue', 'dialog-box') });
 
         dialogBox.onStateEnter('end', () => {
-            k.wait(1, () => k.go('main', 'player_spawn'));
+            k.wait(2, () => k.go('main', 'player_spawn'));
         })
 
     })
@@ -970,10 +972,13 @@ k.scene('thank-you', async () => {
     k.onKeyPress('space', () => {
         if(playAgain.state === 'selected') {
             k.wait(1, () => {
+                gameState.reset();
                 k.go('office');
             });
         } else {
-            window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            k.wait(1, () => {
+                window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+            });
         }
     })
 
@@ -994,4 +999,4 @@ k.scene('thank-you', async () => {
 
 })
 
-k.go('intro', 'player_spawn');
+k.go('main', 'player_spawn');
