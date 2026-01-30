@@ -539,6 +539,8 @@ k.scene('temple', async (playerSpawnPoint) => {
         // again before obtaining the scroll
         const dialogueStartObj = templeMap.get('dialogue_start')[0];
         dialogueStartObj.destroy();
+
+        player.clearMovementEvents();
         gameState.updateScrolls('skills');
         ui.getScroll('skills');
         player.fxPlay('scrollObtained');
@@ -558,6 +560,7 @@ k.scene('temple', async (playerSpawnPoint) => {
             // somehow I can't find the map, so I'm assuming the map 
             // is the first element that can be found, and then I am 
             // finding the scroll 
+            player.setPlayerMovementEvents();
             k.get('temple_map')[0].get('skills_scroll')[0].destroy()
             player.play('idle-down');
             if ( gameState.checkFinished() ) {

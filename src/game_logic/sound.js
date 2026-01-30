@@ -26,7 +26,7 @@ export const createSoundManager = (k) => {
         } 
         
         soundManager.currentBGM = k.play(`${soundManager.sounds[soundsKey]}`, {
-            volume: 0.0,
+            volume: 0.5,
             loop: true, 
             paused: soundManager.state === 'on' ? false : true
         })
