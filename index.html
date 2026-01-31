@@ -1,6 +1,5 @@
 <!doctype html>
 <html lang="en">
-  
   <head>
     <link rel="stylesheet" href="./style.css">
     <meta charset="UTF-8" />
@@ -8,6 +7,19 @@
     <title>Vite App</title>
   </head>
   <body>
+    <script>
+      function isProbablyMobile() {
+        const smallScreen = window.matchMedia("(max-width: 768px)").matches;
+        const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
+        return smallScreen || coarsePointer;
+      }
+    
+      if (isProbablyMobile()) {
+        window.location.href = "/mobile";
+      }
+    
+       
+    </script>
     <div id="app">
       <canvas id="game"></canvas>
     </div>

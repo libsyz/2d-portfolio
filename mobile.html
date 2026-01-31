@@ -1,0 +1,42 @@
+<html lang="en">
+  
+  <head>
+    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, viewport-fit=cover, user-scalable=no">
+    <title>Vite App</title>
+  </head>
+  <body>
+    <style> 
+
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            /* overflow: hidden;     key */
+            /* touch-action: none;   prevents some gesture scrolling */
+        }
+        #app {
+            position: fixed;
+            inset: 0;              /* top:0 right:0 bottom:0 left:0 */
+            overflow: hidden;
+            background: #000;      /* letterbox color */
+        }
+
+        #mobile-game {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform-origin: 50% 50%;
+        }
+
+
+    </style>
+    <div id="app">
+        <h1> Hello world </h1>
+      <canvas id="mobile-game"  width="720" height="1600"></canvas>
+    </div>
+    <script type="module" src="src/game_logic/mobile.js"></script>
+  </body>
+</html>
