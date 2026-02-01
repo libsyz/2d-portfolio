@@ -4,7 +4,13 @@ import { defineConfig } from 'vite';
 export default defineConfig({
     base: "./",
     build: {
-        minify: "terser"
+        minify: "terser",
+        rollupOptions: {
+            input: {
+              main: "index.html",
+              mobile: "mobile.html",
+            },
+          }
     },
     server: {
         headers: {
