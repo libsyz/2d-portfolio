@@ -459,5 +459,22 @@ export const addMenuPlayer = (menuObj, xPos, yPos) => {
     return menuPlayer;
 }
 
+export const addMobileMenuPlayer = (menuObj, xPos, yPos) => {
+    const playerScale = 4;
+    const menuPlayer = menuObj.add([
+        k.sprite('player'),
+        k.pos(xPos, yPos),
+        k.anchor('center'),
+        k.scale(playerScale),
+        k.body(),
+        k.area(),
+        'player',
+    ])
+
+    menuPlayer.play('idle-down');
+
+    return menuPlayer;
+}
+
 
 

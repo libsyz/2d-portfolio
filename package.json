@@ -12,6 +12,7 @@
     "vite": "^6.3.5"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.93.3",
     "kaplay": "^3001.0.19",
     "terser": "^5.43.1"
   }

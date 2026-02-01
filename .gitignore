@@ -35,3 +35,7 @@ mapdata/*.tsj
 tilesets
 sound
 sound/*
+
+
+# Environment variables
+.env

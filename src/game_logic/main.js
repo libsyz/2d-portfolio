@@ -12,7 +12,8 @@ import { createGameState } from "./game_state.js";
 import { createSkillsCutscene } from "./skills_cutscene.js";
 import { createSoundManager } from "./sound.js";
 import { addMenuPlayer } from "./player.js";
-
+import { createClient } from '@supabase/supabase-js'
+import { getOrCreateUuid } from "./analytics.js";
 
 k.setBackground(255, 255, 255);
 
@@ -76,6 +77,15 @@ k.loadSprite('player_face', playerFaceUrl);
 k.loadSprite('character-shadow', characterShadowUrl);
 k.loadSprite('menu-parchment', menuParchmentUrl);
 
+// import supabase client for analytics
+
+
+const supabaseUrl = 'https://bchajfmkfaftikuwwedc.supabase.co'
+const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+
+const supabase = createClient(supabaseUrl, supabaseKey)
+
+
 // load gamestate, available to all the scenes
 
 const gameState = createGameState();
@@ -102,10 +112,12 @@ gameEndSceneController.on('endgame', () => {
 
 const soundManager = createSoundManager(k);
 
-k.scene('intro', () => {
+k.scene('intro', async () => {
 
     const SCREEN_HEIGHT = 704;
     const SCREEN_WIDTH = 1280;
+
+    trackGameStage('intro')
 
     k.setBackground(12, 12, 12);
     fadeInScene();
@@ -281,7 +293,7 @@ k.scene("main", async (playerSpawnPoint, sceneName) => {
 
     const map = await createMap(sceneName);
     const ui = createUI(gameState, soundManager);
-    
+    trackGameStage('main');
 
     soundManager.trigger('play-bgm', 'main');
 
@@ -379,6 +391,7 @@ k.scene("main", async (playerSpawnPoint, sceneName) => {
 });
 
 k.scene('house', async (playerSpawnPoint) => { 
+    trackGameStage('house')
     const houseMap = await createHouseMap(gameState);
     const ui = createUI(gameState, soundManager);
     k.setBackground(58, 58, 81);
@@ -511,6 +524,7 @@ k.scene('house', async (playerSpawnPoint) => {
 })
 
 k.scene('temple', async (playerSpawnPoint) => { 
+    trackGameStage('temple');
     const templeMap = await createTempleMap();
     const ui = createUI(gameState, soundManager);
     soundManager.trigger('play-bgm', 'temple');
@@ -579,6 +593,7 @@ k.scene('temple', async (playerSpawnPoint) => {
 
 
 k.scene('end', async () => { 
+    trackGameStage('end')
     const officeMap = await createOfficeMap();
     const player = await createOfficePlayer();
 
@@ -672,6 +687,7 @@ k.scene('end', async () => {
 
 
 k.scene('office', async () => { 
+    trackGameStage('office')
     const officeMap = await createOfficeMap();
     soundManager.trigger('play-bgm', 'office');
 
@@ -771,7 +787,7 @@ k.scene('office', async () => {
 })
 
 k.scene('cave', async (playerSpawnPoint) => {
-
+    trackGameStage('cave');
     const caveMap = await createCaveMap(gameState);
     const ui = createUI(gameState, soundManager);
     soundManager.trigger('play-bgm', 'cave');
@@ -849,6 +865,8 @@ k.scene('cave', async (playerSpawnPoint) => {
 k.scene('thank-you', async () => {
     const SCREEN_HEIGHT = 704;
     const SCREEN_WIDTH = 1280;
+
+    trackGameStage('thank-you');
 
     k.setBackground(12, 12, 12);
     fadeInScene();
