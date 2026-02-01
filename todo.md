@@ -3,7 +3,7 @@
 -- 
 
 -- Final Check Before Launch! --
-[ ] Handle Mobile users
+[X] Handle Mobile users
 [!] Music Vol Adjustment - BGM is too loud
 [X] Make sure sound is on start
 [X] Eliminate Gamepad from Tutorial png and reposition
@@ -31,7 +31,6 @@ chest but does not have the key yet
 
 
 [] Upper corner of the forest is wrong
-
 
 ## Code quality 
 
