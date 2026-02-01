@@ -13,7 +13,7 @@ import { createSkillsCutscene } from "./skills_cutscene.js";
 import { createSoundManager } from "./sound.js";
 import { addMenuPlayer } from "./player.js";
 import { createClient } from '@supabase/supabase-js'
-import { getOrCreateUuid } from "./analytics.js";
+import { trackGameStage } from "./analytics.js";
 
 k.setBackground(255, 255, 255);
 
@@ -80,7 +80,7 @@ k.loadSprite('menu-parchment', menuParchmentUrl);
 // import supabase client for analytics
 
 
-const supabaseUrl = 'https://bchajfmkfaftikuwwedc.supabase.co'
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey)
