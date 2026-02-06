@@ -10,9 +10,9 @@ k.loadSound('sparkle-gleam', sparkleGleamSoundUrl);
 
 const objectDialogues = {
     'psychology_diploma': ['This is my psychology degree', 'I learned so much about humans here, but also thinking machines', 'Everyone says my work has nothing to do with psychology, but I think it does!'],
-    'book_shelf': ['These are some of my favorite books', 'There are loads of stuff about psychology, product management, systems thinking...', 'Virtual readers are cool, but there is something about paper I still love', 'You can check a full list of books here'],
-    'globe': ['This globe has pins with the places we have been to', 'I have worked in 30+ countries, and lived in Europe, Asia and Latin America', 'Travelling is really a cure for ignorance', 'Cant wait for the next adventure!'],
-    'painting': ['A picture of Tarifa, Cadiz', 'You can see Africa across the sea', 'My dads family comes from here'],
+    'book_shelf': ['These are some of my favorite\nbooks!', 'There\'s psychology, computer\nscience, economics, phylosophy\nand some graphic novels', 'There is something special about\nreading on paper'],
+    'globe': ['This globe has pins with the\nplaces we have been to', 'I have worked in 30+ countries,\nand lived in Europe, Asia and\nLatin America', 'Travelling really can be a cure for ignorance', 'Can\'t wait for the next\nadventure!'],
+    'painting': ['A picture of Tarifa, Cadiz', 'You can see Africa across the\nsea', 'My dads family comes from here'],
 }
 
 
