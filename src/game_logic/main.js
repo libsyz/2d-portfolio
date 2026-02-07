@@ -95,9 +95,12 @@ const gameEndSceneController = k.add([
 ])
 
 gameEndSceneController.on('endgame', () => { 
+    const player = k.get('player')[0];
+    player.clearMovementEvents();
+    player.clearAttackEvents();
     const dialog = showDialogueMultiple('player_face', [
         'I have found all my scrolls!',
-        'Time to go back to Shogun Corp!',
+        'It\'s time to return to Shogun\nCorp',
     ], 'player-voice')
 
     k.onKeyRelease('space', () => {
@@ -436,21 +439,21 @@ k.scene('house', async (playerSpawnPoint) => {
 
         await openChestEvent.cancel();
 
-        const dialog = await showDialogueScrollAcquired(
-            gameState,
+        const dialogue = await player.playerShowDialogue(
             'player_face', 
             [
-                'I found my education scroll!', 
-                'I have an psychology degree\na masters in organizational development',
-                'and intensives in\nsoftware development, AI and data analysis'
+                'I found my education scroll!\nIt reveals how I learned to\nthink.', 
+                'Psychology and Organizational\nDevelopment taught me how people\nand systems behave',
+                'Training in software\ndevelopment and AI showed me\nhow ideas can come to life.'
             ],
-            gameEndSceneController
+            'player-voice'
         );
 
         ui.getScroll('education');
         gameState.updateScrolls('education');
+        k.trigger('play-dialogue', 'dialog-box');
 
-        dialog.onStateEnter('end', () => {
+        dialogue.onStateEnter('end', () => {
             player.play('idle-down');
             if ( gameState.checkFinished()) {
                 gameEndSceneController.trigger('endgame');
@@ -558,19 +561,18 @@ k.scene('temple', async (playerSpawnPoint) => {
         gameState.updateScrolls('skills');
         ui.getScroll('skills');
         player.fxPlay('scrollObtained');
-        const dialog = showDialogueScrollAcquired(
-            gameState,
-            'player_face', 
-            [
-                'I found my skills scroll', 
-                'I know applied AI, tecnical\nproduct management,',
-                'organizational psychology and operations management', 
-            ]
-            );
-        
+        const dialogueBox = player.playerShowDialogue('player_face', 
+                [
+                    'Here is my skills scroll! I use these to build and solve\nproblems.', 
+                    'I know how to apply AI and\nautomation to real-world\nchallenges,',
+                    'Technical product management to turn vision into delivery...',
+                    'and use psychology to drive\nbehavior change'
+                ], 'player-voice')
+
+        k.trigger('play-dialogue', 'dialog-box');
         player.dance();
 
-        dialog.onStateEnter('end', () => {
+        dialogueBox.onStateEnter('end', () => {
             // hating this line of code but I need to keep moving forward
             // somehow I can't find the map, so I'm assuming the map 
             // is the first element that can be found, and then I am 
@@ -620,8 +622,8 @@ k.scene('end', async () => {
         let shogunDialog = showDialogueMultiple(
             'shogun_boss-face', 
             [
-                'So you are back', 
-                'I hope you have something to show??'
+                'So you have returned', 
+                'The journey changes a person.\nLet’s see what it gave you'
             ],
             'default-voice'
         )
@@ -656,8 +658,8 @@ k.scene('end', async () => {
                 shogunDialog = showDialogueMultiple(
                     'shogun_boss-face', 
                     [
-                        'Wow, your credentials look very impressive', 
-                        'Welcome to Shogun and Co!'
+                        'These scrolls tell a rare\nstory. Impressive', 
+                        'Welcome to Shogun Corp!'
                     ],
                     'default-voice'
                 );
@@ -737,7 +739,7 @@ k.scene('office', async () => {
         let dialogBox = showDialogueMultiple(
             'receptionist-face', 
             [
-             'Welcome to NinjaCorp! You must\nbe Miguel',
+             'Welcome to Shogun Corp! You must\nbe Miguel',
              'Mr Shogun is ready for your\ninterview'
             ], 
             'default-voice'
@@ -764,10 +766,10 @@ k.scene('office', async () => {
         let dialogBox = showDialogueMultiple(
             'shogun_boss-face', 
             [
-             'Mr Miguel! Lets get started with\nyour interview',
+             'Ah, Mr Miguel! Lets get started with\nyour interview',
              'We will go over your scrolls of\neducation, skills and experience',
-             'what do you mean you did not\nbring them?? what a joke!',
-             'Go back to your village and come\nback when you have them!'
+             '…What’s that? You came without them? Bold, but foolish',
+             'Return to your village and come\nback when you have them all!'
             ], 
             'default-voice')
 
@@ -839,12 +841,12 @@ k.scene('cave', async (playerSpawnPoint) => {
                 openChestEvent.cancel();
                 const dialogueBox = player.playerShowDialogue('player_face', 
                     [
-                        'I found my experience scroll!', 
-                        'I have worked globally in\nconsulting',
-                        'worked in product and ops\nfor fast growing startups',
-                        'and worked for big\ntech companies too!'
+                        'I found my experience scroll!\nThe pages tell where I have\nbeen tested', 
+                        'Consulting globally sharpened my\nperspective...',
+                        '…fast-growing startups taught\nme ownership, speed and\npragmatism...',
+                        '...and large tech companies\nrefined my sense of scale and\nsystems thinking!'
                     ],'player-voice');
-
+                
                 dialogueBox.onStateEnter('end', () => { 
                     player.play('idle-down');
                     if ( gameState.checkFinished() ) {
@@ -1027,4 +1029,4 @@ k.scene('thank-you', async () => {
 
 })
 
-k.go('cave', 'player_spawn');
+k.go('intro', 'player_spawn');

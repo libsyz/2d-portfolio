@@ -9,11 +9,33 @@ import sparkleGleamSoundUrl from './../audio/fx/sparkle-gleam.mp3';
 k.loadSound('sparkle-gleam', sparkleGleamSoundUrl);
 
 const objectDialogues = {
-    'psychology_diploma': ['This is my psychology degree', 'I learned so much about humans here, but also thinking machines', 'Everyone says my work has nothing to do with psychology, but I think it does!'],
-    'book_shelf': ['These are some of my favorite\nbooks!', 'There\'s psychology, computer\nscience, economics, phylosophy\nand some graphic novels', 'There is something special about\nreading on paper'],
-    'globe': ['This globe has pins with the\nplaces we have been to', 'I have worked in 30+ countries,\nand lived in Europe, Asia and\nLatin America', 'Travelling really can be a cure for ignorance', 'Can\'t wait for the next\nadventure!'],
-    'painting': ['A picture of Tarifa, Cadiz', 'You can see Africa across the\nsea', 'My dads family comes from here'],
+    'psychology_diploma': [
+        'My psychology degree.',
+        'This is where I learned about thinking,\ndeciding, and changing.',
+        'People say technology work has nothing to do with psychology.',
+        'I couldn’t disagree more.'
+    ],
+    'book_shelf': [
+        'Some of my favorite books.',
+        'Psychology. Computer science.\nEconomics.',
+        'A bit of philosophy.',
+        'And yes… graphic novels.',
+        'There’s something different\nabout reading on paper.',
+        'It slows you down in a good way.'
+    ],
+    'globe': [
+        'A globe marked with places\nI’ve worked. Over 30 countries.',
+        'Lived across Europe, Asia,\nand Latin America.',
+        'Travel teaches you quickly\nhow little you know.',
+    ],
+    'painting': [
+        'A painting of the strait of\nGibraltar.',
+        'On clear days, you can see\nAfrica across the sea.',
+        'My dad’s family comes from here.',
+        'I like remembering where\nthe journey started.'
+    ]
 }
+
 
 
 const sparkleComp = (obj) => {

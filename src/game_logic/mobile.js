@@ -14,7 +14,7 @@ import playerSpriteUrl from "/src/assets/player.png";
 
 const BASE_W = 720;
 const BASE_H = 1600;
-const RESUME_URL = 'https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4';
+const RESUME_URL = 'https://miguel-jimenez.super.site/';
 const canvas = document.getElementById('mobile-game');
 
 function sizeCanvasCss() {
