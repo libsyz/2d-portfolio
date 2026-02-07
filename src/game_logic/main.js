@@ -82,6 +82,7 @@ k.loadSprite('menu-parchment', menuParchmentUrl);
 
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseKey = import.meta.env.VITE_SUPABASE_KEY;
+const resumeUrl = "https://miguel-jimenez.super.site/"
 
 const supabase = createClient(supabaseUrl, supabaseKey)
 
@@ -268,7 +269,7 @@ k.scene('intro', async () => {
             });
         } else {
             k.wait(1, () => {
-                window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+                window.location.assign(resumeUrl);
             });
         }
     })
@@ -1007,7 +1008,7 @@ k.scene('thank-you', async () => {
             });
         } else {
             k.wait(1, () => {
-                window.location.assign('https://www.notion.so/mjimenez/Hi-Company-I-m-Miguel-662256cee933457ba77c21fd9fdb4fee?pvs=4');
+                window.location.assign(resumeUrl);
             });
         }
     })
