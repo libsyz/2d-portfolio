@@ -320,7 +320,7 @@ k.scene('intro', async () => {
         startGame.enterState('selected');
         const player = startGame.get('player')[0]
         player.trigger('throw-shuriken-menu');
-        k.wait(0.2, () => {
+        k.wait(1, () => {
             k.go('office');
         })
     })
@@ -330,7 +330,7 @@ k.scene('intro', async () => {
         startGame.enterState('unselected');
         const player = downloadResume.get('player')[0]
         player.trigger('throw-shuriken-menu');
-        k.wait(0.2, () => {
+        k.wait(1, () => {
             window.location.assign(resumeUrl);
         })
     })
