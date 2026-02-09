@@ -456,6 +456,18 @@ export const addMenuPlayer = (menuObj, xPos, yPos) => {
         })
     })
 
+    k.on('throw-shuriken-menu', 'player', (player) => {
+        player.direction = k.RIGHT;
+        player.play('attack-right');
+        player.throwShuriken();
+        player.fxPlay('attack');
+        k.wait(0.2, () => {
+            player.play('idle-right');
+        })
+    })
+
+ 
+
     return menuPlayer;
 }
 

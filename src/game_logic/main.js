@@ -131,15 +131,20 @@ k.scene('intro', async () => {
 
         return {
             add() { 
+                this.player = false;
                 this.onStateEnter('selected', () => {
                     this.color = selectedColor;
                     k.play('dialog-select');
-                    addMenuPlayer(this, -150, -10);
+                    if (!this.player) {
+                       addMenuPlayer(this, -150, -10);
+                       this.player = true
+                    }
                 }) 
                 this.onStateEnter('unselected', () => {
                     this.color = unselectedColor;
                     if (this.children.length > 0 ) {
                         this.children.forEach(el => el.destroy());
+                        this.player = false;
                     }
                 })
             }
@@ -152,6 +157,7 @@ k.scene('intro', async () => {
         k.color(50, 169, 69),
         k.opacity(0),
         k.rect(10, 10),
+        'menu-title-container'
     ])
     
     const parchment = menuTitleContainer.add([
@@ -221,7 +227,6 @@ k.scene('intro', async () => {
 
 
     const menuOptionsContainer = k.add([
-        k.rect(10, 10),
         k.anchor('center'),
         k.pos(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 3 * 2),
         k.color(60, 169, 69),
@@ -229,7 +234,17 @@ k.scene('intro', async () => {
         'menu-options-container'
     ])
 
-    const startGame = menuOptionsContainer.add([
+    const startGameContainer = menuOptionsContainer.add([
+        k.rect(300, 30),
+        k.anchor('center'),
+        k.area(),
+        k.pos(0, 0),
+        k.color(60, 169, 69),
+        k.opacity(0),
+        'start-game-container'
+    ])
+
+    const startGame = startGameContainer.add([
         k.text("Start Game", {
             size: 30, 
             width: 200, 
@@ -244,9 +259,18 @@ k.scene('intro', async () => {
         menuOptionsComp(),
     ])
 
+    const downloadResumeContainer = menuOptionsContainer.add([
+        k.rect(300, 30),
+        k.anchor('center'),
+        k.area(),
+        k.pos(0, 60),
+        k.color(60, 169, 69),
+        k.opacity(0),
+        'download-resume-container'
+    ])
 
 
-    const downloadResume = menuOptionsContainer.add([
+    const downloadResume = downloadResumeContainer.add([
         k.text("See Resume", {
             size: 30, 
             width: 200, 
@@ -255,7 +279,7 @@ k.scene('intro', async () => {
         }),
         k.color(248, 169, 69),
         'menu-option', 
-        k.pos(0, 60),
+        k.pos(0, 0),
         k.anchor('center'),
         k.state('unselected', ['selected', 'unselected']),
         menuOptionsComp(),
@@ -287,6 +311,28 @@ k.scene('intro', async () => {
             downloadResume.enterState('unselected');
             startGame.enterState('selected');
         }   
+    })
+
+
+
+    k.onClick('start-game-container', () => {
+        downloadResume.enterState('unselected');
+        startGame.enterState('selected');
+        const player = startGame.get('player')[0]
+        player.trigger('throw-shuriken-menu');
+        k.wait(0.2, () => {
+            k.go('office');
+        })
+    })
+
+    k.onClick('download-resume-container', () => {
+        downloadResume.enterState('selected');
+        startGame.enterState('unselected');
+        const player = downloadResume.get('player')[0]
+        player.trigger('throw-shuriken-menu');
+        k.wait(0.2, () => {
+            window.location.assign(resumeUrl);
+        })
     })
 
 
