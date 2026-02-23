@@ -813,7 +813,7 @@ k.scene('office', async () => {
         let dialogBox = showDialogueMultiple(
             'shogun_boss-face', 
             [
-             'Ah, Mr Miguel! Lets get started with your\ninterview',
+             'Ah, Mr Miguel! Lets get started with your interview',
              'We will go over your scrolls of\neducation, skills and experience',
              '…What’s that? You came without them? Bold, but foolish',
              'Return to your village and come\nback when you have them all!'
